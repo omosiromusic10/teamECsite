@@ -16,12 +16,14 @@
 				<div id="ItemBox">
 
 					<ul>
-					<!-- 	<li><input type="radio" name="productId" value='<s:property value="productId"/>'></li>  -->
+
 						<li>
 						<div id="item_image_box">
 <%-- 						<a href='<s:url action="ProductDetailsAction"> --%>
+								<s:param name="productId" value="<s:property value='productId'/>"/>
 <%-- 							</s:url>'> --%>
-							<img id="item_image" src="<s:property value='imageFilePath'/>/<s:property value='imageFileName'/>">
+
+								<img id="item_image" src="<s:property value='imageFilePath'/>/<s:property value='imageFileName'/>">
 <!-- 						</a> -->
 						</div>
 						</li>
