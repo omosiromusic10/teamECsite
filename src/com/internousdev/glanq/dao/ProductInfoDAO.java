@@ -12,6 +12,7 @@ import com.internousdev.glanq.util.DBConnector;
 
 import freemarker.template.utility.DateUtil;
 
+
 // [!]動作未確認
 public class ProductInfoDAO {
 
