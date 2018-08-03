@@ -21,5 +21,6 @@
 </div>
 
 	<s:inclued value ="footer.jsp"/>
+
 </body>
 </html>
