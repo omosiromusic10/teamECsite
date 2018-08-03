@@ -12,7 +12,7 @@
 <title>決済完了画面</title>
 </head>
 <body>
-<jsp:inclued page="header.jsp" />
+<jsp:include page="header.jsp" />
 <div id="contents">
 <h1>決済完了画面</h1>
 <div class="success">
@@ -20,7 +20,7 @@
 </div>
 </div>
 
-	<s:inclued value ="footer.jsp"/>
+	<s:include value="footer.jsp" />
 
 </body>
 </html>
