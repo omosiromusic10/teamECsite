@@ -234,7 +234,7 @@ public class UserInfoDAO {
 	}
 
 
-	//パスワード隠す用のメソッド
+	//パスワード隠匿用のメソッド
 	public String concealPassword(String password){
 		int beginIndex = 0;
 		int endIndex = 1;

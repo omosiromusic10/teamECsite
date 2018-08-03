@@ -32,7 +32,7 @@ public class SettlementCompleteAction extends ActionSupport implements SessionAw
 			purchaseHistoryInfoDtoList.get(i).setDestinationId(destinationInfoDtoList.get(0).getId());
 		}
 
-		PurchaseHistoryInfoDAO purchaseHistoryInfoDAO = new PurchaseHistoryInfoDAO();
+		PurchaseHistoryInfoDAO purchaseHistoryInfoDAO = new PurchaseHistoryInfoDAO();//購入履歴にデータを渡す
 		int count = 0;
 		for(int i=0; i<purchaseHistoryInfoDtoList.size(); i++) {
 			count += purchaseHistoryInfoDAO.regist(
@@ -44,7 +44,7 @@ public class SettlementCompleteAction extends ActionSupport implements SessionAw
 					);
 		}
 		if(count > 0) {
-			CartInfoDAO cartInfoDAO = new CartInfoDAO();
+			CartInfoDAO cartInfoDAO = new CartInfoDAO(); //カート内のデータを消す
 			count = cartInfoDAO.deleteAll(String.valueOf(session.get("loginId")));
 			if(count > 0) {
 				List<CartInfoDTO> cartInfoDtoList = new ArrayList<CartInfoDTO>();
