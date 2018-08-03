@@ -5,7 +5,7 @@ import org.apache.struts2.components.Date;
 public class CartInfoDTO {
 
 	/*
-	 * カートの画面に必要なデータは以下
+	 * カートの画面に必要なデータは以
 	 * 商品情報のテーブルの情報
 	 * カートのテーブルの情報
 	 */
