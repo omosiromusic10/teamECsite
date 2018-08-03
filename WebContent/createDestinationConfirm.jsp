@@ -55,8 +55,6 @@
 </tr>
 
 
-
-
 </table>
 <div class="submit_btn_box">
 <div id=".contents-btn-set">
