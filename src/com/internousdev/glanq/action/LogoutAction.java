@@ -4,36 +4,44 @@ import java.util.Map;
 
 import org.apache.struts2.interceptor.SessionAware;
 
-import com.internousdev.sampleweb.dao.UserInfoDAO;
+import com.internousdev.glanq.dao.UserInfoDAO;
+import com.internousdev.glanq.dto.UserInfoDTO;
 import com.opensymphony.xwork2.ActionSupport;
 
-
-/*ActionSupportをLogoutActionへ継承することでvaluestackを使えるようにする
- * sessionAwareを実装することでvalestackの中にsessionを入れることができる*/
+/*ActionSupportを継承、sessionAwareを実装*/
 public class LogoutAction extends ActionSupport implements SessionAware{
 
 
 	private String categoryId;
+
 	private Map<String, Object> session;
 	public String execute() {
+
+
 
 		//ERROR処理
 		String result = ERROR;
 
-		//userInfoDaoオブジェクトを生成
+		//userInfoDaoをインスタンス化
 		UserInfoDAO userInfoDao = new UserInfoDAO();
 
-		// loginIdにValueOfを代入
-		//valueOfはsessionからloginIdを取得
+		// セッション内のloginId(key)をもとに取り出した値をString型に変換し、loginId（String)に代入する
 		String loginId = String.valueOf(session.get("loginId"));
 
-		// boolean型変数savedLoginIdにBoolean.valueOfを代入
-		//String.valueOfはsessionからsavedloginid情報を取得
-		//取得したsavedLoginIdをBoolean.valeuOfに代入
-		boolean savedLoginId = Boolean.valueOf(String.valueOf(session.get("savedLoginId")));
+		/*セッション内のsavedLoginId(key)をもとに取り出した値をString型に変換し、valueOfに代入する。
+		//代入したvalueOfをBoolean型に変換し、savedLoginIdに代入する
+*/		boolean savedLoginId = Boolean.valueOf(String.valueOf(session.get("savedLoginId")));
 
-		//int型countにuserInfoDao.logoutを代入
-		int count = userInfoDao.logout(loginId);
+
+
+		UserInfoDTO userInfoDto = new UserInfoDTO();
+		userInfoDto=userInfoDao.getUserInfo(loginId);
+
+
+		String loginPassword = userInfoDto.getPassword();
+
+		//countにloginIdとloginPasswordを代入
+		int count = userInfoDao.logout(loginId,loginPassword);
 
 		//もしcountの値が0以上の場合、
 		if(count > 0) {
@@ -41,13 +49,13 @@ public class LogoutAction extends ActionSupport implements SessionAware{
 		//sessionの中を全て除去
 			session.clear();
 
-		//sessionの中へキーワードsavedLoginId、savedLoginId情報を登録
+		//sessionの中へsavedLoginId(key)を基にsavedLoginId(value)を登録する
 			session.put("savedLoginId", savedLoginId);
 
-		//sessionの中へキーワードloginId、loginId情報を登録
+		//sessionの中へloginId(key)を基にloginId(value)を登録する
 			session.put("loginId", loginId);
 
-		//SUCCESS処理
+		//SUCCESS処理を実行
 			result = SUCCESS;
 		}
 		//resultが返る
