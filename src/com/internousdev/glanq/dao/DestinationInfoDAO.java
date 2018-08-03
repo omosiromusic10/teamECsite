@@ -7,8 +7,9 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.internousdev.glamq.dto.DestinationInfoDTO;
+import com.internousdev.glanq.dto.DestinationInfoDTO;
 /* DBConnectorが出来次第importする*/
+import com.internousdev.glanq.util.DBConnector;
 
 public class DestinationInfoDAO {
 
