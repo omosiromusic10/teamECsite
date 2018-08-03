@@ -47,7 +47,7 @@ public class UserInfoDAO {
 
 
 	//ユーザーがいるかどうかの判定用メソッド
-	public boolean isExistUser(String userId, String password){
+	public boolean isExistUser(String loginId, String password){
 
 		DBConnector db = new DBConnector();
 		Connection con = db.getConnection();
@@ -57,7 +57,7 @@ public class UserInfoDAO {
 
 		try{
 			PreparedStatement ps = con.prepareStatement(sql);
-			ps.setString(1, userId);
+			ps.setString(1, loginId);
 			ps.setString(2, password);
 			ResultSet rs = ps.executeQuery();
 
@@ -78,7 +78,7 @@ public class UserInfoDAO {
 
 
 	//ユーザー情報取得メソッド(ユーザーID、パスワード)
-	public UserInfoDTO getUserInfo(String userId, String password){
+	public UserInfoDTO getUserInfo(String loginId, String password){
 		DBConnector db = new DBConnector();
 		Connection con = db.getConnection();
 		UserInfoDTO userInfoDTO = new UserInfoDTO();
@@ -87,13 +87,13 @@ public class UserInfoDAO {
 
 		try{
 			PreparedStatement ps = con.prepareStatement(sql);
-			ps.setString(1, userId);
+			ps.setString(1, loginId);
 			ps.setString(2, password);
 			ResultSet rs = ps.executeQuery();
 
 			while(rs.next()){
 				userInfoDTO.setId(rs.getInt("id"));
-				userInfoDTO.setUserId(rs.getString("user_id"));
+				userInfoDTO.setLoginId(rs.getString("user_id"));
 				userInfoDTO.setPassword(rs.getString("password"));
 				userInfoDTO.setFamilyName(rs.getString("family_name"));
 				userInfoDTO.setFirstName(rs.getString("first_name"));
@@ -119,7 +119,7 @@ public class UserInfoDAO {
 
 
 	//ユーザー情報取得用メソッド(ユーザーID)
-	public UserInfoDTO getUserInfo(String userId){
+	public UserInfoDTO getUserInfo(String loginId){
 		DBConnector db = new DBConnector();
 		Connection con = db.getConnection();
 		UserInfoDTO userInfoDTO = new UserInfoDTO();
@@ -128,12 +128,12 @@ public class UserInfoDAO {
 
 		try{
 			PreparedStatement ps = con.prepareStatement(sql);
-			ps.setString(1, userId);
+			ps.setString(1, loginId);
 			ResultSet rs = ps.executeQuery();
 
 			while(rs.next()){
 				userInfoDTO.setId(rs.getInt("id"));
-				userInfoDTO.setUserId(rs.getString("user_id"));
+				userInfoDTO.setLoginId(rs.getString("user_id"));
 				userInfoDTO.setPassword(rs.getString("password"));
 				userInfoDTO.setFamilyName(rs.getString("family_name"));
 				userInfoDTO.setFirstName(rs.getString("first_name"));
@@ -184,7 +184,7 @@ public class UserInfoDAO {
 
 
 	//ログイン用メソッド
-	public int login(String userId, String password){
+	public int login(String loginId, String password){
 		DBConnector db = new DBConnector();
 		Connection con = db.getConnection();
 		int count = 0;
@@ -193,7 +193,7 @@ public class UserInfoDAO {
 
 		try{
 			PreparedStatement ps = con.prepareStatement(sql);
-			ps.setString(1, userId);
+			ps.setString(1, loginId);
 			ps.setString(2, password);
 			count = ps.executeUpdate();
 		}catch(SQLException e ){
@@ -210,7 +210,7 @@ public class UserInfoDAO {
 
 
 	//ログアウト用メソッド
-	public int logout(String userId, String password){
+	public int logout(String loginId, String password){
 		DBConnector db = new DBConnector();
 		Connection con = db.getConnection();
 		int count = 0;
@@ -219,7 +219,7 @@ public class UserInfoDAO {
 
 		try{
 			PreparedStatement ps = con.prepareStatement(sql);
-			ps.setString(1, userId);
+			ps.setString(1, loginId);
 			ps.setString(2, password);
 			count = ps.executeUpdate();
 		}catch(SQLException e ){
