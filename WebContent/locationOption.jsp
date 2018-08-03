@@ -42,7 +42,6 @@
     </tr>
   </table>
 
-
 </div>
 <!-- フッターをインクルード -->
 <jsp:include page="footer.jsp" />
