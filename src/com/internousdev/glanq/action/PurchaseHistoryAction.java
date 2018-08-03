@@ -8,6 +8,7 @@ import java.util.Map;
 import org.apache.struts2.interceptor.SessionAware;
 
 import com.internousdev.glanq.dao.PurchaseHistoryInfoDAO;
+import com.internousdev.glanq.dto.MCategoryDTO;
 import com.internousdev.glanq.dto.PurchaseHistoryInfoDTO;
 import com.opensymphony.xwork2.ActionSupport;
 
@@ -22,7 +23,7 @@ public class PurchaseHistoryAction extends ActionSupport implements SessionAware
 	public String execute(){
 
 		PurchaseHistoryInfoDAO purchaseHistoryInfoDao = new PurchaseHistoryInfoDAO();
-		List<PurchaseHistoryInfoDTO> purchaseHistoryDtoList = new ArrayList<PurchaseHistoryInfoDTO>();
+		List<PurchaseHistoryInfoDTO> purchaseHistoryInfoDtoList = new ArrayList<PurchaseHistoryInfoDTO>();
 		purchaseHistoryInfoDtoList = purchaseHistoryInfoDao.getPurchaseHistoryList(String.valueOf(session.get("loginId")));
 		Iterator<PurchaseHistoryInfoDTO> iterator = purchaseHistoryInfoDtoList.iterator();
 		if(!(iterator.hasNext())){
