@@ -1,6 +1,6 @@
 package com.internousdev.glanq.dto;
 
-import java.util.Date;
+import org.apache.struts2.components.Date;
 
 public class CartInfoDTO {
 
