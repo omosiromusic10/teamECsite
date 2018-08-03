@@ -8,6 +8,15 @@ create database if not exists glanq;
 use glanq;
 
 -- 会員情報テーブル作成
+/*
+ * 備考
+ * IDはpk, auto_increment
+ * ユーザーIDはunique
+ * 性別は0:男性、1:女性
+ * ステータスは0:無効、1:有効
+ * ログインフラグは0:未ログイン、1:ログイン済
+ *
+ */
 
 create table user_info(
 id int primary key not null auto_increment comment "ID",
@@ -31,6 +40,13 @@ comment="会員情報テーブル";
 -- 会員情報のinsert文を挿入
 
 -- 商品情報テーブル作成
+/*
+ * 備考
+ * IDはpk, auto_increment
+ * product_id, _name, _name_kanaはunique
+ * カテゴリIDはm_categoryのcategory_idとfk
+ * ステータスは0:無効、1:有効
+ */
 
 create table product_info(
 id int primary key not null auto_increment comment "ID",
@@ -53,9 +69,14 @@ foreign key(category_id) references m_category(category_id)
 default charset=utf8
 comment="商品情報テーブル";
 
--- 商品情報のinsert文を追加
+-- 商品情報のinsert文を挿入
 
--- カート情報テーブルを追加
+-- カート情報テーブルを作成
+/*
+ * 備考
+ * IDはpk, auto_increment
+ */
+
 create table cart_info(
 id int primary key not null auto_increment comment "ID",
 user_id varchar(16) not null comment "ユーザーID",
@@ -69,3 +90,25 @@ update_date datetime comment "更新日"
 
 default charset=utf8
 comment="カート情報テーブル";
+
+-- 購入履歴情報テーブルを作成
+/*
+ * 備考
+ * IDはpk, auto_increment
+ * product_idはproduct_infoのproduct_idとfk
+ */
+
+create table purchase_history_info(
+id int primary key not null auto_increment comment "ID",
+user_id varchar(16) not null comment "ユーザーID",
+product_id int not null comment "商品ID",
+product_count int not null comment "個数",
+price int not null comment "金額",
+destination_id int not null comment "宛先情報ID",
+regist_date datetime not null comment "登録日",
+update_date datetime not null comment "更新日",
+foreign key(product_id) references product_info(product_id)
+)
+
+default charset=utf8
+comment="購入履歴情報テーブル";
