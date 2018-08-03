@@ -18,7 +18,7 @@
 
 </div>
 
-a
+
 
 <s:include value="footer.jsp"/>
 
