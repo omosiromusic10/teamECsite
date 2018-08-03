@@ -43,7 +43,7 @@ public class SearchItemAction extends ActionSupport implements SessionAware {
 	}
 //	カテゴリーIDが２，３、または４が選択された時、検索はそれぞれのカテゴリーの中から行われる
 	else if(categoryId=="2"|categoryId=="3"|categoryId=="4"){
-		productInfoDTOList=productInfoDAO.getProductInfoListByKeywords(keywords.replaceAll("　", " ").split(" "),keywords);
+		productInfoDTOList=productInfoDAO.getProductInfoListByKeywords(keywords.replaceAll(" ", " ").split(" "),keywords);
 		result=SUCCESS;
 	}
 
@@ -76,6 +76,7 @@ public class SearchItemAction extends ActionSupport implements SessionAware {
 			paginationDTO=pagination.getPage(productInfoDTOList,9,pageNo);
 		}
 
+//		sessionに各データを追加
 		session.put("productInfoDtoList",paginationDTO.getCurrentProductInfoPage() );
 		session.put("totalPageSize",paginationDTO.getTotalPageSize() );
 		session.put("currentPageNo",paginationDTO.getCurrentPageNo() );
