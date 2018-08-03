@@ -170,7 +170,7 @@ public class ProductInfoDAO {
 	}
 
 
-	// すべてのカテゴリ を選択した場合のキーワード検索。
+	// すべてのカテゴリ を選択した場合のキーワード検索。検索ワードのリストが必要。
 	public ArrayList<ProductInfoDTO> getProductInfoListAll(String[] keywordsList) throws SQLException{
 		ArrayList<ProductInfoDTO> productInfoListByKeywords = new ArrayList<ProductInfoDTO>();
 		DBConnector db = new DBConnector();
