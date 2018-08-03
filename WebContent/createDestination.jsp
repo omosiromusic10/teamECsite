@@ -78,7 +78,7 @@
 </tr>
 
 <tr>
-    <th scope="row"</table>
+    <th scope="row"></table>
 
 </div>
 </body>
