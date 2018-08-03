@@ -4,17 +4,17 @@ import java.util.List;
 
 // samplewebに合わせて作成。
 public class PaginationDTO {
-	private int totalPageSize;
-	private int currentPageNo;
-	private int totalRecordSize;
-	private int startRecordNo;
-	private int endRecordNo;
-	private List<Integer> pageNumberList;
-	private List<ProductInfoDTO> currentProductInfoPage;
-	private boolean hasNextPage;
-	private boolean hasPreviousPage;
-	private int nextPageNo;
-	private int previousPageNo;
+	private int totalPageSize;				// 全ページ数
+	private int currentPageNo;				// 現在のページ数
+	private int totalRecordSize;			// 総レコード数
+	private int startRecordNo;				// 開始のレコード番号
+	private int endRecordNo;				// 終了のレコード番号
+	private List<Integer> pageNumberList;	// ページ番号のリスト
+	private List<ProductInfoDTO> currentProductInfoPage;	// 1ページ分の商品情報
+	private boolean hasNextPage;			// 次ページが存在するかどうか
+	private boolean hasPreviousPage;		// 前ページが存在するかどうか
+	private int nextPageNo;					// 次ページの番号
+	private int previousPageNo;				// 前ページの番号
 
 	public int getTotalPageSize() {
 		return totalPageSize;
