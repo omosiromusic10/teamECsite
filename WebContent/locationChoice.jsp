@@ -21,6 +21,7 @@
   <!-- 同じテーブルで扱うため、便宜的に姓を会社名、名をBBQ場の名前とする -->
 
   <div>
+  <s:form name="LocationChoiceCompleteAction">
       <!-- 姓 -->
       <s:hidden name="familyName" value="インターノウス株式会社"/>
       <!-- 名 -->
@@ -37,8 +38,8 @@
       <s:hidden name="userAdress" value="東京都千代田区三番町1-1 KY三番町ビル 1F"/>
 
       <!-- submitボタン -->
-      <s:submit value="Aバーベキュー場" class="submit_btn"/>
-
+      <s:submit value="Aバーベキュー場"/>
+  </s:form>
   </div>
   <div>
   </div>
