@@ -137,3 +137,24 @@ default charset=utf8
 comment="宛先情報テーブル";
 
 -- 宛先情報のinsert文を挿入
+
+-- カテゴリマスターテーブルの作成
+/*
+ * IDはpk
+ * category_id, _nameはunique
+ */
+
+
+create table m_category(
+id int primary key not null comment "ID",
+category_id int not null unique comment "カテゴリID",
+category_name varchar(20) not null unique comment "カテゴリ名",
+category_description varchar(100) comment "カテゴリ詳細",
+insert_date datetime not null comment "登録日",
+update_date datetime comment "更新日"
+)
+
+default charset=utf8
+comment="カテゴリマスタテーブル";
+
+-- カテゴリのinsert文を挿入
