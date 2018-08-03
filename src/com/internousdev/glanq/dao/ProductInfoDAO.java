@@ -1,19 +1,11 @@
 package com.internousdev.glanq.dao;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
-
 import com.internousdev.glanq.dto.ProductInfoDTO;
 import com.internousdev.glanq.util.DBConnector;
-<<<<<<< HEAD
+import com.mysql.jdbc.Connection;
+import com.mysql.jdbc.PreparedStatement;
 
 import freemarker.template.utility.DateUtil;
-=======
->>>>>>> 861f21dd01503535c8f565c8dbd93419a7de4823
 
 // [!]動作未確認
 public class ProductInfoDAO {
