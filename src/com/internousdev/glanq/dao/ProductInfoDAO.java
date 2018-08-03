@@ -1,11 +1,17 @@
 package com.internousdev.glanq.dao;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
 import com.internousdev.glanq.dto.ProductInfoDTO;
 import com.internousdev.glanq.util.DBConnector;
-import com.mysql.jdbc.Connection;
-import com.mysql.jdbc.PreparedStatement;
 
 import freemarker.template.utility.DateUtil;
+
 
 // [!]動作未確認
 public class ProductInfoDAO {
@@ -134,10 +140,10 @@ public class ProductInfoDAO {
 		// 拡張for文
 		for(String keyword : keywordsList){
 			if(iFlg){
-				sql += "(product_name like % " + keyword + " % or product_name_kana like % " + keyword + "%) ";
+				sql += "(product_name like '%" + keyword + "%' or product_name_kana like '%" + keyword + "%') ";
 				iFlg = false;
 			}else{
-				sql += "AND (product_name like % " + keyword + " % or product_name_kana like % " + keyword + "%)";
+				sql += "AND (product_name like '%" + keyword + "%' or product_name_kana like '%" + keyword + "%')";
 			}
 		}
 		try{
@@ -175,15 +181,15 @@ public class ProductInfoDAO {
 		ArrayList<ProductInfoDTO> productInfoListByKeywords = new ArrayList<ProductInfoDTO>();
 		DBConnector db = new DBConnector();
 		Connection con = db.getConnection();
-		String sql = "SELECT * from product_info ";
+		String sql = "SELECT * from product_info WHERE ";
 		boolean iFlg = true;
 		// 拡張for文
 		for(String keyword : keywordsList){
 			if(iFlg){
-				sql += "(product_name like % " + keyword + " % or product_name_kana like % " + keyword + "%) ";
+				sql += "(product_name like '%" + keyword + "%' or product_name_kana like '%" + keyword + "%') ";
 				iFlg = false;
 			}else{
-				sql += "AND (product_name like % " + keyword + " % or product_name_kana like % " + keyword + "%)";
+				sql += "AND (product_name like '%" + keyword + "%' or product_name_kana like '%" + keyword + "%')";
 			}
 		}
 		try{

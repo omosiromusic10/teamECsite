@@ -19,7 +19,6 @@ public class CreateUserAction extends ActionSupport implements SessionAware{
 	private String sex;
 	private static final String MALE = "男性";
 	private static final String FEMALE = "女性";
-	private String defaultSex = MALE;
 	private String email;
 	private String categoryId;
 
@@ -29,6 +28,12 @@ public class CreateUserAction extends ActionSupport implements SessionAware{
 	public String execute(){
 		String result = ERROR;
 
+		/**
+		 * セッション内にputされたメッセージを削除する
+		 * 一度エラーメッセージを表示した後、他のページから移動してきた際に
+		 * メッセージが残ったままになることを防ぐため
+		 */
+
 		session.remove("familyNameErrorMessageList");
 		session.remove("firstNameErrorMessageList");
 		session.remove("familyNameKanaErrorMessageList");
@@ -36,6 +41,8 @@ public class CreateUserAction extends ActionSupport implements SessionAware{
 		session.remove("emailErrorMessageList");
 		session.remove("loginIdErrorMessageList");
 		session.remove("passwordErrorMessageList");
+
+		// セッションにJSPから渡された値を格納していく
 
 		session.put("familyName", familyName);
 		session.put("firstName", firstName);
@@ -47,15 +54,27 @@ public class CreateUserAction extends ActionSupport implements SessionAware{
 		}else{
 			session.put("sex", String.valueOf(session.get("sex")));
 		}
+		/**
+		 * 性別に関しては選択されていない場合は男性を格納する
+		 * そうでない場合は選択されたものをString変換した後にセッションに格納
+		 */
+
 		sexList.add(MALE);
 		sexList.add(FEMALE);
 		session.put("sexList", sexList);
+		/**
+		 * このsexListはJSPファイルで表示する選択肢
+		 * 男性・女性を選ぶものであるが、このクラスで指定した
+		 * MALE=男性、FEMALE＝女性がJSPでの選択肢になる
+		 */
+
 		session.put("loginId", loginId);
 		session.put("password", password);
 		session.put("email", email);
 
 		result = SUCCESS;
 		return result;
+		//SUCCESSを返す
 	}
 
 	public String getLoginId() {
@@ -112,14 +131,6 @@ public class CreateUserAction extends ActionSupport implements SessionAware{
 
 	public void setSex(String sex) {
 		this.sex = sex;
-	}
-
-	public String getDefaultSex() {
-		return defaultSex;
-	}
-
-	public void setDefaultSex(String defaultSex) {
-		this.defaultSex = defaultSex;
 	}
 
 	public String getEmail() {
