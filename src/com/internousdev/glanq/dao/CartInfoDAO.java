@@ -1,18 +1,19 @@
 package com.internousdev.glanq.dao;
-
+import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.internousdev.glanq.dto.CartInfoDTO;
 import com.internousdev.glanq.util.DBConnector;
-import com.mysql.jdbc.Connection;
-import com.mysql.jdbc.PreparedStatement;
+
 
 public class CartInfoDAO {
 
 	/*
-	 * 設計書に記載されている内容は以下
+	 * 設計書に記載されている内容は
 	 * 1.DBからカートの内容を取得
 	 * 2.カート内の情報をテーブルに追加
 	 * 3.カート内の合計金額を表示
@@ -135,7 +136,7 @@ public class CartInfoDAO {
 	public int getToralPrice (String userId){
 		int totalPrice = 0;
 		DBConnector dbc = new DBConnector();
-		Connection con = dbc.getConnection;
+		Connection con = dbc.getConnection();
 
 		/*
 		 * ログインしているuser_idと紐づく、
@@ -170,7 +171,7 @@ public class CartInfoDAO {
 
 	/*4.カート中身を削除(項目毎)*/
 	public int delete(String Id){
-		DBConnector dbc = new DBConnectior();
+		DBConnector dbc = new DBConnector();
 		Connection con = dbc.getConnection();
 		int count = 0;
 

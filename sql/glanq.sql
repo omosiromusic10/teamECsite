@@ -54,3 +54,18 @@ default charset=utf8
 comment="商品情報テーブル";
 
 -- 商品情報のinsert文を追加
+
+-- カート情報テーブルを追加
+create table cart_info(
+id int primary key not null auto_increment comment "ID",
+user_id varchar(16) not null comment "ユーザーID",
+temp_user_id varchar(16) comment "仮ユーザーID",
+product_id int not null comment "商品ID",
+product_count int not null comment "個数",
+price int not null comment "金額",
+regist_date datetime not null comment "登録日",
+update_date datetime comment "更新日"
+)
+
+default charset=utf8
+comment="カート情報テーブル";
