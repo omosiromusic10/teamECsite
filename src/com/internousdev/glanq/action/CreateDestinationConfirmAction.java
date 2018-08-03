@@ -6,6 +6,7 @@ import java.util.Map;
 
 import org.apache.struts2.interceptor.SessionAware;
 
+import com.internousdev.glanq.util.InputChecker;
 /*inputCheckerが出来次第import*/
 import com.opensymphony.xwork2.ActionSupport;
 
@@ -48,6 +49,36 @@ public class CreateDestinationConfirmAction extends ActionSupport implements Ses
 		 * }
 		 *
 		 * **/
+
+		InputChecker inputChecker = new InputChecker();
+//		フォームの入力内容をinputCheckerを使用しチェックする。-----------------------------------------------
+		familyNameErrorMessageList = inputChecker.docheck("姓", familyName, 1, 16, true, true, true, false, false, false, true);
+		firstNameErrorMessageList = inputChecker.docheck("名", firstName, 1, 16, true, true, true, false, false, false, true);
+		familyNameKanaErrorMessageList = inputChecker.docheck("姓ふりがな", familyNameKana, 1, 16, false, false, true, false, false, false, false);
+		firstNameKanaErrorMessageList = inputChecker.docheck("名ふりがな", firstNameKana, 1, 16, false, false, true, false, false, false, false);
+		userAddressErrorMessageList = inputChecker.docheck("住所", userAddress, 15, 50, false, true, true, true, true, true, true);
+		telNumberErrorMessageList = inputChecker.docheck("電話番号", telNumber, 10, 13, false, false, false, true, false, false, false);
+		emailErrorMessageList = inputChecker.docheck("メールアドレス", email, 18, 32, true, false, false, false, true, false, false);
+		if(familyNameErrorMessageList.size()==0
+		&& firstNameErrorMessageList.size()==0
+		&&	familyNameKanaErrorMessageList.size()==0
+		&&	firstNameKanaErrorMessageList.size()==0
+		&&	emailErrorMessageList.size()==0
+		&&	telNumberErrorMessageList.size()==0
+		&&	userAddressErrorMessageList.size()==0) {
+			result = SUCCESS;
+		} else {
+			session.put("familyNameErrorMessageList", familyNameErrorMessageList);
+			session.put("firstNameErrorMessageList", firstNameErrorMessageList);
+			session.put("famimyNameKanaErrorMessageList", familyNameKanaErrorMessageList);
+			session.put("firstNameKanaErrorMessageList", firstNameKanaErrorMessageList);
+			session.put("emailErrorMessageList", emailErrorMessageList);
+			session.put("telNumberErrorMessageList", telNumberErrorMessageList);
+			session.put("userAddressErrorMessageList", userAddressErrorMessageList);
+			result = ERROR;
+		}
+		sexList.add(MALE);
+		sexList.add(FEMALE);
 
 		return result;
 
