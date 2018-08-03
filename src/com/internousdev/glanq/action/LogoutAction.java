@@ -18,6 +18,7 @@ public class LogoutAction extends ActionSupport implements SessionAware{
 	public String execute() {
 
 
+
 		//ERROR処理
 		String result = ERROR;
 
