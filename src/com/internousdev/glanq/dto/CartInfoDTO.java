@@ -5,7 +5,7 @@ import java.util.Date;
 public class CartInfoDTO {
 
 	/*
-	 * カートの画面に必要なデータは
+	 * カートの画面に必要なデータは以下
 	 * 商品情報のテーブルの情報
 	 * カートのテーブルの情報
 	 */
