@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 
 import com.internousdev.glanq.dto.ProductInfoDTO;
 import com.internousdev.glanq.util.DBConnector;
@@ -13,7 +14,7 @@ import com.internousdev.glanq.util.DBConnector;
 public class ProductInfoDAO {
 
 	// 商品情報をすべて取得するメソッド。
-	public ArrayList<ProductInfoDTO> getProductInfoList() throws SQLException{
+	public List<ProductInfoDTO> getProductInfoList() throws SQLException{
 		ArrayList<ProductInfoDTO> productInfoList = new ArrayList<ProductInfoDTO>();
 		DBConnector db = new DBConnector();
 		Connection con = db.getConnection();
@@ -84,7 +85,7 @@ public class ProductInfoDAO {
 
 
 	// 関連商品のリストを取得するメソッド。その商品のカテゴリIDと商品IDと、表示数に関連する数値を参照。
-	public ArrayList<ProductInfoDTO> getProductInfoListByCategoryId(int categoryId, int productId, int limitOffset, int limitRowCount) throws SQLException{
+	public List<ProductInfoDTO> getProductInfoListByCategoryId(int categoryId, int productId, int limitOffset, int limitRowCount) throws SQLException{
 		ArrayList<ProductInfoDTO> productInfoListByCategoryId = new ArrayList<ProductInfoDTO>();
 		DBConnector db = new DBConnector();
 		Connection con = db.getConnection();
@@ -125,7 +126,7 @@ public class ProductInfoDAO {
 
 	// 商品検索によって対象の商品リストを取得するメソッド。検索欄のキーワードをリスト化したものならびにカテゴリIDを参照。
 	// すべてのカテゴリ を選択した場合は、この下にある getProductInfoListAll を用いる。
-	public ArrayList<ProductInfoDTO> getProductInfoListByKeywords(String[] keywordsList, String categoryId) throws SQLException{
+	public List<ProductInfoDTO> getProductInfoListByKeywords(String[] keywordsList, String categoryId) throws SQLException{
 		ArrayList<ProductInfoDTO> productInfoListByKeywords = new ArrayList<ProductInfoDTO>();
 		DBConnector db = new DBConnector();
 		Connection con = db.getConnection();
