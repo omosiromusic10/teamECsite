@@ -9,6 +9,7 @@
 </head>
 <body>
 <!-- ヘッダーをインクルード -->
+<jsp:include page="header.jsp" />
 
 <div id="contents">
 
@@ -43,6 +44,7 @@
 
 
 </div>
-<!-- フッダーをインクルード -->
+<!-- フッターをインクルード -->
+<jsp:include page="footer.jsp" />
 </body>
 </html>
