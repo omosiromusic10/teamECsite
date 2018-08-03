@@ -160,16 +160,17 @@ public class UserInfoDAO {
 
 
 	//パスワード再設定用メソッド
-	public int resetPassword(String userId){
+	public int resetPassword(String userId, String password){
 		DBConnector db = new DBConnector();
 		Connection con = db.getConnection();
 		int count = 0;
 
-		String sql = "UPDATE user_info SET password WHERE user_id = ?";
+		String sql = "UPDATE user_info SET password WHERE user_id = ? AND password = ?";
 
 		try{
 			PreparedStatement ps = con.prepareStatement(sql);
 			ps.setString(1, userId);
+			ps.setString(2, password);
 			count = ps.executeUpdate();
 		}catch(SQLException e ){
 			e.printStackTrace();
