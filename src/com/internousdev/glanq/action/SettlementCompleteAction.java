@@ -11,7 +11,7 @@ import com.internousdev.glanq.dao.CartInfoDAO;
 import com.internousdev.glanq.dao.PurchaseHistoryInfoDAO;
 import com.internousdev.glanq.dto.CartInfoDTO;
 import com.internousdev.glanq.dto.DestinationInfoDTO;
-import com.internousdev.glanqb.dto.PurchaseHistoryInfoDTO;
+import com.internousdev.glanq.dto.PurchaseHistoryInfoDTO;
 import com.opensymphony.xwork2.ActionSupport;
 
 public class SettlementCompleteAction extends ActionSupport implements SessionAware{
