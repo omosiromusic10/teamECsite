@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ taglib prefix="s" uri="/struts-tags" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="s" uri="/struts-tags"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,16 +11,16 @@
 </head>
 <body>
 
-<s:include value="header.jsp"/>
-<div id="main-contents">
-<h1>仮ホーム画面</h1>
+	<s:include value="header.jsp" />
+	<div id="main-contents">
+		<h1>仮ホーム画面</h1>
 
 
-</div>
+	</div>
 
 
 
-<s:include value="footer.jsp"/>
+	<s:include value="footer.jsp" />
 
 </body>
 </html>

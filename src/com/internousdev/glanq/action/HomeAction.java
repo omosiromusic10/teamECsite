@@ -16,7 +16,7 @@ public class HomeAction extends ActionSupport implements SessionAware{
 	private Map<String,Object>session;
 	public String execute(){
 
-//"session"内にログインIDと仮ログインIDが無いことを確認する.
+//"session"内にログインIDと仮ログインIDが無いことを確認する
 		if(!(session.containsKey("loginId"))&&!(session.containsKey("tempUserId"))){
 		CommonUtility commonUtility=new CommonUtility();
 //仮ログインIDを16桁の数字でランダム生成し、"session"に格納.

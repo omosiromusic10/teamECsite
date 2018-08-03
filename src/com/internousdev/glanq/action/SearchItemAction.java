@@ -1,20 +1,12 @@
 package com.internousdev.glanq.action;
 
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-
-import org.apache.struts2.interceptor.SessionAware;
-
-import com.internousdev.glanq.dao.MCategoryDAO;
-import com.internousdev.glanq.dao.ProductInfoDAO;
-import com.internousdev.glanq.dto.MCategoryDTO;
-import com.internousdev.glanq.dto.PaginationDTO;
-import com.internousdev.glanq.dto.ProductInfoDTO;
-import com.internousdev.glanq.util.InputChecker;
-import com.internousdev.glanq.util.Pagination;
-import com.opensymphony.xwork2.ActionSupport;
+import src.com.internousdev.glanq.dao.MCategoryDAO;
+import src.com.internousdev.glanq.dao.ProductInfoDAO;
+import src.com.internousdev.glanq.dto.MCategoryDTO;
+import src.com.internousdev.glanq.dto.PaginationDTO;
+import src.com.internousdev.glanq.dto.ProductInfoDTO;
+import src.com.internousdev.glanq.util.InputChecker;
+import src.com.internousdev.glanq.util.Pagination;
 
 public class SearchItemAction extends ActionSupport implements SessionAware {
 	private String categoryId;
