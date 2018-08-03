@@ -8,8 +8,8 @@ import com.internousdev.sampleweb.dao.UserInfoDAO;
 import com.opensymphony.xwork2.ActionSupport;
 
 
-/*sessionAwareを実装することでvalestackの中にsessionを入れることができる
-ActionSupportをLogoutActionへ継承することでvaluestackを使えるようにする*/
+/*ActionSupportをLogoutActionへ継承することでvaluestackを使えるようにする
+ * sessionAwareを実装することでvalestackの中にsessionを入れることができる*/
 public class LogoutAction extends ActionSupport implements SessionAware{
 
 
