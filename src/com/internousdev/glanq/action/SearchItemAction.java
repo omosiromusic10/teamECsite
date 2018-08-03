@@ -36,7 +36,8 @@ public class SearchItemAction extends ActionSupport implements SessionAware {
 	keywordsErrorMessageList=inputChecker.docheck("検索ワード",keywords,0,6,true,true,true,true,false,true,true);
 	ProductInfoDAO productInfoDAO=new ProductInfoDAO();
 
-//	カテゴリーIDが０、または１が選択された時、検索は全商品の中から行われる
+//	カテゴリーIDが０、または１が選択された時、検索は全商品の中から行われる.
+
 	if(categoryId=="0"||categoryId=="1"){
 		productInfoDTOList=productInfoDAO.getProductInfoListAll(keywords.replaceAll(" "," ").split(" "));
 		result=SUCCESS;
