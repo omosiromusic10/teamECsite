@@ -2,6 +2,7 @@ package com.internousdev.glanq.dto;
 
 import java.util.Date;
 
+// samplewebに合わせて作成。
 public class ProductInfoDTO {
 	private int id;
 	private int productId;
