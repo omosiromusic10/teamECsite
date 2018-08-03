@@ -2,7 +2,7 @@ package com.internousdev.glanq.dto;
 
 import java.util.List;
 
-// samplewebに合わせて作成。
+// sample-webに合わせて作成。
 public class PaginationDTO {
 	private int totalPageSize;				// 全ページ数
 	private int currentPageNo;				// 現在のページ数
