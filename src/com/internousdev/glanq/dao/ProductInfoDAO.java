@@ -8,14 +8,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.internousdev.glanq.dto.ProductInfoDTO;
-import com.internousdev.glanq.util.DBConnectorTest;
+import com.internousdev.glanq.util.DBConnector;
+
+import freemarker.template.utility.DateUtil;
 
 public class ProductInfoDAO {
+
+	private DateUtil dateUtil = new DateUtil();
 
 	// 商品情報をすべて取得するメソッド。
 	public ArrayList<ProductInfoDTO> getProductInfoList() throws SQLException{
 		ArrayList<ProductInfoDTO> productInfoList = new ArrayList<ProductInfoDTO>();
-		DBConnectorTest db = new DBConnectorTest();
+		DBConnector db = new DBConnector();
 		Connection con = db.getConnection();
 		String sql = "SELECT * from product_info";
 		try{
@@ -69,4 +73,67 @@ public class ProductInfoDAO {
 		List<ProductInfoDTO> productInfoListByKeywords = new ArrayList<ProductInfoDTO>();
 		return productInfoListByKeywords;
 	}
+
+	//管理者商品追加機能により、ProductIdの最大から自動的に+1してinsertするようにしているメソッド
+    public int getMaxProductId(){
+
+	int maxProductId = -1;
+
+	DBConnector db = new DBConnector();
+	Connection con = db.getConnection();
+
+	String sql = "SELECT MAX(product_id) AS id FROM product_info";
+	try{
+		PreparedStatement ps = con.prepareStatement(sql);
+		ResultSet rs = ps.executeQuery();
+
+		if(rs.next()){
+			maxProductId = rs.getInt("id");
+		}
+	}catch(SQLException e){
+		e.printStackTrace();
+	}finally{
+		if(con !=null){
+			try{
+				con.close();
+			}catch(SQLException e){
+				e.printStackTrace();
+			}
+		}
+	}
+	return maxProductId;
+    }
+    //管理者機能商品追加時に使われるメソッド。
+    public int createProduct( int productid , String productName , String productNameKana, String productDescription,
+    		int categoryId, int price, String releaseCompany , String releaseDate , String imageFileName , String userImageFileName ,int Status)throws SQLException{
+    	DBConnector dbConnector = new DBConnector();
+    	Connection con = dbConnector.getConnection();
+    	int count = 0;
+    	String sql = "insert into product_info(product_id,product_name, product_name_kana, product_description,"
+    			+ "category_id ,price ,release_company, release_date, image_file_name, image_file_path, status, regist_date, update_date)"
+    			+ "values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+    			try{
+    				PreparedStatement ps = con.prepareStatement(sql);
+    				ps.setInt(1, productid);
+    				ps.setString(2, productName);
+    				ps.setString(3, productNameKana);
+    				ps.setString(4, productDescription);
+    				ps.setInt(5, categoryId);
+    				ps.setInt(6, price);
+    				ps.setString(7, releaseCompany);
+    				ps.setString(8, releaseDate);
+    				ps.setString(9, imageFileName);
+    				ps.setString(10, userImageFileName);
+    				ps.setInt(11, Status);
+    				ps.setString(12, dateUtil.getDate());
+    				ps.setString(13, dateUtil.getDate());
+    				count = ps.executeUpdate();
+    }catch(SQLException e){
+    	e.printStackTrace();
+    }finally{
+    	con.close();
+    }
+    			return count;
+    }
+
 }

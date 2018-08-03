@@ -1,14 +1,13 @@
 package com.internousdev.glanq.action;
 
-import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
 import org.apache.struts2.interceptor.SessionAware;
 
-import com.internousdev.gramq.dao.MCategoryDAO;
-import com.internousdev.gramq.dto.MCategoryDTO;
+import com.internousdev.glanq.dao.MCategoryDAO;
+import com.internousdev.glanq.dto.MCategoryDTO;
 import com.opensymphony.xwork2.ActionSupport;
 
 public class AdminRegistAction extends ActionSupport implements SessionAware{

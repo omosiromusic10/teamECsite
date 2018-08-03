@@ -10,6 +10,7 @@ import org.apache.commons.io.FileUtils;
 import org.apache.struts2.ServletActionContext;
 import org.apache.struts2.interceptor.SessionAware;
 
+import com.internousdev.glanq.util.InputChecker;
 import com.opensymphony.xwork2.ActionSupport;
 
 public class AdminRegistConfirmAction extends ActionSupport implements SessionAware {
@@ -18,7 +19,7 @@ public class AdminRegistConfirmAction extends ActionSupport implements SessionAw
 	private String productName;
 	private String productNameKana;
 	private String productDescription;
-	private int price;
+	private String price;
 	private String imageFileName;
 	private String imageFilePath;
 	private String releaseCompany;
@@ -67,14 +68,14 @@ public class AdminRegistConfirmAction extends ActionSupport implements SessionAw
 
 		//ここでエラーのチェックリストで、どれがいけないかの確認。
 		//なお、ImageFilePathはjpgの画像ファイルになるのでここは検討中
-		productNameErrorMessageList = inputChecker.doCheck("商品名", productName, 1, 32, true, true, true, true, true, true, true);
-		productNameKanaErrorMessageList = inputChecker.doCheck("商品名ふりがな", productNameKana, 1, 32, false, false, true, false, false, false, false);
-		productDescriptionErrorMessageList = inputChecker.doCheck("商品名詳細", productDescription, 1, 320, true, true, true, true, true, true, true, true);
-		priceErrorMessageList = inputChecker.doCheck("価格", price, 1, 8, false, false, false, true, false, false, false);
+		productNameErrorMessageList = inputChecker.docheck("商品名", productName, 1, 32, true, true, true, true, true, true, true);
+		productNameKanaErrorMessageList = inputChecker.docheck("商品名ふりがな", productNameKana, 1, 32, false, false, true, false, false, false, false);
+		productDescriptionErrorMessageList = inputChecker.docheck("商品名詳細", productDescription, 1, 320, true, true, true, true, true, true, true);
+		priceErrorMessageList = inputChecker.docheck("価格", price, 1, 8, false, false, false, true, false, false, false);
 	//  imageFilePathErrorMessageList = inputChecker.doCheck("画像ファイル", imageFilePath, 1, 64, true, true, true, true, true, true, true);
-		imageFileNameErrorMessageList = inputChecker.doCheck("画像ファイル名",imageFileName, 1, 16, true, true, true, true, true, true, true);
-		releaseCompanyErrorMessageList = inputChecker.doCheck("発売会社名", releaseCompany, 1, 16, true, true, true, true, false, true, false);
-		releaseDateErrorMessageList = inputChecker.doCheck("発売年月", releaseDate , 1, 16, false, true, false, true, true, false, false);
+		imageFileNameErrorMessageList = inputChecker.docheck("画像ファイル名",imageFileName, 1, 16, true, true, true, true, true, true, true);
+		releaseCompanyErrorMessageList = inputChecker.docheck("発売会社名", releaseCompany, 1, 16, true, true, true, true, false, true, false);
+		releaseDateErrorMessageList = inputChecker.docheck("発売年月", releaseDate , 1, 16, false, true, false, true, true, false, false);
 
 		if(productNameErrorMessageList.size()==0
 		&& productNameKanaErrorMessageList.size()==0
@@ -135,11 +136,11 @@ public class AdminRegistConfirmAction extends ActionSupport implements SessionAw
 		this.productDescription = productDescription;
 	}
 
-	public int getPrice() {
+	public String getPrice() {
 		return price;
 	}
 
-	public void setPrice(int price) {
+	public void setPrice(String price) {
 		this.price = price;
 	}
 
