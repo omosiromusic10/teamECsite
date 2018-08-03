@@ -4,6 +4,7 @@ import java.util.Date;
 
 public class UserInfoDTO {
 
+	//ユーザー情報DTO
 	private int id;
 	private String loginId;
 	private String password;
