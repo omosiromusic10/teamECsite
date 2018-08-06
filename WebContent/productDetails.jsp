@@ -179,6 +179,7 @@ table#item_info td{
 						<td height="52"><s:property value="#session.productDescription"/></td>
 					</tr>
 				</table>
+				<s:submit value="カートに追加する" class="submit_btn"/>
 				</s:form>
 			</div>
 		</div>

@@ -40,11 +40,14 @@ public class SearchItemAction extends ActionSupport implements SessionAware {
 
 //	カテゴリーIDが０、または１が選択された時、検索は全商品の中から行われる
 //	カテゴリーIDが２，３、または４が選択された時、検索はそれぞれのカテゴリーの中から行われる
-	if("0".equals(categoryId) || "1".equals(categoryId)){
+	if("1".equals(categoryId)){
 		productInfoDTOList=productInfoDAO.getProductInfoListAll(keywords.replaceAll("　"," ").split(" "));
 		result=SUCCESS;
 	}else if("2".equals(categoryId)|| "3".equals(categoryId) ||"4".equals(categoryId)){
 		productInfoDTOList=productInfoDAO.getProductInfoListByKeywords(keywords.replaceAll("　", " ").split(" "),categoryId);
+		result=SUCCESS;
+	}else{
+		productInfoDTOList=productInfoDAO.getProductInfoListAll(keywords.replaceAll("　"," ").split(" "));
 		result=SUCCESS;
 	}
 
