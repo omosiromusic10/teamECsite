@@ -6,7 +6,7 @@ public class UserInfoDTO {
 
 	//ユーザー情報DTO
 	private int id;
-	private String loginId;
+	private String userId;
 	private String password;
 	private String familyName;
 	private String firstName;
@@ -24,11 +24,11 @@ public class UserInfoDTO {
 	public void setId(int id) {
 		this.id = id;
 	}
-	public String getLoginId() {
-		return loginId;
+	public String getUserId() {
+		return userId;
 	}
-	public void setLoginId(String loginId) {
-		this.loginId = loginId;
+	public void setUserId(String userId) {
+		this.userId = userId;
 	}
 	public String getPassword() {
 		return password;
