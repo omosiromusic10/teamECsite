@@ -7,6 +7,7 @@ import java.util.Map;
 
 import org.apache.struts2.interceptor.SessionAware;
 
+import com.internousdev.glanq.dao.MCategoryDAO;
 import com.internousdev.glanq.dao.PurchaseHistoryInfoDAO;
 import com.internousdev.glanq.dto.MCategoryDTO;
 import com.internousdev.glanq.dto.PurchaseHistoryInfoDTO;
@@ -31,7 +32,7 @@ public class PurchaseHistoryAction extends ActionSupport implements SessionAware
 		}
 		session.put("purchaseHistoryInfoDtoList", purchaseHistoryInfoDtoList);
 
-		if(!session.contaisKey("mCategoryList")){
+		if(!session.containsKey("mCategoryList")){
 			MCategoryDAO mCategoryDao = new MCategoryDAO();
 			mCategoryDtoList = mCategoryDao.getMCategoryList();
 			session.put("mCategoryDtoList", mCategoryDtoList);
