@@ -9,7 +9,7 @@ pageEncoding="UTF-8" %>
 <meta charset="UTF-8">
 <link rel="stylesheet" href="./css/style.css">
 <meta http-equiv="refresh" content="0;URL='HomeAction'" />
-<title>granq</title>
+<title>glanq</title>
 </head>
 
 <body>

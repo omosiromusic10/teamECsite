@@ -30,7 +30,7 @@ public class CartInfoDAO {
 		List<CartInfoDTO> ciDTOList = new ArrayList<CartInfoDTO>();
 
 		/*
-		 * select文でasを使用してカラムの名前を変更
+		 * stelec文でasを使用してカラムの名前を変更
 		 * 抜き出す要素についてはCartInfoDTOを参照
 		 * cart_infoを基点として、product_infoを結合
 		 * cart_infoとproduct_infoのproduct_count(購入個数)とprice(値段)を

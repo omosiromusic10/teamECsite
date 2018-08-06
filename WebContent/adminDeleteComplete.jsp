@@ -2,25 +2,24 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="s" uri="/struts-tags" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
 <!DOCTYPE html>
 <html>
+
 <head>
-<meta charset="UTF-8">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" href="./css/style.css">
-<meta http-equiv="refresh" content="3;URL='HomeAction'"/> <!-- 3秒後、自動的にホーム画面へ遷移 -->
-<title>決済完了画面</title>
+<meta http-equiv="refresh" content="3;URL='HomeAction'"/> <!-- URL変更予定 -->
+     <title>商品削除完了</title>
 </head>
+
 <body>
-<jsp:include page="header.jsp" />
+<jsp:include page="header.jsp"/>
+
 <div id="contents">
-<h1>決済完了画面</h1>
-<div class="success">
-<h1>決済が完了しました。</h1>
-</div>
+     <h1>商品削除画面</h1>
+     商品を削除しました。
 </div>
 
-	<s:include value="footer.jsp" />
-
+<s:include value="footer.jsp"/>
 </body>
 </html>

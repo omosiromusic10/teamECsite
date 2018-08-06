@@ -7,12 +7,14 @@
 	<head>
 		<meta charset="UTF-8">
 		<link rel="stylesheet" href="./css/glanq.css">
-		<title>ユーザー登録</title>
+		<title>ユーザー情報入力</title>
 	</head>
 	<body>
 
 		<!-- ヘッダー -->
 		<jsp:include page="header.jsp" />
+
+		<h3>ユーザー情報入力画面</h3>
 
 
 		<!-- エラーメッセージがあれば表示したい -->
