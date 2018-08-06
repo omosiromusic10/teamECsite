@@ -85,7 +85,9 @@ public class Pagination{
 
 	// ページに表示する商品リストを準備。
 	List<ProductInfoDTO> currentProductInfoPage = new ArrayList<ProductInfoDTO>();
-	for(int i = paginationDTO.getStartRecordNo() -1; i < paginationDTO.getEndRecordNo(); i++){
+	int startI = paginationDTO.getStartRecordNo() -1;
+	int endI = paginationDTO.getEndRecordNo();
+	for(int i = startI; i < endI; i++){
 	ProductInfoDTO pInfoDTO = productList.get(i);
 	currentProductInfoPage.add(pInfoDTO);
 	}

@@ -50,7 +50,7 @@
 
 		<div id="newItemList">
 			<h3>商品の一覧を表示</h3>
-				<s:iterator value="#session.productInfoList">
+				<s:iterator value="#session.productInfoDtoList">
 				<div id="newItemBox">
 
 					<ul>
