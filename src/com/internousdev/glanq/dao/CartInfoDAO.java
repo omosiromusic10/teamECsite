@@ -24,7 +24,7 @@ public class CartInfoDAO {
 	 */
 
 	/*1.カートの内容を取得する*/
-	public List<CartInfoDTO> getCartInfo(String loginId){
+	public List<CartInfoDTO> getCartInfoDtoList(String loginId){
 		DBConnector dbc = new DBConnector();
 		Connection con = dbc.getConnection();
 		List<CartInfoDTO> ciDTOList = new ArrayList<CartInfoDTO>();
