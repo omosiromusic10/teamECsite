@@ -258,6 +258,10 @@ public class UserInfoDAO {
 		}
 
 		StringBuilder stringBuider = new StringBuilder("****************");
+		/**
+		 * StringBuilderは文字列置換用のクラス
+		 * ココに16文字分の
+		 */
 
 		String concealPassword = (stringBuider.replace(beginIndex, endIndex, password.substring(beginIndex, endIndex)).toString());
 		return concealPassword;

@@ -1,5 +1,6 @@
 package com.internousdev.glanq.action;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -9,12 +10,11 @@ import org.apache.struts2.interceptor.SessionAware;
 import com.internousdev.glanq.dao.MCategoryDAO;
 import com.internousdev.glanq.dao.ProductInfoDAO;
 import com.internousdev.glanq.dto.MCategoryDTO;
-import com.internousdev.glanq.dto.PaginationDTO;
 import com.internousdev.glanq.dto.ProductInfoDTO;
-import com.internousdev.glanq.util.Pagination;
 import com.opensymphony.xwork2.ActionSupport;
 
 public class AdminDeleteAction extends ActionSupport implements SessionAware {
+
 	private String productName;
 	private String productNameKana;
 	private String imageFilePath;
@@ -26,23 +26,13 @@ public class AdminDeleteAction extends ActionSupport implements SessionAware {
 	private List<ProductInfoDTO> productInfoDtoList = new ArrayList<ProductInfoDTO>();
 	private Map<String, Object> session;
 
-	public String execute(){
+	public String execute() throws SQLException{
 		String result = ERROR;
 
 		ProductInfoDAO productInfoDao = new ProductInfoDAO();
 		productInfoDtoList = productInfoDao.getProductInfoList();
-		Pagination pagination = new Pagination();
-		PaginationDTO paginationDTO = pagination.initialize(productInfoDtoList, 9);
-		session.put("totalPageSize",paginationDTO.getTotalPageSize());
-		session.put("currentPageNumber", paginationDTO.getCurrentPageNo());
-		session.put("totalRecordSize", paginationDTO.getTotalRecordSize());
-		session.put("startRecordNo", paginationDTO.getStartRecordNo());
-		session.put("endRecordNo",paginationDTO.getEndRecordNo());
-		session.put("productInfoDtoList", paginationDTO.getCurrentProductInfoPage());
-		session.put("haxNextPage", paginationDTO.hasNextPage());
-		session.put("nextPageNo", paginationDTO.hasPreviousPage());
-		session.put("previusPageNo",paginationDTO.getPreviousPageNo());
 
+		//session内にmCategoryListが無いか確認
 		if(!session.containsKey("mCategoryList")){
 			MCategoryDAO mCategoryDao = new MCategoryDAO();
 			mCategoryDtoList = mCategoryDao.getMCategoryList();

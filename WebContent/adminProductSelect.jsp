@@ -15,6 +15,8 @@
 <h1>商品一覧画面</h1>
 <div id="product-list">
 
+
+<!-- テーブルの頭を作成 -->
 <table class="horizontal-list-table">
 <thead>
 <tr>
@@ -27,9 +29,11 @@
 </tr>
 </thead>
 <tbody>
+
+<!-- ここでProductListのiteratorを用いて表示させる。 -->
 <s:iterator value="#session.productInfoDtoList">
 <tr>
-    <td><img src='<s:property value="imageFilePath"/>/<s:property value="imageFileName"/>' class="itemt-image-box-200"/><br></td>
+    <td><img src='<s:property value="imageFilePath"/>/<s:property value="imageFileName"/>' class="item-image-box-200"/><br></td>
     <td><s:property value="productName"/></td>
     <td><s:property value="productNameKana"/></td>
     <td><s:property value="price"/>円</td>
@@ -41,6 +45,20 @@
 </table>
 
 </div>
+
+<div class="pager">
+<s:iterator begin="1" end="#session.totalPageSize" status="pageNo">
+    <s:if test="#session.currentPageNo == #pageNo.count">
+        <s:property value="%{#pageNo.count}"/>
+    </s:if>
+    <s:else>
+        <a href="<s:url action='AdminProductSelectAction'><s:param name='pageNo' value='%{#pageNo.count}'/>
+        <s:param name='categoryId' value='%{categoryId}'/></s:url> ">   <s:property value="%{#pageNo.count}"/></a>
+    </s:else>
+</s:iterator>
+</div>
+
+
 
 </div>
 <!-- <s:include value="footer.jsp" /> -->

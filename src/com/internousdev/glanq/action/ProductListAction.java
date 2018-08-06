@@ -22,6 +22,11 @@ public class ProductListAction extends ActionSupport implements SessionAware {
 	private Pagination pagination = new Pagination();
 	private List<MCategoryDTO> mCategoryDtoList = new ArrayList<MCategoryDTO>();
 
+	private List<ProductInfoDTO> productInfoDTOList = new ArrayList<ProductInfoDTO>();
+	private String categoryId;
+	private String keywords;
+	private String pageNo = "1";
+
 	// 作成中です・・・
 	public String execute() throws SQLException{
 		String result = ERROR;
@@ -34,7 +39,7 @@ public class ProductListAction extends ActionSupport implements SessionAware {
 		// ページ情報を取得。
 		PaginationDTO paginationDTO = pagination.initialize(productInfoList, 9);
 		session.put("totalPageSize", paginationDTO.getTotalPageSize());
-		session.put("currentPageNumber", paginationDTO.getCurrentPageNo());
+		session.put("currentPageNo", paginationDTO.getCurrentPageNo());
 		session.put("totalRecordSize", paginationDTO.getTotalPageSize());
 		session.put("startRecordNo", paginationDTO.getStartRecordNo());
 		session.put("endRecordNo", paginationDTO.getEndRecordNo());
@@ -50,6 +55,8 @@ public class ProductListAction extends ActionSupport implements SessionAware {
 			mCategoryDtoList = mCategoryDao.getMCategoryList();
 			session.put("mCategoryDtoList", mCategoryDtoList);
 		}
+
+		productInfoDTOList = paginationDTO.getCurrentProductInfoPage();
 
 		result = SUCCESS;
 		return result;
@@ -74,6 +81,38 @@ public class ProductListAction extends ActionSupport implements SessionAware {
 
 	public void setmCategoryDtoList(List<MCategoryDTO> mCategoryDtoList) {
 		this.mCategoryDtoList = mCategoryDtoList;
+	}
+
+	public List<ProductInfoDTO> getProductInfoDTOList() {
+		return productInfoDTOList;
+	}
+
+	public void setProductInfoDTOList(List<ProductInfoDTO> productInfoDTOList) {
+		this.productInfoDTOList = productInfoDTOList;
+	}
+
+	public String getCategoryId() {
+		return categoryId;
+	}
+
+	public void setCategoryId(String categoryId) {
+		this.categoryId = categoryId;
+	}
+
+	public String getKeywords() {
+		return keywords;
+	}
+
+	public void setKeywords(String keywords) {
+		this.keywords = keywords;
+	}
+
+	public String getPageNo() {
+		return pageNo;
+	}
+
+	public void setPageNo(String pageNo) {
+		this.pageNo = pageNo;
 	}
 
 
