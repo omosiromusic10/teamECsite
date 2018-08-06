@@ -13,6 +13,15 @@ public class UserInfoDAO {
 	/**
 	 * このDAOで行う処理はuser_infoに関するもの
 	 * 主にユーザー情報やパスワードに関するもの
+	 * 処理内容は
+	 * ①情報登録用メソッド(戻り値：int　更新件数)
+	 * ②情報確認用メソッド(戻り値：boolean)
+	 * ③情報取得用メソッド　引数(ログインID、パスワード)　(戻り値：UserInfoDTO)
+	 * ④情報確認用メソッド　引数(ログインID)　(戻り値：UserInfoDTO)
+	 * ⑤パスワードリセット用メソッド　(戻り値：int　更新件数)
+	 * ⑥ログイン用メソッド　(戻り値：int　更新件数)
+	 * ⑦ログアウト用メソッド　(戻り値int　更新件数)
+	 * ⑧パスワード隠匿用メソッド　(戻り値：String　隠匿されたパスワード)
 	 */
 
 	//ユーザー登録用メソッド
@@ -58,7 +67,7 @@ public class UserInfoDAO {
 		Connection con = db.getConnection();
 		boolean result = false;
 
-		String sql = "SELECT COUNT(*) AS count FROM user_info WHERE user_id = ? ANF password = ? ";
+		String sql = "SELECT COUNT(*) AS count FROM user_info WHERE user_id = ? AND password = ? ";
 
 		try{
 			PreparedStatement ps = con.prepareStatement(sql);
@@ -249,6 +258,10 @@ public class UserInfoDAO {
 		}
 
 		StringBuilder stringBuider = new StringBuilder("****************");
+		/**
+		 * StringBuilderは文字列置換用のクラス
+		 * ココに16文字分の
+		 */
 
 		String concealPassword = (stringBuider.replace(beginIndex, endIndex, password.substring(beginIndex, endIndex)).toString());
 		return concealPassword;

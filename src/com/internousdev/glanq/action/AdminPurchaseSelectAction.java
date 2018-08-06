@@ -18,6 +18,8 @@ public class AdminPurchaseSelectAction extends ActionSupport implements SessionA
 	private List<MCategoryDTO> mCategoryDtoList = new ArrayList<MCategoryDTO>();
 	private Map<String, Object> session;
 	public String execute(){
+
+		//ここでもPurchaseHistoryのDAOから情報を取ってList情報をjspで表示させる為に用いている処理。
 		PurchaseHistoryInfoDAO purchaseHistoryInfoDao = new PurchaseHistoryInfoDAO();
 		List<PurchaseHistoryInfoDTO> purchaseHistoryInfoDtoList = new ArrayList<PurchaseHistoryInfoDTO>();
 		purchaseHistoryInfoDtoList = purchaseHistoryInfoDao.getPurchaseHistoryList(String.valueOf(session.get("loginId")));
@@ -27,6 +29,7 @@ public class AdminPurchaseSelectAction extends ActionSupport implements SessionA
 		}
 		session.put("purchaseHistoryInfoDtoList", purchaseHistoryInfoDtoList);
 
+		//ここでは検索機能にバグがおきないようにする為の処置
 		if(!session.containsKey("mCategoryList")){
 			MCategoryDAO mCategoryDao = new MCategoryDAO();
 			mCategoryDtoList = mCategoryDao.getMCategoryList();
@@ -34,6 +37,7 @@ public class AdminPurchaseSelectAction extends ActionSupport implements SessionA
 		}
 		return SUCCESS;
 	}
+	//以下ゲッタセッター
 	public String getCategoryId() {
 		return categoryId;
 	}

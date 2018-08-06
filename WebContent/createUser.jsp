@@ -13,96 +13,133 @@
 
 		<!-- ヘッダー -->
 		<jsp:include page="header.jsp" />
+		<div id="contents">
 
-		<h3>ユーザー情報入力画面</h3>
-
-
-		<!-- エラーメッセージがあれば表示したい -->
-		<!-- まず姓 -->
-		<s:if test="!#session.familyNameErrorMessageList.isEmpty()">
-			<s:iterator value="#session.familyNameErrorMessageList"><s:property /><br></s:iterator>
-		</s:if>
-
-		<!-- 名 -->
-		<s:if test="!#session.firstNameErrorMessageList.isEmpty()">
-			<s:iterator value="#session.firstNameErrorMessageList"><s:property /><br></s:iterator>
-		</s:if>
-
-		<!-- 姓かな -->
-		<s:if test="!#session.familyNameKanaErrorMessageList.isEmpty()">
-			<s:iterator value="#session.familyNameKanaErrorMessageList"><s:property /><br></s:iterator>
-		</s:if>
-
-		<!-- 名かな -->
-		<s:if test="!#session.firstNameKanaErrorMessageList.isEmpty()">
-			<s:iterator value="#session.firstNameKanaErrorMessageList"><s:property /><br></s:iterator>
-		</s:if>
-
-		<!-- メールアドレス -->
-		<s:if test="!#session.emailErrorMessageList.isEmpty()">
-			<s:iterator value="#session.emailErrorMessageList"><s:property /><br></s:iterator>
-		</s:if>
-
-		<!-- ログインID -->
-		<s:if test="!#session.loginIdErrorMessageList.isEmpty()">
-			<s:iterator value="#session.loginIdErr"></s:iterator>
-		</s:if>
-
-		<!-- パスワード -->
-		<s:if test="!#session.passwordErrorMessageList.isEmpty()">
-			<s:iterator value="#session.passwordErrorMessageList"><s:property /><br></s:iterator>
-		</s:if>
+			<h1>ユーザー情報入力画面</h1>
 
 
+			<!-- エラーメッセージがあれば表示したい -->
+			<!-- まず姓 -->
+			<s:if test="!#session.familyNameErrorMessageList.isEmpty()">
+			<div class="error">
+				<div class="error-message">
+					<s:iterator value="#session.familyNameErrorMessageList"><s:property /><br></s:iterator>
+				</div>
+			</div>
+			</s:if>
 
-		<!-- ここから送信フォーム -->
-		<s:form action="CreateUserConfirmAction">
-			<table>
-				<tr>
-					<th scope="row">姓</th>
-					<td><s:textfield name="familyName" value="%{#session.familyName}" label="姓" placeholder="姓" /></td>
-				</tr>
+			<!-- 名 -->
+			<s:if test="!#session.firstNameErrorMessageList.isEmpty()">
+			<div class="error">
+				<div class="error-message">
+					<s:iterator value="#session.firstNameErrorMessageList"><s:property /><br></s:iterator>
+				</div>
+			</div>
+			</s:if>
 
-				<tr>
-					<th scope="row">名</th>
-					<td><s:textfield name="firstName" value="%{#session.firstName}" label="名" placeholder="名" /></td>
-				</tr>
+			<!-- 姓かな -->
+			<s:if test="!#session.familyNameKanaErrorMessageList.isEmpty()">
+			<div class="error">
+				<div class="error-message">
+					<s:iterator value="#session.familyNameKanaErrorMessageList"><s:property /><br></s:iterator>
+				</div>
+			</div>
+			</s:if>
 
-				<tr>
-					<th scope="row">姓ふりがな</th>
-					<td><s:textfield name="familyNameKana" value="%{#session.familyNameKana}" label="姓ふりがな" placeholder="姓ふりがな" /></td>
-				</tr>
+			<!-- 名かな -->
+			<s:if test="!#session.firstNameKanaErrorMessageList.isEmpty()">
+			<div class="error">
+				<div class="error-message">
+					<s:iterator value="#session.firstNameKanaErrorMessageList"><s:property /><br></s:iterator>
+				</div>
+			</div>
+			</s:if>
 
-				<tr>
-					<th scope="row">名ふりがな</th>
-					<td><s:textfield name="firstNameKana" value="%{#session.firstNameKana}" label="名ふりがな" placeholder="名ふりがな" /></td>
-				</tr>
+			<!-- メールアドレス -->
+			<s:if test="!#session.emailErrorMessageList.isEmpty()">
+			<div class="error">
+				<div class="error-message">
+					<s:iterator value="#session.emailErrorMessageList"><s:property /><br></s:iterator>
+				</div>
+			</div>
+			</s:if>
 
-				<tr>
-					<th scope="row">性別</th>
-					<td><s:checkbox name="sex" list="%{#session.sexList}" value="%{#session.sexList}" label="性別" placeholder="性別" /></td>
-				</tr>
+			<!-- ログインID -->
+			<s:if test="!#session.loginIdErrorMessageList.isEmpty()">
+			<div class="error">
+				<div class="error-message">
+					<s:iterator value="#session.loginIdErr"><s:property /><br></s:iterator>
+				</div>
+			</div>
+			</s:if>
 
-				<tr>
-					<th scope="row">メールアドレス</th>
-					<td><s:textfield name="email" value="%{#session.email}" label="メールアドレス" placeholder="メールアドレス" /></td>
-				</tr>
+			<!-- パスワード -->
+			<s:if test="!#session.passwordErrorMessageList.isEmpty()">
+			<div class="error">
+				<div class="error-message">
+					<s:iterator value="#session.passwordErrorMessageList"><s:property /><br></s:iterator>
+				</div>
+			</div>
+			</s:if>
 
-				<tr>
-					<th scope="row">ログインID</th>
-					<td><s:textfield name="loginId" value="%{#session.loginId}" label="ログインID" placeholder="ログインID" /></td>
-				</tr>
 
-				<tr>
-					<th scope="row">パスワード</th>
-					<td><s:textfield name="password" value="%{#session.password}" label="パスワード" placeholder="パスワード" /></td>
-				</tr>
 
-				<s:submit value="登録" />
+			<!-- ここから送信フォーム -->
+			<s:form action="CreateUserConfirmAction">
+				<table class="vertical-list-table">
+					<tr>
+						<th scope="row">姓</th>
+						<td><s:textfield name="familyName" value="%{#session.familyName}" label="姓" placeholder="姓" class="txt" /></td>
+					</tr>
 
-			</table>
+					<tr>
+						<th scope="row">名</th>
+						<td><s:textfield name="firstName" value="%{#session.firstName}" label="名" placeholder="名" class="txt" /></td>
+					</tr>
 
-		</s:form>
+					<tr>
+						<th scope="row">姓ふりがな</th>
+						<td><s:textfield name="familyNameKana" value="%{#session.familyNameKana}" label="姓ふりがな" placeholder="姓ふりがな" class="txt" /></td>
+					</tr>
+
+					<tr>
+						<th scope="row">名ふりがな</th>
+						<td><s:textfield name="firstNameKana" value="%{#session.firstNameKana}" label="名ふりがな" placeholder="名ふりがな" class="txt" /></td>
+					</tr>
+
+					<tr>
+						<th scope="row">性別</th>
+						<td><s:checkbox name="sex" list="%{#session.sexList}" value="%{#session.sexList}" label="性別" placeholder="性別" /></td>
+					</tr>
+
+					<tr>
+						<th scope="row">メールアドレス</th>
+						<td><s:textfield name="email" value="%{#session.email}" label="メールアドレス" placeholder="メールアドレス" class="txt" /></td>
+					</tr>
+
+					<tr>
+						<th scope="row">ログインID</th>
+						<td><s:textfield name="loginId" value="%{#session.loginId}" label="ログインID" placeholder="ログインID" class="txt" /></td>
+					</tr>
+
+					<tr>
+						<th scope="row">パスワード</th>
+						<td><s:textfield name="password" value="%{#session.password}" label="パスワード" placeholder="パスワード" class="txt" /></td>
+					</tr>
+
+					<!-- sessionないに格納された情報を表示
+						すでに入力された情報があり、入力エラーなどでこのページに戻された際に
+						再度入力する手間を省く -->
+
+				</table>
+					<div class="submit_btn_box">
+						<div id=".cnotents-btn-set">
+							<s:submit value="登録" />
+						</div>
+					</div>
+
+			</s:form>
+		</div>
 
 		<s:include value="footer.jsp" />
 

@@ -113,6 +113,7 @@
     <td><s:textfield name="email" class="txt" /></td>
 </tr>
 </table>
+<!-- 宛先情報確認ボタン -->
 <div class="submit_btn_box">
 <div id=".contents-btn-set">
 <s:submit value="宛先情報確認" class="submit_btn" />
