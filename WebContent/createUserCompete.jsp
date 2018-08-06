@@ -7,6 +7,7 @@
 	<head>
 		<meta charset="UTF-8">
 		<link rel="stylesheet" href="./css/glanq.css">
+		<meta http-equiv="refresh" content="3;URL='HomeAction'" />
 		<title>登録完了</title>
 	</head>
 	<body>
