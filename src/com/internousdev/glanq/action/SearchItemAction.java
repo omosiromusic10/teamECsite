@@ -38,8 +38,9 @@ public class SearchItemAction extends ActionSupport implements SessionAware {
 	keywordsErrorMessageList=inputChecker.docheck("検索ワード",keywords,0,6,true,true,true,true,false,true,true);
 	ProductInfoDAO productInfoDAO=new ProductInfoDAO();
 
-//	カテゴリーIDが０、または１が選択された時、検索は全商品の中から行われる
+//	カテゴリーID１が選択された時、検索は全商品の中から行われる
 //	カテゴリーIDが２，３、または４が選択された時、検索はそれぞれのカテゴリーの中から行われる
+//	商品一覧ページで開いた際のカテゴリー未指定をelseで処理する
 	if("1".equals(categoryId)){
 		productInfoDTOList=productInfoDAO.getProductInfoListAll(keywords.replaceAll("　"," ").split(" "));
 		result=SUCCESS;
