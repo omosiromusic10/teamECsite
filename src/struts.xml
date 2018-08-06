@@ -159,7 +159,7 @@
 
 <action name="AdminDeleteAction" class="com.internousdev.glanq.action.AdminDeleteAction" method="execute">
            <result name="success">adminDelete.jsp</result>
-           <result name="error">home.jsp</result>
+           <result name="error">admin.jsp</result>
 </action>
 <action name="AdminDeleteCompleteAction" class="com.internousdev.glanq.action.AdminDeleteCompleteAction" method="execute">
            <result name="success">adminDeleteComplete.jsp</result>
@@ -167,14 +167,14 @@
 </action>
 
 <!-- 14.新機能 -->
-    <action name="LocationOptionAction" class="com.internousdev.glanq.action.LocationOptionAction" method="execute">
-    <result name="success">locationOption.jsp</result>
-    <result name="error">error.html</result>
-    </action>
-    <action name="LocationChoiceAction" class="com.internousdev.glanq.action.LocationChoiceAction" method="execute">
-    <result name="success">locationChoice.jsp</result>
-    <result name="error">error.html</result>
-    </action>
+<action name="LocationOptionAction" class="com.internousdev.glanq.action.LocationOptionAction" method="execute">
+           <result name="success">locationOption.jsp</result>
+           <result name="error">error.html</result>
+</action>
+<action name="LocationChoiceAction" class="com.internousdev.glanq.action.LocationChoiceAction" method="execute">
+           <result name="success">locationChoice.jsp</result>
+           <result name="error">error.html</result>
+</action>
 
 </package>
 </struts>
