@@ -48,13 +48,19 @@
 <body>
 <h2>作成中です･･･</h2>
 
+<s:if test="productInfoDTOList==null">
+	<div class="info">
+		検索結果がありません。
+	</div>
+</s:if>
+<s:else>
 		<div id="newItemList">
 			<h3>商品の一覧を表示</h3>
+
+			<!-- ～ 商品一覧の表示部分 ～ -->
 				<s:iterator value="#session.productInfoDtoList">
 				<div id="newItemBox">
-
 					<ul>
-
 						<li>
  						<div id="item_image_box">
  						<a href='<s:url action="ProductDetailsAction">
@@ -69,10 +75,32 @@
 						<li><s:property value="releaseCompany" /></li>
 						<li><s:property value="price" /><span>円</span></li>
 					</ul>
-
 				</div>
 				</s:iterator>
-			<br><br>
+			<br>
+			<br>
+
+			<!-- ～ページ番号部分～ -->
+				<div class="pager">
+				<s:iterator begin="1" end="#session.totalPageSize" status="pageNo">
+					<s:if test="#session.currentPageNumber == #pageNo.count">
+						<!-- 現在のページを表す数字は、そのまま数字を表記するだけ。 -->
+						<s:property value="%{#pageNo.count}"/>
+					</s:if>
+					<s:else>
+						<!-- 他のページを表す数字はリンク付け。ページ番号 pageNo とカテゴリ番号 categoryId をパラメータとして持たせる -->
+						<a href="<s:url action='SearchItemAction'>
+								<s:param name='pageNo' value='%{#pageNo.count}'/>
+								<s:param name='categoryId' value='%{categoryId}'/>
+								</s:url> ">
+
+							<s:property value="%{#pageNo.count}"/>
+						</a>
+					</s:else>
+				</s:iterator>
+				</div>
+
+
 			<div id="error">
 				<s:if test='errorMessage != ""'>	<!-- 追加 -->
 					<h4><s:property value="errorMessage" escape="false" /></h4>
@@ -82,6 +110,6 @@
 			<br>
 
 		</div>
-
+</s:else>
 </body>
 </html>

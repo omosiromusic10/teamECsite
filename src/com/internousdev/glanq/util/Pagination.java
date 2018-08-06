@@ -15,7 +15,11 @@ public class Pagination{
 	PaginationDTO paginationDTO = new PaginationDTO();
 
 	// 例として右に「全20件を9件ずつ表示する場合の、2ページ目の値」のイメージをそれぞれ追記。
-	paginationDTO.setTotalPageSize((int)Math.ceil(productList.size() / pageSize));	// 全ページ数3
+	int a = productList.size();
+	int b = pageSize;
+	int c = (int)(Math.ceil(a/b));
+	int d = (a+b-1)/b;
+	paginationDTO.setTotalPageSize(d);	// 全ページ数3
 	paginationDTO.setCurrentPageNo(pageNo);	 										// 表示するページ番号2
 	paginationDTO.setTotalRecordSize(productList.size() - 1);						// 商品情報数20 [?]怪しめ
 	paginationDTO.setStartRecordNo((pageSize * (pageNo - 1)) + 1);					// 10番目の商品から表示
@@ -69,7 +73,11 @@ public class Pagination{
 	PaginationDTO paginationDTO = new PaginationDTO();
 
 	// 例として右に「20件を9件ずつ表示する場合の、1ページ目の値」のイメージをそれぞれ追記。
-	paginationDTO.setTotalPageSize((int)Math.ceil(productList.size() / pageSize));	// 全ページ数3
+	int a = productList.size();
+	int b = pageSize;
+	int c = (int)(Math.ceil(a/b));
+	int d = (a+b-1)/b;
+	paginationDTO.setTotalPageSize(d);	// 全ページ数3
 	paginationDTO.setCurrentPageNo(1);												// 現在のページ番号1
 	paginationDTO.setTotalRecordSize(productList.size() - 1);						// 商品情報数20
 	paginationDTO.setStartRecordNo((pageSize * (1 - 1)) + 1);						// 1番目の商品から表示
