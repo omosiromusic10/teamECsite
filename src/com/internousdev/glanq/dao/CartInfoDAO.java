@@ -13,7 +13,7 @@ import com.internousdev.glanq.util.DBConnector;
 public class CartInfoDAO {
 
 	/*
-	 * 設計書に記載されている内容は
+	 * 設計書に記載されている内容は以下
 	 * 1.DBからカートの内容を取得
 	 * 2.カート内の情報をテーブルに追加
 	 * 3.カート内の合計金額を表示
@@ -100,7 +100,7 @@ public class CartInfoDAO {
 	}
 
 	/*2.カート内の情報をテーブルに追加する*/
-	public int regist(String userId,String tempUserId, String productId,int productCount,int price){
+	public int regist(String userId,String tempUserId, int productId,String productCount,int price){
 		DBConnector dbc = new DBConnector();
 		Connection con = dbc.getConnection();
 		int count = 0;
@@ -119,8 +119,8 @@ public class CartInfoDAO {
 			PreparedStatement ps = con.prepareStatement(sql);
 			ps.setString(1, userId);
 			ps.setString(2, tempUserId);
-			ps.setString(3, productId);
-			ps.setInt(4, productCount);
+			ps.setInt(3, productId);
+			ps.setString(4, productCount);
 			ps.setInt(5, price);
 
 			count = ps.executeUpdate();
@@ -133,7 +133,7 @@ public class CartInfoDAO {
 	}
 
 	/*3.カートの合計金額を出す*/
-	public int getToralPrice (String userId){
+	public int getTotalPrice (String userId){
 		int totalPrice = 0;
 		DBConnector dbc = new DBConnector();
 		Connection con = dbc.getConnection();

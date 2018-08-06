@@ -9,8 +9,7 @@ import java.util.List;
 
 import com.internousdev.glanq.dto.ProductInfoDTO;
 import com.internousdev.glanq.util.DBConnector;
-
-import freemarker.template.utility.DateUtil;
+import com.internousdev.glanq.util.DateUtil;
 
 
 // [!]動作未確認
