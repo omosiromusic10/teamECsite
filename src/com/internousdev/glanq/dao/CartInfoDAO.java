@@ -13,7 +13,7 @@ import com.internousdev.glanq.util.DBConnector;
 public class CartInfoDAO {
 
 	/*
-	 * 設計書に記載されている内容は
+	 * 設計書に記載されている内容は以下
 	 * 1.DBからカートの内容を取得
 	 * 2.カート内の情報をテーブルに追加
 	 * 3.カート内の合計金額を表示

@@ -78,6 +78,7 @@ public class AddCartAction extends ActionSupport implements SessionAware{
 
 		session.put("ciDtoList", ciDtoList);
 
+		//合計金額をgetTotalPriceのメソッドで取得int型に変換して変数に代入
 		int totalPrice = Integer.parseInt(String.valueOf(ciDAO.getTotalPrice(userId)));
 		session.put("totalPrice", totalPrice);
 
