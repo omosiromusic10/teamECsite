@@ -11,13 +11,17 @@
 	</head>
 	<body>
 
-		<jsp:include page="header.jsp" />
+	<jsp:include page="header.jsp" />
+		<div id="contents">
+			<h1>登録完了画面</h1>
+			<div class="success">
+				ユーザー登録が完了しました。
+			</div>
+		</div>
 
-		<h3>登録完了画面</h3>
-
-		<p>登録が完了しました</p>
-
-		<s:include value="footer.jsp" />
+		<div id="footer">
+			<s:include value="footer.jsp" />
+		</div>
 
 	</body>
 </html>
