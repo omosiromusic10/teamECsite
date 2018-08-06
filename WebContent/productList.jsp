@@ -46,6 +46,8 @@
 <title>商品一覧画面</title>
 </head>
 <body>
+	<s:include value="header.jsp" />
+
 <h2>作成中です･･･</h2>
 
 <s:if test="productInfoDTOList==null">
@@ -111,5 +113,7 @@
 
 		</div>
 </s:else>
+
+	<s:include value="footer.jsp" />
 </body>
 </html>
