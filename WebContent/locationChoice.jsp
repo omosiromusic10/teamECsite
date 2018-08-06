@@ -21,7 +21,7 @@
   <!-- 同じテーブルで扱うため、便宜的に姓を会社名、名をBBQ場の名前とする -->
 
   <div>
-  <s:form name="LocationChoiceCompleteAction">
+  <s:form action="LocationChoiceCompleteAction">
       <!-- 姓 -->
       <s:hidden name="familyName" value="インターノウス株式会社"/>
       <!-- 名 -->
@@ -44,7 +44,7 @@
   </s:form>
   </div>
   <div>
-  <s:form name="LocationChoiceCompleteAction">
+  <s:form action="LocationChoiceCompleteAction">
       <!-- 姓 -->
       <s:hidden name="familyName" value="インターノウス株式会社"/>
       <!-- 名 -->
@@ -63,11 +63,11 @@
       <!-- submitボタン -->
       <!-- s:hiddenタブで設定したvalueをここで送信する。挿入される値はcreateDestinationComfirm.jspと対応 -->
       <!-- 画面実装でここをimgタグで囲めば画像クリックでBBQ場の選択ができる -->
-      <s:submit value="Aバーベキュー場"/>
+      <s:submit value="Bバーベキュー場"/>
   </s:form>
   </div>
   <div>
-  <s:form name="LocationChoiceCompleteAction">
+  <s:form action="LocationChoiceCompleteAction">
       <!-- 姓 -->
       <s:hidden name="familyName" value="インターノウス株式会社"/>
       <!-- 名 -->
@@ -86,7 +86,7 @@
       <!-- submitボタン -->
       <!-- s:hiddenタブで設定したvalueをここで送信する。挿入される値はcreateDestinationComfirm.jspと対応 -->
       <!-- 画面実装でここをimgタグで囲めば画像クリックでBBQ場の選択ができる -->
-      <s:submit value="Aバーベキュー場"/>
+      <s:submit value="Cバーベキュー場"/>
   </s:form>
   </div>
 
