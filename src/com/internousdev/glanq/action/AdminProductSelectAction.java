@@ -7,10 +7,12 @@ import java.util.Map;
 
 import org.apache.struts2.interceptor.SessionAware;
 
-import com.internousdev.glanq.dao.MCategoryDAO;
-import com.internousdev.glanq.dao.ProductInfoDAO;
-import com.internousdev.glanq.dto.MCategoryDTO;
-import com.internousdev.glanq.dto.ProductInfoDTO;
+import com.internousdev.sampleweb2.dao.MCategoryDAO;
+import com.internousdev.sampleweb2.dao.ProductInfoDAO;
+import com.internousdev.sampleweb2.dto.MCategoryDTO;
+import com.internousdev.sampleweb2.dto.PaginationDTO;
+import com.internousdev.sampleweb2.dto.ProductInfoDTO;
+import com.internousdev.sampleweb2.util.Pagination;
 import com.opensymphony.xwork2.ActionSupport;
 
 public class AdminProductSelectAction extends ActionSupport implements SessionAware{
@@ -21,6 +23,7 @@ public class AdminProductSelectAction extends ActionSupport implements SessionAw
 	private int price;
 	private String categoryId;
 	private String keywords;
+	private String pageNo;
 	private List<MCategoryDTO> mCategoryDtoList = new ArrayList<MCategoryDTO>();
 	private List<ProductInfoDTO> productInfoDtoList = new ArrayList<ProductInfoDTO>();
 	private Map<String, Object> session;
@@ -39,6 +42,29 @@ public class AdminProductSelectAction extends ActionSupport implements SessionAw
 			mCategoryDtoList = mCategoryDao.getMCategoryList();
 			session.put("mCategoryDtoList", mCategoryDtoList);
 		}
+
+		if(!(productInfoDtoList==null)){
+			Pagination pagination = new Pagination();
+			PaginationDTO paginationDTO = new PaginationDTO();
+			if(pageNo==null){
+				paginationDTO = pagination.initialize(productInfoDtoList, 9);
+			}else{
+				paginationDTO = pagination.getPage(productInfoDtoList, 9, pageNo);
+			}
+
+			session.put("productInfoDtoList", paginationDTO.getCurrentProductInfoPage());
+			session.put("totalPageSize", paginationDTO.getTotalPageSize());
+			session.put("currentPageNo", paginationDTO.getCurrentPageNo());
+			session.put("totalRecordSize", paginationDTO.getTotalRecordSize());
+			session.put("startRecordNo", paginationDTO.getStartRecordNo());
+			session.put("endRecordNo", paginationDTO.getEndRecordNo());
+			session.put("previousPage", paginationDTO.hasPreviousPage());
+			session.put("previousPageNo", paginationDTO.getPreviousPageNo());
+			session.put("nextPage", paginationDTO.hasNextPage());
+			session.put("nextPageNo", paginationDTO.getNextPageNo());
+		    }else{
+			    session.put("productInfoDtoList", null);
+		    }
 
 		result = SUCCESS;
 		return result;
@@ -122,6 +148,12 @@ public class AdminProductSelectAction extends ActionSupport implements SessionAw
 
 	public void setSession(Map<String, Object> session) {
 		this.session = session;
+	}
+	public String getPageNo() {
+		return pageNo;
+	}
+	public void setPageNo(String pageNo) {
+		this.pageNo = pageNo;
 	}
 
 
