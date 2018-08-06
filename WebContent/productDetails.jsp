@@ -122,6 +122,8 @@ table#item_info td{
 <title>商品詳細画面</title>
 </head>
 <body>
+	<s:include value="header.jsp" />
+
 <h2>作成中です･･･</h2>
 
 		<!-- ～商品詳細を表示～ -->
@@ -210,5 +212,6 @@ table#item_info td{
 
 		</div>
 
+	<s:include value="footer.jsp" />
 </body>
 </html>
