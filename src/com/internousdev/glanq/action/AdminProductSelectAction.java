@@ -7,12 +7,12 @@ import java.util.Map;
 
 import org.apache.struts2.interceptor.SessionAware;
 
-import com.internousdev.sampleweb2.dao.MCategoryDAO;
-import com.internousdev.sampleweb2.dao.ProductInfoDAO;
-import com.internousdev.sampleweb2.dto.MCategoryDTO;
-import com.internousdev.sampleweb2.dto.PaginationDTO;
-import com.internousdev.sampleweb2.dto.ProductInfoDTO;
-import com.internousdev.sampleweb2.util.Pagination;
+import com.internousdev.glanq.dao.MCategoryDAO;
+import com.internousdev.glanq.dao.ProductInfoDAO;
+import com.internousdev.glanq.dto.MCategoryDTO;
+import com.internousdev.glanq.dto.PaginationDTO;
+import com.internousdev.glanq.dto.ProductInfoDTO;
+import com.internousdev.glanq.util.Pagination;
 import com.opensymphony.xwork2.ActionSupport;
 
 public class AdminProductSelectAction extends ActionSupport implements SessionAware{
