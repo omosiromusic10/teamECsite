@@ -1,12 +1,17 @@
 package com.internousdev.glanq.action;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
 import org.apache.struts2.interceptor.SessionAware;
 
+import com.internousdev.glanq.dao.CartInfoDAO;
+import com.internousdev.glanq.dao.DestinationInfoDAO;
 import com.internousdev.glanq.dao.UserInfoDAO;
+import com.internousdev.glanq.dto.DestinationInfoDTO;
 import com.internousdev.glanq.dto.UserInfoDTO;
 import com.internousdev.glanq.util.InputChecker;
 import com.opensymphony.xwork2.ActionSupport;
@@ -16,17 +21,16 @@ public class LoginAction extends ActionSupport implements SessionAware {
 	private String password;
 	private boolean savedLoginId;
 
-	private Map<String, Object> session;
+	private List<String> loginIdErrorMessageList = new ArrayList<String>();
+	private List<String> passwordErrorMessageList = new ArrayList<String>();
 
-	List<String> loginIdErrorMessageList = new ArrayList<String>();
-	List<String> passwordErrorMessageList = new ArrayList<String>();
+	private Map<String, Object> session;
 
 
 	public String execute() {
-		UserInfoDAO userInfoDAO = new UserInfoDAO();
-		UserInfoDTO userInfoDTO = new UserInfoDTO();
 
 		String result = ERROR;
+
 
 		//「ログインID保存」のチェックボックスに使う
 		//trueの場合sessionに格納
@@ -53,6 +57,62 @@ public class LoginAction extends ActionSupport implements SessionAware {
 					session.put("passwordErrorMessageList", passwordErrorMessageList);
 					session.put("logined", 0);
 		}
+
+		UserInfoDAO userInfoDAO = new UserInfoDAO();
+		//ユーザーが存在していて、
+		if(userInfoDAO.isExistUser(loginId, password)) {
+			//ログインが成功していたら、
+			if(userInfoDAO.login(loginId, password) > 0) {
+				//ユーザー情報を取得し、
+				UserInfoDTO userInfoDTO = userInfoDAO.getUserInfo(loginId, password);
+				//ユーザーID, status をセッションに格納
+				session.put("loginId", userInfoDTO.getUserId());
+				session.put("status", userInfoDTO.getStatus());
+
+
+				int count = 0;
+
+				CartInfoDAO cartInfoDAO = new CartInfoDAO();
+
+				count = cartInfoDAO.linkToLoginId(String.valueOf(session.get("tempUserId")), loginId);
+				//仮IDが発行されていたら、
+				if(count > 0) {
+					DestinationInfoDAO destinationInfoDAO = new DestinationInfoDAO();
+
+					try {
+						List<DestinationInfoDTO> destinationInfoDTOList = new ArrayList<DestinationInfoDTO>();
+						//宛先情報を取得し、Listに格納
+						destinationInfoDTOList = destinationInfoDAO.getDestinationInfo(loginId);
+						Iterator<DestinationInfoDTO> iterator = destinationInfoDTOList.iterator();
+						//Listに格納した要素を順番に処理をし、要素がなくなったら、
+						if(!(iterator.hasNext())) {
+							//Listにnullを入れる(。)
+							destinationInfoDTOList = null;
+						}
+						//セッションにListを格納
+						session.put("destinationInfoDTOList", destinationInfoDTOList);
+
+					} catch(SQLException e) {
+						e.printStackTrace();
+					}
+					//try が走れば、決済確認画面へ
+					result = "settlement";
+
+				} else {
+					//try が走らなかったら、結果はSUCCESS(ホーム画面へ)
+					result = SUCCESS;
+				}
+			}
+
+			String sta = String.valueOf(session.get("status"));
+			//statusに1が入っていたら、管理者画面へ
+			if(sta.equals("1")) {
+				result = "admin";
+			}
+				//セッションにログインフラグを格納
+				session.put("logined", 1);
+		}
+		return result;
 	}
 
 
@@ -72,11 +132,35 @@ public class LoginAction extends ActionSupport implements SessionAware {
 		this.password = password;
 	}
 
+	public boolean getSavedLoginId() {
+		return savedLoginId;
+	}
+
+	public void setSavedLoginId(boolean savedLoginId) {
+		this.savedLoginId = savedLoginId;
+	}
+
+	public List<String> getLoginIdErrorMessageList() {
+		return loginIdErrorMessageList;
+	}
+
+	public void setLoginIdErrorMessageList(List<String> loginIdErrorMessageList) {
+		this.loginIdErrorMessageList = loginIdErrorMessageList;
+	}
+
+	public List<String> getPasswordErrorMessageList() {
+		return passwordErrorMessageList;
+	}
+
+
+	public void setPasswordErrorMessageList(List<String> passwordErrorMessageList) {
+		this.passwordErrorMessageList = passwordErrorMessageList;
+	}
+
 	public Map<String, Object> session() {
 		return session;
 	}
 
-	@Override
 	public void setSession(Map<String, Object> session) {
 		this.session = session;
 	}
