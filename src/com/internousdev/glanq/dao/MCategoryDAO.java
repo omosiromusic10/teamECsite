@@ -14,14 +14,14 @@ import com.internousdev.glanq.util.DBConnector;
 
 
 public class MCategoryDAO {
-	//DBに接続するための準備
 
+	//DBに接続するための準備
 	public List<MCategoryDTO> getMCategoryList(){
 	DBConnector dbConnector=new DBConnector();
 	Connection connection=dbConnector.getConnection();
 	List<MCategoryDTO> mCategoryDTOList=new ArrayList<MCategoryDTO>();
 
-	//sql文にてテーブルm_category内の全てのデータの取得
+	//sql文にてテーブル"m_category"内の全てのデータの取得
 	String sql="SELECT * from m_category";
 	try{
 	PreparedStatement preparedStatement=connection.prepareStatement(sql);
@@ -41,8 +41,8 @@ public class MCategoryDAO {
 	mCategoryDTOList.add(mCategoryDTO);
 	}
 
-//	iteratorメソッドを用いてリスト内のデータを順次参照し
-//	次のデータがなくなったとき空データ"null"を挿入
+//"iterator"メソッドを用いてリスト内のデータを順次参照し
+//次のデータがなくなったとき空データ"null"を挿入
 //"データが空である"というデータを入れることで無用なエラーの防止
 	Iterator<MCategoryDTO> iterator = mCategoryDTOList.iterator();
 	if(!(iterator.hasNext())) {
