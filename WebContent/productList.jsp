@@ -83,7 +83,7 @@
 			<!-- ～ページ番号部分～ -->
 				<div class="pager">
 				<s:iterator begin="1" end="#session.totalPageSize" status="pageNo">
-					<s:if test="#session.currentPageNumber == #pageNo.count">
+					<s:if test="#session.currentPageNo == #pageNo.count">
 						<!-- 現在のページを表す数字は、そのまま数字を表記するだけ。 -->
 						<s:property value="%{#pageNo.count}"/>
 					</s:if>
