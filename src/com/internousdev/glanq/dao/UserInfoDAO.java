@@ -10,6 +10,11 @@ import com.internousdev.glanq.util.DBConnector;
 
 public class UserInfoDAO {
 
+	/**
+	 * このDAOで行う処理はuser_infoに関するもの
+	 * 主にユーザー情報やパスワードに関するもの
+	 */
+
 	//ユーザー登録用メソッド
 	public int createUser(String loginId, String password, String familyName, String firstName, String familyNameKana, String firstNameKana, String sex, String email){
 
@@ -93,7 +98,7 @@ public class UserInfoDAO {
 
 			while(rs.next()){
 				userInfoDTO.setId(rs.getInt("id"));
-				userInfoDTO.setLoginId(rs.getString("user_id"));
+				userInfoDTO.setUserId(rs.getString("user_id"));
 				userInfoDTO.setPassword(rs.getString("password"));
 				userInfoDTO.setFamilyName(rs.getString("family_name"));
 				userInfoDTO.setFirstName(rs.getString("first_name"));
@@ -133,7 +138,7 @@ public class UserInfoDAO {
 
 			while(rs.next()){
 				userInfoDTO.setId(rs.getInt("id"));
-				userInfoDTO.setLoginId(rs.getString("user_id"));
+				userInfoDTO.setUserId(rs.getString("user_id"));
 				userInfoDTO.setPassword(rs.getString("password"));
 				userInfoDTO.setFamilyName(rs.getString("family_name"));
 				userInfoDTO.setFirstName(rs.getString("first_name"));
