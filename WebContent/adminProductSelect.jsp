@@ -15,6 +15,8 @@
 <h1>商品一覧画面</h1>
 <div id="product-list">
 
+
+<!-- テーブルの頭を作成 -->
 <table class="horizontal-list-table">
 <thead>
 <tr>
@@ -27,6 +29,8 @@
 </tr>
 </thead>
 <tbody>
+
+<!-- ここでProductListのiteratorを用いて表示させる。 -->
 <s:iterator value="#session.productInfoDtoList">
 <tr>
     <td><img src='<s:property value="imageFilePath"/>/<s:property value="imageFileName"/>' class="itemt-image-box-200"/><br></td>

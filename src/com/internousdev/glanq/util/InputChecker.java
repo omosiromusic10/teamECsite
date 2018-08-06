@@ -90,9 +90,13 @@ public class InputChecker {
 		}
 
 		if(errorExpression.equals("")){
-			resultList.add(propertyName + "は、" + message + "で入力してください。");
-		}else if(value.matches(regularExpression) || !(value.matches(errorExpression)) && value.equals("")){
-			resultList.add(propertyName + "は、" + message + "で入力してください。");
+			if(value.matches(regularExpression)){
+				resultList.add(propertyName + "は、" + message + "で入力してください。");
+			}
+		}else{
+			if(value.matches(regularExpression) || (!value.matches(errorExpression) && value.equals(""))){
+				resultList.add(propertyName + "は、" + message + "で入力してください。");
+			}
 		}
 		return resultList;
 

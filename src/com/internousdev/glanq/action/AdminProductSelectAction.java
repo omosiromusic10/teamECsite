@@ -1,5 +1,6 @@
 package com.internousdev.glanq.action;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -24,12 +25,15 @@ public class AdminProductSelectAction extends ActionSupport implements SessionAw
 	private List<ProductInfoDTO> productInfoDtoList = new ArrayList<ProductInfoDTO>();
 	private Map<String, Object> session;
 
-	public String execute(){
+	public String execute() throws SQLException {
 		String result = ERROR;
 
+		// ここはProductInfoのInfoListから借りてくるだけ。
+		//後はゲッターセッターをして処理を終了
 		ProductInfoDAO productInfoDao = new ProductInfoDAO();
 		productInfoDtoList  = productInfoDao.getProductInfoList();
 
+		//ここでは検索機能にバグがおきないようにする為の処置
 		if(!session.containsKey("mCategoryList")){
 			MCategoryDAO mCategoryDao = new MCategoryDAO();
 			mCategoryDtoList = mCategoryDao.getMCategoryList();
@@ -39,7 +43,7 @@ public class AdminProductSelectAction extends ActionSupport implements SessionAw
 		result = SUCCESS;
 		return result;
 	}
-
+//以下ゲッタセッター
 	public String getProductName() {
 		return productName;
 	}

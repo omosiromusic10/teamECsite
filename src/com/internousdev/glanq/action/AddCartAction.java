@@ -65,18 +65,18 @@ public class AddCartAction extends ActionSupport implements SessionAware{
 			result = SUCCESS;
 		}
 
-		List<CartInfoDTO> ciDtoList = new ArrayList<CartInfoDTO>();
-		ciDtoList = ciDAO.getCartInfo("loginId");
+		List<CartInfoDTO> cartInfoDtoList = new ArrayList<CartInfoDTO>();
+		cartInfoDtoList = ciDAO.getCartInfo("loginId");
 
 		//iteratorでリストの中身を変数に代入します
-		Iterator<CartInfoDTO> iterator = ciDtoList.iterator();
+		Iterator<CartInfoDTO> iterator = cartInfoDtoList.iterator();
 
 		//次の要素がないレコードにはnullを代入します
 		if(!(iterator.hasNext())){
-			ciDtoList = null;
+			cartInfoDtoList = null;
 		}
 
-		session.put("ciDtoList", ciDtoList);
+		session.put("cartInfoDtoList", cartInfoDtoList);
 
 		//合計金額をgetTotalPriceのメソッドで取得int型に変換して変数に代入
 		int totalPrice = Integer.parseInt(String.valueOf(ciDAO.getTotalPrice(userId)));

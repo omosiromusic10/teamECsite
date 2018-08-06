@@ -13,7 +13,10 @@
 <!--  <jsp:include page="header.jsp"/> -->
 <div id="contents">
 <h1>商品購入履歴一覧画面</h1>
+
+<!-- これは商品履歴が０より大きい場合にif文が働く -->
 <s:if test="#session.puchaseHistoryInfoDtoList.size()>0">
+<!-- 頭のテーブルを作成 -->
 <table class="horizontal-list-table">
 <thead>
 <tr>
@@ -27,6 +30,7 @@
 </tr>
 </thead>
 <tbody>
+<!-- iteratorを用いてsessionの商品履歴リストで表示。 -->
 <s:iterator value="#session.purchaseHistoryInfoDtoList">
 <tr>
     <td><s:property value="userId"/></td>

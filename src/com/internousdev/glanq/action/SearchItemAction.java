@@ -34,18 +34,17 @@ public class SearchItemAction extends ActionSupport implements SessionAware {
 	if(keywords==null){
 		keywords="";
 
+//	入力された情報を"InputChecker"を用いて有効であるかチェック
 	keywordsErrorMessageList=inputChecker.docheck("検索ワード",keywords,0,6,true,true,true,true,false,true,true);
 	ProductInfoDAO productInfoDAO=new ProductInfoDAO();
 
 //	カテゴリーIDが０、または１が選択された時、検索は全商品の中から行われる
-
-	if(categoryId=="0"||categoryId=="1"){
-		productInfoDTOList=productInfoDAO.getProductInfoListAll(keywords.replaceAll(" "," ").split(" "));
-		result=SUCCESS;
-	}
 //	カテゴリーIDが２，３、または４が選択された時、検索はそれぞれのカテゴリーの中から行われる
-	else if(categoryId=="2"|categoryId=="3"|categoryId=="4"){
-		productInfoDTOList=productInfoDAO.getProductInfoListByKeywords(keywords.replaceAll(" ", " ").split(" "),keywords);
+	if("0".equals(categoryId) || "1".equals(categoryId)){
+		productInfoDTOList=productInfoDAO.getProductInfoListAll(keywords.replaceAll("　"," ").split(" "));
+		result=SUCCESS;
+	}else if("2".equals(categoryId)|| "3".equals(categoryId) ||"4".equals(categoryId)){
+		productInfoDTOList=productInfoDAO.getProductInfoListByKeywords(keywords.replaceAll("　", " ").split(" "),categoryId);
 		result=SUCCESS;
 	}
 
@@ -61,18 +60,18 @@ public class SearchItemAction extends ActionSupport implements SessionAware {
 //	session内に"MCategoryList"が存在しない場合
 	if(!session.containsKey("mCategoryList")){
 
-//	"mCategoryDaoList"にmCategoryDTOListの値を関連付け
+//	"mCategoryDaoList"にmCategoryDTOListの値を格納
 		MCategoryDAO mCategoryDao=new MCategoryDAO();
 		mCategoryDTOList=mCategoryDao.getMCategoryList();
 		session.put("mCategoryDaoList", mCategoryDTOList);
 	}
 
-//	"productInfoDTOList"が"null"でない場合
+//	"productInfoDtoList"が"null"でない場合で次のif文へと移行し
+//	"pageNo"が"nuLL"であれば1ページ目の、
+//	そうでない場合は任意のページ情報を取得
 	if(!(productInfoDTOList==null)){
 		Pagination pagination=new Pagination();
 		PaginationDTO paginationDTO=new PaginationDTO();
-
-
 		int pageNO=Integer.parseInt(pageNo);
 		if(pageNo==null){
 			paginationDTO=pagination.initialize(productInfoDTOList,9);
@@ -80,7 +79,7 @@ public class SearchItemAction extends ActionSupport implements SessionAware {
 			paginationDTO=pagination.getPage(productInfoDTOList,9,(pageNO));
 		}
 
-//		sessionに各データを追加
+//	sessionに各データを追加
 		session.put("productInfoDtoList",paginationDTO.getCurrentProductInfoPage() );
 		session.put("totalPageSize",paginationDTO.getTotalPageSize() );
 		session.put("currentPageNo",paginationDTO.getCurrentPageNo() );
@@ -91,7 +90,11 @@ public class SearchItemAction extends ActionSupport implements SessionAware {
 		session.put("previousPageNo",paginationDTO.getPreviousPageNo() );
 		session.put("nextPage",paginationDTO.isHasNextPage() );
 		session.put("nextPageNo",paginationDTO.getNextPageNo() );
-		}else{
+		}
+
+//	上記にあったif文において"productInfoDtoList"が"null"であった場合は
+//	"productInfoDTOList"のsession内に"null"を格納
+	else{
 			session.put("productInfoDTOList", null);
 		}
 	}return result;

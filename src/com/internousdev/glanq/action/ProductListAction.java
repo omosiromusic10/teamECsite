@@ -19,8 +19,13 @@ public class ProductListAction extends ActionSupport implements SessionAware {
 
 	public Map<String, Object> session;
 	private List<ProductInfoDTO> productInfoList = new ArrayList<ProductInfoDTO>();
-	private Pagination pagination;
+	private Pagination pagination = new Pagination();
 	private List<MCategoryDTO> mCategoryDtoList = new ArrayList<MCategoryDTO>();
+
+	private List<ProductInfoDTO> productInfoDTOList = new ArrayList<ProductInfoDTO>();
+	private String categoryId;
+	private String keywords;
+	private String pageNo = "1";
 
 	// 作成中です・・・
 	public String execute() throws SQLException{
@@ -51,6 +56,8 @@ public class ProductListAction extends ActionSupport implements SessionAware {
 			session.put("mCategoryDtoList", mCategoryDtoList);
 		}
 
+		productInfoDTOList = paginationDTO.getCurrentProductInfoPage();
+
 		result = SUCCESS;
 		return result;
 	}
@@ -74,6 +81,38 @@ public class ProductListAction extends ActionSupport implements SessionAware {
 
 	public void setmCategoryDtoList(List<MCategoryDTO> mCategoryDtoList) {
 		this.mCategoryDtoList = mCategoryDtoList;
+	}
+
+	public List<ProductInfoDTO> getProductInfoDTOList() {
+		return productInfoDTOList;
+	}
+
+	public void setProductInfoDTOList(List<ProductInfoDTO> productInfoDTOList) {
+		this.productInfoDTOList = productInfoDTOList;
+	}
+
+	public String getCategoryId() {
+		return categoryId;
+	}
+
+	public void setCategoryId(String categoryId) {
+		this.categoryId = categoryId;
+	}
+
+	public String getKeywords() {
+		return keywords;
+	}
+
+	public void setKeywords(String keywords) {
+		this.keywords = keywords;
+	}
+
+	public String getPageNo() {
+		return pageNo;
+	}
+
+	public void setPageNo(String pageNo) {
+		this.pageNo = pageNo;
 	}
 
 
