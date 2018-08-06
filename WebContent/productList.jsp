@@ -5,6 +5,44 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="Content-Style-Type" content="text/css"/>
+
+<style type="text/css">
+
+#newItemBox{
+	display: inline-block;
+	border: 2px solid #ddbb55;
+	border-radius: 5px;
+    box-shadow:2px 2px #1a6ea0;
+	background-color: #ffeebb;
+	margin: 20px;
+	padding: 10px;
+}
+#newItemList ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+#newItemList #item_image_box{
+	display: table-cell;
+	width: 210px;
+	height: 210px;
+	margin: 0 auto;
+	background: white;
+	vertical-align: middle;
+	margin-bottom: 10px;
+}
+#newItemList #item_image{
+	max-width: 200px;
+	max-height: 200px;
+	width: auto;
+	height: auto;
+	vertical-align: middle;
+
+}
+
+</style>
+
 <title>商品一覧画面</title>
 </head>
 <body>
@@ -12,23 +50,23 @@
 
 		<div id="newItemList">
 			<h3>商品の一覧を表示</h3>
-				<s:iterator value="#session.productInfoList">
-				<div id="ItemBox">
+				<s:iterator value="#session.productInfoDtoList">
+				<div id="newItemBox">
 
 					<ul>
 
 						<li>
-						<div id="item_image_box">
-<%-- 						<a href='<s:url action="ProductDetailsAction"> --%>
-								<s:param name="productId" value="<s:property value='productId'/>"/>
-<%-- 							</s:url>'> --%>
+ 						<div id="item_image_box">
+ 						<a href='<s:url action="ProductDetailsAction">
+ 								<s:param name="productId" value="%{productId}"/>
+ 								</s:url>'>
 
-								<img id="item_image" src="<s:property value='imageFilePath'/>/<s:property value='imageFileName'/>">
-<!-- 						</a> -->
-						</div>
+ 								<img id="item_image" src="<s:property value='imageFilePath'/>/<s:property value='imageFileName'/>">
+ 						</a>
+ 						</div>
 						</li>
 						<li><s:property value="productName" /></li>
-						<li><s:property value="productReleaseCompany" /></li>
+						<li><s:property value="releaseCompany" /></li>
 						<li><s:property value="price" /><span>円</span></li>
 					</ul>
 

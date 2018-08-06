@@ -6,6 +6,9 @@ import java.util.Map;
 
 import org.apache.struts2.interceptor.SessionAware;
 
+import com.internousdev.glanq.dao.UserInfoDAO;
+import com.internousdev.glanq.dto.MCategoryDTO;
+import com.internousdev.glanq.dto.UserInfoDTO;
 import com.opensymphony.xwork2.ActionSupport;
 
 public class MyPageAction extends ActionSupport implements SessionAware{

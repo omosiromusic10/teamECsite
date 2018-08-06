@@ -26,10 +26,12 @@ public class CreateUserCompleteAction extends ActionSupport implements SessionAw
 		String result = ERROR;
 		UserInfoDAO userInfoDAO = new UserInfoDAO();
 		int count = userInfoDAO.createUser(loginId, password, familyName, firstName, familyNameKana, firstNameKana, sex, email);
+		//ユーザー登録用メソッドを呼び出し引数に情報を渡す
 
 		if(count > 0){
 			result = SUCCESS;
 		}
+		//登録件数が1件でもあればSUCCESS
 
 		return result;
 	}

@@ -98,6 +98,10 @@
 					<td><s:textfield name="password" value="%{#session.password}" label="パスワード" placeholder="パスワード" /></td>
 				</tr>
 
+				<!-- sessionないに格納された情報を表示
+					すでに入力された情報があり、入力エラーなどでこのページに戻された際に
+					再度入力する手間を省く -->
+
 				<s:submit value="登録" />
 
 			</table>

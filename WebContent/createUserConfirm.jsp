@@ -16,6 +16,8 @@
 		<h3>登録内容確認画面</h3>
 
 		<s:form action="CreateUserCompleteAction">
+
+		<!-- まず、入力内容を画面に表示 -->
 			<table>
 				<tr>
 					<th scope="row"><s:label value="姓" /></th>
@@ -42,11 +44,47 @@
 					<td><s:property value="sex" /></td>
 				</tr>
 
+				<tr>
+					<th scope="row"><s:label value="メールアドレス" /></th>
+					<td><s:property value="email" /></td>
+				</tr>
 
+				<tr>
+					<th scope="row"><s:label value="ログインID" /></th>
+					<td><s:property value="loginId" /></td>
+				</tr>
+
+				<tr>
+					<th scope="row"><s:label value="パスワード" /></th>
+					<td><s:property value="password" /></td>
+				</tr>
 
 			</table>
 
+			<s:submit value="登録" />
+
+			<!-- sessionに情報を送るため情報をhiddenで渡しておく -->
+
+			<s:hidden name="familyName" value="%{familyName}" />
+			<s:hidden name="firstName" value="%{firstName}" />
+			<s:hidden name="familyNameKana" value="%{familyNameKana}" />
+			<s:hidden name="firstNameKana" value="%{firstNameKana}" />
+
+			<s:if test='sex.equals("男性")'>
+				<s:hidden name="sex" value="0" />
+			</s:if>
+
+			<s:if test='sex.equals("女性")'>
+				<s:hidden name="sex" value="1" />
+			</s:if>
+
+			<s:hidden name="email" value="%{email}" />
+			<s:hidden name="loginId" value="&{loginId}" />
+			<s:hidden name="password" value="%{password}" />
+
 		</s:form>
+
+		<s:include value="footer.jsp" />
 
 	</body>
 </html>

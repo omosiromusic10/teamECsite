@@ -1,12 +1,21 @@
 package com.internousdev.glanq.action;
 
-import src.com.internousdev.glanq.dao.MCategoryDAO;
-import src.com.internousdev.glanq.dao.ProductInfoDAO;
-import src.com.internousdev.glanq.dto.MCategoryDTO;
-import src.com.internousdev.glanq.dto.PaginationDTO;
-import src.com.internousdev.glanq.dto.ProductInfoDTO;
-import src.com.internousdev.glanq.util.InputChecker;
-import src.com.internousdev.glanq.util.Pagination;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+
+import org.apache.struts2.interceptor.SessionAware;
+
+import com.internousdev.glanq.dao.MCategoryDAO;
+import com.internousdev.glanq.dao.ProductInfoDAO;
+import com.internousdev.glanq.dto.MCategoryDTO;
+import com.internousdev.glanq.dto.PaginationDTO;
+import com.internousdev.glanq.dto.ProductInfoDTO;
+import com.internousdev.glanq.util.InputChecker;
+import com.internousdev.glanq.util.Pagination;
+import com.opensymphony.xwork2.ActionSupport;
 
 public class SearchItemAction extends ActionSupport implements SessionAware {
 	private String categoryId;
@@ -17,7 +26,7 @@ public class SearchItemAction extends ActionSupport implements SessionAware {
 	private List<ProductInfoDTO> productInfoDTOList=new ArrayList<ProductInfoDTO>();
 	private Map<String,Object>session;
 
-	public String execute(){
+	public String execute() throws SQLException{
 		String result = ERROR;
 	InputChecker inputChecker=new InputChecker();
 
@@ -63,10 +72,12 @@ public class SearchItemAction extends ActionSupport implements SessionAware {
 		Pagination pagination=new Pagination();
 		PaginationDTO paginationDTO=new PaginationDTO();
 
+
+		int pageNO=Integer.parseInt(pageNo);
 		if(pageNo==null){
 			paginationDTO=pagination.initialize(productInfoDTOList,9);
 		}else{
-			paginationDTO=pagination.getPage(productInfoDTOList,9,pageNo);
+			paginationDTO=pagination.getPage(productInfoDTOList,9,(pageNO));
 		}
 
 //		sessionに各データを追加

@@ -19,7 +19,7 @@ public class ProductListAction extends ActionSupport implements SessionAware {
 
 	public Map<String, Object> session;
 	private List<ProductInfoDTO> productInfoList = new ArrayList<ProductInfoDTO>();
-	private Pagination pagination;
+	private Pagination pagination = new Pagination();
 	private List<MCategoryDTO> mCategoryDtoList = new ArrayList<MCategoryDTO>();
 
 	// 作成中です・・・
