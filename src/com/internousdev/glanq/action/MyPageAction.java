@@ -6,6 +6,9 @@ import java.util.Map;
 
 import org.apache.struts2.interceptor.SessionAware;
 
+import com.internousdev.glanq.dao.UserInfoDAO;
+import com.internousdev.glanq.dto.MCategoryDTO;
+import com.internousdev.glanq.dto.UserInfoDTO;
 import com.opensymphony.xwork2.ActionSupport;
 
 public class MyPageAction extends ActionSupport implements SessionAware{
@@ -21,7 +24,7 @@ public class MyPageAction extends ActionSupport implements SessionAware{
 		UserInfoDAO userInfoDAO = new UserInfoDAO();
 		UserInfoDTO userInfoDTO = new UserInfoDTO();
 		userInfoDTO = userInfoDAO.getUserInfo(String.valueOf(session.get("loginId")));
-
+		
 		if(userInfoDTO != null){
 			session.put("familyName", userInfoDTO.getFamilyName());
 			session.put("firstName", userInfoDTO.getFirstName());
