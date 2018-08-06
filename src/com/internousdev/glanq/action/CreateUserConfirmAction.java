@@ -37,15 +37,7 @@ public class CreateUserConfirmAction extends ActionSupport implements SessionAwa
 	public String execute(){
 		String result = ERROR;
 
-		session.put("familyName", familyName);
-		session.put("firstName", firstName);
-		session.put("familyNameKana", familyNameKana);
-		session.put("firstNameKana", firstNameKana);
-		session.put("sex", sex);
-		session.put("email", email);
-		session.put("loginId", loginId);
-
-
+		//入力された情報が正しく入力されているかチェックする
 		InputChecker inputChecker = new InputChecker();
 		familyNameErrorMessageList = inputChecker.docheck("姓", familyName, 1, 16, true, true, true, false, false, false, false);
 		firstNameErrorMessageList= inputChecker.docheck("名", firstName, 1, 16, true, true, true, false, false, false, false);
@@ -54,6 +46,13 @@ public class CreateUserConfirmAction extends ActionSupport implements SessionAwa
 		emailErrorMessageList = inputChecker.docheck("メールアドレス", email, 14, 32, true, false, false, true, true, false, false);
 		loginIdErrorMessageList = inputChecker.docheck("ログインID", loginId, 1, 8, true, false, false, true, false, false, false);
 		passwordErrorMessageList = inputChecker.docheck("パスワード", password, 1, 16, true, false, false, true, false, false, false);
+		/**
+		 * 姓、名など入力された情報をInputCheckerのdoCheckメソッドに渡していく
+		 * 引数には「渡す値の種類」、「値そのもの（入力された情報）」、「最小文字数」、「最大文字数」、
+		 * そして、その情報に使用可能な文字列をtrueで渡していく
+		 * 結果はエラーメッセージを入れるリストに格納していく
+		 *
+		 */
 
 		if(familyNameErrorMessageList.size()==0
 				&& firstNameErrorMessageList.size()==0
@@ -63,6 +62,9 @@ public class CreateUserConfirmAction extends ActionSupport implements SessionAwa
 				&& loginIdErrorMessageList.size()==0
 				&& passwordErrorMessageList.size()==0){
 			result = SUCCESS;
+			//エラーメッセージに格納された要素が0（入力文字が使用可能な文字）の場合はSUCCESS
+
+
 		}else{
 			session.put("familyNameErrorMessageList", familyNameErrorMessageList);
 			session.put("firstNameErrorMessageList", firstNameErrorMessageList);
@@ -72,7 +74,21 @@ public class CreateUserConfirmAction extends ActionSupport implements SessionAwa
 			session.put("loginIdErrorMessageList", loginIdErrorMessageList);
 			session.put("passwordErrorMessageList", passwordErrorMessageList);
 			result = ERROR;
+			/**
+			 * エラーメッセージに格納された要素がひとつでも存在する場合は
+			 * セッションにその情報を格納していく
+			 * このセッションはJSPファイルで使用する
+			 */
 		}
+
+		//セッションに情報を格納
+		session.put("familyName", familyName);
+		session.put("firstName", firstName);
+		session.put("familyNameKana", familyNameKana);
+		session.put("firstNameKana", firstNameKana);
+		session.put("sex", sex);
+		session.put("email", email);
+		session.put("loginId", loginId);
 
 		return result;
 	}

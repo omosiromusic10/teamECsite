@@ -1,20 +1,12 @@
 package com.internousdev.glanq.action;
 
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-
-import org.apache.struts2.interceptor.SessionAware;
-
-import com.internousdev.glanq.dao.MCategoryDAO;
-import com.internousdev.glanq.dao.ProductInfoDAO;
-import com.internousdev.glanq.dto.MCategoryDTO;
-import com.internousdev.glanq.dto.PaginationDTO;
-import com.internousdev.glanq.dto.ProductInfoDTO;
-import com.internousdev.glanq.util.InputChecker;
-import com.internousdev.glanq.util.Pagination;
-import com.opensymphony.xwork2.ActionSupport;
+import src.com.internousdev.glanq.dao.MCategoryDAO;
+import src.com.internousdev.glanq.dao.ProductInfoDAO;
+import src.com.internousdev.glanq.dto.MCategoryDTO;
+import src.com.internousdev.glanq.dto.PaginationDTO;
+import src.com.internousdev.glanq.dto.ProductInfoDTO;
+import src.com.internousdev.glanq.util.InputChecker;
+import src.com.internousdev.glanq.util.Pagination;
 
 public class SearchItemAction extends ActionSupport implements SessionAware {
 	private String categoryId;
@@ -37,13 +29,14 @@ public class SearchItemAction extends ActionSupport implements SessionAware {
 	ProductInfoDAO productInfoDAO=new ProductInfoDAO();
 
 //	カテゴリーIDが０、または１が選択された時、検索は全商品の中から行われる
+
 	if(categoryId=="0"||categoryId=="1"){
 		productInfoDTOList=productInfoDAO.getProductInfoListAll(keywords.replaceAll(" "," ").split(" "));
 		result=SUCCESS;
 	}
 //	カテゴリーIDが２，３、または４が選択された時、検索はそれぞれのカテゴリーの中から行われる
 	else if(categoryId=="2"|categoryId=="3"|categoryId=="4"){
-		productInfoDTOList=productInfoDAO.getProductInfoListByKeywords(keywords.replaceAll("　", " ").split(" "),keywords);
+		productInfoDTOList=productInfoDAO.getProductInfoListByKeywords(keywords.replaceAll(" ", " ").split(" "),keywords);
 		result=SUCCESS;
 	}
 
@@ -76,6 +69,7 @@ public class SearchItemAction extends ActionSupport implements SessionAware {
 			paginationDTO=pagination.getPage(productInfoDTOList,9,pageNo);
 		}
 
+//		sessionに各データを追加
 		session.put("productInfoDtoList",paginationDTO.getCurrentProductInfoPage() );
 		session.put("totalPageSize",paginationDTO.getTotalPageSize() );
 		session.put("currentPageNo",paginationDTO.getCurrentPageNo() );
