@@ -60,7 +60,7 @@ public class LoginAction extends ActionSupport implements SessionAware {
 
 		UserInfoDAO userInfoDAO = new UserInfoDAO();
 		//ユーザーが存在していて、
-		if(userInfoDAO.isExistUser(loginId, password)) {
+		if(userInfoDAO.isExistsUserInfo(loginId, password)) {
 			//ログインが成功していたら、
 			if(userInfoDAO.login(loginId, password) > 0) {
 				//ユーザー情報を取得し、
