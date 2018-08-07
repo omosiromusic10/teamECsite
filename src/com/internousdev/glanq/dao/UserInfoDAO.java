@@ -88,8 +88,10 @@ public class UserInfoDAO {
 			ps.setString(2, password);
 			ResultSet rs = ps.executeQuery();
 
-			if(rs.getInt("count") > 0){
+			if(rs.next()){
+				if(rs.getInt("count") > 0){
 				result = true;
+				}
 			}
 		}catch(SQLException e ){
 			e.printStackTrace();
