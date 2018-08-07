@@ -74,7 +74,7 @@ public class AdminEditDetailsConfirmAction extends ActionSupport implements Sess
         session.put("productId", productId);
         session.put("userImage", userImage);
 
-        //ServletActionContext.getServletContextはどこにある？
+        //ServletActionContext.getServletContextはどこにある？あ
 		String filePath = ServletActionContext.getServletContext().getRealPath("/").concat("userimages");
 		System.out.println("Image Location:"+filePath);
 
