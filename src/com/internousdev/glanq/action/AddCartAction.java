@@ -58,15 +58,20 @@ public class AddCartAction extends ActionSupport implements SessionAware{
 			userId = String.valueOf(session.get("tempUserId"));
 		}
 
+		productCount = String.valueOf((productCount.split(" ,",0))[0]);
+
 		//cart内の情報をregistメソッドでDBに送る、一件以上送れるとSUCCESSを返す
 		CartInfoDAO ciDAO = new CartInfoDAO();
 		int count = ciDAO.regist(userId, tempUserId, productId, productCount, price);
+
+
+
 		if(count > 0){
 			result = SUCCESS;
 		}
 
 		List<CartInfoDTO> cartInfoDtoList = new ArrayList<CartInfoDTO>();
-		cartInfoDtoList = ciDAO.getCartInfoDtoList("loginId");
+		cartInfoDtoList = ciDAO.getCartInfoDtoList(userId);
 
 		//iteratorでリストの中身を変数に代入します
 		Iterator<CartInfoDTO> iterator = cartInfoDtoList.iterator();
@@ -156,6 +161,14 @@ public class AddCartAction extends ActionSupport implements SessionAware{
 
 	public void setSession(Map<String,Object> session){
 		this.session = session;
+	}
+
+	public String getProductCount(){
+		return productCount;
+	}
+
+	public void setProductCount(String productCount){
+		this.productCount = productCount;
 	}
 
 
