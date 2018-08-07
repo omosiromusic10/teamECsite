@@ -10,11 +10,12 @@ import org.apache.struts2.interceptor.SessionAware;
 import com.internousdev.glanq.dao.MCategoryDAO;
 import com.internousdev.glanq.dao.ProductInfoDAO;
 import com.internousdev.glanq.dto.MCategoryDTO;
+import com.internousdev.glanq.dto.PaginationDTO;
 import com.internousdev.glanq.dto.ProductInfoDTO;
+import com.internousdev.glanq.util.Pagination;
 import com.opensymphony.xwork2.ActionSupport;
 
-public class AdminDeleteAction extends ActionSupport implements SessionAware {
-
+public class AdminProductSelectAction extends ActionSupport implements SessionAware{
 	private String productName;
 	private String productNameKana;
 	private String imageFilePath;
@@ -22,26 +23,53 @@ public class AdminDeleteAction extends ActionSupport implements SessionAware {
 	private int price;
 	private String categoryId;
 	private String keywords;
+	private String pageNo;
 	private List<MCategoryDTO> mCategoryDtoList = new ArrayList<MCategoryDTO>();
 	private List<ProductInfoDTO> productInfoDtoList = new ArrayList<ProductInfoDTO>();
 	private Map<String, Object> session;
 
-	public String execute() throws SQLException{
+	public String execute() throws SQLException {
 		String result = ERROR;
 
+		// ここはProductInfoのInfoListから借りてくるだけ。
+		//後はゲッターセッターをして処理を終了
 		ProductInfoDAO productInfoDao = new ProductInfoDAO();
-		productInfoDtoList = productInfoDao.getProductInfoList();
+		productInfoDtoList  = productInfoDao.getProductInfoList();
 
-		//session内にmCategoryListが無いか確認
+		//ここでは検索機能にバグがおきないようにする為の処置
 		if(!session.containsKey("mCategoryList")){
 			MCategoryDAO mCategoryDao = new MCategoryDAO();
 			mCategoryDtoList = mCategoryDao.getMCategoryList();
 			session.put("mCategoryDtoList", mCategoryDtoList);
 		}
+
+		if(!(productInfoDtoList==null)){
+			Pagination pagination = new Pagination();
+			PaginationDTO paginationDTO = new PaginationDTO();
+			if(pageNo==null){
+				paginationDTO = pagination.initialize(productInfoDtoList, 9);
+			}else{
+				paginationDTO = pagination.getPage(productInfoDtoList, 9, pageNo);
+			}
+
+			session.put("productInfoDtoList", paginationDTO.getCurrentProductInfoPage());
+			session.put("totalPageSize", paginationDTO.getTotalPageSize());
+			session.put("currentPageNo", paginationDTO.getCurrentPageNo());
+			session.put("totalRecordSize", paginationDTO.getTotalRecordSize());
+			session.put("startRecordNo", paginationDTO.getStartRecordNo());
+			session.put("endRecordNo", paginationDTO.getEndRecordNo());
+			session.put("previousPage", paginationDTO.hasPreviousPage());
+			session.put("previousPageNo", paginationDTO.getPreviousPageNo());
+			session.put("nextPage", paginationDTO.hasNextPage());
+			session.put("nextPageNo", paginationDTO.getNextPageNo());
+		    }else{
+			    session.put("productInfoDtoList", null);
+		    }
+
 		result = SUCCESS;
 		return result;
 	}
-
+//以下ゲッタセッター
 	public String getProductName() {
 		return productName;
 	}
@@ -121,4 +149,13 @@ public class AdminDeleteAction extends ActionSupport implements SessionAware {
 	public void setSession(Map<String, Object> session) {
 		this.session = session;
 	}
+	public String getPageNo() {
+		return pageNo;
+	}
+	public void setPageNo(String pageNo) {
+		this.pageNo = pageNo;
+	}
+
+
+
 }

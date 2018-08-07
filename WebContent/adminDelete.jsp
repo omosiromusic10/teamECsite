@@ -66,18 +66,6 @@
 
        </s:form>
 
-<div class="pager">
-        <s:iterator begin="1" end="#session.totalPageSize" status="pageNo">
-                         <s:if test="#session.currentPageNo == #pageNo.count">
-                                 <s:property value="%{#pageNo.count}"/>
-                         </s:if>
-                         <s:else>
-                                 <a href="<s:url action='SearchDeleteAction'><s:param name='pageNo' value='%{#pageNo.count}'/>
-                                 <s:param name='categoryId' value='%{categoryId}'/></s:url> ">   <s:property value="%{#pageNo.count}"/></a>
-                         </s:else>
-        </s:iterator>
-</div>
-
 </s:else>
 </div>
 

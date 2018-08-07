@@ -4,9 +4,9 @@ import java.util.Date;
 
 public class UserInfoDTO {
 
-	//ユーザー情報DTO
+	//ユーザー情報のDTO
 	private int id;
-	private String loginId;
+	private String userId;
 	private String password;
 	private String familyName;
 	private String firstName;
@@ -15,7 +15,7 @@ public class UserInfoDTO {
 	private int sex;
 	private String email;
 	private int logined;
-	private int status;
+	private String status;
 	private Date registDate;
 	private Date updateDate;
 	public int getId() {
@@ -24,11 +24,11 @@ public class UserInfoDTO {
 	public void setId(int id) {
 		this.id = id;
 	}
-	public String getLoginId() {
-		return loginId;
+	public String getUserId() {
+		return userId;
 	}
-	public void setLoginId(String loginId) {
-		this.loginId = loginId;
+	public void setUserId(String userId) {
+		this.userId = userId;
 	}
 	public String getPassword() {
 		return password;
@@ -78,10 +78,10 @@ public class UserInfoDTO {
 	public void setLogined(int logined) {
 		this.logined = logined;
 	}
-	public int getStatus() {
+	public String getStatus() {
 		return status;
 	}
-	public void setStatus(int status) {
+	public void setStatus(String status) {
 		this.status = status;
 	}
 	public Date getRegistDate() {

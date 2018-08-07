@@ -11,6 +11,18 @@ import com.opensymphony.xwork2.ActionSupport;
 
 public class CreateUserConfirmAction extends ActionSupport implements SessionAware{
 
+	/**
+	 * 入力情報を元に入力内容が正しいか判断する
+	 * InputCheckerを利用し、JSPから渡された情報をそれぞれ判別し、
+	 * 結果をリストに格納
+	 *
+	 * 入力内容が正しくなければエラーメッセージをセッションに格納し
+	 * ERRORを返す
+	 *
+	 * いずれの場合も入力された情報を保存するため、
+	 * ここでもセッションに情報を格納する
+	 */
+
 	private String loginId;
 	private String password;
 	private String familyName;
@@ -51,7 +63,6 @@ public class CreateUserConfirmAction extends ActionSupport implements SessionAwa
 		 * 引数には「渡す値の種類」、「値そのもの（入力された情報）」、「最小文字数」、「最大文字数」、
 		 * そして、その情報に使用可能な文字列をtrueで渡していく
 		 * 結果はエラーメッセージを入れるリストに格納していく
-		 *
 		 */
 
 		if(familyNameErrorMessageList.size()==0

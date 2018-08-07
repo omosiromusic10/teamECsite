@@ -9,6 +9,17 @@ import org.apache.struts2.interceptor.SessionAware;
 import com.opensymphony.xwork2.ActionSupport;
 
 public class CreateUserAction extends ActionSupport implements SessionAware{
+	/**
+	 * 新規ユーザー登録ページへと移動させるメソッド
+	 * ページ移動の後、入力情報によってはエラーメッセージが発生する場合があるが
+	 * このページではメッセージを除去しておく必要がある
+	 * まずはエラーメッセージを除去
+	 * 入力された情報をセッションに格納する
+	 * また、JSPファイル上で表示する性別選択のため
+	 * こちらでリストを用意する必要がある
+	 *
+	 * 最終的にSUCCESSで返す
+	 */
 
 	private String loginId;
 	private String password;
@@ -42,7 +53,11 @@ public class CreateUserAction extends ActionSupport implements SessionAware{
 		session.remove("loginIdErrorMessageList");
 		session.remove("passwordErrorMessageList");
 
-		// セッションにJSPから渡された値を格納していく
+		/**
+		 *  セッションにJSPから渡された値を格納していく
+		 *  こうしておくことで何らかの理由でもう一度入力ページに戻された場合も
+		 *  入力した情報は保持されている状態になる
+		 */
 
 		session.put("familyName", familyName);
 		session.put("firstName", firstName);

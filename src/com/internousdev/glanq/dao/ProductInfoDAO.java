@@ -9,8 +9,7 @@ import java.util.List;
 
 import com.internousdev.glanq.dto.ProductInfoDTO;
 import com.internousdev.glanq.util.DBConnector;
-
-import freemarker.template.utility.DateUtil;
+import com.internousdev.glanq.util.DateUtil;
 
 
 // [!]動作未確認
@@ -26,6 +25,7 @@ public class ProductInfoDAO {
 		String sql = "SELECT * from product_info";
 		try{
 			PreparedStatement ps = con.prepareStatement(sql);
+			System.out.println(ps);
 			ResultSet rs = ps.executeQuery();
 			while(rs.next()){
 				ProductInfoDTO pInfo = new ProductInfoDTO();
@@ -66,20 +66,22 @@ public class ProductInfoDAO {
 			PreparedStatement ps = con.prepareStatement(sql);
 			ps.setInt(1, productId);
 			ResultSet rs = ps.executeQuery();
-			pInfo.setId(rs.getInt("id"));
-			pInfo.setProductId(rs.getInt("product_id"));
-			pInfo.setProductName(rs.getString("product_name"));
-			pInfo.setProductNameKana(rs.getString("product_name_kana"));
-			pInfo.setProductDescription(rs.getString("product_description"));
-			pInfo.setCategoryId(rs.getInt("category_id"));
-			pInfo.setPrice(rs.getInt("price"));
-			pInfo.setImageFilePath(rs.getString("image_file_path"));
-			pInfo.setImageFileName(rs.getString("image_file_name"));
-			pInfo.setReleaseDate(rs.getDate("release_date"));
-			pInfo.setReleaseCompany(rs.getString("release_company"));
-			pInfo.setStatus(rs.getInt("status"));
-			pInfo.setRegistDate(rs.getDate("regist_date"));
-			pInfo.setUpdateDate(rs.getDate("update_date"));
+			if(rs.next()){
+				pInfo.setId(rs.getInt("id"));
+				pInfo.setProductId(rs.getInt("product_id"));
+				pInfo.setProductName(rs.getString("product_name"));
+				pInfo.setProductNameKana(rs.getString("product_name_kana"));
+				pInfo.setProductDescription(rs.getString("product_description"));
+				pInfo.setCategoryId(rs.getInt("category_id"));
+				pInfo.setPrice(rs.getInt("price"));
+				pInfo.setImageFilePath(rs.getString("image_file_path"));
+				pInfo.setImageFileName(rs.getString("image_file_name"));
+				pInfo.setReleaseDate(rs.getDate("release_date"));
+				pInfo.setReleaseCompany(rs.getString("release_company"));
+				pInfo.setStatus(rs.getInt("status"));
+				pInfo.setRegistDate(rs.getDate("regist_date"));
+				pInfo.setUpdateDate(rs.getDate("update_date"));
+			}
 		}catch(Exception e){
 			e.printStackTrace();
 		}finally{
@@ -282,5 +284,28 @@ public class ProductInfoDAO {
     }
     			return count;
     }
+
+    //管理者機能商品削除時に使われるメソッド
+	public int delete(String id) {
+		DBConnector dbConnector = new DBConnector();
+		Connection connection = dbConnector.getConnection();
+		int count = 0;
+		String sql = "delete from product_info where id=?";
+
+		try {
+			PreparedStatement preparedStatement = connection.prepareStatement(sql);
+			preparedStatement.setString(1, id);
+
+			count = preparedStatement.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		try {
+			connection.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return count;
+	}
 
 }

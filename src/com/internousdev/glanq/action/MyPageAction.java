@@ -33,7 +33,6 @@ public class MyPageAction extends ActionSupport implements SessionAware{
 			session.put("sex",userInfoDTO.getSex());
 			session.put("email",userInfoDTO.getEmail());
 
-
 			result = SUCCESS;
 		}
 		return result;
