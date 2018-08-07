@@ -1,5 +1,6 @@
 ﻿package com.internousdev.glanq.action;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
@@ -14,6 +15,7 @@ import com.internousdev.glanq.dto.ProductInfoDTO;
 import com.opensymphony.xwork2.ActionSupport;
 
 public class AdminDeleteCompleteAction extends ActionSupport implements SessionAware {
+
 	private Collection<String> checkList;
 	private String categoryId;
 	private String productId;
@@ -27,32 +29,36 @@ public class AdminDeleteCompleteAction extends ActionSupport implements SessionA
 	private List<ProductInfoDTO> productInfoDtoList = new ArrayList<ProductInfoDTO>();
 	private Map<String, Object> session;
 
-	public String execute(){
+	public String execute() throws SQLException{
 		String result = ERROR;
-		ProductInfoDAO productInfoDAO = new ProductInfoDAO();
-		CartInfoDAO cartInfoDAO = new CartInfoDAO();   /* */
+		ProductInfoDAO productInfoDAO = new ProductInfoDAO();    //インスタンス化
+		CartInfoDAO cartInfoDAO = new CartInfoDAO();
 		int count = 0;
+		//List型のStringにArrayListで生成したインスタンスを格納
 		List<String> checkListErrorMessageList = new ArrayList<String>();
+		//session内のcheckListErrorMessageListにcheckListErrorMessageListを格納
 		if(checkList==null){
 			checkListErrorMessageList.add("チェックされていません。");
 			session.put("checkListErrorMessageList",checkListErrorMessageList);
 			return ERROR;
 		}
-
+		//拡張for文
 		for(String id:checkList){
 			System.out.println(id);
-			count += productInfoDAO.delete(id);
-			count += cartInfoDAO.delete(id);  /* */
+			count += productInfoDAO.delete(id); // 商品情報を消す
+			count += cartInfoDAO.delete(id);  // カート情報を消す
 		}
+		//session内のcheckListErrorMessageListにcheckListErrorMessageListを格納
 		if(count <= 0){
 			checkListErrorMessageList.add("チェックされていません。");
 			session.put("checkListErrorMessageList", checkListErrorMessageList);
 			return ERROR;
 		}else{
+			//List型のProductInfoDTOにArrayListで生成したインスタンスを格納
 			List<ProductInfoDTO> productInfoDtoList = new ArrayList<ProductInfoDTO>();
 			productInfoDtoList = productInfoDAO.getProductInfoList();
 			Iterator<ProductInfoDTO> iterator = productInfoDtoList.iterator();
-			if(!(iterator.hasNext())){
+			if(!(iterator.hasNext())){    //次のデータがある場合にtrue
 				productInfoDtoList =null;
 			}
 			session.put("productInfoDtoList", productInfoDtoList);

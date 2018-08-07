@@ -20,9 +20,6 @@ function goCreateUserAction() {
 function goResetPasswordAction() {
 	document.getElementById("form").action = "ResetPasswordAction";
 }
-/* function goAdminAction() {
-	document.getElementById("form").action = "AdminAction";
-} */
 </script>
 </head>
 
@@ -31,14 +28,22 @@ function goResetPasswordAction() {
 <div id = "contents">
 	<h1>ログイン画面</h1>
 		<s:form id = "form" action = "LoginAction">
+
+			<!-- もし、loginIdErrorMessageListが空でなかったら -->
 			<s:if test = "!#session.loginIdErrorMessageList.isEmpty()">
 				<div class = "error">
-					<s:iterator value = "#session.loginIdErrorMessageList"><s:property /><br></s:iterator>
+					<div class = "error-message">
+						<!-- loginIdErrorMessageListの要素を画面に表示する -->
+						<s:iterator value = "#session.loginIdErrorMessageList"><s:property /><br></s:iterator>
+					</div>
 				</div>
 			</s:if>
+
+			<!-- もし、passwordErrorMessageListが空でなかったら -->
 			<s:if test = "!session.passwordErrorMessageList.isEmpty()">
 				<div class = "error">
 					<div class = "error-message">
+						<!-- passwordErrorMessageListの要素を画面に表示する -->
 						<s:iterator value = "#session.passwordErrorMessageList"><s:property /><br></s:iterator>
 					</div>
 				</div>
@@ -47,13 +52,16 @@ function goResetPasswordAction() {
 			<table class = "vertical-list-table">
 				<tr>
 					<th scope = "row"><s:label value = "ログインID:" /></th>
+						<!-- セッションのsavedLoginIdにtrueが格納されていたら(ログインID保存にチェックが入っていたら)、 -->
 						<s:if test = "#session.savedLoginId==true">
+							<!-- ログインIDのテキストフィールドにセッションからloginIdを取得し表示させる -->
 							<td><s:textfield name = "loginId" class = "txt" placeholder = "ログインID" value = "%{#session.loginId}" autocomplete = "off" /></td>
 						</s:if>
 						<s:else>
 							<td><s:textfield name = "loginId" class = "txt" placeholder = "ログインID" autocomplete = "off" /></td>
 						</s:else>
 				</tr>
+
 				<tr>
 					<th scope = "row"><s:label value = "パスワード:" /></th>
 							<td><s:password name = "password" class = "txt" placeholder = "パスワード" autocomplete = "off" /></td>
@@ -61,7 +69,9 @@ function goResetPasswordAction() {
 			</table>
 
 			<div class = "box">
+				<!-- セッションのsavedLoginIdにtrueが格納されていたら(ログインID保存にチェックが入っていたら)、 -->
 				<s:if test = "#session.savedLoginId==true">
+					<!-- チェックボックスにチェックが付いている状態にする -->
 					<s:checkbox name = "savedLoginId" checked = "checked" />
 				</s:if>
 				<s:else>

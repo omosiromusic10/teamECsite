@@ -46,6 +46,8 @@
 <title>商品一覧画面</title>
 </head>
 <body>
+	<s:include value="header.jsp" />
+
 <h2>作成中です･･･</h2>
 
 <s:if test="productInfoDTOList==null">
@@ -83,7 +85,7 @@
 			<!-- ～ページ番号部分～ -->
 				<div class="pager">
 				<s:iterator begin="1" end="#session.totalPageSize" status="pageNo">
-					<s:if test="#session.currentPageNumber == #pageNo.count">
+					<s:if test="#session.currentPageNo == #pageNo.count">
 						<!-- 現在のページを表す数字は、そのまま数字を表記するだけ。 -->
 						<s:property value="%{#pageNo.count}"/>
 					</s:if>
@@ -111,5 +113,7 @@
 
 		</div>
 </s:else>
+
+	<s:include value="footer.jsp" />
 </body>
 </html>

@@ -66,7 +66,7 @@ public class AddCartAction extends ActionSupport implements SessionAware{
 		}
 
 		List<CartInfoDTO> cartInfoDtoList = new ArrayList<CartInfoDTO>();
-		cartInfoDtoList = ciDAO.getCartInfo("loginId");
+		cartInfoDtoList = ciDAO.getCartInfoDtoList("loginId");
 
 		//iteratorでリストの中身を変数に代入します
 		Iterator<CartInfoDTO> iterator = cartInfoDtoList.iterator();
