@@ -11,46 +11,46 @@
 
 
 <!-- 1.ユーザー登録機能 -->
-<action name="CreateUserAction" class="com.internousdev.glanq.action.CreateUserAction" method="execute">
-           <result name="success">createUser.jsp</result>
-           <result name="error">home.jsp</result>
-</action>
-<action name="CreateUserConfirmAction" class="com.internousdev.glanq.action.CreateUserConfirmAction" method="execute">
-           <result name="success">createUserConfirm.jsp</result>
-           <result name="error">createUser.jsp</result>
-</action>
-<action name="CreateUserCompleteAction" class="com.internousdev.glanq.action.CreateUserCompleteAction" method="execute">
-           <result name="success">createUserComplete.jsp</result>
-           <result name="error">createUser.jsp</result>
-</action>
+<!-- <action name="CreateUserAction" class="com.internousdev.glanq.action.CreateUserAction" method="execute"> -->
+<!--            <result name="success">createUser.jsp</result> -->
+<!--            <result name="error">home.jsp</result> -->
+<!-- </action> -->
+<!-- <action name="CreateUserConfirmAction" class="com.internousdev.glanq.action.CreateUserConfirmAction" method="execute"> -->
+<!--            <result name="success">createUserConfirm.jsp</result> -->
+<!--            <result name="error">createUser.jsp</result> -->
+<!-- </action> -->
+<!-- <action name="CreateUserCompleteAction" class="com.internousdev.glanq.action.CreateUserCompleteAction" method="execute"> -->
+<!--            <result name="success">createUserComplete.jsp</result> -->
+<!--            <result name="error">createUser.jsp</result> -->
+<!-- </action> -->
 
 
 <!-- 2.ログイン認証機能 -->
-<action name="GoLoginAction" class="com.internousdev.glanq.action.GoLoginAction" method="execute">
-           <result name="success">login.jsp</result>
-           <result name="error">home.jsp</result>
-</action>
- <action name="LoginAction" class="com.internousdev.glanq.action.LoginAction" method="execute">
-           <result name="success">home.jsp</result>
-           <result name="settlement">settlementConfirm.jsp</result>
-           <result name="error">login.jsp</result>
-           <result name="admin">admin.jsp</result>
-</action>
+<!-- <action name="GoLoginAction" class="com.internousdev.glanq.action.GoLoginAction" method="execute"> -->
+<!--            <result name="success">login.jsp</result> -->
+<!--            <result name="error">home.jsp</result> -->
+<!-- </action> -->
+<!--  <action name="LoginAction" class="com.internousdev.glanq.action.LoginAction" method="execute"> -->
+<!--            <result name="success">home.jsp</result> -->
+<!--            <result name="settlement">settlementConfirm.jsp</result> -->
+<!--            <result name="error">login.jsp</result> -->
+<!--            <result name="admin">admin.jsp</result> -->
+<!-- </action> -->
 
 
 <!-- 3.パスワード再設定機能 -->
-<action name="ResetPasswordAction" class="com.internousdev.glanq.action.ResetPasswordAction" method="execute">
-           <result name="success">resetPassword.jsp</result>
-           <result name="error">login.jsp</result>
-</action>
-<action name="ResetPasswordConfirmAction" class="com.internousdev.glanq.action.ResetPasswordConfirmAction" method="execute">
-           <result name="success">resetPasswordConfirm.jsp</result>
-           <result name="error">resetPassword.jsp</result>
-</action>
-<action name="ResetPasswordCompleteAction" class="com.internousdev.glanq.action.ResetPasswordCompleteAction" method="execute">
-           <result name="success">resetPasswordComplete.jsp</result>
-           <result name="error">resetPassword.jsp</result>
-</action>
+<!-- <action name="ResetPasswordAction" class="com.internousdev.glanq.action.ResetPasswordAction" method="execute"> -->
+<!--            <result name="success">resetPassword.jsp</result> -->
+<!--            <result name="error">login.jsp</result> -->
+<!-- </action> -->
+<!-- <action name="ResetPasswordConfirmAction" class="com.internousdev.glanq.action.ResetPasswordConfirmAction" method="execute"> -->
+<!--            <result name="success">resetPasswordConfirm.jsp</result> -->
+<!--            <result name="error">resetPassword.jsp</result> -->
+<!-- </action> -->
+<!-- <action name="ResetPasswordCompleteAction" class="com.internousdev.glanq.action.ResetPasswordCompleteAction" method="execute"> -->
+<!--            <result name="success">resetPasswordComplete.jsp</result> -->
+<!--            <result name="error">resetPassword.jsp</result> -->
+<!-- </action> -->
 
 
 <!-- 4.1.商品一覧機能 -->
@@ -76,110 +76,110 @@
 
 
 <!-- 6.カート機能 -->
-<action name="CartAction" class="com.internousdev.glanq.action.CartAction" method="execute">
-           <result name="success">cart.jsp</result>
-           <result name="error">home.jsp</result>
-</action>
-<action name="AddCartAction" class="com.internousdev.glanq.action.AddCartAction" method="execute">
-           <result name="success">cart.jsp</result>
-           <result name="error">home.jsp</result>
-           <result name="input">cart.jsp</result>
-</action>
-<action name="DeleteCartAction" class="com.internousdev.glanq.action.DeleteCartAction" method="execute">
-           <result name="success">cart.jsp</result>
-           <result name="error">cart.jsp</result>
-</action>
+<!-- <action name="CartAction" class="com.internousdev.glanq.action.CartAction" method="execute"> -->
+<!--            <result name="success">cart.jsp</result> -->
+<!--            <result name="error">home.jsp</result> -->
+<!-- </action> -->
+<!-- <action name="AddCartAction" class="com.internousdev.glanq.action.AddCartAction" method="execute"> -->
+<!--            <result name="success">cart.jsp</result> -->
+<!--            <result name="error">home.jsp</result> -->
+<!--            <result name="input">cart.jsp</result> -->
+<!-- </action> -->
+<!-- <action name="DeleteCartAction" class="com.internousdev.glanq.action.DeleteCartAction" method="execute"> -->
+<!--            <result name="success">cart.jsp</result> -->
+<!--            <result name="error">cart.jsp</result> -->
+<!-- </action> -->
 
 
 <!-- 7.宛先情報選択機能 -->
-<action name="SettlementConfirmAction" class="com.internousdev.glanq.action.SettlementConfirmAction" method="execute">
-           <result name="success">settlementConfirm.jsp</result>
-           <result name="error">login.jsp</result>
-</action>
+<!-- <action name="SettlementConfirmAction" class="com.internousdev.glanq.action.SettlementConfirmAction" method="execute"> -->
+<!--            <result name="success">settlementConfirm.jsp</result> -->
+<!--            <result name="error">login.jsp</result> -->
+<!-- </action> -->
 
 
 <!-- 8.宛先情報登録機能 -->
-<action name="CreateDestinationAction" class="com.internousdev.glanq.action.CreateDestinationAction" method="execute">
-           <result name="success">createDestination.jsp</result>
-           <result name="error">home.jsp</result>
-</action>
-<action name="CreateDestinationConfirmAction" class="com.internousdev.glanq.action.CreateDestinationConfirmAction" method="execute">
-           <result name="success">createDestinationConfirm.jsp</result>
-           <result name="error">createDestination.jsp</result>
-</action>
-<action name="CreateDestinationCompleteAction" class="com.internousdev.glanq.action.CreateDestinationCompleteAction" method="execute">
-           <result name="success">createDestinationComplete.jsp</result>
-           <result name="error">createDestination.jsp</result>
-</action>
+<!-- <action name="CreateDestinationAction" class="com.internousdev.glanq.action.CreateDestinationAction" method="execute"> -->
+<!--            <result name="success">createDestination.jsp</result> -->
+<!--            <result name="error">home.jsp</result> -->
+<!-- </action> -->
+<!-- <action name="CreateDestinationConfirmAction" class="com.internousdev.glanq.action.CreateDestinationConfirmAction" method="execute"> -->
+<!--            <result name="success">createDestinationConfirm.jsp</result> -->
+<!--            <result name="error">createDestination.jsp</result> -->
+<!-- </action> -->
+<!-- <action name="CreateDestinationCompleteAction" class="com.internousdev.glanq.action.CreateDestinationCompleteAction" method="execute"> -->
+<!--            <result name="success">createDestinationComplete.jsp</result> -->
+<!--            <result name="error">createDestination.jsp</result> -->
+<!-- </action> -->
 
 
 <!-- 9.決済完了機能 -->
-<action name="SettlementCompleteAction" class="com.internousdev.glanq.action.SettlementCompleteAction" method="execute">
-           <result name="success">settlementComplete.jsp</result>
-           <result name="error">settlementConfirm.jsp</result>
-</action>
+<!-- <action name="SettlementCompleteAction" class="com.internousdev.glanq.action.SettlementCompleteAction" method="execute"> -->
+<!--            <result name="success">settlementComplete.jsp</result> -->
+<!--            <result name="error">settlementConfirm.jsp</result> -->
+<!-- </action> -->
 
 
 <!-- 10.マイページ機能 -->
-<action name="MyPageAction" class="com.internousdev.glanq.action.MyPageAction" method="execute">
-           <result name="success">mypage.jsp</result>
-           <result name="error">home.jsp</result>
-</action>
+<!-- <action name="MyPageAction" class="com.internousdev.glanq.action.MyPageAction" method="execute"> -->
+<!--            <result name="success">mypage.jsp</result> -->
+<!--            <result name="error">home.jsp</result> -->
+<!-- </action> -->
 
 
 <!-- 11.商品購入履歴機能 -->
-<action name="PurchaseHistoryAction" class="com.internousdev.glanq.action.PurchaseHistoryAction" method="execute">
-           <result name="success">purchaseHistory.jsp</result>
-</action>
-<action name="DeletePurchaseHistoryAction" class="com.internousdev.glanq.action.DeletePurchaseHistoryAction" method="execute">
-           <result name="success">createUser.jsp</result>
-           <result name="error">home.jsp</result>
-</action>
+<!-- <action name="PurchaseHistoryAction" class="com.internousdev.glanq.action.PurchaseHistoryAction" method="execute"> -->
+<!--            <result name="success">purchaseHistory.jsp</result> -->
+<!-- </action> -->
+<!-- <action name="DeletePurchaseHistoryAction" class="com.internousdev.glanq.action.DeletePurchaseHistoryAction" method="execute"> -->
+<!--            <result name="success">createUser.jsp</result> -->
+<!--            <result name="error">home.jsp</result> -->
+<!-- </action> -->
 
 
 <!-- 12.ログアウト機能 -->
-<action name="LogoutAction" class="com.internousdev.glanq.action.LogoutAction" method="execute">
-           <result name="success">index.jsp</result>
-           <result name="error">index.jsp</result>
-</action>
+<!-- <action name="LogoutAction" class="com.internousdev.glanq.action.LogoutAction" method="execute"> -->
+<!--            <result name="success">index.jsp</result> -->
+<!--            <result name="error">index.jsp</result> -->
+<!-- </action> -->
 
 
 <!-- 13.管理者機能 -->
-<action name="AdminRegistAction" class="com.internousdev.granq.action.AdminRegistAction" method="execute">
-           <result name="success">adminRegist.jsp</result>
-           <result name="error">admin.jsp</result>
-</action>
-<action name="AdminRegistConfirmAction" class="com.internousdev.granq.action.AdminRegistConfirmAction" method="execute">
-           <result name="success">adminRegistConfirm.jsp</result>
-            <result name="error">adminRegist.jsp</result>
-</action>
-<action name="AdminRegistCompleteAction" class="com.internousdev.glanq.action.AdminRegistConfirmAction" method="execute">
-           <result name="success">adminRegistComplete.jsp</result>
-           <result name="error">adminRegistConfirm.jsp</result>
-</action>
+<!-- <action name="AdminRegistAction" class="com.internousdev.granq.action.AdminRegistAction" method="execute"> -->
+<!--            <result name="success">adminRegist.jsp</result> -->
+<!--            <result name="error">admin.jsp</result> -->
+<!-- </action> -->
+<!-- <action name="AdminRegistConfirmAction" class="com.internousdev.granq.action.AdminRegistConfirmAction" method="execute"> -->
+<!--            <result name="success">adminRegistConfirm.jsp</result> -->
+<!--             <result name="error">adminRegist.jsp</result> -->
+<!-- </action> -->
+<!-- <action name="AdminRegistCompleteAction" class="com.internousdev.glanq.action.AdminRegistConfirmAction" method="execute"> -->
+<!--            <result name="success">adminRegistComplete.jsp</result> -->
+<!--            <result name="error">adminRegistConfirm.jsp</result> -->
+<!-- </action> -->
 
-<action name="AdminDeleteAction" class="com.internousdev.glanq.action.AdminDeleteAction" method="execute">
-           <result name="success">adminDelete.jsp</result>
-           <result name="error">admin.jsp</result>
-</action>
-<action name="AdminDeleteCompleteAction" class="com.internousdev.glanq.action.AdminDeleteCompleteAction" method="execute">
-           <result name="success">adminDeleteComplete.jsp</result>
-           <result name="error">adminDelete.jsp</result>
-</action>
+<!-- <action name="AdminDeleteAction" class="com.internousdev.glanq.action.AdminDeleteAction" method="execute"> -->
+<!--            <result name="success">adminDelete.jsp</result> -->
+<!--            <result name="error">admin.jsp</result> -->
+<!-- </action> -->
+<!-- <action name="AdminDeleteCompleteAction" class="com.internousdev.glanq.action.AdminDeleteCompleteAction" method="execute"> -->
+<!--            <result name="success">adminDeleteComplete.jsp</result> -->
+<!--            <result name="error">adminDelete.jsp</result> -->
+<!-- </action> -->
 
 <!-- 14.新機能 -->
-<action name="LocationOptionAction" class="com.internousdev.glanq.action.LocationOptionAction" method="execute">
-           <result name="success">locationOption.jsp</result>
-           <result name="error">error.html</result>
-</action>
-<action name="LocationChoiceAction" class="com.internousdev.glanq.action.LocationChoiceAction" method="execute">
-           <result name="success">locationChoice.jsp</result>
-           <result name="error">error.html</result>
-</action>
-<action name="LocationChoiceCompleteAction" class="com.internousdev.glanq.action.LocationChoiceAction" method="execute">
-           <result name="success">settlementConfirm.jsp</result>
-           <result name="error">error.html</result>
-</action>
+<!-- <action name="LocationOptionAction" class="com.internousdev.glanq.action.LocationOptionAction" method="execute"> -->
+<!--            <result name="success">locationOption.jsp</result> -->
+<!--            <result name="error">error.html</result> -->
+<!-- </action> -->
+<!-- <action name="LocationChoiceAction" class="com.internousdev.glanq.action.LocationChoiceAction" method="execute"> -->
+<!--            <result name="success">locationChoice.jsp</result> -->
+<!--            <result name="error">error.html</result> -->
+<!-- </action> -->
+<!-- <action name="LocationChoiceCompleteAction" class="com.internousdev.glanq.action.LocationChoiceAction" method="execute"> -->
+<!--            <result name="success">settlementConfirm.jsp</result> -->
+<!--            <result name="error">error.html</result> -->
+<!-- </action> -->
 
 </package>
 </struts>
