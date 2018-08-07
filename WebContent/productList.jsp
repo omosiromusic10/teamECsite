@@ -8,7 +8,12 @@
 <meta http-equiv="Content-Style-Type" content="text/css"/>
 
 <style type="text/css">
+/* 何も書かないと表示が酷いのでcssを仮設定（自作のものをコピー） */
 
+#newItemList{
+	width: 1000px;
+	text-align: center;
+}
 #newItemBox{
 	display: inline-block;
 	border: 2px solid #ddbb55;
@@ -103,11 +108,6 @@
 				</div>
 
 
-			<div id="error">
-				<s:if test='errorMessage != ""'>	<!-- 追加 -->
-					<h4><s:property value="errorMessage" escape="false" /></h4>
-				</s:if>
-			</div>
 			<br>
 			<br>
 

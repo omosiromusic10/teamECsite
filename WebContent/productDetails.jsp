@@ -6,7 +6,9 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta http-equiv="Content-Style-Type" content="text/css"/>
+
 <style type="text/css">
+/* 何も書かないと表示が酷いのでcssを仮設定（自作のものを一部コピー） */
 #item_detail {
 	width: 880px;
 	height: 420px;
@@ -87,6 +89,14 @@ table#item_info td{
 	text-align: left;
 	padding: 2px;
 }
+#related_product_list{
+	width: 850px;
+	margin: 0 auto;
+	border-radius: 5px;
+	background-color: #ffccbb;
+	text-align: center;
+}
+
 #related_product_list #product_box{
 	display: inline-block;
 	border: 2px solid #ddbb55;
@@ -119,6 +129,7 @@ table#item_info td{
 
 }
 </style>
+
 <title>商品詳細画面</title>
 </head>
 <body>
