@@ -6,6 +6,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="./css/style.css">
 <title>パスワード再設定</title>
 </head>
 <body>
@@ -44,10 +45,10 @@
 		</div>
 		</div>
 	</s:if>
-	<s:if test="!#session.reConfiramationNewPasswordErrorMessageList.isEmpty()">
+	<s:if test="!#session.reConfirmationNewPasswordErrorMessageList.isEmpty()">
 		<div class="error">
 		<div class="error-message">
-		<s:iterator value="#session.reConfiramationNewPasswordErrorMessageList"><s:property />
+		<s:iterator value="#session.reConfirmationNewPasswordErrorMessageList"><s:property />
 		<br></s:iterator>
 		</div>
 		</div>
