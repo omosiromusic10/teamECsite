@@ -1,3 +1,5 @@
+
+
 package com.internousdev.glanq.dao;
 
 import java.sql.Connection;
@@ -67,7 +69,6 @@ public class UserInfoDAO {
 	}
 
 
-
 	//ユーザーがいるかどうかの判定用メソッド
 	public boolean isExistsUserInfo(String loginId, String password){
 
@@ -89,9 +90,9 @@ public class UserInfoDAO {
 			ps.setString(2, password);
 			ResultSet rs = ps.executeQuery();
 
-			if(rs.next()){
+			while(rs.next()){
 				if(rs.getInt("count") > 0){
-				result = true;
+					result = true;
 				}
 			}
 		}catch(SQLException e ){
@@ -105,6 +106,44 @@ public class UserInfoDAO {
 		return result;
 
 	}
+
+
+	public boolean isExistsUserInfo(String loginId){
+
+		DBConnector db = new DBConnector();
+		Connection con = db.getConnection();
+		boolean result = false;
+
+		/**
+		 * ユーザーIDを元に
+		 * 該当するカラムが存在するかを
+		 * COUNT文を用いて調べる
+		 */
+
+		String sql = "SELECT COUNT(*) AS count FROM user_info WHERE user_id = ? ";
+
+		try{
+			PreparedStatement ps = con.prepareStatement(sql);
+			ps.setString(1, loginId);
+			ResultSet rs = ps.executeQuery();
+
+			while(rs.next()){
+				if(rs.getInt("count") > 0){
+					result = true;
+				}
+			}
+		}catch(SQLException e ){
+			e.printStackTrace();
+		}
+		try{
+			con.close();
+		}catch(SQLException e ){
+			e.printStackTrace();
+		}
+		return result;
+
+	}
+
 
 
 	//ユーザー情報取得メソッド(ユーザーID、パスワード)

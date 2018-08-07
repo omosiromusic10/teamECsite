@@ -138,10 +138,10 @@ public class InputChecker {
 
 	}
 
-	//④引数として渡された「登録済パスワード」と「再確認用パスワード」が等しいかどうか
-	public List<String> doPasswordCheck(String password, String reConfirmationPassward){
+	//④引数として渡された「新しいパスワード」と「再確認用パスワード」が等しいかどうか
+	public List<String> doPasswordCheck(String newPassword, String reConfirmationPassward){
 		List<String> resultList = new ArrayList<String>();
-		if(!(password.equals(reConfirmationPassward))){
+		if(!(newPassword.equals(reConfirmationPassward))){
 			resultList.add("入力されたパスワードが異なります。");
 		}
 		/**

@@ -83,6 +83,16 @@
 			</s:if>
 
 
+			<!-- ログインIDが使用されている場合はエラーメッセージ表示 -->
+			<s:if test="!#session.duplicateList.isEmpty()">
+			<div class="error">
+				<div class="error-message">
+					<s:iterator value="#session.duplicateList"><s:property /><br></s:iterator>
+				</div>
+			</div>
+			</s:if>
+
+
 
 			<!-- ここから送信フォーム -->
 			<s:form action="CreateUserConfirmAction">
@@ -127,7 +137,7 @@
 						<td><s:textfield name="password" value="%{#session.password}" label="パスワード" placeholder="パスワード" class="txt" /></td>
 					</tr>
 
-					<!-- sessionないに格納された情報を表示
+					<!-- session内に格納された情報を表示
 						すでに入力された情報があり、入力エラーなどでこのページに戻された際に
 						再度入力する手間を省く -->
 
