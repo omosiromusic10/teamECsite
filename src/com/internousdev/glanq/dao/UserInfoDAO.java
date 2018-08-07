@@ -10,6 +10,20 @@ import com.internousdev.glanq.util.DBConnector;
 
 public class UserInfoDAO {
 
+	/**
+	 * このDAOで行う処理はuser_infoに関するもの
+	 * 主にユーザー情報やパスワードに関するもの
+	 * 処理内容は
+	 * ①情報登録用メソッド(戻り値：int　更新件数)
+	 * ②情報確認用メソッド(戻り値：boolean)
+	 * ③情報取得用メソッド　引数(ログインID、パスワード)　(戻り値：UserInfoDTO)
+	 * ④情報確認用メソッド　引数(ログインID)　(戻り値：UserInfoDTO)
+	 * ⑤パスワードリセット用メソッド　(戻り値：int　更新件数)
+	 * ⑥ログイン用メソッド　(戻り値：int　更新件数)
+	 * ⑦ログアウト用メソッド　(戻り値int　更新件数)
+	 * ⑧パスワード隠匿用メソッド　(戻り値：String　隠匿されたパスワード)
+	 */
+
 	//ユーザー登録用メソッド
 	public int createUser(String loginId, String password, String familyName, String firstName, String familyNameKana, String firstNameKana, String sex, String email){
 
@@ -47,13 +61,13 @@ public class UserInfoDAO {
 
 
 	//ユーザーがいるかどうかの判定用メソッド
-	public boolean isExistUser(String loginId, String password){
+	public boolean isExistsUserInfo(String loginId, String password){
 
 		DBConnector db = new DBConnector();
 		Connection con = db.getConnection();
 		boolean result = false;
 
-		String sql = "SELECT COUNT(*) AS count FROM user_info WHERE user_id = ? ANF password = ? ";
+		String sql = "SELECT COUNT(*) AS count FROM user_info WHERE user_id = ? AND password = ? ";
 
 		try{
 			PreparedStatement ps = con.prepareStatement(sql);
@@ -93,7 +107,7 @@ public class UserInfoDAO {
 
 			while(rs.next()){
 				userInfoDTO.setId(rs.getInt("id"));
-				userInfoDTO.setLoginId(rs.getString("user_id"));
+				userInfoDTO.setUserId(rs.getString("user_id"));
 				userInfoDTO.setPassword(rs.getString("password"));
 				userInfoDTO.setFamilyName(rs.getString("family_name"));
 				userInfoDTO.setFirstName(rs.getString("first_name"));
@@ -102,7 +116,7 @@ public class UserInfoDAO {
 				userInfoDTO.setSex(rs.getInt("sex"));
 				userInfoDTO.setEmail(rs.getString("email"));
 				userInfoDTO.setLogined(rs.getInt("logined"));
-				userInfoDTO.setStatus(rs.getInt("status"));
+				userInfoDTO.setStatus(rs.getString("status"));
 				userInfoDTO.setRegistDate(rs.getDate("regist_date"));
 				userInfoDTO.setUpdateDate(rs.getDate("update_date"));
 			}
@@ -133,7 +147,7 @@ public class UserInfoDAO {
 
 			while(rs.next()){
 				userInfoDTO.setId(rs.getInt("id"));
-				userInfoDTO.setLoginId(rs.getString("user_id"));
+				userInfoDTO.setUserId(rs.getString("user_id"));
 				userInfoDTO.setPassword(rs.getString("password"));
 				userInfoDTO.setFamilyName(rs.getString("family_name"));
 				userInfoDTO.setFirstName(rs.getString("first_name"));
@@ -142,7 +156,7 @@ public class UserInfoDAO {
 				userInfoDTO.setSex(rs.getInt("sex"));
 				userInfoDTO.setEmail(rs.getString("email"));
 				userInfoDTO.setLogined(rs.getInt("logined"));
-				userInfoDTO.setStatus(rs.getInt("status"));
+				userInfoDTO.setStatus(rs.getString("status"));
 				userInfoDTO.setRegistDate(rs.getDate("regist_date"));
 				userInfoDTO.setUpdateDate(rs.getDate("update_date"));
 			}
@@ -244,6 +258,10 @@ public class UserInfoDAO {
 		}
 
 		StringBuilder stringBuider = new StringBuilder("****************");
+		/**
+		 * StringBuilderは文字列置換用のクラス
+		 * ココに16文字分の
+		 */
 
 		String concealPassword = (stringBuider.replace(beginIndex, endIndex, password.substring(beginIndex, endIndex)).toString());
 		return concealPassword;

@@ -9,6 +9,17 @@ import org.apache.struts2.interceptor.SessionAware;
 import com.opensymphony.xwork2.ActionSupport;
 
 public class CreateUserAction extends ActionSupport implements SessionAware{
+	/**
+	 * 新規ユーザー登録ページへと移動させるメソッド
+	 * ページ移動の後、入力情報によってはエラーメッセージが発生する場合があるが
+	 * このページではメッセージを除去しておく必要がある
+	 * まずはエラーメッセージを除去
+	 * 入力された情報をセッションに格納する
+	 * また、JSPファイル上で表示する性別選択のため
+	 * こちらでリストを用意する必要がある
+	 *
+	 * 最終的にSUCCESSで返す
+	 */
 
 	private String loginId;
 	private String password;
@@ -19,7 +30,7 @@ public class CreateUserAction extends ActionSupport implements SessionAware{
 	private String sex;
 	private static final String MALE = "男性";
 	private static final String FEMALE = "女性";
-	private String defaultSex = MALE;
+	private String defaultSexValue = MALE;
 	private String email;
 	private String categoryId;
 
@@ -29,6 +40,12 @@ public class CreateUserAction extends ActionSupport implements SessionAware{
 	public String execute(){
 		String result = ERROR;
 
+		/**
+		 * セッション内にputされたメッセージを削除する
+		 * 一度エラーメッセージを表示した後、他のページから移動してきた際に
+		 * メッセージが残ったままになることを防ぐため
+		 */
+
 		session.remove("familyNameErrorMessageList");
 		session.remove("firstNameErrorMessageList");
 		session.remove("familyNameKanaErrorMessageList");
@@ -36,6 +53,12 @@ public class CreateUserAction extends ActionSupport implements SessionAware{
 		session.remove("emailErrorMessageList");
 		session.remove("loginIdErrorMessageList");
 		session.remove("passwordErrorMessageList");
+
+		/**
+		 *  セッションにJSPから渡された値を格納していく
+		 *  こうしておくことで何らかの理由でもう一度入力ページに戻された場合も
+		 *  入力した情報は保持されている状態になる
+		 */
 
 		session.put("familyName", familyName);
 		session.put("firstName", firstName);
@@ -47,15 +70,27 @@ public class CreateUserAction extends ActionSupport implements SessionAware{
 		}else{
 			session.put("sex", String.valueOf(session.get("sex")));
 		}
+		/**
+		 * 性別に関しては選択されていない場合は男性を格納する
+		 * そうでない場合は選択されたものをString変換した後にセッションに格納
+		 */
+
 		sexList.add(MALE);
 		sexList.add(FEMALE);
 		session.put("sexList", sexList);
+		/**
+		 * このsexListはJSPファイルで表示する選択肢
+		 * 男性・女性を選ぶものであるが、このクラスで指定した
+		 * MALE=男性、FEMALE＝女性がJSPでの選択肢になる
+		 */
+
 		session.put("loginId", loginId);
 		session.put("password", password);
 		session.put("email", email);
 
 		result = SUCCESS;
 		return result;
+		//SUCCESSを返す
 	}
 
 	public String getLoginId() {
@@ -114,12 +149,12 @@ public class CreateUserAction extends ActionSupport implements SessionAware{
 		this.sex = sex;
 	}
 
-	public String getDefaultSex() {
-		return defaultSex;
+	public String getDefaultSexValue() {
+		return defaultSexValue;
 	}
 
-	public void setDefaultSex(String defaultSex) {
-		this.defaultSex = defaultSex;
+	public void setDefaultSexValue(String defaultSexValue) {
+		this.defaultSexValue = defaultSexValue;
 	}
 
 	public String getEmail() {

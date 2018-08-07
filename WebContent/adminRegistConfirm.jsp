@@ -7,20 +7,17 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" href="./css/style.css">
-<title>商品商品内容確認</title>
+<title>登録内容確認</title>
 </head>
 <body>
-<!--  <jsp:include page="header.jsp"/> -->
+<jsp:include page="header.jsp"/>
 <div id="contents">
-<h1>商品登録内容確認画面</h1>
+<h1>登録内容確認画面</h1>
 <s:form action="AdminRegistCompleteAction">
-
-
-<!--  テーブルクラスは仮で記述　ここでは確認なので画像や入力した情報を表示する -->
 <table class="vertical-list-table">
 <tr>
     <th scope="row"><s:label value="商品カテゴリ"/></th>
-    <td><s:property value="categoryId"/></td>
+    <td><s:property value="#session.categoryName"/></td>
 </tr>
 <tr>
     <th scope="row"><s:label value="商品名"/></th>
@@ -35,6 +32,10 @@
     <td><s:property value="productDescription"/></td>
 </tr>
 <tr>
+    <th scope="row"><s:label value="価格"/></th>
+    <td><s:property value="price"/><span>円</span></td>
+</tr>
+<tr>
     <th scope="row"><s:label value="発売会社名"/></th>
     <td><s:property value="releaseCompany"/></td>
 </tr>
@@ -44,11 +45,12 @@
 </tr>
 <tr>
     <th scope="row"><s:label value="画像ファイル名"/></th>
-    <td><s:property value="imageFileName"/></td>
+    <td><s:property value="userImageFileName"/></td>
 </tr>
 <tr>
     <th scope="row"><s:label value="画像ファイル"/></th>
-    <td><img src="userimages/<s:property value="userImageFileName"/>" width="500" height="300" /></td>
+    <!--  imagesの場所がフォルダの名前で　userImageFileNameで～～～.jpgを入れている。 -->
+    <td><img src="images/<s:property value="userImageFileName"/>" width="500" height="300" /></td>
 </tr>
 
 </table>
@@ -68,8 +70,9 @@
 
 </s:form>
 </div>
-
-<!--  <s:include value="footer.jsp"/> -->
+<div id="footer">
+    <s:include value="footer.jsp"/>
+</div>
 
 </body>
 </html>

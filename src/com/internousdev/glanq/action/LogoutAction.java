@@ -32,11 +32,16 @@ public class LogoutAction extends ActionSupport implements SessionAware{
 		//代入したvalueOfをBoolean型に変換し、savedLoginIdに代入する
 */		boolean savedLoginId = Boolean.valueOf(String.valueOf(session.get("savedLoginId")));
 
+
+
 		UserInfoDTO userInfoDto = new UserInfoDTO();
 		userInfoDto=userInfoDao.getUserInfo(loginId);
 
-		//countにloginIdを代入
-		int count = userInfoDao.logout(loginId,userInfoDto.getPassword());
+
+		String loginPassword = userInfoDto.getPassword();
+
+		//countにloginIdとloginPasswordを代入
+		int count = userInfoDao.logout(loginId,loginPassword);
 
 		//もしcountの値が0以上の場合、
 		if(count > 0) {

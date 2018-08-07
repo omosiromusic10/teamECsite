@@ -28,13 +28,13 @@ public class SettlementCompleteAction extends ActionSupport implements SessionAw
 
 		@SuppressWarnings("unchecked")//警告の抑制（警告を無視させる）
 		ArrayList<DestinationInfoDTO> destinationInfoDtoList = (ArrayList<DestinationInfoDTO>)session.get("destinationInfoDtoList");
-		for(int i=0;i<purchaseHistoryInfoDtoList.size();i++) {
+		for(int i=0;/*初期値*/ i<purchaseHistoryInfoDtoList.size();/*条件式*/ i++/*増減式*/) {
 			purchaseHistoryInfoDtoList.get(i).setDestinationId(destinationInfoDtoList.get(0).getId());
 		}
 
 		PurchaseHistoryInfoDAO purchaseHistoryInfoDAO = new PurchaseHistoryInfoDAO();//購入履歴にデータを渡す
 		int count = 0;
-		for(int i=0; i<purchaseHistoryInfoDtoList.size(); i++) {
+		for(int i=0;/*初期値*/ i<purchaseHistoryInfoDtoList.size();/*条件式*/ i++/*増減式*/) {
 			count += purchaseHistoryInfoDAO.regist(
 					String.valueOf(session.get("loginId")),
 					purchaseHistoryInfoDtoList.get(i).getProductId(),

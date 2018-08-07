@@ -9,6 +9,15 @@ import com.opensymphony.xwork2.ActionSupport;
 
 public class CreateUserCompleteAction extends ActionSupport implements SessionAware{
 
+	/**
+	 * これまでずっと渡されてきた情報を
+	 * ついに登録する
+	 *
+	 * DAOクラスの登録用メソッドを呼び出し、情報を渡す
+	 *
+	 * 登録がうまくいけばSUCCESSを返す
+	 */
+
 	private String loginId;
 	private String password;
 	private String familyName;
@@ -26,10 +35,12 @@ public class CreateUserCompleteAction extends ActionSupport implements SessionAw
 		String result = ERROR;
 		UserInfoDAO userInfoDAO = new UserInfoDAO();
 		int count = userInfoDAO.createUser(loginId, password, familyName, firstName, familyNameKana, firstNameKana, sex, email);
+		//ユーザー登録用メソッドを呼び出し、引数に情報を渡す
 
 		if(count > 0){
 			result = SUCCESS;
 		}
+		//登録件数が1件でもあればSUCCESS
 
 		return result;
 	}

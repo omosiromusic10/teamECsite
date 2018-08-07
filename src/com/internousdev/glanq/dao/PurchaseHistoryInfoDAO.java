@@ -8,14 +8,19 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.internousdev.glanq.dto.PurchaseHistoryInfoDTO;
+import com.internousdev.glanq.util.DBConnector;
 
 public class PurchaseHistoryInfoDAO {
 
+	// 履歴の中（purchaseHistoryInfoDTOList)の確認
 	public List<PurchaseHistoryInfoDTO> getPurchaseHistoryList(String loginId){
 		DBConnector dbConnector = new DBConnector();
 		Connection connection = dbConnector.getConnection();
 		List<PurchaseHistoryInfoDTO> purchaseHistoryInfoDTOList = new ArrayList<PurchaseHistoryInfoDTO>();
+	//
 
+		// sqlからデータの取り出し(phi = purchase_history_info, pi = product_info, di = destination_info)
+		/* ○○ as ▲▲ = ○○テーブルの名前を▲▲に変更 */
 		String sql = "select"
 			+ "phi.id as id,"							 	 	/* ID */
 			+ "phi.user_id as user_id,"						 	/* ユーザーID */
@@ -40,14 +45,30 @@ public class PurchaseHistoryInfoDAO {
 			+ "di.email as email,"								/* メールアドレス */
 			+ "di.tel_number as tel_number,"					/* 電話番号 */
 			+ "di.user_address as user_address"					/* 住所 */
-			+ "FROM purchase_history_info as phi"
-			+ "LEFT JOIN product_info as pi"
-			+ "ON phi.product_id = pi.product_id"
-			+ "LEFT JOIN destination_info as di"
-			+ "ON phi.destination_id = di.id"
-			+ "WHERE phi.user_id = ?"
-			+ "ORDER BY regist_date DESC";
 
+			/* FROM ○○ = 場所指定。(purchase_history_infoのデータを持ってくる) */
+			+ "FROM purchase_history_info as phi"
+
+			/* LEFT JOIN ○○ = 左側に○○のカラム追加(product_infoのカラムをpurchase_history_infoの左に追加) */
+			+ "LEFT JOIN product_info as pi"
+
+			/* ON ○○ = ▲▲　= ○○と▲▲が同じデータだったら表示する(phiのproduct_idとpiのproduct_idが同じだったら表示する */
+			+ "ON phi.product_id = pi.product_id"
+
+			/* (destination_infoのカラムをproduct_infoの左側に追加) */
+			+ "LEFT JOIN destination_info as di"
+
+			/* (phiのdestination_idとdiのidが同じだったら表示する) */
+			+ "ON phi.destination_id = di.id"
+
+			/* WHERE ○○ = 条件指定。(phiのuser_idのデータがあるものを抽出) */
+			+ "WHERE phi.user_id = ?"
+
+			/* ORDER BY ○○ DESC = 番号順表示 (destination_infoのregist_dateが若い順に表示する) */
+			+ "ORDER BY regist_date DESC";
+		//
+
+	//データベース接続
 	try{
 		PreparedStatement preparedStatement = connection.prepareStatement(sql);
 		preparedStatement.setString(1, loginId);
@@ -55,6 +76,7 @@ public class PurchaseHistoryInfoDAO {
 		while (resultSet.next()){
 
 			PurchaseHistoryInfoDTO purchaseHistoryInfoDto = new PurchaseHistoryInfoDTO();
+			/* ここから */
 			purchaseHistoryInfoDto.setId(resultSet.getInt("id"));
 			purchaseHistoryInfoDto.setUserId(resultSet.getString("user_id"));
 			purchaseHistoryInfoDto.setProductId(resultSet.getInt("product_id"));
@@ -77,13 +99,15 @@ public class PurchaseHistoryInfoDAO {
 			purchaseHistoryInfoDto.setEmail(resultSet.getString("email"));
 			purchaseHistoryInfoDto.setTelNumber(resultSet.getString("tel_number"));
 			purchaseHistoryInfoDto.setUserAddress(resultSet.getString("user_address"));
+			/* ここまでのデータをpurchaseHistoryInfoDtoに追加？する */
+
+			/* ○○List.add(▲▲) = ○○Listの中に▲▲を追加する(purchaseHistoryInfoDTOListにpurchaseHistoryInfoDtoを追加) */
 			purchaseHistoryInfoDTOList.add(purchaseHistoryInfoDto);
 
 		}
 	}catch (SQLException e){
 		e.printStackTrace();
 	}
-
 	try{
 		connection.close();
 	}catch (SQLException e){
@@ -91,11 +115,14 @@ public class PurchaseHistoryInfoDAO {
 	}
 	return purchaseHistoryInfoDTOList;
 	}
+	//
 
-
+	//データの追加
 	public int regist(String loginId, int productId, int productCount, int destinationId, int price){
 	DBConnector dbConnector = new DBConnector();
 	Connection connection = dbConnector.getConnection();
+
+	/* purchase_history_infoに()を追加 */
 	String sql = "insert into purchase_history_info(user_id, product_id, product_count, price, destination_id, regist_date, update_date) values(?,?,?,?,?,now(),'0000-01-01')";
 	int count = 0;
 
@@ -106,6 +133,8 @@ public class PurchaseHistoryInfoDAO {
 		preparedStatement.setInt(3, productCount);
 		preparedStatement.setInt(4, price);
 		preparedStatement.setInt(5, destinationId);
+
+		/* count = 更新個数 */
 		count = preparedStatement.executeUpdate();
 	}catch (SQLException e){
 		e.printStackTrace();
@@ -119,15 +148,21 @@ public class PurchaseHistoryInfoDAO {
 	return count;
 
 	}
+
+	//データ削除
 	public int deleteAll(String loginId){
 		DBConnector dbConnector = new DBConnector();
 		Connection connection = dbConnector.getConnection();
+
+		/* purchase_history_infoのuser_idにデータがあれば削除 */
 		String sql = "delete from purchase_history_info where user_id = ?";
 		int count = 0;
 
 		try{
 			PreparedStatement preparedStatement = connection.prepareStatement(sql);
 			preparedStatement.setString(1, loginId);
+
+			/* count = 更新個数 */
 			count = preparedStatement.executeUpdate();
 		}catch (SQLException e){
 			e.printStackTrace();
