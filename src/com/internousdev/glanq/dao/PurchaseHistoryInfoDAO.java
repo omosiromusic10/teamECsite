@@ -13,7 +13,7 @@ import com.internousdev.glanq.util.DBConnector;
 public class PurchaseHistoryInfoDAO {
 
 	// 履歴の中（purchaseHistoryInfoDTOList)の確認
-	public List<PurchaseHistoryInfoDTO> getPurchaseHistoryList(String loginId){
+	public List<PurchaseHistoryInfoDTO> getPurchaseHistoryList(String loginId) {
 		DBConnector dbConnector = new DBConnector();
 		Connection connection = dbConnector.getConnection();
 		List<PurchaseHistoryInfoDTO> purchaseHistoryInfoDTOList = new ArrayList<PurchaseHistoryInfoDTO>();
@@ -22,58 +22,58 @@ public class PurchaseHistoryInfoDAO {
 		// sqlからデータの取り出し(phi = purchase_history_info, pi = product_info, di = destination_info)
 		/* ○○ as ▲▲ = ○○テーブルの名前を▲▲に変更 */
 		String sql = "select"
-			+ "phi.id as id,"							 	 	/* ID */
-			+ "phi.user_id as user_id,"						 	/* ユーザーID */
-			+ "phi.product_count as product_count,"				/* 個数 */
-			+ "pi.product_id as product_id," 					/* 商品ID */
-			+ "pi.product_name as product_name,"				/* 商品名 */
-			+ "pi.product_name_kana as product_name_kana," 		/* 商品名かな */
-			+ "pi.product_description as product_description,"  /* 商品詳細 */
-			+ "pi.category_id as category_id," 					/* カテゴリID */
-			+ "pi.price,"										/* 価格 */
-			+ "pi.image_file_name as image_file_name,"			/* 画像ファイル名 */
-			+ "pi.image_file_path as image_file_path,"			/* 画像ファイルパス */
-			+ "pi.release_company,"								/* 販売会社名 */
-			+ "pi.release_date,"								/* 販売年月日 */
-			+ "phi.price as price,"								/* 値段 */
-			+ "phi.regist_date as regist_date,"					/* 登録日 */
-			+ "phi.update_date as update_date,"					/* 更新日 */
-			+ "di.family_name as family_name,"					/* 姓 */
-			+ "di.first_name as first_name,"					/* 名 */
-			+ "di.family_name_kana as family_name_kana,"		/* 姓かな */
-			+ "di.first_name_kana as first_name_kana,"			/* 名かな */
-			+ "di.email as email,"								/* メールアドレス */
-			+ "di.tel_number as tel_number,"					/* 電話番号 */
-			+ "di.user_address as user_address"					/* 住所 */
+			+ " phi.id as id,"							 	 	/* ID */
+			+ " phi.user_id as user_id,"						/* ユーザーID */
+			+ " phi.product_count as product_count,"			/* 個数 */
+			+ " pi.product_id as product_id," 					/* 商品ID */
+			+ " pi.product_name as product_name,"				/* 商品名 */
+			+ " pi.product_name_kana as product_name_kana," 	/* 商品名かな */
+			+ " pi.product_description as product_description," /* 商品詳細 */
+			+ " pi.category_id as category_id," 				/* カテゴリID */
+			+ " pi.price,"										/* 価格 */
+			+ " pi.image_file_name as image_file_name,"			/* 画像ファイル名 */
+			+ " pi.image_file_path as image_file_path,"			/* 画像ファイルパス */
+			+ " pi.release_company,"							/* 販売会社名 */
+			+ " pi.release_date,"								/* 販売年月日 */
+			+ " phi.price as price,"							/* 値段 */
+			+ " phi.regist_date as regist_date,"				/* 登録日 */
+			+ " phi.update_date as update_date,"				/* 更新日 */
+			+ " di.family_name as family_name,"					/* 姓 */
+			+ " di.first_name as first_name,"					/* 名 */
+			+ " di.family_name_kana as family_name_kana,"		/* 姓かな */
+			+ " di.first_name_kana as first_name_kana,"			/* 名かな */
+			+ " di.email as email,"								/* メールアドレス */
+			+ " di.tel_number as tel_number,"					/* 電話番号 */
+			+ " di.user_address as user_address"				/* 住所 */
 
 			/* FROM ○○ = 場所指定。(purchase_history_infoのデータを持ってくる) */
-			+ "FROM purchase_history_info as phi"
+			+ " FROM purchase_history_info as phi"
 
 			/* LEFT JOIN ○○ = 左側に○○のカラム追加(product_infoのカラムをpurchase_history_infoの左に追加) */
-			+ "LEFT JOIN product_info as pi"
+			+ " LEFT JOIN product_info as pi"
 
 			/* ON ○○ = ▲▲　= ○○と▲▲が同じデータだったら表示する(phiのproduct_idとpiのproduct_idが同じだったら表示する */
-			+ "ON phi.product_id = pi.product_id"
+			+ " ON phi.product_id = pi.product_id"
 
 			/* (destination_infoのカラムをproduct_infoの左側に追加) */
-			+ "LEFT JOIN destination_info as di"
+			+ " LEFT JOIN destination_info as di"
 
 			/* (phiのdestination_idとdiのidが同じだったら表示する) */
-			+ "ON phi.destination_id = di.id"
+			+ " ON phi.destination_id = di.id"
 
 			/* WHERE ○○ = 条件指定。(phiのuser_idのデータがあるものを抽出) */
-			+ "WHERE phi.user_id = ?"
+			+ " WHERE phi.user_id = ?"
 
 			/* ORDER BY ○○ DESC = 番号順表示 (destination_infoのregist_dateが若い順に表示する) */
-			+ "ORDER BY regist_date DESC";
-		//
+			+ " ORDER BY regist_date DESC";
+	//
 
 	//データベース接続
-	try{
+	try {
 		PreparedStatement preparedStatement = connection.prepareStatement(sql);
 		preparedStatement.setString(1, loginId);
 		ResultSet resultSet = preparedStatement.executeQuery();
-		while (resultSet.next()){
+		while (resultSet.next()) {
 
 			PurchaseHistoryInfoDTO purchaseHistoryInfoDto = new PurchaseHistoryInfoDTO();
 			/* ここから */
@@ -100,17 +100,15 @@ public class PurchaseHistoryInfoDAO {
 			purchaseHistoryInfoDto.setTelNumber(resultSet.getString("tel_number"));
 			purchaseHistoryInfoDto.setUserAddress(resultSet.getString("user_address"));
 			/* ここまでのデータをpurchaseHistoryInfoDtoに追加？する */
-
-			/* ○○List.add(▲▲) = ○○Listの中に▲▲を追加する(purchaseHistoryInfoDTOListにpurchaseHistoryInfoDtoを追加) */
 			purchaseHistoryInfoDTOList.add(purchaseHistoryInfoDto);
 
 		}
-	}catch (SQLException e){
+	} catch (SQLException e) {
 		e.printStackTrace();
 	}
-	try{
+	try {
 		connection.close();
-	}catch (SQLException e){
+	} catch (SQLException e) {
 		e.printStackTrace();
 	}
 	return purchaseHistoryInfoDTOList;
@@ -118,15 +116,15 @@ public class PurchaseHistoryInfoDAO {
 	//
 
 	//データの追加
-	public int regist(String loginId, int productId, int productCount, int destinationId, int price){
+	public int regist(String loginId, int productId, int productCount, int destinationId, int price) {
 	DBConnector dbConnector = new DBConnector();
 	Connection connection = dbConnector.getConnection();
 
 	/* purchase_history_infoに()を追加 */
-	String sql = "insert into purchase_history_info(user_id, product_id, product_count, price, destination_id, regist_date, update_date) values(?,?,?,?,?,now(),'0000-01-01')";
+	String sql = "insert into purchase_history_info(user_id, product_id, product_count, price, destination_id, regist_date, update_date) values (?, ?, ?, ?, ?, now(), '0000-01-01')";
 	int count = 0;
 
-	try{
+	try {
 		PreparedStatement preparedStatement = connection.prepareStatement(sql);
 		preparedStatement.setString(1, loginId);
 		preparedStatement.setInt(2, productId);
@@ -134,43 +132,44 @@ public class PurchaseHistoryInfoDAO {
 		preparedStatement.setInt(4, price);
 		preparedStatement.setInt(5, destinationId);
 
-		/* count = 更新個数 */
+		/* count = 更新回数 */
 		count = preparedStatement.executeUpdate();
-	}catch (SQLException e){
+	} catch (SQLException e) {
 		e.printStackTrace();
 	}
 
-	try{
+	try {
 		connection.close();
-	}catch (SQLException e){
+	} catch (SQLException e) {
 		e.printStackTrace();
 	}
 	return count;
 
 	}
+	//
 
 	//データ削除
-	public int deleteAll(String loginId){
+	public int deleteAll(String loginId) {
 		DBConnector dbConnector = new DBConnector();
 		Connection connection = dbConnector.getConnection();
 
 		/* purchase_history_infoのuser_idにデータがあれば削除 */
-		String sql = "delete from purchase_history_info where user_id = ?";
+		String sql = "delete from purchase_history_info where user_id=?";
 		int count = 0;
 
-		try{
+		try {
 			PreparedStatement preparedStatement = connection.prepareStatement(sql);
 			preparedStatement.setString(1, loginId);
 
-			/* count = 更新個数 */
+			/* count = 更新回数 */
 			count = preparedStatement.executeUpdate();
-		}catch (SQLException e){
+		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 
-		try{
+		try {
 			connection.close();
-		}catch (SQLException e){
+		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 		return count;
