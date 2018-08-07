@@ -169,5 +169,4 @@ public class ResetPasswordConfirmAction extends ActionSupport implements Session
 	}
 
 
-
 }
