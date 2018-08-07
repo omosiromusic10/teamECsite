@@ -15,7 +15,7 @@ import com.opensymphony.xwork2.ActionSupport;
 
 public class AdminEditDetailsConfirmAction extends ActionSupport implements SessionAware{
 
-//変数の宣言　　　どこからもってきた変数なのか？
+//変数の宣言
 	private String productName;
 	private String productNameKana;
 	private String productDescription;
@@ -45,6 +45,7 @@ public class AdminEditDetailsConfirmAction extends ActionSupport implements Sess
 	private List<String>categoryIdList = new ArrayList<String>();
 
 	//なにしてる？
+	// TODO コレクションフレームワークの教材を読む
 	private Map<String,Object>session;
 
 
@@ -54,12 +55,12 @@ public class AdminEditDetailsConfirmAction extends ActionSupport implements Sess
 		//InputChekerをインスタンス化して正規表現かを検証
 		InputChecker inputChecker = new InputChecker();
 
-		//絶対パスをコンソールに表示　なんのために？
+		//絶対パスをコンソールに表示　なんのために？→値が入っているかを確認
 		System.out.println(userImage.getAbsolutePath());
 		System.out.println(userImage.getName());
 		System.out.println(userImage.getPath());
 
-		//編集項目情報をセッションに入れる　どのセッションに入っていた？
+		//前の画面からとってきた値をセッターゲッターに入れてセッションの中に入れる
 		session.put("productName",productName);
 		session.put("productNameKana",productNameKana);
 		session.put("productDescription", productDescription);
@@ -74,11 +75,11 @@ public class AdminEditDetailsConfirmAction extends ActionSupport implements Sess
         session.put("productId", productId);
         session.put("userImage", userImage);
 
-        //ServletActionContext.getServletContextはどこにある？あ
+        //ServletActionContext.getServletContextはどこにある？
 		String filePath = ServletActionContext.getServletContext().getRealPath("/").concat("userimages");
 		System.out.println("Image Location:"+filePath);
 
-	//リストの中を正規表現されている
+	//リストの中を正規表現判定
 	productNameErrorMessageList = inputChecker.docheck("商品名",productName,1,32,true,true,true,true,true,true,true);
 	productNameKanaErrorMessageList = inputChecker.docheck("商品ふりがな",productNameKana,1,32,false,false,true,false,false,false,false);
 	productDescriptionErrorMessageList = inputChecker.docheck("商品名詳細",productDescription,1,320,true,true,true,true,true,true,true);
@@ -87,14 +88,17 @@ public class AdminEditDetailsConfirmAction extends ActionSupport implements Sess
 	releaseCompanyErrorMessageList = inputChecker.docheck("発売会社名", releaseCompany, 1, 16, true, true, true, true, false, true, false);
 	releaseDateErrorMessageList = inputChecker.docheck("発売年月日", releaseDate, 1, 16, false, true, false, true, true, false, false);
 
+	//もし全てのリストのサイズが0の場合成功 　　　　=エラーなし→成功
 	if(productNameErrorMessageList.size()==0
 			&& productNameKanaErrorMessageList.size()==0
 			&& productDescriptionErrorMessageList.size()==0
 			&& priceErrorMessageList.size()==0
-                        && imageFileNameErrorMessageList.size()==0
+            && imageFileNameErrorMessageList.size()==0
 			&& releaseCompanyErrorMessageList.size()==0
 			&& releaseDateErrorMessageList.size()==0 ){
 		result = SUCCESS;
+
+		//そうでなければエラーのListをセッションに入れる
 	}else{
 		session.put("productNameErrorMessageList", productNameErrorMessageList);
 		session.put("productNameKanaErrorMessageList",productNameKanaErrorMessageList);
@@ -109,6 +113,7 @@ public class AdminEditDetailsConfirmAction extends ActionSupport implements Sess
 	return result;
 
 	}
+
 
 	public int getProductId() {
 		return productId;
