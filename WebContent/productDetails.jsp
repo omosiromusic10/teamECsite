@@ -222,7 +222,8 @@ table#item_info td{
 			</s:iterator>
 
 		</div>
-
+<br>
+<a href='<s:url action="ProductListAction"/>'> 商品一覧へ</a>
 	<s:include value="footer.jsp" />
 </body>
 </html>

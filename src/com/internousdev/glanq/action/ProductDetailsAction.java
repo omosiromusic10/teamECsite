@@ -23,6 +23,8 @@ public class ProductDetailsAction extends ActionSupport implements SessionAware 
 	private List<ProductInfoDTO> productInfoDtoList = new ArrayList<ProductInfoDTO>();
 	private String categoryId;
 
+	private String keywords;
+
 
 
 	// 作成中です・・・
@@ -65,10 +67,14 @@ public class ProductDetailsAction extends ActionSupport implements SessionAware 
 		List<ProductInfoDTO> relatedProductList = pDAO2.getProductInfoListByCategoryId(iCategoryId, productId, 0, 3);
 		session.put("relatedProductList", relatedProductList);
 
-		if(!(relatedProductList.isEmpty())){
+//		if(!(relatedProductList.isEmpty())){
 			result = SUCCESS;
-		}
+//		}
 		return result;
+	}
+
+	public Map<String, Object> getSession() {
+		return session;
 	}
 
 	@Override
@@ -112,6 +118,14 @@ public class ProductDetailsAction extends ActionSupport implements SessionAware 
 
 	public void setCategoryId(String categoryId) {
 		this.categoryId = categoryId;
+	}
+
+	public String getKeywords() {
+		return keywords;
+	}
+
+	public void setKeywords(String keywords) {
+		this.keywords = keywords;
 	}
 
 
