@@ -19,7 +19,7 @@ public class MCategoryDAO {
 	public List<MCategoryDTO> getMCategoryList(){
 	DBConnector dbConnector=new DBConnector();
 	Connection connection=dbConnector.getConnection();
-	List<MCategoryDTO> mCategoryDTOList=new ArrayList<MCategoryDTO>();
+	List<MCategoryDTO> mCategoryDtoList=new ArrayList<MCategoryDTO>();
 
 	//sql文にてテーブル"m_category"内の全てのデータの取得
 	String sql="SELECT * from m_category";
@@ -29,24 +29,24 @@ public class MCategoryDAO {
 
 	//各変数にデータを追加
 	while(resultSet.next()){
-	MCategoryDTO mCategoryDTO=new MCategoryDTO();
-	mCategoryDTO.setId(resultSet.getInt("Id"));
-	mCategoryDTO.setCategoryId(resultSet.getInt("categoryId"));
-	mCategoryDTO.setCategoryName(resultSet.getString("categoryName"));
-	mCategoryDTO.setCategoryDescription(resultSet.getString("categoryDescription"));
-	mCategoryDTO.setInsertDate(resultSet.getString("insertDate"));
-	mCategoryDTO.setUpdateDate(resultSet.getString("updateDate"));
+	MCategoryDTO mCategoryDto=new MCategoryDTO();
+	mCategoryDto.setId(resultSet.getInt("Id"));
+	mCategoryDto.setCategoryId(resultSet.getInt("categoryId"));
+	mCategoryDto.setCategoryName(resultSet.getString("categoryName"));
+	mCategoryDto.setCategoryDescription(resultSet.getString("categoryDescription"));
+	mCategoryDto.setInsertDate(resultSet.getString("insertDate"));
+	mCategoryDto.setUpdateDate(resultSet.getString("updateDate"));
 
 	//追加したデータをListに格納
-	mCategoryDTOList.add(mCategoryDTO);
+	mCategoryDtoList.add(mCategoryDto);
 	}
 
 //"iterator"メソッドを用いてリスト内のデータを順次参照し
 //次のデータがなくなったとき空データ"null"を挿入
 //"データが空である"というデータを入れることで無用なエラーの防止
-	Iterator<MCategoryDTO> iterator = mCategoryDTOList.iterator();
+	Iterator<MCategoryDTO> iterator = mCategoryDtoList.iterator();
 	if(!(iterator.hasNext())) {
-	mCategoryDTOList = null;
+	mCategoryDtoList = null;
 	}
 	}catch(SQLException e){
 	e.printStackTrace();
@@ -55,7 +55,7 @@ public class MCategoryDAO {
 	}catch(SQLException e){
 	e.printStackTrace();
 	}
-	return mCategoryDTOList;
+	return mCategoryDtoList;
 	}
 	}
 

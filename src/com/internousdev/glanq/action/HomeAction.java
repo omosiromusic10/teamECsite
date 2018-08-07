@@ -12,13 +12,13 @@ import com.internousdev.glanq.util.CommonUtility;
 import com.opensymphony.xwork2.ActionSupport;
 
 public class HomeAction extends ActionSupport implements SessionAware{
-	private List<MCategoryDTO> mCategoryDTOList=new ArrayList<MCategoryDTO>();
+	private List<MCategoryDTO> mCategoryDtoList=new ArrayList<MCategoryDTO>();
 	private String categoryId;
 	private Map<String,Object>session;
 	public String execute(){
-		
-		
-// "session"内にログインIDと仮ログインIDが無いことを確認	
+
+
+// "session"内にログインIDと仮ログインIDが無いことを確認
 		if(!(session.containsKey("loginId"))&&!(session.containsKey("tempUserId"))){
 		CommonUtility commonUtility=new CommonUtility();
 
@@ -36,20 +36,20 @@ public class HomeAction extends ActionSupport implements SessionAware{
 // "session"内にmCategoryListが無いことを確認
 		if(!session.containsKey("mCategoryList")){
 			MCategoryDAO mCategoryDao=new MCategoryDAO();
-			mCategoryDTOList=mCategoryDao.getMCategoryList();
+			mCategoryDtoList=mCategoryDao.getMCategoryList();
 
-// "session mCategoryDTOList"に"mCategoryDTOList"を格納
-			session.put("mCategoryDTOList",mCategoryDTOList);
+// "session mCategoryDtoList"に"mCategoryDtoList"を格納
+			session.put("mCategoryDtoList",mCategoryDtoList);
 		}
 
 // "execute"に値を返す
 		return SUCCESS;
 	}
-	public List<MCategoryDTO> getmCategoryDTOList() {
-		return mCategoryDTOList;
+	public List<MCategoryDTO> getmCategoryDtoList() {
+		return mCategoryDtoList;
 	}
-	public void setmCategoryDTOList(List<MCategoryDTO> mCategoryDTOList) {
-		this.mCategoryDTOList = mCategoryDTOList;
+	public void setmCategoryDTOList(List<MCategoryDTO> mCategoryDtoList) {
+		this.mCategoryDtoList = mCategoryDtoList;
 	}
 	public String getCategoryId() {
 		return categoryId;
