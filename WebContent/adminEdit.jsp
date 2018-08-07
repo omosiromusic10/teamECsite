@@ -30,14 +30,30 @@
 	<tr>
 		<td><a href='<s:url action="AdminEditDetailsAction">
 			<s:param name="productId" value="%{productId}"/>
-			</s:url>'><img src='<s:property value="imageFilePath" />/<s:property value="imageFileName" />
+			</s:url>'><img src='<s:property value="imageFilePath" />/<s:property value="imageFileName" />' class="item-image-box-200" /></a><br></td>
+		<td><s:property value="productName"/></td>
+		<td><s:property value="productNameKana"/></td>
+		<td><s:property value="price"/>円</td>
+		<td><s:property value="releaseCompany"/></td>
+		<td><s:property value="releaseDate"/></td>
+	</tr>
 </s:iterator>
-
 </tbody>
 </table>
-
+<!-- 	<div class="product-list-box"> -->
+<!-- 		<ul> -->
+<!-- 			<li> -->
+<%-- 				<s:property value="productName"/><br> --%>
+<%-- 				<s:property value="productNameKana"/><br> --%>
+<%-- 				<s:property value="price"/>円<br> --%>
+<!-- 			</li> -->
+<!-- 		</ul> -->
+<!-- 	</div> -->
 </div>
 </div>
+	<div id="footer">
+		<s:include value="footer.jsp"/>
+	</div>
 
 </body>
 </html>

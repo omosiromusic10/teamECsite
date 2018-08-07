@@ -22,20 +22,20 @@ public class AdminEditAction extends ActionSupport implements SessionAware {
 	private String imageFilePath;
 	private String imageFileName;
 	private int price;
-
 	private String categoryId;
 	private String keywords;
+
+	///SearchItemAction追加（ページ情報）
+	private int pageNo;
+
 	private List<MCategoryDTO> mCategoryDtoList = new ArrayList<MCategoryDTO>();
 	private List<ProductInfoDTO> productInfoDtoList = new ArrayList<ProductInfoDTO>();
 	private Map<String, Object> session;
 
+
 	public String execute() throws SQLException{
 	String result = ERROR;
-	/*
-	 *
-	 * productInfoDtoList = productInfoDao.getProductInfoList();にエラーでたから
-	throws SQLException付け足したけど大丈夫かな？　by倉元
-	*/
+
 	ProductInfoDAO productInfoDao = new ProductInfoDAO();
 	productInfoDtoList = productInfoDao.getProductInfoList();
 
@@ -45,39 +45,34 @@ public class AdminEditAction extends ActionSupport implements SessionAware {
 		mCategoryDtoList = mCategoryDao.getMCategoryList();
 		session.put("mCategoryDtoList", mCategoryDtoList);
 	}
-	Pagination pagination = new Pagination();
-	PaginationDTO paginationDTO = pagination.initialize(productInfoDtoList, 9);
-	session.put("totalPageSize", paginationDTO.getTotalPageSize());
-	session.put("currentPageNumber", paginationDTO.getCurrentPageNo());
-	session.put("totalRecordSize", paginationDTO.getTotalRecordSize());
-	session.put("startRecordNo", paginationDTO.getStartRecordNo());
-	session.put("endRecordNo", paginationDTO.getEndRecordNo());
-	session.put("pageNumberList", paginationDTO.getPageNumberList());
-	session.put("productInfoDtoList", paginationDTO.getCurrentProductInfoPage());
-	session.put("hasNextPage", paginationDTO.hasNextPage());
-	session.put("hasPreviousPage", paginationDTO.hasPreviousPage());
-	session.put("nextPageNo", paginationDTO.getNextPageNo());
-	session.put("previousPageNo", paginationDTO.getPreviousPageNo());
 
+	//★SearchItemActionから一部抜粋
 	if(!(productInfoDtoList==null)){
-		Pagination pagination = new PaginationDTO();
+		Pagination pagination = new Pagination();
 		PaginationDTO paginationDTO = new PaginationDTO();
-		if(pageNo==null){
+		if(pageNo == 0){
 			paginationDTO = pagination.initialize(productInfoDtoList, 9);
 		}else{
 			paginationDTO = pagination.getPage(productInfoDtoList, 9, pageNo);
 		}
+		//ページ情報をsessionに格納
 		session.put("productInfoDtoList", paginationDTO.getCurrentProductInfoPage());
-		session.put("totalPageSize", paginationDTO.getTotalPageSize());
-		session.put("currentPageNo", paginationDTO.getCurrentPageNo());
-		session.put("totalRecordSize", paginationDTO.getTotalRecordSize());
-		session.put("startRecordNo", paginationDTO.getStartRecordNo());
-		session.put("endRecordNo", paginationDTO.getEndRecordNo());
-		session.put("previousPage", paginationDTO.getPreviousPageNo());
-		session.put("nextPage", paginationDTO.hasNextPage());
-		session.put("nextPage", paginationDTO.getNextPageNo());
+		session.put("totalPageSize", paginationDTO.getTotalPageSize());//全ページ数
+		session.put("currentPageNo", paginationDTO.getCurrentPageNo());//現在のページ数
+		session.put("totalRecordSize", paginationDTO.getTotalRecordSize());//総レコード数
+		session.put("startRecordNo", paginationDTO.getStartRecordNo());//開始のレコード数
+		session.put("endRecordNo", paginationDTO.getEndRecordNo());//終了のレコード数
+		session.put("previousPage", paginationDTO.isHasPreviousPage());//前ページが存在するか
+		session.put("previousPageNo", paginationDTO.getPreviousPageNo());//前ページの番号
+		session.put("nextPage", paginationDTO.isHasNextPage());//次ページが存在するか
+		session.put("nextPageNo", paginationDTO.getNextPageNo());//次ページの番号
+		session.put("pageNumberList", paginationDTO.getPageNumberList());	//ページ番号リスト
+		session.put("productInfoDtoList", paginationDTO.getCurrentProductInfoPage());//1ページ分の商品情報
 
-	}
+		}else{
+			session.put("productInfoDtoList", null);
+		}
+	//★ここまで
 
     result = SUCCESS;
 
@@ -162,6 +157,13 @@ public class AdminEditAction extends ActionSupport implements SessionAware {
 
 	public void setProductInfoDtoList(List<ProductInfoDTO> productInfoDtoList) {
 		this.productInfoDtoList = productInfoDtoList;
+	}
+	//SearchItemActionから追加（ページ情報）
+	public int getPageNo(){
+		return pageNo;
+	}
+	public void setPageNo(int pageNo){
+		this.pageNo = pageNo;
 	}
 
 }
