@@ -60,3 +60,4 @@ public class ResetPasswordCompleteAction extends ActionSupport implements Sessio
 	}
 
 }
+
