@@ -56,6 +56,7 @@ public class CreateUserCompleteAction extends ActionSupport implements SessionAw
 	}
 
 
+
 	public String getPassword() {
 		return password;
 	}

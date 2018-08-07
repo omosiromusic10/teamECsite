@@ -15,7 +15,7 @@
 <h1>商品購入履歴一覧画面</h1>
 
 <!-- これは商品履歴が０より大きい場合にif文が働く -->
-<s:if test="#session.puchaseHistoryInfoDtoList.size()>0">
+<s:if test="#session.purchaseHistoryInfoDtoList.size()>0">
 <!-- 頭のテーブルを作成 -->
 <table class="horizontal-list-table">
 <thead>
@@ -51,19 +51,6 @@
 商品購入履歴情報はありません。
 </div>
 </s:else>
-
-<div class="pager">
-<s:iterator begin="1" end="#session.totalPageSize" status="pageNo">
-    <s:if test="#session.currentPageNo == #pageNo.count">
-        <s:property value="%{#pageNo.count}"/>
-    </s:if>
-    <s:else>
-        <a href="<s:url action='AdminProductSelectAction'><s:param name='pageNo' value='%{#pageNo.count}'/>
-        <s:param name='categoryId' value='%{categoryId}'/></s:url> ">   <s:property value="%{#pageNo.count}"/></a>
-    </s:else>
-</s:iterator>
-</div>
-
 
 </div>
 <!-- s:include value="footer.jsp"/> -->

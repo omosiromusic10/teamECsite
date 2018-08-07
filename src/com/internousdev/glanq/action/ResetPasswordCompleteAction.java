@@ -16,6 +16,8 @@ public class ResetPasswordCompleteAction extends ActionSupport implements Sessio
 	public String execute(){
 		String result = ERROR;
 		UserInfoDAO userInfoDAO = new UserInfoDAO();
+
+		//sessionに格納されている新しいパスワードをresetPassword機能に渡す
 		int count = userInfoDAO.resetPassword(String.valueOf(session.get("loginId")),String.valueOf(session.get("password")));
 		if(count > 0){
 			result = SUCCESS;
