@@ -77,10 +77,11 @@ public class SearchItemAction extends ActionSupport implements SessionAware {
 	if(!(productInfoDTOList==null)){
 		Pagination pagination=new Pagination();
 		PaginationDTO paginationDTO=new PaginationDTO();
-		int pageNO=Integer.parseInt(pageNo);
+
 		if(pageNo==null){
 			paginationDTO=pagination.initialize(productInfoDTOList,9);
 		}else{
+			int pageNO=Integer.parseInt(pageNo);
 			paginationDTO=pagination.getPage(productInfoDTOList,9,(pageNO));
 		}
 
