@@ -34,8 +34,8 @@ public class MCategoryDAO {
 	mCategoryDto.setCategoryId(resultSet.getInt("categoryId"));
 	mCategoryDto.setCategoryName(resultSet.getString("categoryName"));
 	mCategoryDto.setCategoryDescription(resultSet.getString("categoryDescription"));
-	mCategoryDto.setInsertDate(resultSet.getString("insertDate"));
-	mCategoryDto.setUpdateDate(resultSet.getString("updateDate"));
+	mCategoryDto.setInsertDate(resultSet.getDate("insertDate"));
+	mCategoryDto.setUpdateDate(resultSet.getDate("updateDate"));
 
 	//追加したデータをListに格納
 	mCategoryDtoList.add(mCategoryDto);
