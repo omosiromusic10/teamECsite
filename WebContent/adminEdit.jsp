@@ -22,7 +22,7 @@
 		<th><s:label value="ふりがな" /></th>
 		<th><s:label value="値段" /></th>
 		<th><s:label value="発売会社名" /></th>
-		<th><s:label value="発売年月日" /></th><!-- test -->
+		<th><s:label value="発売年月日" /></th>
 	</tr>
 </thead>
 <tbody>

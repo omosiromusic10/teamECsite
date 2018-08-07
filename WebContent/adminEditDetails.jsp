@@ -30,7 +30,7 @@
 <s:if test="!#session.productDescriptionErrorMessageList.isEmpty()">
 	<div class="error">
 	<div class="error-message">
-		<s:iterator value="#session.productDescriptionErrorMessageList"><s:property/><br></s:iterator><!-- test -->
+		<s:iterator value="#session.productDescriptionErrorMessageList"><s:property/><br></s:iterator>
 	</div>
 	</div>
 </s:if>

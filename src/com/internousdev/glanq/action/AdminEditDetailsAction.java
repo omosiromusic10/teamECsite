@@ -24,7 +24,7 @@ public class AdminEditDetailsAction extends ActionSupport implements SessionAwar
 	private int price;
 	private String imageFilePath;//画像ファイル
 	private String imageFileName;//画像ファイル名
-				// !!!発売会社、発売日を直す必要あり!!!!
+				// !!!発売会社、発売日を直す必要あり!!!
 	private Date releaseDate;
 	private String releaseCompany;
 

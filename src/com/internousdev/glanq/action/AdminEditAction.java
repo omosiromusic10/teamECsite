@@ -81,7 +81,7 @@ public class AdminEditAction extends ActionSupport implements SessionAware {
 
 	}
 
-	//商品情報のゲッターセッター
+	//商品情報のゲッターセッター.
 	public List<MCategoryDTO> getmCategoryDtoList(){
 		return mCategoryDtoList;
 	}
