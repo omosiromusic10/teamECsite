@@ -67,6 +67,7 @@ public class UserInfoDAO {
 	}
 
 
+
 	//ユーザーがいるかどうかの判定用メソッド
 	public boolean isExistsUserInfo(String loginId, String password){
 
