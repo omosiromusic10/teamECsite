@@ -21,7 +21,7 @@ public class AdminPurchaseSelectAction extends ActionSupport implements SessionA
 	private List<MCategoryDTO> mCategoryDtoList = new ArrayList<MCategoryDTO>();
 	private List<ProductInfoDTO> productInfoDtoList = new ArrayList<ProductInfoDTO>();
 	private Map<String, Object> session;
-	private String pageNo;
+	private int pageNo;
 	public String execute(){
 
 		//ここでもPurchaseHistoryのDAOから情報を取ってList情報をjspで表示させる為に用いている処理。
@@ -44,7 +44,7 @@ public class AdminPurchaseSelectAction extends ActionSupport implements SessionA
 		if(!(productInfoDtoList==null)){
 			Pagination pagination = new Pagination();
 			PaginationDTO paginationDTO = new PaginationDTO();
-			if(pageNo==null){
+			if(pageNo == 0){
 				paginationDTO = pagination.initialize(productInfoDtoList, 9);
 			}else{
 				paginationDTO = pagination.getPage(productInfoDtoList, 9, pageNo);
@@ -56,9 +56,9 @@ public class AdminPurchaseSelectAction extends ActionSupport implements SessionA
 			session.put("totalRecordSize", paginationDTO.getTotalRecordSize());
 			session.put("startRecordNo", paginationDTO.getStartRecordNo());
 			session.put("endRecordNo", paginationDTO.getEndRecordNo());
-			session.put("previousPage", paginationDTO.hasPreviousPage());
+			session.put("previousPage", paginationDTO.isHasPreviousPage());
 			session.put("previousPageNo", paginationDTO.getPreviousPageNo());
-			session.put("nextPage", paginationDTO.hasNextPage());
+			session.put("nextPage", paginationDTO.isHasNextPage());
 			session.put("nextPageNo", paginationDTO.getNextPageNo());
 		    }else{
 			    session.put("productInfoDtoList", null);
@@ -91,10 +91,10 @@ public class AdminPurchaseSelectAction extends ActionSupport implements SessionA
 	public void setProductInfoDtoList(List<ProductInfoDTO> productInfoDtoList) {
 		this.productInfoDtoList = productInfoDtoList;
 	}
-	public String getPageNo() {
+	public int getPageNo() {
 		return pageNo;
 	}
-	public void setPageNo(String pageNo) {
+	public void setPageNo(int pageNo) {
 		this.pageNo = pageNo;
 	}
 
