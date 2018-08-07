@@ -23,7 +23,7 @@ public class AdminProductSelectAction extends ActionSupport implements SessionAw
 	private int price;
 	private String categoryId;
 	private String keywords;
-	private String pageNo;
+	private int pageNo;
 	private List<MCategoryDTO> mCategoryDtoList = new ArrayList<MCategoryDTO>();
 	private List<ProductInfoDTO> productInfoDtoList = new ArrayList<ProductInfoDTO>();
 	private Map<String, Object> session;
@@ -46,7 +46,7 @@ public class AdminProductSelectAction extends ActionSupport implements SessionAw
 		if(!(productInfoDtoList==null)){
 			Pagination pagination = new Pagination();
 			PaginationDTO paginationDTO = new PaginationDTO();
-			if(pageNo==null){
+			if(pageNo == 0){
 				paginationDTO = pagination.initialize(productInfoDtoList, 9);
 			}else{
 				paginationDTO = pagination.getPage(productInfoDtoList, 9, pageNo);
@@ -58,9 +58,9 @@ public class AdminProductSelectAction extends ActionSupport implements SessionAw
 			session.put("totalRecordSize", paginationDTO.getTotalRecordSize());
 			session.put("startRecordNo", paginationDTO.getStartRecordNo());
 			session.put("endRecordNo", paginationDTO.getEndRecordNo());
-			session.put("previousPage", paginationDTO.hasPreviousPage());
+			session.put("previousPage", paginationDTO.isHasPreviousPage());
 			session.put("previousPageNo", paginationDTO.getPreviousPageNo());
-			session.put("nextPage", paginationDTO.hasNextPage());
+			session.put("nextPage", paginationDTO.isHasNextPage());
 			session.put("nextPageNo", paginationDTO.getNextPageNo());
 		    }else{
 			    session.put("productInfoDtoList", null);
@@ -149,10 +149,10 @@ public class AdminProductSelectAction extends ActionSupport implements SessionAw
 	public void setSession(Map<String, Object> session) {
 		this.session = session;
 	}
-	public String getPageNo() {
+	public int getPageNo() {
 		return pageNo;
 	}
-	public void setPageNo(String pageNo) {
+	public void setPageNo(int pageNo) {
 		this.pageNo = pageNo;
 	}
 

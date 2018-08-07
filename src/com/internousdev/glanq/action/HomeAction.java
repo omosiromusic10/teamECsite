@@ -16,8 +16,9 @@ public class HomeAction extends ActionSupport implements SessionAware{
 	private String categoryId;
 	private Map<String,Object>session;
 	public String execute(){
-
-// "session"内にログインIDと仮ログインIDが無いことを確認
+		
+		
+// "session"内にログインIDと仮ログインIDが無いことを確認	
 		if(!(session.containsKey("loginId"))&&!(session.containsKey("tempUserId"))){
 		CommonUtility commonUtility=new CommonUtility();
 

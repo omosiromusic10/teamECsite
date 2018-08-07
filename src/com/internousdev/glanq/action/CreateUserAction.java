@@ -30,6 +30,7 @@ public class CreateUserAction extends ActionSupport implements SessionAware{
 	private String sex;
 	private static final String MALE = "男性";
 	private static final String FEMALE = "女性";
+	private String defaultSexValue = MALE;
 	private String email;
 	private String categoryId;
 
@@ -146,6 +147,14 @@ public class CreateUserAction extends ActionSupport implements SessionAware{
 
 	public void setSex(String sex) {
 		this.sex = sex;
+	}
+
+	public String getDefaultSexValue() {
+		return defaultSexValue;
+	}
+
+	public void setDefaultSexValue(String defaultSexValue) {
+		this.defaultSexValue = defaultSexValue;
 	}
 
 	public String getEmail() {

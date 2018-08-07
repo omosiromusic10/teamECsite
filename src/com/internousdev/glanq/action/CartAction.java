@@ -25,7 +25,7 @@ public class CartAction extends ActionSupport implements SessionAware{
 		String result = ERROR;
 		String userId = null;
 		CartInfoDAO ciDAO = new CartInfoDAO();
-		List<CartInfoDTO> ciDtoList = new ArrayList<CartInfoDTO>();
+		List<CartInfoDTO> CartInfoDtoList = new ArrayList<CartInfoDTO>();
 
 		/*
 		 *本Id、仮Idそれぞれ存在する値に合わせてsessionから取得して、userIdに代入する
@@ -37,21 +37,21 @@ public class CartAction extends ActionSupport implements SessionAware{
 		}
 
 		//userIdに紐づいた値を取得し、iteratorで取り出す
-		ciDtoList = ciDAO.getCartInfoDtoList(userId);
-		Iterator<CartInfoDTO> iterator = ciDtoList.iterator();
+		CartInfoDtoList = ciDAO.getCartInfoDtoList(userId);
+		Iterator<CartInfoDTO> iterator = CartInfoDtoList.iterator();
 
 		//値がなくなるまで回して、次の行がなくなった時にnullを代入
 		if(!(iterator.hasNext())){
-			ciDtoList = null;
+			CartInfoDtoList = null;
 		}
 
-		session.put("CartInfoDtoList", ciDtoList);
+		session.put("CartInfoDtoList", CartInfoDtoList);
 
 		/*
 		 * sessionから合計金額を取得
 		 * データ型をObject→String→intの順に変換し、totalPriceに代入
 		 */
-		int totalPrice = Integer.parseInt(String.valueOf(session.get(userId)));
+		int totalPrice = Integer.parseInt(String.valueOf(ciDAO.getTotalPrice(userId)));
 
 		session.put("totalPrice", totalPrice);
 		result = SUCCESS;

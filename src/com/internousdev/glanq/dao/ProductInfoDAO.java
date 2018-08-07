@@ -257,37 +257,84 @@ public class ProductInfoDAO {
 	return maxProductId;
     }
     //管理者機能商品追加時に使われるメソッド。
-    public int createProduct( int productid , String productName , String productNameKana, String productDescription,
-    		int categoryId, int price, String releaseCompany , String releaseDate , String imageFileName , String userImageFileName ,int Status)throws SQLException{
+    public int createProduct( int productid  , String productName, String productNameKana, String productDescription,
+			int categoryId, int price, String releaseCompany ,String releaseDate ,int Status , String imageFilePath , String imageFileName )throws SQLException{
+		DBConnector dbConnector = new DBConnector();
+		Connection connection = dbConnector.getConnection();
+		int count = 0;
+		String sql = "insert into product_info(product_id,product_name, product_name_kana, product_description,"
+				+ "category_id ,price ,release_company, release_date, status, image_file_path, image_file_name,  regist_date, update_date)"
+				+ "values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+		try{
+			PreparedStatement preparedStatement = connection.prepareStatement(sql);
+			preparedStatement.setInt(1, productid);
+			preparedStatement.setString(2, productName);
+			preparedStatement.setString(3, productNameKana);
+			preparedStatement.setString(4, productDescription);
+			preparedStatement.setInt(5, categoryId);
+			preparedStatement.setInt(6, price);
+			preparedStatement.setString(7, releaseCompany);
+			preparedStatement.setString(8, releaseDate);
+			preparedStatement.setInt(9, Status);// これは何か。→特に意味はないが、チーム開発時の後々追加仕様時に
+			preparedStatement.setString(10, imageFilePath);
+			preparedStatement.setString(11, imageFileName);	//	纏めて9,10項目をuserImageで良いのか
+			preparedStatement.setString(12, dateUtil.getDate());
+			preparedStatement.setString(13, dateUtil.getDate());
+			count = preparedStatement.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally{
+			connection.close();
+		}
+		return count;
+	}
+
+    //管理者変更・編集機能時に使われるメソッド
+    //AdminEditDetailsCompleteAction で使用。
+    public int updateProductInfo(int productid, String productName, String productNameKana, String productDescription,
+    		int categoryId, int price, String releaseCompany, String releaseDate, String imageFileName, String imageFilePath)throws SQLException {
     	DBConnector dbConnector = new DBConnector();
-    	Connection con = dbConnector.getConnection();
+    	Connection connection = dbConnector.getConnection();
     	int count = 0;
-    	String sql = "insert into product_info(product_id,product_name, product_name_kana, product_description,"
-    			+ "category_id ,price ,release_company, release_date, image_file_name, image_file_path, status, regist_date, update_date)"
-    			+ "values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-    			try{
-    				PreparedStatement ps = con.prepareStatement(sql);
-    				ps.setInt(1, productid);
-    				ps.setString(2, productName);
-    				ps.setString(3, productNameKana);
-    				ps.setString(4, productDescription);
-    				ps.setInt(5, categoryId);
-    				ps.setInt(6, price);
-    				ps.setString(7, releaseCompany);
-    				ps.setString(8, releaseDate);
-    				ps.setString(9, imageFileName);
-    				ps.setString(10, userImageFileName);
-    				ps.setInt(11, Status);
-    				ps.setString(12, dateUtil.getDate());
-    				ps.setString(13, dateUtil.getDate());
-    				count = ps.executeUpdate();
-    }catch(SQLException e){
-    	e.printStackTrace();
-    }finally{
-    	con.close();
+
+    	String sql = "UPDATE product_info SET "
+    			+ "product_name=? , "
+    			+ "product_name_kana=? , "
+    			+ "product_description=? , "
+    			+ "category_id=? , "
+    			+ "price=? , "
+    			+ "release_company=? , "
+    			+ "release_date=? , "
+    			+ "image_file_name=? , "
+    			+ "image_file_path=? , "
+    			+ "regist_date=? , "
+    			+ "update_date=? , "
+    			+ "WHERE product_id=?";
+
+    	try {
+    		PreparedStatement preparedStatement = connection.prepareStatement(sql);
+    		preparedStatement.setString(1, productName);
+    		preparedStatement.setString(2, productNameKana);
+    		preparedStatement.setString(3, productDescription);
+    		preparedStatement.setInt(4, categoryId);
+    		preparedStatement.setInt(5, price);
+    		preparedStatement.setString(6, releaseCompany);
+    		preparedStatement.setString(7, releaseDate);
+    		preparedStatement.setString(8, imageFileName);
+    		preparedStatement.setString(9, imageFilePath);
+    		preparedStatement.setString(10, dateUtil.getDate());
+    		preparedStatement.setString(11, dateUtil.getDate());
+    		preparedStatement.setInt(12, productid);
+    		count = preparedStatement.executeUpdate();
+
+    	} catch(SQLException e) {
+    		e.printStackTrace();
+    	} finally {
+    		connection.close();
+    	}
+    	return count;
     }
-    			return count;
-    }
+
 
     //管理者機能商品削除時に使われるメソッド
 	public int delete(String id) {

@@ -31,6 +31,12 @@ public class UserInfoDAO {
 		Connection con = db.getConnection();
 		int count = 0;
 
+		/**
+		 * JSPから渡された値
+		 * 名前、性別、ログインIDなどを
+		 * INSERT文を用いてDBに登録
+		 */
+
 		String sql = "INSERT INTO user_info(user_id, password, family_name, first_name, family_name_kana, first_name_kana, sex, email, status, logined, regist_date, update_date) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, now(), now())";
 
 		try{
@@ -46,6 +52,7 @@ public class UserInfoDAO {
 			ps.setInt(9, 0);
 			ps.setInt(10, 1);
 			count = ps.executeUpdate();
+			//実行結果をint型で戻す
 
 		}catch(SQLException e ){
 			e.printStackTrace();
@@ -61,11 +68,17 @@ public class UserInfoDAO {
 
 
 	//ユーザーがいるかどうかの判定用メソッド
-	public boolean isExistUser(String loginId, String password){
+	public boolean isExistsUserInfo(String loginId, String password){
 
 		DBConnector db = new DBConnector();
 		Connection con = db.getConnection();
 		boolean result = false;
+
+		/**
+		 * ユーザーIDとパスワードを元に
+		 * 該当するカラムが存在するかを
+		 * COUNT文を用いて調べる
+		 */
 
 		String sql = "SELECT COUNT(*) AS count FROM user_info WHERE user_id = ? AND password = ? ";
 
@@ -97,6 +110,12 @@ public class UserInfoDAO {
 		Connection con = db.getConnection();
 		UserInfoDTO userInfoDTO = new UserInfoDTO();
 
+		/**
+		 * ユーザーIDとパスワードを元に
+		 * SELECT文を用いて
+		 * データをすべてDTOに格納する
+		 */
+
 		String sql = "SELECT * FROM user_info WHERE user_id = ? AND password = ?";
 
 		try{
@@ -116,7 +135,7 @@ public class UserInfoDAO {
 				userInfoDTO.setSex(rs.getInt("sex"));
 				userInfoDTO.setEmail(rs.getString("email"));
 				userInfoDTO.setLogined(rs.getInt("logined"));
-				userInfoDTO.setStatus(rs.getInt("status"));
+				userInfoDTO.setStatus(rs.getString("status"));
 				userInfoDTO.setRegistDate(rs.getDate("regist_date"));
 				userInfoDTO.setUpdateDate(rs.getDate("update_date"));
 			}
@@ -138,6 +157,12 @@ public class UserInfoDAO {
 		Connection con = db.getConnection();
 		UserInfoDTO userInfoDTO = new UserInfoDTO();
 
+		/**
+		 * ユーザーIDを元に
+		 * SELECT文を用いて
+		 * すべての情報をDTOに格納する
+		 */
+
 		String sql = "SELECT * FROM user_info WHERE user_id = ?";
 
 		try{
@@ -156,7 +181,7 @@ public class UserInfoDAO {
 				userInfoDTO.setSex(rs.getInt("sex"));
 				userInfoDTO.setEmail(rs.getString("email"));
 				userInfoDTO.setLogined(rs.getInt("logined"));
-				userInfoDTO.setStatus(rs.getInt("status"));
+				userInfoDTO.setStatus(rs.getString("status"));
 				userInfoDTO.setRegistDate(rs.getDate("regist_date"));
 				userInfoDTO.setUpdateDate(rs.getDate("update_date"));
 			}
@@ -178,6 +203,13 @@ public class UserInfoDAO {
 		DBConnector db = new DBConnector();
 		Connection con = db.getConnection();
 		int count = 0;
+
+		/**
+		 * ユーザーIDとパスワードを元に
+		 * 該当するユーザーのパスワードを
+		 * UPDATE文を用いて
+		 * 更新する
+		 */
 
 		String sql = "UPDATE user_info SET password WHERE user_id = ? AND password = ?";
 
@@ -203,6 +235,13 @@ public class UserInfoDAO {
 		DBConnector db = new DBConnector();
 		Connection con = db.getConnection();
 		int count = 0;
+
+		/**
+		 * ユーザーIDとパスワードを元に
+		 * UPDATE文を用いて
+		 * DBのloginedの値を1に更新する
+		 * (ユーザーIDだけでいい？)
+		 */
 
 		String sql = "UPDATE user_info SET logined = 1 WHERE user_id = ? AND password = ?";
 
@@ -230,6 +269,13 @@ public class UserInfoDAO {
 		Connection con = db.getConnection();
 		int count = 0;
 
+		/**
+		 * ユーザーIDとパスワードを元に
+		 * UPDATE文を用いて
+		 * DBのloginedの値を0に更新する
+		 * (ユーザーIDだけでいい？)
+		 */
+
 		String sql = "UPDATE user_info SET logined = 0 WHERE user_id = ? AND password = ?";
 
 		try{
@@ -251,6 +297,15 @@ public class UserInfoDAO {
 
 	//パスワード隠匿用のメソッド
 	public String concealPassword(String password){
+
+		/**
+		 * 引数として渡された値（パスワード）を
+		 * 一度すべて「*」に置き換え
+		 * その後、最初の数文字をパスワードに置き換えて表示する
+		 * 例を挙げると「○○**************」
+		 * のようにする
+		 */
+
 		int beginIndex = 0;
 		int endIndex = 1;
 		if(password.length() > 1){

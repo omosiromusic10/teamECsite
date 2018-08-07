@@ -27,7 +27,7 @@ public class CartInfoDAO {
 	public List<CartInfoDTO> getCartInfoDtoList(String loginId){
 		DBConnector dbc = new DBConnector();
 		Connection con = dbc.getConnection();
-		List<CartInfoDTO> ciDTOList = new ArrayList<CartInfoDTO>();
+		List<CartInfoDTO> CartInfoDtoList = new ArrayList<CartInfoDTO>();
 
 		/*
 		 * stelec文でasを使用してカラムの名前を変更
@@ -45,8 +45,10 @@ public class CartInfoDAO {
 				+ " ci.product_id,"
 				+ " sum(ci.product_count) as product_count,"/*購入個数の合計値*/
 				+ " pi.price,"
+				+ " pi.regist_date,"
+				+ " pi.update_date,"
 				+ " pi.product_name,"
-				+ " pi.produci_name_kana,"
+				+ " pi.product_name_kana,"
 				+ " pi.product_description,"
 				+ " pi.category_id,"
 				+ " pi.image_file_path,"
@@ -54,7 +56,7 @@ public class CartInfoDAO {
 				+ " pi.release_date,"
 				+ " pi.release_company,"
 				+ " pi.status,"
-				+ " (sum(ci.product_count) * pi.price) as subtotal,"/*合計金額*/
+				+ " (sum(ci.product_count) * pi.price) as subtotal"/*合計金額*/
 				+ " FROM cart_info as ci"
 				+ " LEFT JOIN product_info as pi"
 				+ " ON ci.product_id = pi.product_id"
@@ -76,7 +78,7 @@ public class CartInfoDAO {
 				ciDTO.setProductId(rs.getInt("product_id"));
 				ciDTO.setProductCount(rs.getInt("product_count"));
 				ciDTO.setPrice(rs.getInt("price"));
-				ciDTO.setProductName(rs.getString("product_Name"));
+				ciDTO.setProductName(rs.getString("product_name"));
 				ciDTO.setProductNameKana(rs.getString("product_name_kana"));
 				ciDTO.setProductDescription(rs.getString("product_description"));
 				ciDTO.setCategoryId(rs.getInt("category_id"));
@@ -96,7 +98,7 @@ public class CartInfoDAO {
 		}catch(SQLException e){
 			e.printStackTrace();
 		}
-		return ciDTOList;
+		return CartInfoDtoList;
 	}
 
 	/*2.カート内の情報をテーブルに追加する*/
@@ -112,7 +114,7 @@ public class CartInfoDAO {
 		 *【product_count(購入個数)】と【price(値段)】と供に
 		 *【regist_date(購入日)】と一緒に登録される
 		 */
-		String sql = "INSERT INTO cart_info(user_id,temp_user_id,product_id,product_count,price,regist_date)"
+		String sql = "INSERT INTO cart_info(user_id, temp_user_id, product_id, product_count, price, regist_date)"
 				+ " values (?,?,?,?,?,now())";
 
 		try{
@@ -125,6 +127,12 @@ public class CartInfoDAO {
 
 			count = ps.executeUpdate();
 
+		}catch(SQLException e){
+			e.printStackTrace();
+		}
+
+		try{
+			con.close();
 		}catch(SQLException e){
 			e.printStackTrace();
 		}
