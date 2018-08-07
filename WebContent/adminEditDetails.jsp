@@ -12,6 +12,7 @@
 <jsp:include page="header.jsp"/>
 <div id="contents">
 <h1>商品編集画面</h1>
+空ではない場合のエラーメッセージ
 <s:if test="!#session.productNameErrorMessageList.isEmpty()">
 	<div class="error">
 	<div class="error-message">
@@ -29,7 +30,7 @@
 <s:if test="!#session.productDescriptionErrorMessageList.isEmpty()">
 	<div class="error">
 	<div class="error-message">
-		<s:iterator value="#session.productDescriptionErrorMessageList"><s:property/><br></s:iterator>
+		<s:iterator value="#session.productDescriptionErrorMessageList"><s:property/><br></s:iterator><!-- test -->
 	</div>
 	</div>
 </s:if>
