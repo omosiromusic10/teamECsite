@@ -211,12 +211,12 @@ public class UserInfoDAO {
 		 * 更新する
 		 */
 
-		String sql = "UPDATE user_info SET password WHERE user_id = ? AND password = ?";
+		String sql = "UPDATE user_info SET password = ? WHERE user_id = ?";
 
 		try{
 			PreparedStatement ps = con.prepareStatement(sql);
-			ps.setString(1, userId);
-			ps.setString(2, password);
+			ps.setString(1, password);
+			ps.setString(2, userId);
 			count = ps.executeUpdate();
 		}catch(SQLException e ){
 			e.printStackTrace();
@@ -312,14 +312,26 @@ public class UserInfoDAO {
 			endIndex = 2;
 		}
 
-		StringBuilder stringBuider = new StringBuilder("****************");
+		StringBuilder stringBuilder = new StringBuilder("****************");
 		/**
 		 * StringBuilderは文字列置換用のクラス
-		 * ココに16文字分の
+		 * ココに16文字分の「＊」を引数として渡す
 		 */
 
-		String concealPassword = (stringBuider.replace(beginIndex, endIndex, password.substring(beginIndex, endIndex)).toString());
+		String concealPassword = (stringBuilder.replace(beginIndex, endIndex, password.substring(beginIndex, endIndex)).toString());
 		return concealPassword;
+
+		/**
+		 * StringBuilderクラスのreplaceメソッドを利用することで文字列の置換が可能
+		 * replace(int a, int b, String s)で
+		 * a番目～b番目の文字をsに置き換えることが出来る
+		 *
+		 * .substringメソッドは呼び出したメソッドの一部を取得するためのメソッド
+		 * .substring(int beginIndex, int endIndex)で何文字目から何文字目までという指定が可能
+		 * 今回は頭の2文字目ぐらいまでをパスワードのものと置き換える
+		 * 頭の2文字ぐらいを表示して後は**に置き換えることが出来る
+		 */
+
 	}
 
 }

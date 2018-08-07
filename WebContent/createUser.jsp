@@ -109,7 +109,7 @@
 
 					<tr>
 						<th scope="row">性別</th>
-						<td><s:radio name="sex" list="%{#session.sexList}" value="%{#session.sexList}" label="性別" placeholder="性別" /></td>
+						<td><s:radio name="sex" list="%{#session.sexList}" value="%{#session.sex}" label="性別" placeholder="性別" /></td>
 					</tr>
 
 					<tr>
