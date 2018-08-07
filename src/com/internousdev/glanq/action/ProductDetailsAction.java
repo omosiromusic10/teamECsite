@@ -50,15 +50,16 @@ public class ProductDetailsAction extends ActionSupport implements SessionAware 
 			session.put("releaseDate", productInfoDTO.getReleaseDate());
 			// 商品詳細
 			session.put("productDescription", productInfoDTO.getProductDescription());
-
 			// 商品画像用の情報
 			session.put("imageFilePath", productInfoDTO.getImageFilePath());
 			session.put("imageFileName", productInfoDTO.getImageFileName());
 
+			// その他、使用したい情報。
 			session.put("categoryId", productInfoDTO.getCategoryId());
 			categoryId = session.get("categoryId").toString();
 
-		// 関連商品の情報を取得。カテゴリIDと商品IDが必要。表示数に関連する数値を記述。
+		// 関連商品のリスト relatedProductList を取得。カテゴリIDと商品IDが必要。表示数に関連する数値 0, 3 を記述。
+		// 今は、同カテゴリの商品のリストをランダムに並び替えた上で【先頭3行】を取得する設定。
 		ProductInfoDAO pDAO2 = new ProductInfoDAO();
 		int iCategoryId = Integer.parseInt(categoryId);
 		List<ProductInfoDTO> relatedProductList = pDAO2.getProductInfoListByCategoryId(iCategoryId, productId, 0, 3);

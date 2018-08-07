@@ -36,8 +36,9 @@ public class ProductListAction extends ActionSupport implements SessionAware {
 		productInfoList = productInfoDAO.getProductInfoList();
 		session.put("productInfoList", productInfoList);
 
-		// ページ情報を取得。
-		PaginationDTO paginationDTO = pagination.initialize(productInfoList, 9);
+		// ページ情報を取得。上で得た商品情報productInfoListを利用。1ページあたりの表示数9に設定。
+		int pageSize = 9;
+		PaginationDTO paginationDTO = pagination.initialize(productInfoList, pageSize);
 		session.put("totalPageSize", paginationDTO.getTotalPageSize());
 		session.put("currentPageNo", paginationDTO.getCurrentPageNo());
 		session.put("totalRecordSize", paginationDTO.getTotalPageSize());
@@ -50,7 +51,8 @@ public class ProductListAction extends ActionSupport implements SessionAware {
 		session.put("nextPageNo", paginationDTO.getNextPageNo());
 		session.put("previousPageNo", paginationDTO.getPreviousPageNo());
 
-		if(!session.containsKey("mCategoryList")) {
+		// セッション mCategoryDtoList はヘッダーにて用いているので、無い場合は必要。mCategoryList??
+		if(!session.containsKey("mCategoryDtoList")) {
 			MCategoryDAO mCategoryDao = new MCategoryDAO();
 			mCategoryDtoList = mCategoryDao.getMCategoryList();
 			session.put("mCategoryDtoList", mCategoryDtoList);

@@ -21,6 +21,7 @@ public class AdminPurchaseSelectAction extends ActionSupport implements SessionA
 	private List<MCategoryDTO> mCategoryDtoList = new ArrayList<MCategoryDTO>();
 	private List<ProductInfoDTO> productInfoDtoList = new ArrayList<ProductInfoDTO>();
 	private Map<String, Object> session;
+	private String pageNo;
 	public String execute(){
 
 		//ここでもPurchaseHistoryのDAOから情報を取ってList情報をjspで表示させる為に用いている処理。
@@ -83,6 +84,18 @@ public class AdminPurchaseSelectAction extends ActionSupport implements SessionA
 	}
 	public void setSession(Map<String, Object> session) {
 		this.session = session;
+	}
+	public List<ProductInfoDTO> getProductInfoDtoList() {
+		return productInfoDtoList;
+	}
+	public void setProductInfoDtoList(List<ProductInfoDTO> productInfoDtoList) {
+		this.productInfoDtoList = productInfoDtoList;
+	}
+	public String getPageNo() {
+		return pageNo;
+	}
+	public void setPageNo(String pageNo) {
+		this.pageNo = pageNo;
 	}
 
 
