@@ -44,7 +44,7 @@ public class AdminEditDetailsConfirmAction extends ActionSupport implements Sess
 	//リストのインスタンス化
 	private List<String>categoryIdList = new ArrayList<String>();
 
-	//なにしてる？
+
 	// TODO コレクションフレームワークの教材を読む
 	private Map<String,Object>session;
 
@@ -55,7 +55,7 @@ public class AdminEditDetailsConfirmAction extends ActionSupport implements Sess
 		//InputChekerをインスタンス化して正規表現かを検証
 		InputChecker inputChecker = new InputChecker();
 
-		//絶対パスをコンソールに表示　なんのために？→値が入っているかを確認
+		//絶対パスをコンソールに表示して値が入っているかを確認
 		System.out.println(userImage.getAbsolutePath());
 		System.out.println(userImage.getName());
 		System.out.println(userImage.getPath());
@@ -88,7 +88,7 @@ public class AdminEditDetailsConfirmAction extends ActionSupport implements Sess
 	releaseCompanyErrorMessageList = inputChecker.docheck("発売会社名", releaseCompany, 1, 16, true, true, true, true, false, true, false);
 	releaseDateErrorMessageList = inputChecker.docheck("発売年月日", releaseDate, 1, 16, false, true, false, true, true, false, false);
 
-	//もし全てのリストのサイズが0の場合成功 　　　　=エラーなし→成功
+	//もし全てのリストのサイズが0の場合成功  =エラーなし→成功
 	if(productNameErrorMessageList.size()==0
 			&& productNameKanaErrorMessageList.size()==0
 			&& productDescriptionErrorMessageList.size()==0
