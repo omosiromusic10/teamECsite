@@ -18,6 +18,7 @@ public class ProductInfoDAO {
 	private DateUtil dateUtil = new DateUtil();
 
 	// 商品情報をすべて取得するメソッド。
+	// ProductListAction で使用。
 	public List<ProductInfoDTO> getProductInfoList() throws SQLException{
 		ArrayList<ProductInfoDTO> productInfoList = new ArrayList<ProductInfoDTO>();
 		DBConnector db = new DBConnector();
@@ -54,9 +55,8 @@ public class ProductInfoDAO {
 	}
 
 
-	// 以下、作成予定。
-
 	// 商品IDを参照して、その商品の商品情報を取得するメソッド。
+	// ProductDetailsAction で使用。
 	public ProductInfoDTO getProductInfo(int productId) throws SQLException{
 		ProductInfoDTO pInfo = new ProductInfoDTO();
 		DBConnector db = new DBConnector();
@@ -91,7 +91,10 @@ public class ProductInfoDAO {
 	}
 
 
-	// 関連商品のリストを取得するメソッド。その商品のカテゴリIDと商品IDと、表示数に関連する数値を参照。
+	// 関連商品のリストを取得するメソッド。その商品のカテゴリIDと商品IDと、表示数に関連する数値（limit ?,? の部分）を設定。
+	// limitOffset ･･･ 「先頭の ○ 行を除いて」
+	// limitRowCount ･･･ 「最大 □ 行を取得する」
+	// ProductDetailsAction で使用。
 	public List<ProductInfoDTO> getProductInfoListByCategoryId(int categoryId, int productId, int limitOffset, int limitRowCount) throws SQLException{
 		ArrayList<ProductInfoDTO> productInfoListByCategoryId = new ArrayList<ProductInfoDTO>();
 		DBConnector db = new DBConnector();
@@ -132,14 +135,15 @@ public class ProductInfoDAO {
 
 
 	// 商品検索によって対象の商品リストを取得するメソッド。検索欄のキーワードをリスト化したものならびにカテゴリIDを参照。
-	// すべてのカテゴリ を選択した場合は、この下にある getProductInfoListAll を用いる。
+	// 現在は「商品名」「商品名かな」が検索対象。
+	// すべてのカテゴリ を選択した場合などは、この下にある getProductInfoListAll を用いてください。(そちらはcategoryIdが不要)
 	public List<ProductInfoDTO> getProductInfoListByKeywords(String[] keywordsList, String categoryId) throws SQLException{
 		ArrayList<ProductInfoDTO> productInfoListByKeywords = new ArrayList<ProductInfoDTO>();
 		DBConnector db = new DBConnector();
 		Connection con = db.getConnection();
 		String sql = "SELECT * from product_info WHERE categoryId = " + categoryId + " AND ";
 		boolean iFlg = true;
-		// 拡張for文
+		// 拡張for文。キーワードが1つか複数かにより、sql文が分岐するため記述。
 		for(String keyword : keywordsList){
 			if(iFlg){
 				sql += "(product_name like '%" + keyword + "%' or product_name_kana like '%" + keyword + "%') ";
@@ -185,7 +189,7 @@ public class ProductInfoDAO {
 		Connection con = db.getConnection();
 		String sql = "SELECT * from product_info WHERE ";
 		boolean iFlg = true;
-		// 拡張for文
+		// 拡張for文。キーワードが1つか複数かにより、sql文が分岐するため記述。
 		for(String keyword : keywordsList){
 			if(iFlg){
 				sql += "(product_name like '%" + keyword + "%' or product_name_kana like '%" + keyword + "%') ";
