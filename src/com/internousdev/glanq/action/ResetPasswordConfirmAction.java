@@ -44,7 +44,7 @@ public class ResetPasswordConfirmAction extends ActionSupport implements Session
 				reConfirmationNewPasswordErrorMessageList.size()==0 &&
 				newPasswordIncorrectErrorMessageList.size()==0){
 			UserInfoDAO userInfoDAO = new UserInfoDAO();
-			if(userInfoDAO.isExistUser(loginId,password)){
+			if(userInfoDAO.isExistsUserInfo(loginId,password)){
 				String concealedPassword = userInfoDAO.concealPassword(password);
 				session.put("loginId",loginId);
 				session.put("newPpassword",newPassword);
