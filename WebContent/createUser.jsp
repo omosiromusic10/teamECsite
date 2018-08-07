@@ -109,7 +109,7 @@
 
 					<tr>
 						<th scope="row">性別</th>
-						<td><s:checkbox name="sex" list="%{#session.sexList}" value="%{#session.sexList}" label="性別" placeholder="性別" /></td>
+						<td><s:radio name="sex" list="%{#session.sexList}" value="%{#session.sexList}" label="性別" placeholder="性別" /></td>
 					</tr>
 
 					<tr>
@@ -133,7 +133,7 @@
 
 				</table>
 					<div class="submit_btn_box">
-						<div id=".cnotents-btn-set">
+						<div id=".contents-btn-set">
 							<s:submit value="登録" />
 						</div>
 					</div>

@@ -61,7 +61,7 @@ public class UserInfoDAO {
 
 
 	//ユーザーがいるかどうかの判定用メソッド
-	public boolean isExistUser(String loginId, String password){
+	public boolean isExistsUserInfo(String loginId, String password){
 
 		DBConnector db = new DBConnector();
 		Connection con = db.getConnection();
@@ -116,7 +116,7 @@ public class UserInfoDAO {
 				userInfoDTO.setSex(rs.getInt("sex"));
 				userInfoDTO.setEmail(rs.getString("email"));
 				userInfoDTO.setLogined(rs.getInt("logined"));
-				userInfoDTO.setStatus(rs.getInt("status"));
+				userInfoDTO.setStatus(rs.getString("status"));
 				userInfoDTO.setRegistDate(rs.getDate("regist_date"));
 				userInfoDTO.setUpdateDate(rs.getDate("update_date"));
 			}
@@ -156,7 +156,7 @@ public class UserInfoDAO {
 				userInfoDTO.setSex(rs.getInt("sex"));
 				userInfoDTO.setEmail(rs.getString("email"));
 				userInfoDTO.setLogined(rs.getInt("logined"));
-				userInfoDTO.setStatus(rs.getInt("status"));
+				userInfoDTO.setStatus(rs.getString("status"));
 				userInfoDTO.setRegistDate(rs.getDate("regist_date"));
 				userInfoDTO.setUpdateDate(rs.getDate("update_date"));
 			}
