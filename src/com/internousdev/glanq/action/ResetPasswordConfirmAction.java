@@ -11,11 +11,10 @@ import com.internousdev.glanq.util.InputChecker;
 import com.opensymphony.xwork2.ActionSupport;
 
 public class ResetPasswordConfirmAction extends ActionSupport implements SessionAware{
-
 	private String loginId;
 	private String password;
 	private String newPassword;
-	private String reConfirmationNewPassword;
+	private String reConfirmationPassword;
 	private String categoryId;
 
 	private List<String> loginIdErrorMessageList = new ArrayList<String>();
@@ -25,42 +24,50 @@ public class ResetPasswordConfirmAction extends ActionSupport implements Session
 	private List<String> reConfirmationNewPasswordErrorMessageList = new ArrayList<String>();
 	private List<String> newPasswordIncorrectErrorMessageList = new ArrayList<String>();
 
-	public Map<String,Object> session;
+	private Map<String, Object> session;
 
-	public String execute(){
+	public String execute() {
 		String result = ERROR;
 
+		//正規表現かを確認する
 		InputChecker inputChecker = new InputChecker();
+		loginIdErrorMessageList = inputChecker.docheck("ログインID", loginId, 1, 8, true, false, false, true, false, false, false);
+		passwordErrorMessageList = inputChecker.docheck("現在のパスワード", password, 1, 16, true, false, false, true, false, false, false);
+		newPasswordErrorMessageList = inputChecker.docheck("新しいパスワード", newPassword, 1, 16, true, false, false, true, false, false, false);
+		reConfirmationNewPasswordErrorMessageList = inputChecker.docheck("新しいパスワード（再確認）", reConfirmationPassword, 1, 16, true, false, false, true, false, false, false);
+		newPasswordIncorrectErrorMessageList = inputChecker.doPasswordCheck(newPassword, reConfirmationPassword);
 
-		loginIdErrorMessageList = inputChecker.docheck("ログインID",loginId,1,8,true,false,false,true,false,false,false);
-		passwordErrorMessageList = inputChecker.docheck("パスワード",password,1,16,true,false,false,true,false,false,false);
-		newPasswordErrorMessageList = inputChecker.docheck("新しいパスワード",newPassword,1,16,true,false,false,true,false,false,false);
-		reConfirmationNewPasswordErrorMessageList = inputChecker.docheck("確認用パスワード","reConfirmationNewPassword",1,16,true,false,false,true,false,false,false);
-		newPasswordIncorrectErrorMessageList = inputChecker.doPasswordCheck("newPassword","reConfirmationPassword");
+		//.size()メソッドは対象の要素の数を返す
+		//Listにエラーメッセージが代入された場合
+		if(loginIdErrorMessageList.size()==0
+		&& passwordErrorMessageList.size()==0
+		&& newPasswordErrorMessageList.size()==0
+		&& reConfirmationNewPasswordErrorMessageList.size()==0
+		&& newPasswordIncorrectErrorMessageList.size()==0) {
 
-		if(loginIdErrorMessageList.size()==0 &&
-				passwordErrorMessageList.size()==0 &&
-				newPasswordErrorMessageList.size()==0 &&
-				reConfirmationNewPasswordErrorMessageList.size()==0 &&
-				newPasswordIncorrectErrorMessageList.size()==0){
 			UserInfoDAO userInfoDAO = new UserInfoDAO();
-			if(userInfoDAO.isExistsUserInfo(loginId,password)){
+
+			// ユーザーが存在している場合
+			if(userInfoDAO.isExistsUserInfo(loginId, password)) {
+				//パスワードを隠匿する
 				String concealedPassword = userInfoDAO.concealPassword(password);
-				session.put("loginId",loginId);
-				session.put("newPpassword",newPassword);
-				session.put("concealPassword",concealedPassword);
+				//sessionに格納、SUCCESSを返す
+				session.put("loginId", loginId);
+				session.put("newPassword", newPassword);
+				session.put("concealedPassword", concealedPassword);
 				result = SUCCESS;
-			}else{
-				passwordIncorrectErrorMessageList.add("パスワードが間違っています。");
+			//ユーザーが存在していない場合
+			} else {
+				passwordIncorrectErrorMessageList.add("パスワードが異なります。");
 				session.put("passwordIncorrectErrorMessageList", passwordIncorrectErrorMessageList);
 			}
-		}else{
-			session.put("loginIdErrorMessageList",loginIdErrorMessageList);
-			session.put("passwordErrorMessageList",passwordErrorMessageList);
-			session.put("newPasswordErrorMessageList",newPasswordErrorMessageList);
-			session.put("reConfirmationNewPasswordErrorMessageList",reConfirmationNewPasswordErrorMessageList);
-			session.put("newPasswordErrorMessageList",newPasswordErrorMessageList);
-
+		//sessionにエラーメッセージを格納
+		} else {
+			session.put("loginIdErrorMessageList", loginIdErrorMessageList);
+			session.put("passwordErrorMessageList", passwordErrorMessageList);
+			session.put("newPasswordErrorMessageList", newPasswordErrorMessageList);
+			session.put("reConfirmationNewPasswordErrorMessageList", reConfirmationNewPasswordErrorMessageList);
+			session.put("newPasswordIncorrectErrorMessageList", newPasswordIncorrectErrorMessageList);
 		}
 		return result;
 	}
@@ -89,12 +96,12 @@ public class ResetPasswordConfirmAction extends ActionSupport implements Session
 		this.newPassword = newPassword;
 	}
 
-	public String getReConfirmationNewPassword() {
-		return reConfirmationNewPassword;
+	public String getReConfirmationPassword() {
+		return reConfirmationPassword;
 	}
 
-	public void setReConfirmationNewPassword(String reConfirmationNewPassword) {
-		this.reConfirmationNewPassword = reConfirmationNewPassword;
+	public void setReConfirmationPassword(String reConfirmationPassword) {
+		this.reConfirmationPassword = reConfirmationPassword;
 	}
 
 	public String getCategoryId() {
@@ -160,5 +167,7 @@ public class ResetPasswordConfirmAction extends ActionSupport implements Session
 	public void setSession(Map<String, Object> session) {
 		this.session = session;
 	}
+
+
 
 }
