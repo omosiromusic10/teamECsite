@@ -81,6 +81,7 @@ public class CartAction extends ActionSupport implements SessionAware{
 		this.keywords = keywords;
 	}
 
+
 	public Map<String, Object> getSession(){
 		return session;
 	}

@@ -14,7 +14,6 @@ import com.internousdev.glanq.dto.MCategoryDTO;
 import com.opensymphony.xwork2.ActionSupport;
 
 
-
 public class DeleteCartAction extends ActionSupport implements SessionAware {
 
 
@@ -75,7 +74,7 @@ public class DeleteCartAction extends ActionSupport implements SessionAware {
 			return ERROR;
 		}else{
 			String userId =null;
-			List<CartInfoDTO> ciDTOList = new ArrayList<CartInfoDTO>();
+			List<CartInfoDTO> cartInfoDtoList = new ArrayList<CartInfoDTO>();
 
 			//userIdにsessionに現行入っているidの情報を格納
 			if(session.containsKey("loginId")){
@@ -85,15 +84,15 @@ public class DeleteCartAction extends ActionSupport implements SessionAware {
 			}
 
 			//カートに関連する情報を全てciDTOListに格納
-			ciDTOList = ciDAO.getCartInfoDtoList(userId);
-			Iterator<CartInfoDTO> iterator = ciDTOList.iterator();
+			cartInfoDtoList = ciDAO.getCartInfoDtoList(userId);
+			Iterator<CartInfoDTO> iterator = cartInfoDtoList.iterator();
 
 			//値が途切れたらnullを格納
 			if(!(iterator.hasNext())){
-				ciDTOList = null;
+				cartInfoDtoList = null;
 			}
 
-			session.put("CartInfoDtoList", ciDTOList);
+			session.put("cartInfoDtoList", cartInfoDtoList);
 
 			/*
 			 * 合計金額をgetTotalPriceメソッドで取得
@@ -110,20 +109,12 @@ public class DeleteCartAction extends ActionSupport implements SessionAware {
 		return result;
 	}
 
-	public String getCategoryId() {
-		return categoryId;
+	public List<MCategoryDTO> getmCategoryDtoList() {
+		return mCategoryDtoList;
 	}
 
-	public void setCategoryId(String categoryId) {
-		this.categoryId = categoryId;
-	}
-
-	public String getProductId() {
-		return productId;
-	}
-
-	public void setProductId(String productId) {
-		this.productId = productId;
+	public void setmCategoryDtoList(List<MCategoryDTO> mCategoryDtoList) {
+		this.mCategoryDtoList = mCategoryDtoList;
 	}
 
 	public String getSex() {
@@ -134,11 +125,11 @@ public class DeleteCartAction extends ActionSupport implements SessionAware {
 		this.sex = sex;
 	}
 
-	public List<String> getSexList(){
+	public List<String> getSexList() {
 		return sexList;
 	}
 
-	public void setSexList(List<String> sexList){
+	public void setSexList(List<String> sexList) {
 		this.sexList = sexList;
 	}
 
@@ -148,6 +139,38 @@ public class DeleteCartAction extends ActionSupport implements SessionAware {
 
 	public void setDefaultSexValue(String defaultSexValue) {
 		this.defaultSexValue = defaultSexValue;
+	}
+
+	public Collection<String> getCheckList() {
+		return checkList;
+	}
+
+	public void setCheckList(Collection<String> checkList) {
+		this.checkList = checkList;
+	}
+
+	public String getProductId() {
+		return productId;
+	}
+
+	public void setProductId(String productId) {
+		this.productId = productId;
+	}
+
+
+	public String getCategoryId() {
+		return categoryId;
+	}
+
+	public void setCategoryId(String categoryId) {
+		this.categoryId = categoryId;
+	}
+
+	public Map<String, Object> getSession() {
+		return session;
+	}
+	public void setSession(Map<String, Object> session) {
+		this.session = session;
 	}
 
 	public String getProductName() {
@@ -222,19 +245,4 @@ public class DeleteCartAction extends ActionSupport implements SessionAware {
 		this.subtotal = subtotal;
 	}
 
-	public List<MCategoryDTO> getmCategoryDtoList() {
-		return mCategoryDtoList;
-	}
-
-	public void setmCategoryDtoList(List<MCategoryDTO> mCategoryDtoList) {
-		this.mCategoryDtoList = mCategoryDtoList;
-	}
-
-	public Map<String,Object> getSession(){
-		return session;
-	}
-
-	public void setSession(Map<String,Object> session){
-		this.session = session;
-	}
 }
