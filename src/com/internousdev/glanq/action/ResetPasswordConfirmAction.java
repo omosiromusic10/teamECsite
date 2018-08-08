@@ -34,7 +34,7 @@ public class ResetPasswordConfirmAction extends ActionSupport implements Session
 		loginIdErrorMessageList = inputChecker.docheck("ログインID", loginId, 1, 8, true, false, false, true, false, false, false);
 		passwordErrorMessageList = inputChecker.docheck("現在のパスワード", password, 1, 16, true, false, false, true, false, false, false);
 		newPasswordErrorMessageList = inputChecker.docheck("新しいパスワード", newPassword, 1, 16, true, false, false, true, false, false, false);
-		reConfirmationNewPasswordErrorMessageList = inputChecker.docheck("新しいパスワード（再確認）", reConfirmationPassword, 1, 16, true, false, false, true, false, false, false);
+		reConfirmationNewPasswordErrorMessageList = inputChecker.docheck("確認用パスワード）", reConfirmationPassword, 1, 16, true, false, false, true, false, false, false);
 		newPasswordIncorrectErrorMessageList = inputChecker.doPasswordCheck(newPassword, reConfirmationPassword);
 
 		//.size()メソッドは対象の要素の数を返す
@@ -42,7 +42,7 @@ public class ResetPasswordConfirmAction extends ActionSupport implements Session
 		if(loginIdErrorMessageList.size()==0
 		&& passwordErrorMessageList.size()==0
 		&& newPasswordErrorMessageList.size()==0
-		&& reConfirmationNewPasswordErrorMessageList.size()==0
+				&& reConfirmationNewPasswordErrorMessageList.size()==0
 		&& newPasswordIncorrectErrorMessageList.size()==0) {
 
 			UserInfoDAO userInfoDAO = new UserInfoDAO();
@@ -58,7 +58,7 @@ public class ResetPasswordConfirmAction extends ActionSupport implements Session
 				result = SUCCESS;
 			//ユーザーが存在していない場合
 			} else {
-				passwordIncorrectErrorMessageList.add("パスワードが異なります。");
+				passwordIncorrectErrorMessageList.add("パスワードかログインIDに間違いがあります。");
 				session.put("passwordIncorrectErrorMessageList", passwordIncorrectErrorMessageList);
 			}
 		//sessionにエラーメッセージを格納

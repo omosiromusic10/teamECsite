@@ -74,10 +74,10 @@
 			</tr>
 			<tr>
 				<td>
-					<s:if test="!#session.reConfirmationNewPasswordErrorMessageList.isEmpty()">
+					<s:if test="!#session.newPasswordIncorrectErrorMessageList.isEmpty()">
 						<div class="error">
 						<div class="error-message">
-						<s:iterator value="#session.reConfirmationNewPasswordErrorMessageList"><s:property />
+						<s:iterator value="#session.newPasswordIncorrectErrorMessageList"><s:property />
 						<br></s:iterator>
 						</div>
 						</div>
@@ -90,19 +90,19 @@
 			</tr>
 			<tr>
 				<td>
-					<s:if test="!#session.newPasswordIncorrectErrorMessageList.isEmpty()">
+					<s:if test="!#session.reConfirmationNewPasswordErrorMessageList.isEmpty()">
 						<div class="error">
 						<div class="error-message">
-						<s:iterator value="#session.newPasswordIncorrectErrorMessageList"><s:property />
+						<s:iterator value="#session.reConfirmationNewPasswordErrorMessageList"><s:property />
 						<br></s:iterator>
 						</div>
 						</div>
 					</s:if>
-					</td>
-				</tr>
+				</td>
+			</tr>>
 			<tr>
-				<th scope="row"><s:label value="再確認用"/></th>
-				<td><s:password name="reConfirmationPassword" placeholder="再確認用" class="txt"/></td>
+				<th scope="row"><s:label value="確認用パスワード"/></th>
+				<td><s:password name="reConfirmationPassword" placeholder="確認用" class="txt"/></td>
 			</tr>
 		</table>
 		<s:submit value="パスワード再設定" class="submit_btn"/>
