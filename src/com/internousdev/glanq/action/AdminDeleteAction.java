@@ -1,5 +1,6 @@
 package com.internousdev.glanq.action;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -23,56 +24,49 @@ public class AdminDeleteAction extends ActionSupport implements SessionAware {
 	private int price;
 	private String categoryId;
 	private String keywords;
-	private String pageNo;
+	private int pageNo;
 	private List<MCategoryDTO> mCategoryDtoList = new ArrayList<MCategoryDTO>();
 	private List<ProductInfoDTO> productInfoDtoList = new ArrayList<ProductInfoDTO>();
 	private Map<String, Object> session;
 
-	public String execute(){
-		String result = ERROR;
+	public String execute() throws SQLException{
+	String result = ERROR;
 
-		ProductInfoDAO productInfoDao = new ProductInfoDAO();
-		productInfoDtoList = productInfoDao.getProductInfoList();
+	ProductInfoDAO productInfoDao = new ProductInfoDAO();
+	productInfoDtoList = productInfoDao.getProductInfoList();
+
+	if(!session.containsKey("mCategoryList")){
+		MCategoryDAO mCategoryDao = new MCategoryDAO();
+		mCategoryDtoList = mCategoryDao.getMCategoryList();
+		session.put("mCategoryDtoList", mCategoryDtoList);
+	}
+
+	if(!(productInfoDtoList==null)){
 		Pagination pagination = new Pagination();
-		PaginationDTO paginationDTO = pagination.initialize(productInfoDtoList, 9);
-		session.put("totalPageSize",paginationDTO.getTotalPageSize());
-		session.put("currentPageNumber", paginationDTO.getCurrentPageNo());
-		session.put("totalRecordSize", paginationDTO.getTotalRecordSize());
-		session.put("startRecordNo", paginationDTO.getStartRecordNo());
-		session.put("endRecordNo",paginationDTO.getEndRecordNo());
+		PaginationDTO paginationDTO = new PaginationDTO();
+		if(pageNo == 0){
+			paginationDTO = pagination.initialize(productInfoDtoList, 9);
+		}else{
+			paginationDTO = pagination.getPage(productInfoDtoList, 9, pageNo);
+		}
 		session.put("productInfoDtoList", paginationDTO.getCurrentProductInfoPage());
-		session.put("haxNextPage", paginationDTO.hasNextPage());
-		session.put("nextPageNo", paginationDTO.hasPreviousPage());
-		session.put("previusPageNo",paginationDTO.getPreviousPageNo());
+		session.put("totalPageSize", paginationDTO.getTotalPageSize());//全ページ数
+		session.put("currentPageNo", paginationDTO.getCurrentPageNo());//現在のページ数
+		session.put("totalRecordSize", paginationDTO.getTotalRecordSize());//総レコード数
+		session.put("startRecordNo", paginationDTO.getStartRecordNo());//開始のレコード数
+		session.put("endRecordNo", paginationDTO.getEndRecordNo());//終了のレコード数
+		session.put("previousPage", paginationDTO.isHasPreviousPage());//前ページが存在するか
+		session.put("previousPageNo", paginationDTO.getPreviousPageNo());//前ページの番号
+		session.put("nextPage", paginationDTO.isHasNextPage());//次ページが存在するか
+		session.put("nextPageNo", paginationDTO.getNextPageNo());//次ページの番号
+		session.put("pageNumberList", paginationDTO.getPageNumberList());	//ページ番号リスト
+		session.put("productInfoDtoList", paginationDTO.getCurrentProductInfoPage());//1ページ分の商品情報
 
-		//session内にmCategoryListが無いか確認
-		if(!session.containsKey("mCategoryList")){
-			MCategoryDAO mCategoryDao = new MCategoryDAO();
-			mCategoryDtoList = mCategoryDao.getMCategoryList();
-			session.put("mCategoryDtoList", mCategoryDtoList);
-			}
-
-		if(!(productInfoDtoList==null)) {;
-			if(pageNo==null) {
-				paginationDTO = pagination.initialize(productInfoDtoList, 9);
-			}else {
-				paginationDTO = pagination.getPage(productInfoDtoList, 9, pageNo);
-			}
-			session.put("productInfoDtoList", paginationDTO.getCurrentProductInfoPage());
-			session.put("totalPageSize", paginationDTO.getTotalPageSize());
-			session.put("currentPageNo", paginationDTO.getCurrentPageNo());
-			session.put("totalRecordSize", paginationDTO.getTotalRecordSize());
-			session.put("startRecordNo", paginationDTO.getStartRecordNo());
-			session.put("endRecordNo", paginationDTO.getEndRecordNo());
-			session.put("previousPage", paginationDTO.hasPreviousPage());
-			session.put("previousPageNo", paginationDTO.getPreviousPageNo());
-			session.put("nextPage", paginationDTO.hasNextPage());
-			session.put("nextPageNo", paginationDTO.getNextPageNo());
-			}else {
-				session.put("productInfoDtoList", null);
-			}
-		result = SUCCESS;
-		return result;
+		}else{
+			session.put("productInfoDtoList", null);
+		}
+    result = SUCCESS;
+    return result;
 	}
 
 	public String getProductName() {
