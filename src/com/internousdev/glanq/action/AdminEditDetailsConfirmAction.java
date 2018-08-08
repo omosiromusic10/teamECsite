@@ -90,18 +90,17 @@ public class AdminEditDetailsConfirmAction extends ActionSupport implements Sess
         }
         try{
         	switch(categoryId){
-        	//ここはcategoryIdが変わり次第変更よてい！！！！！！！！！！！！！！
         	case 1:
         		session.put("categoryName","全てのカテゴリー");
         		break;
         	case 2:
-        		session.put("categoryName","本");
+        		session.put("categoryName","肉");
         		break;
         	case 3:
-        		session.put("categoryName","家電・パソコン");
+        		session.put("categoryName","野菜");
         		break;
         	case 4:
-        		session.put("categoryName","おもちゃ・ゲーム");
+        		session.put("categoryName","機材");
         		break;
 
         	}
