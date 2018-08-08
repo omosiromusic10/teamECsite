@@ -17,7 +17,8 @@ public class UserInfoDAO {
 	 * 主にユーザー情報やパスワードに関するもの
 	 * 処理内容は
 	 * ①情報登録用メソッド(戻り値：int　更新件数)
-	 * ②情報確認用メソッド(戻り値：boolean)
+	 * ②情報確認用メソッド　引数(ログインID、パスワード)(戻り値：boolean)
+	 * ③情報確認用メソッド　引数(ログインID)　(戻り値：boolean)
 	 * ③情報取得用メソッド　引数(ログインID、パスワード)　(戻り値：UserInfoDTO)
 	 * ④情報確認用メソッド　引数(ログインID)　(戻り値：UserInfoDTO)
 	 * ⑤パスワードリセット用メソッド　(戻り値：int　更新件数)
@@ -69,7 +70,7 @@ public class UserInfoDAO {
 	}
 
 
-	//ユーザーがいるかどうかの判定用メソッド
+	//ユーザーがいるかどうかの判定用メソッド(ログインID、パスワード)
 	public boolean isExistsUserInfo(String loginId, String password){
 
 		DBConnector db = new DBConnector();
@@ -95,6 +96,9 @@ public class UserInfoDAO {
 					result = true;
 				}
 			}
+
+			//実行の結果　countカラムが一件以上存在すればtrueを返す
+
 		}catch(SQLException e ){
 			e.printStackTrace();
 		}
@@ -108,6 +112,7 @@ public class UserInfoDAO {
 	}
 
 
+	//ユーザーがいるかどうかの判定用メソッド(ログインID)
 	public boolean isExistsUserInfo(String loginId){
 
 		DBConnector db = new DBConnector();
@@ -132,6 +137,9 @@ public class UserInfoDAO {
 					result = true;
 				}
 			}
+
+			//実行の結果　countカラムが一件以上存在すればtrueを返す
+
 		}catch(SQLException e ){
 			e.printStackTrace();
 		}
@@ -260,6 +268,9 @@ public class UserInfoDAO {
 			ps.setString(1, password);
 			ps.setString(2, userId);
 			count = ps.executeUpdate();
+
+			//実行の結果をcountに代入
+
 		}catch(SQLException e ){
 			e.printStackTrace();
 		}
@@ -282,7 +293,6 @@ public class UserInfoDAO {
 		 * ユーザーIDとパスワードを元に
 		 * UPDATE文を用いて
 		 * DBのloginedの値を1に更新する
-		 * (ユーザーIDだけでいい？)
 		 */
 
 		String sql = "UPDATE user_info SET logined = 1 WHERE user_id = ? AND password = ?";
@@ -315,7 +325,6 @@ public class UserInfoDAO {
 		 * ユーザーIDとパスワードを元に
 		 * UPDATE文を用いて
 		 * DBのloginedの値を0に更新する
-		 * (ユーザーIDだけでいい？)
 		 */
 
 		String sql = "UPDATE user_info SET logined = 0 WHERE user_id = ? AND password = ?";
