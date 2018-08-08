@@ -15,78 +15,120 @@
 
   <h1>locationChoice画面</h1>
 
-  <!-- 画像をクリックすると、対応したBBQ場が宛先としてデータベースに保存されるようにする -->
-  <!-- jspにBBQ場の情報を記述して、DestinationInfoDAOの新規登録と同じメソッドでMySQLに登録 -->
-  <!-- とりあえず機能を確かめるために画像ではなくボタンで送信することにする -->
-  <!-- 同じテーブルで扱うため、便宜的に姓を会社名、名をBBQ場の名前とする -->
+  <!-- とりあえずで作ったからレイアウトは許してほしい -->
 
   <div>
-  <s:form action="LocationChoiceCompleteAction">
-      <!-- 姓 -->
-      <s:hidden name="familyName" value="インターノウス株式会社"/>
-      <!-- 名 -->
-      <s:hidden name="firstName" value="Aバーベキュー場"/>
-      <!-- 姓かな -->
-      <s:hidden name="familyNameKana" value="いんたーのうすかぶしきがいしゃ"/>
-      <!-- 名かな -->
-      <s:hidden name="firstNameKana" value="えーばーべきゅーじょう"/>
-      <!-- メールアドレス -->
-      <s:hidden name="email" value="internousdev@test.com"/>
-      <!-- 電話番号 -->
-      <s:hidden name="telNumber" value="12345678900"/>
-      <!-- 住所 -->
-      <s:hidden name="userAddress" value="東京都千代田区三番町1-1 KY三番町ビル 1F"/>
-
+  <s:form action="LocationChoiceConfirmAction">
+      <s:hidden name="park_name" value="A"/>
       <!-- submitボタン -->
-      <!-- s:hiddenタブで設定したvalueをここで送信する。挿入される値はcreateDestinationComfirm.jspと対応 -->
-      <!-- 画面実装でここをimgタグで囲めば画像クリックでBBQ場の選択ができる -->
+      <!-- 画面実装でimgタブで囲むことで、画像クリックでBBQ場の選択ができるようになる...はず -->
       <s:submit value="Aバーベキュー場"/>
+      <table>
+          <tr>
+              <td>会場名</td>
+              <td>Aバーベキュー場</td>
+          </tr>
+          <tr>
+              <td>会場名かな</td>
+              <td>えーばーべきゅーじょう</td>
+          </tr>
+          <tr>
+              <td>会社名</td>
+              <td>インターノウス株式会社</td>
+          </tr>
+          <tr>
+              <td>会社名かな</td>
+              <td>いんたーのうすかぶしきがいしゃ</td>
+          </tr>
+          <tr>
+              <td>メールアドレス</td>
+              <td>internousdev@test.com</td>
+          </tr>
+          <tr>
+              <td>電話番号</td>
+              <td>12345678900</td>
+          </tr>
+          <tr>
+              <td>住所</td>
+              <td>東京都千代田区三番町1-1 KY三番町ビル 1F</td>
+          </tr>
+      </table>
   </s:form>
   </div>
   <div>
-  <s:form action="LocationChoiceCompleteAction">
-      <!-- 姓 -->
-      <s:hidden name="familyName" value="インターノウス株式会社"/>
-      <!-- 名 -->
-      <s:hidden name="firstName" value="Bバーベキュー場"/>
-      <!-- 姓かな -->
-      <s:hidden name="familyNameKana" value="いんたーのうすかぶしきがいしゃ"/>
-      <!-- 名かな -->
-      <s:hidden name="firstNameKana" value="びーばーべきゅーじょう"/>
-      <!-- メールアドレス -->
-      <s:hidden name="email" value="internousdev@test.com"/>
-      <!-- 電話番号 -->
-      <s:hidden name="telNumber" value="12345678900"/>
-      <!-- 住所 -->
-      <s:hidden name="userAddress" value="東京都千代田区霞ヶ関3-6-15"/>
-
+  <s:form action="LocationChoiceConfirmAction">
+      <s:hidden name="park_name" value="B"/>
       <!-- submitボタン -->
-      <!-- s:hiddenタブで設定したvalueをここで送信する。挿入される値はcreateDestinationComfirm.jspと対応 -->
-      <!-- 画面実装でここをimgタグで囲めば画像クリックでBBQ場の選択ができる -->
+      <!-- 画面実装でimgタブで囲むことで、画像クリックでBBQ場の選択ができるようになる...はず -->
       <s:submit value="Bバーベキュー場"/>
+      <table>
+          <tr>
+              <td>会場名</td>
+              <td>Bバーベキュー場</td>
+          </tr>
+          <tr>
+              <td>会場名かな</td>
+              <td>びーばーべきゅーじょう</td>
+          </tr>
+          <tr>
+              <td>会社名</td>
+              <td>インターノウス株式会社</td>
+          </tr>
+          <tr>
+              <td>会社名かな</td>
+              <td>いんたーのうすかぶしきがいしゃ</td>
+          </tr>
+          <tr>
+              <td>メールアドレス</td>
+              <td>internousdev@test.com</td>
+          </tr>
+          <tr>
+              <td>電話番号</td>
+              <td>12345678900</td>
+          </tr>
+          <tr>
+              <td>住所</td>
+              <td>東京都千代田区三番町1-1 KY三番町ビル 1F</td>
+          </tr>
+      </table>
   </s:form>
   </div>
   <div>
-  <s:form action="LocationChoiceCompleteAction">
-      <!-- 姓 -->
-      <s:hidden name="familyName" value="インターノウス株式会社"/>
-      <!-- 名 -->
-      <s:hidden name="firstName" value="Cバーベキュー場"/>
-      <!-- 姓かな -->
-      <s:hidden name="familyNameKana" value="いんたーのうすかぶしきがいしゃ"/>
-      <!-- 名かな -->
-      <s:hidden name="firstNameKana" value="しーばーべきゅーじょう"/>
-      <!-- メールアドレス -->
-      <s:hidden name="email" value="internousdev@test.com"/>
-      <!-- 電話番号 -->
-      <s:hidden name="telNumber" value="12345678900"/>
-      <!-- 住所 -->
-      <s:hidden name="userAddress" value="東京都千代田区三番町1-1 KY三番町ビル 1F"/>
-
+  <s:form action="LocationChoiceConfirmAction">
+      <s:hidden name="park_name" value="C"/>
       <!-- submitボタン -->
-      <!-- s:hiddenタブで設定したvalueをここで送信する。挿入される値はcreateDestinationComfirm.jspと対応 -->
-      <!-- 画面実装でここをimgタグで囲めば画像クリックでBBQ場の選択ができる -->
+      <!-- 画面実装でimgタブで囲むことで、画像クリックでBBQ場の選択ができるようになる...はず -->
       <s:submit value="Cバーベキュー場"/>
+      <table>
+          <tr>
+              <td>会場名</td>
+              <td>Cバーベキュー場</td>
+          </tr>
+          <tr>
+              <td>会場名かな</td>
+              <td>しーばーべきゅーじょう</td>
+          </tr>
+          <tr>
+              <td>会社名</td>
+              <td>インターノウス株式会社</td>
+          </tr>
+          <tr>
+              <td>会社名かな</td>
+              <td>いんたーのうすかぶしきがいしゃ</td>
+          </tr>
+          <tr>
+              <td>メールアドレス</td>
+              <td>internousdev@test.com</td>
+          </tr>
+          <tr>
+              <td>電話番号</td>
+              <td>12345678900</td>
+          </tr>
+          <tr>
+              <td>住所</td>
+              <td>東京都千代田区三番町1-1 KY三番町ビル 1F</td>
+          </tr>
+      </table>
   </s:form>
   </div>
 
