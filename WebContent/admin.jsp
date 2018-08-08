@@ -10,7 +10,7 @@
 <title>管理者画面</title>
 </head>
 <body>
-<!-- <jsp:include page="header.jsp"/> -->
+ <jsp:include page="header.jsp"/>
 <div id="contents">
 <h1>管理者ホーム画面</h1>
 
@@ -60,7 +60,7 @@
 
 </div>
 
-<!-- <s:include value="footer.jsp"/> -->
+<s:include value="footer.jsp"/>
 
 
 

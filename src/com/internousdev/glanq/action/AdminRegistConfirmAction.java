@@ -37,6 +37,8 @@ public class AdminRegistConfirmAction extends ActionSupport implements SessionAw
 	private List<String>releaseCompanyErrorMessageList = new ArrayList<String>();
 	private List<String>releaseDateErrorMessageList = new ArrayList<String>();
 
+	private List<String>userImageFileNameErrorMessageList = new ArrayList<String>();
+
 	private int categoryId;
 	private List<String> categoryIdList = new ArrayList<String>();
 	private Map<String, Object> session;
@@ -57,25 +59,57 @@ public class AdminRegistConfirmAction extends ActionSupport implements SessionAw
 		session.put("userImageFileName", userImageFileName);
 		session.put("Status", 0);
 
+		//ファイルアップロードの処理
+		if(!(userImage == null)){
+		String filePath = ServletActionContext.getServletContext().getRealPath("/").concat("images");
+		System.out.println("Image Location:" + filePath);
+		File fileToCreate = new File(filePath, userImageFileName);
+	try{
+		  FileUtils.copyFile(userImage , fileToCreate);
+			session.put("image_file_name", userImageFileName);
+			session.put("image_file_path", "./images");
+			session.put("image_flg" , userImageFileName);
+			System.out.println(session.get("image_file_name"));
+			System.out.println(session.get("image_file_path"));
+	  }catch(IOException e){
+		  e.printStackTrace();
+	  }
+	  }else{
+			userImageFileName="";
+			result = ERROR;
+	  }
+	try{
+		switch(categoryId){
+		case 1 :
+			session.put("categoryName","全てのカテゴリー");
+			break;
+		case 2 :
+			session.put("categoryName", "肉");
+			break;
+		case 3 :
+			session.put("categoryName", "野菜");
+			break;
+		case 4 :
+			session.put("categoryName", "機材");
+			break;
+		}
+	}catch(Exception e){
+		e.printStackTrace();
+	}
+
 		productNameErrorMessageList = inputChecker.docheck("商品名", productName, 1, 32, true, true, true, true, true, true, true);
 		productNameKanaErrorMessageList = inputChecker.docheck("商品名ふりがな", productNameKana, 1, 32, false, false, true, false, false, false, false);
 		productDescriptionErrorMessageList = inputChecker.docheck("商品名詳細", productDescription, 1, 320, true, true, true, true, true, true, true);
 		priceErrorMessageList  = inputChecker.docheck("価格", price, 1, 8, false, false, false, true, false, false, false);
 	//	imageFilePathErrorMessageList = inputChecker.doCheck("画像ファイル", imageFilePath, 1, 64, true, true, true, true, true, true, true);
+    //  imageFileNameErrorMessageList = inputChecker.doCheck("画像ファイル名", imageFileName, 1, 16, true, true, true, true, true, true, true);
 		releaseCompanyErrorMessageList  = inputChecker.docheck("発売会社名", releaseCompany, 1, 16, true, true, true, true, false, true, false);
 		releaseDateErrorMessageList  = inputChecker.docheck("発売年月", releaseDate, 1, 16, false, true, false, true, true, false, false);
+		userImageFileNameErrorMessageList = inputChecker.docheck("画像ファイル", userImageFileName, 1, 32, true, true, true, true, true, true, true);
 
 
 		//mCategoryListからセレクトした物をproduct_infoのcategoryId から、くっつけて
 		//  選択したmCategoryテーブル内のcategoryId == product_infoのcategoryId    の存在にしてあげれば product_info のcategoryIdはつく。
-
-
-
-
-
-
-
-
 
 		if(productNameErrorMessageList.size()==0
 		&& productNameKanaErrorMessageList.size()==0
@@ -84,8 +118,8 @@ public class AdminRegistConfirmAction extends ActionSupport implements SessionAw
 	//	&& imageFilePathErrorMessageList.size()==0
 		&& imageFileNameErrorMessageList.size()==0
 		&& releaseCompanyErrorMessageList.size()==0
-		&& releaseDateErrorMessageList.size()==0 ){
-
+		&& releaseDateErrorMessageList.size()==0
+		&& userImageFileNameErrorMessageList.size()==0 ){
 			result = SUCCESS;
 		}else{
 			session.put("productNameErrorMessageList", productNameErrorMessageList);
@@ -96,40 +130,10 @@ public class AdminRegistConfirmAction extends ActionSupport implements SessionAw
 	//		session.put("imageFilePathErrorMessageList", imageFilePathErrorMessageList);
 			session.put("releaseCompanyErrorMessageList", releaseCompanyErrorMessageList);
 			session.put("releaseDateErrorMessageList", releaseDateErrorMessageList);
+			session.put("userImageFileNameErrorMessageList" ,userImageFileNameErrorMessageList);
 			result = ERROR;
 		}
-		//ファイルアップロードの処理
-			String filePath = ServletActionContext.getServletContext().getRealPath("/").concat("images");
-			System.out.println("Image Location:" + filePath);
-			File fileToCreate = new File(filePath, userImageFileName);
-		try{
-			  FileUtils.copyFile(userImage , fileToCreate);
-				session.put("image_file_name", userImageFileName);
-				session.put("image_file_path", "./images");
-				session.put("image_flg" , userImageFileName);
-				System.out.println(session.get("image_file_name"));
-				System.out.println(session.get("image_file_path"));
-		  }catch(IOException e){
-			  e.printStackTrace();
-		  }
-		try{
-			switch(categoryId){
-			case 1 :
-				session.put("categoryName","全てのカテゴリー");
-				break;
-			case 2 :
-				session.put("categoryName", "本");
-				break;
-			case 3 :
-				session.put("categoryName", "家電・パソコン");
-				break;
-			case 4 :
-				session.put("categoryName", "おもちゃ・ゲーム");
-				break;
-			}
-		}catch(Exception e){
-			e.printStackTrace();
-		}
+
 		return result;
 	}
 	public int getCategoryId(){
@@ -268,6 +272,12 @@ public class AdminRegistConfirmAction extends ActionSupport implements SessionAw
 	}
 	public void setCategoryIdList(List<String> categoryIdList) {
 		this.categoryIdList = categoryIdList;
+	}
+	public List<String> getUserImageFileNameErrorMessageList() {
+		return userImageFileNameErrorMessageList;
+	}
+	public void setUserImageFileNameErrorMessageList(List<String> userImageFileNameErrorMessageList) {
+		this.userImageFileNameErrorMessageList = userImageFileNameErrorMessageList;
 	}
 
 }

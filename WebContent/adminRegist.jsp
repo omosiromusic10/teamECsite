@@ -44,20 +44,15 @@
     </div>
     </div>
 </s:if>
-<s:if test="!#session.imageFileNameErrorMessageList.isEmpty()">
+<!-- 画像が入ってない場合でもエラーが出るように -->
+<s:if test="!#session.userImageFileNameErrorMessageList.isEmpty()">
     <div class="error">
     <div class="error-message">
-        <s:iterator value="#session.imageFileNameErrorMessageList"><s:property /><br></s:iterator>
+        <s:iterator value="#session.userImageFileNameErrorMessageList"><s:property /><br></s:iterator>
     </div>
     </div>
 </s:if>
-<s:if test="!#session.imageFilePathErrorMessageList.isEmpty()">
-    <div class="error">
-    <div class="error-message">
-        <s:iterator value="#session.imageFilePathErrorMessageList"><s:property /><br></s:iterator>
-    </div>
-    </div>
-</s:if>
+
 
 <s:form action="AdminRegistConfirmAction" method="post" enctype="multipart/form-data">
 

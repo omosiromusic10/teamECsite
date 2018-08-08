@@ -146,18 +146,25 @@
 
 
 <!-- 13.管理者機能 -->
-<action name="AdminRegistAction" class="com.internousdev.granq.action.AdminRegistAction" method="execute">
+<!-- 13.1.管理者ホーム移動機能 -->
+<action name="GoAdminAction" class="com.internousdev.glanq.action.GoAdminAction" method="execute">
+           <result name="success">admin.jsp</result>
+           <result name="error">home.jsp</result>
+</action>
+<!-- 13.2.管理者商品追加機能 -->
+<action name="AdminRegistAction" class="com.internousdev.glanq.action.AdminRegistAction" method="execute">
            <result name="success">adminRegist.jsp</result>
            <result name="error">admin.jsp</result>
 </action>
-<action name="AdminRegistConfirmAction" class="com.internousdev.granq.action.AdminRegistConfirmAction" method="execute">
+<action name="AdminRegistConfirmAction" class="com.internousdev.glanq.action.AdminRegistConfirmAction" method="execute">
             <result name="success">adminRegistConfirm.jsp</result>
             <result name="error">adminRegist.jsp</result>
 </action>
-<action name="AdminRegistCompleteAction" class="com.internousdev.glanq.action.AdminRegistConfirmAction" method="execute">
+<action name="AdminRegistCompleteAction" class="com.internousdev.glanq.action.AdminRegistCompleteAction" method="execute">
            <result name="success">adminRegistComplete.jsp</result>
            <result name="error">adminRegistConfirm.jsp</result>
 </action>
+<!-- 13.3.管理者商品変更・編集機能 -->
 <action name="AdminEditAction" class="com.internousdev.glanq.action.AdminEditAction" method="execute">
            <result name="success">adminEdit.jsp</result>
            <result name="error">admin.jsp</result>
@@ -166,7 +173,15 @@
            <result name="success">adminEditDetails.jsp</result>
            <result name="error">admin.jsp</result>
 </action>
-
+<action name="AdminEditDetailsConfirmAction" class="com.internousdev.glanq.action.AdminEditDetailsConfirmAction" method="execute">
+           <result name="succes">adminEditDetailsConfirm.jsp</result>
+           <result name="error">adminEditDetails.jsp</result>
+</action>
+<action name="AdminEditDetailsCompleteAction" class="com.internousdev.glanq.action.AdminEditDetailsCompleteAction" method="execute">
+           <result name="success">adminEditDetailsComplete.jsp</result>
+           <result name="error">adminEditDetailsConfirm.jsp</result>
+</action>
+<!-- 13.4.管理者商品削除機能 -->
 <action name="AdminDeleteAction" class="com.internousdev.glanq.action.AdminDeleteAction" method="execute">
            <result name="success">adminDelete.jsp</result>
            <result name="error">admin.jsp</result>
@@ -175,6 +190,18 @@
            <result name="success">adminDeleteComplete.jsp</result>
            <result name="error">adminDelete.jsp</result>
 </action>
+<!-- 13.5.管理者商品一覧機能 -->
+<action name="AdminProductSelectAction" class="com.internousdev.glanq.action.AdminProductSelectAction" method="execute">
+           <result name="success">adminProductSelect.jsp</result>
+           <result name="error">admin.jsp</result>
+</action>
+<!-- 13.6.管理者購入履歴一覧機能 -->
+<action name="AdminPurchaseSelectAction" class="com.internousdev.glanq.action.AdminPurchaseSelectAction" method="execute">
+           <result name="success">adminPurchaseSelect.jsp</result>
+           <result name="error">admin.jsp</result>
+</action>
+
+
 
 <!-- 14.新機能 -->
 <action name="LocationOptionAction" class="com.internousdev.glanq.action.LocationOptionAction" method="execute">

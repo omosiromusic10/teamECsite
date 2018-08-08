@@ -12,7 +12,7 @@
 <jsp:include page="header.jsp"/>
 <div id="contents">
 <h1>商品編集画面</h1>
-空ではない場合のエラーメッセージ
+<!--  空ではない場合のエラーメッセージ -->
 <s:if test="!#session.productNameErrorMessageList.isEmpty()">
 	<div class="error">
 	<div class="error-message">
@@ -41,19 +41,12 @@
 	</div>
 	</div>
 </s:if>
-<s:if test="!#session.imageFileNameErrorMessageList.isEmpty()">
-	<div class="error">
-	<div class="error-message">
-		<s:iterator value="#session.imageFileNameErrorMessageList"><s:property/><br></s:iterator>
-	</div>
-	</div>
-</s:if>
-<s:if test="!#session.imageFilePathErrorMessageList.isEmpty()">
-	<div class="error">
-	<div class="error-message">
-		<s:iterator value="#session.imageFilePathErrorMessageList"><s:property/><br></s:iterator>
-	</div>
-	</div>
+<s:if test="!#session.userImageFileNameErrorMessageList.isEmpty()">
+    <div class="error">
+    <div class="error-message">
+         <s:iterator value="#session.userImageFileNameErrorMessageList"><s:property /><br></s:iterator>
+    </div>
+    </div>
 </s:if>
 <s:form action="AdminEditDetailsConfirmAction" method="post" enctype="multipart/form-data">
 
@@ -94,21 +87,10 @@
 	</tr>
 
 	<tr>
-		<th scope="row">画像ファイル名</th>
-			<td><s:textfield name="imageFileName" value="%{#session.imageFileName}" label="画像ファイル名" placeholder="画像ファイル名" class="txt"/></td>
-	</tr>
-
-	<tr>
 		<th scope="row">画像ファイル</th>
-			<td><s:file name="userImage" value="%{imageFilePath}" label="画像ファイル" placeholder="画像ファイル" class="file"/></td>
+			<td><s:file name="userImage" label="画像ファイル" placeholder="画像ファイル" class="file"/></td>
 	</tr>
 	<s:hidden name="productId" value="%{productId}"/>
-
-	<%-- 		<img src='<s:property value="imageFilePath"/>/<s:property value="imageFileName"/>' class="item-image-box-200"/> --%>
-	<!-- 		<tr> -->
-	<%-- 			<th scope="row"><s:label value="画像ファイル"/></th> --%>
-	<!-- 			</td> -->
-	<!-- 		</tr> -->
 
 </table>
 <div class="submit_btn_box">

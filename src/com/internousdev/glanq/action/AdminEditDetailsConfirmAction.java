@@ -1,17 +1,17 @@
 package com.internousdev.glanq.action;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.commons.io.FileUtils;
 import org.apache.struts2.ServletActionContext;
 import org.apache.struts2.interceptor.SessionAware;
 
 import com.internousdev.glanq.util.InputChecker;
 import com.opensymphony.xwork2.ActionSupport;
-
-
 
 public class AdminEditDetailsConfirmAction extends ActionSupport implements SessionAware{
 
@@ -39,6 +39,7 @@ public class AdminEditDetailsConfirmAction extends ActionSupport implements Sess
 	private List<String>imageFilePathErrorMessageList = new ArrayList<String>();
 	private List<String>releaseCompanyErrorMessageList = new ArrayList<String>();
 	private List<String>releaseDateErrorMessageList = new ArrayList<String>();
+	private List<String>userImageFileNameErrorMessageList = new ArrayList<String>();
 
 	private int categoryId;
 	//リストのインスタンス化
@@ -51,14 +52,8 @@ public class AdminEditDetailsConfirmAction extends ActionSupport implements Sess
 
 	public String execute(){
 		String result = ERROR;
-
 		//InputChekerをインスタンス化して正規表現かを検証
 		InputChecker inputChecker = new InputChecker();
-
-		//絶対パスをコンソールに表示して値が入っているかを確認
-		System.out.println(userImage.getAbsolutePath());
-		System.out.println(userImage.getName());
-		System.out.println(userImage.getPath());
 
 		//前の画面からとってきた値をセッターゲッターに入れてセッションの中に入れる
 		session.put("productName",productName);
@@ -66,7 +61,6 @@ public class AdminEditDetailsConfirmAction extends ActionSupport implements Sess
 		session.put("productDescription", productDescription);
 		session.put("price",price);
 		session.put("imageFileName",imageFileName);
-
 		session.put("imageFilePath","./images");
 		session.put("releaseCompany",releaseCompany);
 		session.put("releaseDate",releaseDate);
@@ -75,9 +69,44 @@ public class AdminEditDetailsConfirmAction extends ActionSupport implements Sess
         session.put("productId", productId);
         session.put("userImage", userImage);
 
-        //ServletActionContext.getServletContextはどこにある？
-		String filePath = ServletActionContext.getServletContext().getRealPath("/").concat("userimages");
-		System.out.println("Image Location:"+filePath);
+        //ファイルアップロードの処理
+        if(!(userImage == null)){
+        	String filePath = ServletActionContext.getServletContext().getRealPath("/").concat("images");
+        	System.out.println("Image Location:" + filePath);
+        	File fileToCreate = new File(filePath, userImageFileName);
+        try{
+        	FileUtils.copyFile(userImage, fileToCreate);
+        	session.put("image_file_name", userImageFileName);
+        	session.put("image_file_path", "./images");
+        	session.put("image_flg" , userImageFileName);
+        	System.out.println(session.get("image_file_name"));
+        	System.out.println(session.get("image_file_path"));
+        }catch(IOException e){
+        	e.printStackTrace();
+        }
+        }else{
+        	userImageFileName="";
+        	result = ERROR;
+        }
+        try{
+        	switch(categoryId){
+        	case 1:
+        		session.put("categoryName","全てのカテゴリー");
+        		break;
+        	case 2:
+        		session.put("categoryName","肉");
+        		break;
+        	case 3:
+        		session.put("categoryName","野菜");
+        		break;
+        	case 4:
+        		session.put("categoryName","機材");
+        		break;
+
+        	}
+        }catch(Exception e){
+        	e.printStackTrace();
+        }
 
 	//リストの中を正規表現判定
 	productNameErrorMessageList = inputChecker.docheck("商品名",productName,1,32,true,true,true,true,true,true,true);
@@ -87,6 +116,7 @@ public class AdminEditDetailsConfirmAction extends ActionSupport implements Sess
 	imageFileNameErrorMessageList = inputChecker.docheck("画像ファイル名", imageFileName, 1, 16, true, true, true, true, true, true, true);
 	releaseCompanyErrorMessageList = inputChecker.docheck("発売会社名", releaseCompany, 1, 16, true, true, true, true, false, true, false);
 	releaseDateErrorMessageList = inputChecker.docheck("発売年月日", releaseDate, 1, 16, false, true, false, true, true, false, false);
+	userImageFileNameErrorMessageList =inputChecker.docheck("画像ファイル", userImageFileName, 1, 32, true, true, true, true, true, true, true);
 
 	//もし全てのリストのサイズが0の場合成功  =エラーなし→成功
 	if(productNameErrorMessageList.size()==0
@@ -95,7 +125,8 @@ public class AdminEditDetailsConfirmAction extends ActionSupport implements Sess
 			&& priceErrorMessageList.size()==0
             && imageFileNameErrorMessageList.size()==0
 			&& releaseCompanyErrorMessageList.size()==0
-			&& releaseDateErrorMessageList.size()==0 ){
+			&& releaseDateErrorMessageList.size()==0
+			&& userImageFileNameErrorMessageList.size()==0 ){
 		result = SUCCESS;
 
 		//そうでなければエラーのListをセッションに入れる
@@ -107,6 +138,7 @@ public class AdminEditDetailsConfirmAction extends ActionSupport implements Sess
                 session.put("imageFileNameErrorMessageList", imageFileNameErrorMessageList);
 		session.put("releaseCompanyErrorMessageList",releaseCompanyErrorMessageList);
 		session.put("releaseDateErrorMessageList",releaseDateErrorMessageList);
+		session.put("userImageFileNameErrorMessageList" ,userImageFileNameErrorMessageList);
 		result = ERROR;
 	}
 
@@ -295,6 +327,16 @@ public class AdminEditDetailsConfirmAction extends ActionSupport implements Sess
 	}
 	public void setSession(Map<String, Object> session){
 		this.session = session;
+	}
+
+
+	public List<String> getUserImageFileNameErrorMessageList() {
+		return userImageFileNameErrorMessageList;
+	}
+
+
+	public void setUserImageFileNameErrorMessageList(List<String> userImageFileNameErrorMessageList) {
+		this.userImageFileNameErrorMessageList = userImageFileNameErrorMessageList;
 	}
 
 }

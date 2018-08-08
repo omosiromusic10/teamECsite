@@ -28,8 +28,6 @@ public class AdminEditDetailsCompleteAction extends ActionSupport implements Ses
 
 		ProductInfoDAO productInfoDAO = new ProductInfoDAO();
 
-		String imageFilePath = "./images";
-
 		//セッションに格納された商品情報をupdateProductInfoメソッドで実行する
 		int count = productInfoDAO.updateProductInfo(Integer.parseInt(session.get("productId").toString()),
 				session.get("productName").toString(),
@@ -39,8 +37,8 @@ public class AdminEditDetailsCompleteAction extends ActionSupport implements Ses
 				Integer.parseInt(session.get("price").toString()),
 				session.get("releaseCompany").toString(),
 				session.get("releaseDate").toString(),
-				session.get("imageFileName").toString(),
-				imageFilePath);
+				session.get("image_file_path").toString(),
+				session.get("image_file_name").toString());
 
 		//実行が全部成功したら、セッションに格納されたデータをはずす
 		if(count > 0) {

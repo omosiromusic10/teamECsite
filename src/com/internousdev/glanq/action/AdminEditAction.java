@@ -1,6 +1,5 @@
 package com.internousdev.glanq.action;
 
-
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
@@ -24,7 +23,6 @@ public class AdminEditAction extends ActionSupport implements SessionAware {
 	private String imageFileName;
 	private int price;
 	private String categoryId;
-	private String keywords;
 
 	///SearchItemAction追加（ページ情報）
 	private int pageNo;
@@ -135,14 +133,6 @@ public class AdminEditAction extends ActionSupport implements SessionAware {
 
 	public void setCategoryId(String categoryId) {
 		this.categoryId = categoryId;
-	}
-
-	public String getKeywords() {
-		return keywords;
-	}
-
-	public void setKeywords(String keywords) {
-		this.keywords = keywords;
 	}
 
 	public Map<String,Object> getSession(){
