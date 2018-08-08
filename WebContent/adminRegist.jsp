@@ -44,6 +44,7 @@
     </div>
     </div>
 </s:if>
+<!-- 画像が入ってない場合でもエラーが出るように -->
 <s:if test="!#session.userImageFileNameErrorMessageList.isEmpty()">
     <div class="error">
     <div class="error-message">

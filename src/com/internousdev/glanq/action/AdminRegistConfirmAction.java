@@ -80,6 +80,7 @@ public class AdminRegistConfirmAction extends ActionSupport implements SessionAw
 	  }
 	try{
 		switch(categoryId){
+		//　ここはcategoryIdにより変更の必要性あり！！！！！！！！！！！！！！！！
 		case 1 :
 			session.put("categoryName","全てのカテゴリー");
 			break;
