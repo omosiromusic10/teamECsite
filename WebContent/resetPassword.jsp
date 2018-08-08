@@ -99,7 +99,7 @@
 						</div>
 					</s:if>
 				</td>
-			</tr>>
+			</tr>
 			<tr>
 				<th scope="row"><s:label value="確認用パスワード"/></th>
 				<td><s:password name="reConfirmationPassword" placeholder="確認用" class="txt"/></td>
