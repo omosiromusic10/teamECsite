@@ -15,7 +15,7 @@
 <h1>宛先情報完了画面</h1>
 
 <!-- 完了画面表示 -->
-<div class="sucess">
+<div class="success">
 宛先情報の登録が完了しました。
 </div>
 
