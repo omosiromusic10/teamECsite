@@ -80,17 +80,17 @@ public class LoginAction extends ActionSupport implements SessionAware {
 					DestinationInfoDAO destinationInfoDAO = new DestinationInfoDAO();
 
 					try {
-						List<DestinationInfoDTO> destinationInfoDTOList = new ArrayList<DestinationInfoDTO>();
+						List<DestinationInfoDTO> destinationInfoDtoList = new ArrayList<DestinationInfoDTO>();
 						//宛先情報を取得し、Listに格納
-						destinationInfoDTOList = destinationInfoDAO.getDestinationInfo(loginId);
-						Iterator<DestinationInfoDTO> iterator = destinationInfoDTOList.iterator();
+						destinationInfoDtoList = destinationInfoDAO.getDestinationInfo(loginId);
+						Iterator<DestinationInfoDTO> iterator = destinationInfoDtoList.iterator();
 						//Listに格納した要素を順番に処理をし、要素がなくなったら、
 						if(!(iterator.hasNext())) {
 							//Listにnullを入れる(。)
-							destinationInfoDTOList = null;
+							destinationInfoDtoList = null;
 						}
 						//セッションにListを格納
-						session.put("destinationInfoDTOList", destinationInfoDTOList);
+						session.put("destinationInfoDtoList", destinationInfoDtoList);
 
 					} catch(SQLException e) {
 						e.printStackTrace();
