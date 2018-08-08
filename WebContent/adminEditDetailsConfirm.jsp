@@ -17,7 +17,7 @@
 <table class="vertical-list-table">
 <tr>
 	<th scope="row"><s:label value="商品カテゴリ"/></th>
-	<td><s:property value="categoryId"/></td>
+	<td><s:property value="#session.categoryName"/></td>
 </tr>
 
 <tr>
@@ -53,12 +53,12 @@
 
 <tr>
 	<th scope="row"><s:label value="画像ファイル名"/></th>
-	<td><s:property value="imageFileName"/></td>
+	<td><s:property value="userImageFileName"/></td>
 </tr>
 
 <tr>
 	<th scope="row"><s:label value="画像ファイル"/></th>
-	<td><img src="userimages/<s:property value="userImageFileName"/>" width="500" height="300" /></td>
+	<td><img src="images/<s:property value="userImageFileName"/>" width="500" height="300" /></td>
 </tr>
 
 
