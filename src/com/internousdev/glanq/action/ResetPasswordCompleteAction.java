@@ -27,6 +27,7 @@ public class ResetPasswordCompleteAction extends ActionSupport implements Sessio
 		return result;
 	}
 
+
 	public String getLoginId() {
 		return loginId;
 	}
