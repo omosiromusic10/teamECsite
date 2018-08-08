@@ -26,7 +26,6 @@ public class ProductInfoDAO {
 		String sql = "SELECT * from product_info";
 		try{
 			PreparedStatement ps = con.prepareStatement(sql);
-			System.out.println(ps);
 			ResultSet rs = ps.executeQuery();
 			while(rs.next()){
 				ProductInfoDTO pInfo = new ProductInfoDTO();

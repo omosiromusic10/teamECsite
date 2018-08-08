@@ -53,7 +53,7 @@
 <body>
 	<s:include value="header.jsp" />
 
-<h2>作成中です･･･</h2>
+<h2>商品一覧ページ</h2>
 
 <s:if test="#session.productInfoDtoList == null">
 	<div class="info">
