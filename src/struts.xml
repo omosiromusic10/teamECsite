@@ -154,7 +154,7 @@
             <result name="success">adminRegistConfirm.jsp</result>
             <result name="error">adminRegist.jsp</result>
 </action>
-<action name="AdminRegistCompleteAction" class="com.internousdev.glanq.action.AdminRegistConfirmAction" method="execute">
+<action name="AdminRegistCompleteAction" class="com.internousdev.glanq.action.AdminRegistCompleteAction" method="execute">
            <result name="success">adminRegistComplete.jsp</result>
            <result name="error">adminRegistConfirm.jsp</result>
 </action>
