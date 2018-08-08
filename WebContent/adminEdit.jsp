@@ -15,6 +15,7 @@
 <div id="product-list">
 
 <table class="horizontal-list-table">
+<!-- テーブルで表示する予定 -->
 <thead>
 	<tr>
 		<th><s:label value="商品画像" /></th>

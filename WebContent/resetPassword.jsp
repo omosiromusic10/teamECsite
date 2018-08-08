@@ -15,6 +15,7 @@
 <jsp:include page="header.jsp"/>
 
 	<s:form action="ResetPasswordConfirmAction">
+	<!-- テーブルで表示予定 -->
 		<table class="vertical-list-table">
 			<tr>
 				<td>
