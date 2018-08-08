@@ -184,12 +184,12 @@
            <result name="error">adminDelete.jsp</result>
 </action>
 
-<action name="AdminProductSelectAction" class="com.internosdev.glanq.action.AdminProductSelectAction" method="execute">
+<action name="AdminProductSelectAction" class="com.internousdev.glanq.action.AdminProductSelectAction" method="execute">
            <result name="success">adminProductSelect.jsp</result>
            <result name="error">admin.jsp</result>
 </action>
 
-<action name="AdminPurchaseSelectAction" class="com.internosdev.glanq.action.AdminPurchaseSelectAction" method="execute">
+<action name="AdminPurchaseSelectAction" class="com.internousdev.glanq.action.AdminPurchaseSelectAction" method="execute">
            <result name="success">adminPurchaseSelect.jsp</result>
            <result name="error">admin.jsp</result>
 </action>
