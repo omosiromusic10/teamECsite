@@ -10,6 +10,7 @@ public class ResetPasswordAction extends ActionSupport implements SessionAware{
 	private String categoryId;
 	private Map<String,Object>session;
 
+	//天国か地獄か。。。
 	public String execute(){
 		String result = ERROR;
 		result = SUCCESS;
@@ -31,6 +32,4 @@ public class ResetPasswordAction extends ActionSupport implements SessionAware{
 	public void setSession(Map<String, Object> session) {
 		this.session = session;
 	}
-
-
 }

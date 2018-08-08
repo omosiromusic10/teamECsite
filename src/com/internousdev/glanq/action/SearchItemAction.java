@@ -21,9 +21,9 @@ public class SearchItemAction extends ActionSupport implements SessionAware {
 	private String categoryId;
 	private String keywords;
 	private String pageNo;
-	private List<MCategoryDTO> mCategoryDTOList=new ArrayList<MCategoryDTO>();
+	private List<MCategoryDTO> mCategoryDtoList=new ArrayList<MCategoryDTO>();
 	private List<String>keywordsErrorMessageList=new ArrayList<String>();
-	private List<ProductInfoDTO> productInfoDTOList=new ArrayList<ProductInfoDTO>();
+	private List<ProductInfoDTO> productInfoDtoList=new ArrayList<ProductInfoDTO>();
 	private Map<String,Object>session;
 
 	public String execute() throws SQLException{
@@ -33,6 +33,7 @@ public class SearchItemAction extends ActionSupport implements SessionAware {
 //	検索ワードが"null"の時、空文字を挿入
 	if(keywords==null){
 		keywords="";
+	}
 
 //	入力された情報を"InputChecker"を用いて有効であるかチェック
 	keywordsErrorMessageList=inputChecker.docheck("検索ワード",keywords,0,6,true,true,true,true,false,true,true);
@@ -40,23 +41,23 @@ public class SearchItemAction extends ActionSupport implements SessionAware {
 
 //	カテゴリーID１が選択された時、検索は全商品の中から行われる
 //	カテゴリーIDが２，３、または４が選択された時、検索はそれぞれのカテゴリーの中から行われる
-//	商品一覧ページで開いた際のカテゴリー未指定をelseで処理する
+//	商品一覧ページで開いた際のカテゴリー未指定をelseで処理
 	if("1".equals(categoryId)){
-		productInfoDTOList=productInfoDAO.getProductInfoListAll(keywords.replaceAll("　"," ").split(" "));
+		productInfoDtoList=productInfoDAO.getProductInfoListAll(keywords.replaceAll("　"," ").split(" "));
 		result=SUCCESS;
 	}else if("2".equals(categoryId)|| "3".equals(categoryId) ||"4".equals(categoryId)){
-		productInfoDTOList=productInfoDAO.getProductInfoListByKeywords(keywords.replaceAll("　", " ").split(" "),categoryId);
+		productInfoDtoList=productInfoDAO.getProductInfoListByKeywords(keywords.replaceAll("　", " ").split(" "),categoryId);
 		result=SUCCESS;
 	}else{
-		productInfoDTOList=productInfoDAO.getProductInfoListAll(keywords.replaceAll("　"," ").split(" "));
+		productInfoDtoList=productInfoDAO.getProductInfoListAll(keywords.replaceAll("　"," ").split(" "));
 		result=SUCCESS;
 	}
 
 //	iteratorメソッドを用いてリスト内のデータを順次参照し
 //	次のデータがなくなったとき空データ"null"を挿入
-	Iterator<ProductInfoDTO> iterator=productInfoDTOList.iterator();
+	Iterator<ProductInfoDTO> iterator=productInfoDtoList.iterator();
 	if(!(iterator.hasNext())){
-		productInfoDTOList=null;
+		productInfoDtoList=null;
 	}
 	session.put("keywordsErrorMessageList", keywordsErrorMessageList);
 
@@ -66,21 +67,22 @@ public class SearchItemAction extends ActionSupport implements SessionAware {
 
 //	"mCategoryDaoList"にmCategoryDTOListの値を格納
 		MCategoryDAO mCategoryDao=new MCategoryDAO();
-		mCategoryDTOList=mCategoryDao.getMCategoryList();
-		session.put("mCategoryDaoList", mCategoryDTOList);
+		mCategoryDtoList=mCategoryDao.getMCategoryList();
+		session.put("mCategoryDaoList", mCategoryDtoList);
 	}
 
 //	"productInfoDtoList"が"null"でない場合で次のif文へと移行し
 //	"pageNo"が"nuLL"であれば1ページ目の、
 //	そうでない場合は任意のページ情報を取得
-	if(!(productInfoDTOList==null)){
+	if(!(productInfoDtoList==null)){
 		Pagination pagination=new Pagination();
 		PaginationDTO paginationDTO=new PaginationDTO();
-		int pageNO=Integer.parseInt(pageNo);
+
 		if(pageNo==null){
-			paginationDTO=pagination.initialize(productInfoDTOList,9);
+			paginationDTO=pagination.initialize(productInfoDtoList,9);
 		}else{
-			paginationDTO=pagination.getPage(productInfoDTOList,9,(pageNO));
+			int pageNO=Integer.parseInt(pageNo);
+			paginationDTO=pagination.getPage(productInfoDtoList,9,(pageNO));
 		}
 
 //	sessionに各データを追加
@@ -96,14 +98,14 @@ public class SearchItemAction extends ActionSupport implements SessionAware {
 		session.put("nextPageNo",paginationDTO.getNextPageNo() );
 		}
 
-//	上記にあったif文において"productInfoDtoList"が"null"であった場合は
+//	前述のif文において"productInfoDtoList"が"null"であった場合は
 //	"productInfoDTOList"のsession内に"null"を格納
 	else{
-			session.put("productInfoDTOList", null);
+			session.put("productInfoDtoList", null);
 		}
-	}return result;
-
+	return result;
 	}
+
 
 	public String getCategoryId() {
 		return categoryId;
@@ -129,12 +131,12 @@ public class SearchItemAction extends ActionSupport implements SessionAware {
 		this.pageNo = pageNo;
 	}
 
-	public List<MCategoryDTO> getmCategoryDTOList() {
-		return mCategoryDTOList;
+	public List<MCategoryDTO> getmCategoryDtoList() {
+		return mCategoryDtoList;
 	}
 
-	public void setmCategoryDTOList(List<MCategoryDTO> mCategoryDTOList) {
-		this.mCategoryDTOList = mCategoryDTOList;
+	public void setmCategorytoOList(List<MCategoryDTO> mCategoryDtoList) {
+		this.mCategoryDtoList = mCategoryDtoList;
 	}
 
 	public List<String> getKeywordsErrorMessageList() {
@@ -145,12 +147,12 @@ public class SearchItemAction extends ActionSupport implements SessionAware {
 		this.keywordsErrorMessageList = keywordsErrorMessageList;
 	}
 
-	public List<ProductInfoDTO> getProductInfoDTOList() {
-		return productInfoDTOList;
+	public List<ProductInfoDTO> getProductInfoDtoList() {
+		return productInfoDtoList;
 	}
 
-	public void setProductInfoDTOList(List<ProductInfoDTO> productInfoDTOList) {
-		this.productInfoDTOList = productInfoDTOList;
+	public void setProductInfoDTOList(List<ProductInfoDTO> productInfoDtoList) {
+		this.productInfoDtoList = productInfoDtoList;
 	}
 
 	public Map<String, Object> getSession() {

@@ -18,6 +18,10 @@
 <div class="sucess">
 宛先情報の登録が完了しました。
 </div>
+
+<s:form action="SettlementConfirmAction">
+		  <s:submit value="決済画面へ" class="submit_btn" />
+</s:form>
 </div>
 
 <s:include value="footer.jsp"/>

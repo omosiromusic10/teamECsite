@@ -55,7 +55,7 @@
 
 <h2>作成中です･･･</h2>
 
-<s:if test="productInfoDTOList==null">
+<s:if test="#session.productInfoDtoList == null">
 	<div class="info">
 		検索結果がありません。
 	</div>
@@ -64,7 +64,6 @@
 		<div id="newItemList">
 			<h3>商品の一覧を表示</h3>
 
-			<!-- ～ 商品一覧の表示部分 ～ -->
 				<s:iterator value="#session.productInfoDtoList">
 				<div id="newItemBox">
 					<ul>
@@ -87,15 +86,12 @@
 			<br>
 			<br>
 
-			<!-- ～ページ番号部分～ -->
 				<div class="pager">
 				<s:iterator begin="1" end="#session.totalPageSize" status="pageNo">
 					<s:if test="#session.currentPageNo == #pageNo.count">
-						<!-- 現在のページを表す数字は、そのまま数字を表記するだけ。 -->
 						<s:property value="%{#pageNo.count}"/>
 					</s:if>
 					<s:else>
-						<!-- 他のページを表す数字はリンク付け。ページ番号 pageNo とカテゴリ番号 categoryId をパラメータとして持たせる -->
 						<a href="<s:url action='SearchItemAction'>
 								<s:param name='pageNo' value='%{#pageNo.count}'/>
 								<s:param name='categoryId' value='%{categoryId}'/>

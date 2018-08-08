@@ -12,7 +12,7 @@
 
 <!-- 1.ユーザー登録機能 -->
 <action name="CreateUserAction" class="com.internousdev.glanq.action.CreateUserAction" method="execute">
-           <result name="success">createUser.jsp</result>
+            <result name="success">createUser.jsp</result>
            <result name="error">home.jsp</result>
 </action>
 <action name="CreateUserConfirmAction" class="com.internousdev.glanq.action.CreateUserConfirmAction" method="execute">
@@ -21,8 +21,9 @@
 </action>
 <action name="CreateUserCompleteAction" class="com.internousdev.glanq.action.CreateUserCompleteAction" method="execute">
            <result name="success">createUserComplete.jsp</result>
-           <result name="error">createUser.jsp</result>
+           <result name="error">createUser.jsp></result>
 </action>
+
 
 
 <!-- 2.ログイン認証機能 -->
@@ -103,7 +104,7 @@
            <result name="success">createDestination.jsp</result>
            <result name="error">home.jsp</result>
 </action>
-<action name="CreateDestinationConfirmAction" class="com.internousdev.glanq.action.CreateDestinationConfirmAction" method="execute">
+ <action name="CreateDestinationConfirmAction" class="com.internousdev.glanq.action.CreateDestinationConfirmAction" method="execute">
            <result name="success">createDestinationConfirm.jsp</result>
            <result name="error">createDestination.jsp</result>
 </action>
@@ -115,7 +116,7 @@
 
 <!-- 9.決済完了機能 -->
 <action name="SettlementCompleteAction" class="com.internousdev.glanq.action.SettlementCompleteAction" method="execute">
-           <result name="success">settlementComplete.jsp</result>
+            <result name="success">settlementComplete.jsp</result>
            <result name="error">settlementConfirm.jsp</result>
 </action>
 
@@ -150,12 +151,20 @@
            <result name="error">admin.jsp</result>
 </action>
 <action name="AdminRegistConfirmAction" class="com.internousdev.granq.action.AdminRegistConfirmAction" method="execute">
-           <result name="success">adminRegistConfirm.jsp</result>
+            <result name="success">adminRegistConfirm.jsp</result>
             <result name="error">adminRegist.jsp</result>
 </action>
 <action name="AdminRegistCompleteAction" class="com.internousdev.glanq.action.AdminRegistConfirmAction" method="execute">
            <result name="success">adminRegistComplete.jsp</result>
            <result name="error">adminRegistConfirm.jsp</result>
+</action>
+<action name="AdminEditAction" class="com.internousdev.glanq.action.AdminEditAction" method="execute">
+           <result name="success">adminEdit.jsp</result>
+           <result name="error">admin.jsp</result>
+</action>
+<action name="AdminEditDetailsAction" class="com.internousdev.glanq.action.AdminEditDetailsAction" method="execute">
+           <result name="success">adminEditDetails.jsp</result>
+           <result name="error">admin.jsp</result>
 </action>
 
 <action name="AdminDeleteAction" class="com.internousdev.glanq.action.AdminDeleteAction" method="execute">
@@ -176,7 +185,7 @@
            <result name="success">locationChoice.jsp</result>
            <result name="error">error.html</result>
 </action>
-<action name="LocationChoiceCompleteAction" class="com.internousdev.glanq.action.LocationChoiceAction" method="execute">
+<action name="LocationChoiceCompleteAction" class="com.internousdev.glanq.action.LocationChoiceCompleteAction" method="execute">
            <result name="success">settlementConfirm.jsp</result>
            <result name="error">error.html</result>
 </action>

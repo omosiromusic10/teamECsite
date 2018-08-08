@@ -1,13 +1,15 @@
 package com.internousdev.glanq.dto;
 
+import java.util.Date;
+
 public class MCategoryDTO {
 
 		  private int id;
 		  private int categoryId;
 		  private String categoryName;
 		  private String categoryDescription;
-		  private String insertDate;
-		  private String updateDate;
+		  private Date insertDate;
+		  private Date updateDate;
 
 		public int getId(){
 		 return id;
@@ -37,17 +39,17 @@ public class MCategoryDTO {
 		 this.categoryDescription=categoryDescription;
 		}
 
-		public String getInsertDate(){
+		public Date getInsertDate(){
 		 return insertDate;
 		   }
-		public void setInsertDate(String insertDate){
+		public void setInsertDate(Date insertDate){
 		 this.insertDate=insertDate;
 		}
 
-		public String getUpdateDate(){
+		public Date getUpdateDate(){
 		 return updateDate;
 		   }
-		public void setUpdateDate(String updateDate){
+		public void setUpdateDate(Date updateDate){
 		 this.updateDate=updateDate;
 		}
 

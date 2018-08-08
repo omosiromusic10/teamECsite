@@ -53,6 +53,7 @@ public class CreateUserAction extends ActionSupport implements SessionAware{
 		session.remove("emailErrorMessageList");
 		session.remove("loginIdErrorMessageList");
 		session.remove("passwordErrorMessageList");
+		session.remove("duplicateList");
 
 		/**
 		 *  セッションにJSPから渡された値を格納していく

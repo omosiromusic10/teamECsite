@@ -6,6 +6,7 @@ import java.util.Map;
 
 import org.apache.struts2.interceptor.SessionAware;
 
+import com.internousdev.glanq.dao.UserInfoDAO;
 import com.internousdev.glanq.util.InputChecker;
 import com.opensymphony.xwork2.ActionSupport;
 
@@ -39,6 +40,7 @@ public class CreateUserConfirmAction extends ActionSupport implements SessionAwa
 	private List<String> emailErrorMessageList = new ArrayList<String>();
 	private List<String> loginIdErrorMessageList = new ArrayList<String>();
 	private List<String> passwordErrorMessageList = new ArrayList<String>();
+	private List<String> duplicateList = new ArrayList<String>();
 
 	private List<String> sexList = new ArrayList<String>();
 	private String categoryId;
@@ -100,6 +102,21 @@ public class CreateUserConfirmAction extends ActionSupport implements SessionAwa
 		session.put("sex", sex);
 		session.put("email", email);
 		session.put("loginId", loginId);
+
+
+
+		UserInfoDAO userInfoDAO = new UserInfoDAO();
+		boolean isUserExists = userInfoDAO.isExistsUserInfo(loginId);
+		/**
+		 * 入力されたユーザーIDを元にすでにユーザーがいるかを検索
+		 * 存在するならエラーメッセージをセッションに格納
+		 * ERRORを返す
+		 */
+		if(isUserExists){
+			duplicateList.add("ユーザーIDがすでに使用されています。");
+			session.put("duplicateList",duplicateList);
+			result = ERROR;
+		}
 
 		return result;
 	}

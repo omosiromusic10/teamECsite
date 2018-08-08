@@ -9,31 +9,43 @@
 <link rel="stylesheet" href="./css/style.css">
 <title>カート</title>
 
+
 <script type="text/javascript">
 
+/*
+ * document.getElementById()メソッドで()内のidを取得、
+ *().actionで取得した値を特定のタグに記載した形と同じように戻す
+ *.action以下で特定のアクションにアクセスして、実行させる
+ */
 
-
+	function goDeleteCartAction(){
+		document.getElementById("form").action='DeleteCartAction';
+	}
 </script>
 
 </head>
 <body>
 
 	<!-- ヘッダーとの関連付け -->
-	<jsp:include page="header.jsp">
+	<jsp:include page="header.jsp"/>
 
+	<!-- メインコンテンツの編集 -->
 		<div id="contents">
 			<h1>カート画面</h1>
 
-			<s:if test="#session.checkErrorMessageList != null">
+				<!-- エラーメッセージがあるときは表示をする
+				 メッセージそのものはsessionから取得 -->
+			<s:if test="#session.checkListErrorMessageList != null">
 							<div class="error">
 					<div class="error-message">
-						<s:iterator value="session.checkListErrorMessageList">
+						<s:iterator value="#session.checkListErrorMessageList">
 							<s:property />
 						</s:iterator>
 					</div>
 				</div>
 			</s:if>
 
+			<!-- カートの中身がある時 -->
 			<s:if test="#session.cartInfoDtoList.size() > 0">
 			<s:form id="form" action="SettlementConfirmAction">
 			<table class="horizontal-list-table">
@@ -46,7 +58,7 @@
 			<th><s:label value="ふりがな"/></th>
 			<th><s:label value="商品画像"/></th>
 			<th><s:label value="値段"/></th>
-			<th><s:label value="発売会社"/></th>
+			<th><s:label value="発売会社名"/></th>
 			<th><s:label value="発売年月日"/></th>
 			<th><s:label value="購入個数"/></th>
 			<th><s:label value="合計金額"/></th>
@@ -57,15 +69,15 @@
 			<tbody>
 			<s:iterator value="#session.cartInfoDtoList">
 			<tr>
-			<td><s:checkbox name="checkList" value="checked" fieldvalue="%{id}"/></td>
+			<td><s:checkbox name="checkList" value="checked" fieldValue="%{id}"/></td>
 			<s:hidden name="productId" value="%{productId}"/>
 			<td><s:property value="productName"/></td>
 			<td><s:property value="productNameKana"/></td>
-			<td><img src='<s:property value="imageFilePath"/>/<s:property value="imageFileName"/>' width=50px height=50px /></td>
+			<td><img src='<s:property value="imageFilePath"/>/<s:property value="imageFileName"/>' width="50px" height="50px" /></td>
 			<td><s:property value="price"/>円</td>
 			<td><s:property value="releaseCompany"/></td>
 			<td><s:property value="releaseDate"/></td>
-			<td><s:property value="productCount"/>個</td>
+			<td><s:property value="productCount"/></td>
 			<td><s:property value="subtotal"/>円</td>
 			</tr>
 
@@ -87,14 +99,14 @@
 
 			<!-- 決済ボタン -->
 			<div class="submit_btn_box">
-			<div id=".contents_btn_set">
+			<div id=".contents-btn-set">
 			<s:submit value="決済" class="submit_btn"/>
 			</div>
 			</div>
 
 			<!-- 削除ボタン -->
 			<div class="submit_btn_box">
-			<div id=".contents_btn_set">
+			<div id=".contents-btn-set">
 			<s:submit value="削除" class="submit_btn" onclick="this.form.action='DeleteCartAction';"/>
 			</div>
 			</div>
@@ -108,6 +120,10 @@
 			カートに情報はありません
 			</div>
 			</s:else>
+			<!-- フッターとの関連付け -->
+			<div id="footer">
+				<s:include value="footer.jsp"/>
+			</div>
 
 		</div>
 		</body>

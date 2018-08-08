@@ -33,12 +33,12 @@ public class ProductListAction extends ActionSupport implements SessionAware {
 
 		// すべての商品情報を取得。
 		ProductInfoDAO productInfoDAO = new ProductInfoDAO();
-		productInfoList = productInfoDAO.getProductInfoList();
-		session.put("productInfoList", productInfoList);
+		List<ProductInfoDTO> productInfoListAll = productInfoDAO.getProductInfoList();
+		session.put("productInfoListAll", productInfoListAll);
 
-		// ページ情報を取得。上で得た商品情報productInfoListを利用。1ページあたりの表示数9に設定。
+		// ページ情報を取得。上で得た商品情報productInfoListAllを利用。1ページあたりの表示数9に設定。
 		int pageSize = 9;
-		PaginationDTO paginationDTO = pagination.initialize(productInfoList, pageSize);
+		PaginationDTO paginationDTO = pagination.initialize(productInfoListAll, pageSize);
 		session.put("totalPageSize", paginationDTO.getTotalPageSize());
 		session.put("currentPageNo", paginationDTO.getCurrentPageNo());
 		session.put("totalRecordSize", paginationDTO.getTotalPageSize());
@@ -63,6 +63,12 @@ public class ProductListAction extends ActionSupport implements SessionAware {
 		result = SUCCESS;
 		return result;
 	}
+
+
+	public Map<String, Object> getSession() {
+		return session;
+	}
+
 
 	@Override
 	public void setSession(Map<String, Object> session) {

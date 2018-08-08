@@ -22,7 +22,7 @@
 <!-- 名の表示 -->
 <tr>
 	<th scope="row"><s:label value="名"/></th>
-	<td><s:property value="firstName"/><s:hidden name="firstNamre" value="%{firstName}"/></td>
+	<td><s:property value="firstName"/><s:hidden name="firstName" value="%{firstName}"/></td>
 </tr>
 <!-- 姓ふりがなの表示 -->
 <tr>

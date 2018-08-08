@@ -27,7 +27,7 @@ public class CartInfoDAO {
 	public List<CartInfoDTO> getCartInfoDtoList(String loginId){
 		DBConnector dbc = new DBConnector();
 		Connection con = dbc.getConnection();
-		List<CartInfoDTO> ciDTOList = new ArrayList<CartInfoDTO>();
+		List<CartInfoDTO> CartInfoDtoList = new ArrayList<CartInfoDTO>();
 
 		/*
 		 * stelec文でasを使用してカラムの名前を変更
@@ -45,8 +45,10 @@ public class CartInfoDAO {
 				+ " ci.product_id,"
 				+ " sum(ci.product_count) as product_count,"/*購入個数の合計値*/
 				+ " pi.price,"
+				+ " pi.regist_date,"
+				+ " pi.update_date,"
 				+ " pi.product_name,"
-				+ " pi.produci_name_kana,"
+				+ " pi.product_name_kana,"
 				+ " pi.product_description,"
 				+ " pi.category_id,"
 				+ " pi.image_file_path,"
@@ -54,13 +56,12 @@ public class CartInfoDAO {
 				+ " pi.release_date,"
 				+ " pi.release_company,"
 				+ " pi.status,"
-				+ " (sum(ci.product_count) * pi.price) as subtotal,"/*合計金額*/
+				+ " (sum(ci.product_count) * pi.price) as subtotal"/*合計金額*/
 				+ " FROM cart_info as ci"
 				+ " LEFT JOIN product_info as pi"
 				+ " ON ci.product_id = pi.product_id"
 				+ " WHERE ci.user_id = ?"
 				+ " group by product_id";
-
 		try{
 			PreparedStatement ps = con.prepareStatement(sql);
 			//コンソールでユーザーIDを確認
@@ -76,7 +77,9 @@ public class CartInfoDAO {
 				ciDTO.setProductId(rs.getInt("product_id"));
 				ciDTO.setProductCount(rs.getInt("product_count"));
 				ciDTO.setPrice(rs.getInt("price"));
-				ciDTO.setProductName(rs.getString("product_Name"));
+				ciDTO.setRegistDate(rs.getDate("regist_date"));
+				ciDTO.setUpdateDate(rs.getDate("update_date"));
+				ciDTO.setProductName(rs.getString("product_name"));
 				ciDTO.setProductNameKana(rs.getString("product_name_kana"));
 				ciDTO.setProductDescription(rs.getString("product_description"));
 				ciDTO.setCategoryId(rs.getInt("category_id"));
@@ -86,6 +89,7 @@ public class CartInfoDAO {
 				ciDTO.setReleaseCompany(rs.getString("release_company"));
 				ciDTO.setStatus(rs.getString("status"));
 				ciDTO.setSubtotal(rs.getInt("subtotal"));
+				CartInfoDtoList.add(ciDTO);
 			}
 
 		}catch(SQLException e){
@@ -96,7 +100,7 @@ public class CartInfoDAO {
 		}catch(SQLException e){
 			e.printStackTrace();
 		}
-		return ciDTOList;
+		return CartInfoDtoList;
 	}
 
 	/*2.カート内の情報をテーブルに追加する*/
@@ -112,7 +116,7 @@ public class CartInfoDAO {
 		 *【product_count(購入個数)】と【price(値段)】と供に
 		 *【regist_date(購入日)】と一緒に登録される
 		 */
-		String sql = "INSERT INTO cart_info(user_id,temp_user_id,product_id,product_count,price,regist_date)"
+		String sql = "INSERT INTO cart_info(user_id, temp_user_id, product_id, product_count, price, regist_date)"
 				+ " values (?,?,?,?,?,now())";
 
 		try{
@@ -125,6 +129,12 @@ public class CartInfoDAO {
 
 			count = ps.executeUpdate();
 
+		}catch(SQLException e){
+			e.printStackTrace();
+		}
+
+		try{
+			con.close();
 		}catch(SQLException e){
 			e.printStackTrace();
 		}
@@ -144,7 +154,7 @@ public class CartInfoDAO {
 		 * total_priceを取得する
 		 * sum(変数*変数)の処理は、変数のかけ算を行毎に行い、その後足し合わせることで合計金額を算出する
 		 */
-		String sql = "SELECT SUM(product_count * price) as total_price FROM cart_info WHERE user_id=?";
+		String sql = "SELECT SUM(product_count * price) as total_price FROM cart_info WHERE user_id=? group by user_id";
 
 		try{
 			PreparedStatement ps = con.prepareStatement(sql);
@@ -183,7 +193,7 @@ public class CartInfoDAO {
 
 		try{
 			PreparedStatement ps = con.prepareStatement(sql);
-			ps.setString(1, "id");
+			ps.setString(1,Id);
 			count = ps.executeUpdate();
 		}catch(SQLException e){
 			e.printStackTrace();
@@ -198,7 +208,7 @@ public class CartInfoDAO {
 	}
 
 	/*5.カートの中身を削除(全項目)*/
-	public int deleteAll(String user_id){
+	public int deleteAll(String userId){
 		DBConnector dbc = new DBConnector();
 		Connection con = dbc.getConnection();
 		int count = 0;
@@ -211,7 +221,7 @@ public class CartInfoDAO {
 
 		try{
 			PreparedStatement ps = con.prepareStatement(sql);
-			ps.setString(1, "user_id");
+			ps.setString(1, userId);
 			count = ps.executeUpdate();
 		}catch(SQLException e){
 			e.printStackTrace();
@@ -244,8 +254,8 @@ public class CartInfoDAO {
 
 		try{
 			PreparedStatement ps = con.prepareStatement(sql);
-			ps.setString(1, "user_id");
-			ps.setString(2, "tempUserId");
+			ps.setString(1, loginId);
+			ps.setString(2, tempUserId);
 			count = ps.executeUpdate();
 		}catch(SQLException e){
 			e.printStackTrace();
@@ -259,6 +269,3 @@ public class CartInfoDAO {
 	}
 
 }
-
-
-

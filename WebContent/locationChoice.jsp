@@ -35,7 +35,7 @@
       <!-- 電話番号 -->
       <s:hidden name="telNumber" value="12345678900"/>
       <!-- 住所 -->
-      <s:hidden name="userAdress" value="東京都千代田区三番町1-1 KY三番町ビル 1F"/>
+      <s:hidden name="userAddress" value="東京都千代田区三番町1-1 KY三番町ビル 1F"/>
 
       <!-- submitボタン -->
       <!-- s:hiddenタブで設定したvalueをここで送信する。挿入される値はcreateDestinationComfirm.jspと対応 -->
@@ -58,7 +58,7 @@
       <!-- 電話番号 -->
       <s:hidden name="telNumber" value="12345678900"/>
       <!-- 住所 -->
-      <s:hidden name="userAdress" value="東京都千代田区霞ヶ関3-6-15"/>
+      <s:hidden name="userAddress" value="東京都千代田区霞ヶ関3-6-15"/>
 
       <!-- submitボタン -->
       <!-- s:hiddenタブで設定したvalueをここで送信する。挿入される値はcreateDestinationComfirm.jspと対応 -->
@@ -81,7 +81,7 @@
       <!-- 電話番号 -->
       <s:hidden name="telNumber" value="12345678900"/>
       <!-- 住所 -->
-      <s:hidden name="userAdress" value="東京都千代田区三番町1-1 KY三番町ビル 1F"/>
+      <s:hidden name="userAddress" value="東京都千代田区三番町1-1 KY三番町ビル 1F"/>
 
       <!-- submitボタン -->
       <!-- s:hiddenタブで設定したvalueをここで送信する。挿入される値はcreateDestinationComfirm.jspと対応 -->
