@@ -153,15 +153,15 @@ table#item_info td{
 			<div id="right_box">
 				<h2>～ 商品情報 ～</h2>
 				<s:form action="AddCartAction">
-				<input type="hidden" name="productId" value="#session.productId">
-				<input type="hidden" name="productName" value="#session.productName">
-				<input type="hidden" name="productNameKana" value="#session.productNameKana">
-				<input type="hidden" name="imageFilePath" value="#session.imageFilePath">
-				<input type="hidden" name="imageFileName" value="#session.imageFileName">
-				<input type="hidden" name="releaseDate" value="#session.releaseDate">
-				<input type="hidden" name="releaseCompany" value="#session.releaseCompany">
-				<input type="hidden" name="price" value="#session.price">
-				<input type="hidden" name="categoryId" value="#session.categoryId">
+				<s:hidden name="productId" value="%{#session.productId}"/>
+				<s:hidden name="productName" value="%{#session.productName}"/>
+				<s:hidden name="productNameKana" value="%{#session.productNameKana}"/>
+				<s:hidden name="imageFilePath" value="%{#session.imageFilePath}"/>
+				<s:hidden name="imageFileName" value="%{#session.imageFileName}"/>
+				<s:hidden name="releaseDate" value="%{#session.releaseDate}"/>
+				<s:hidden name="releaseCompany" value="%{#session.releaseCompany}"/>
+				<s:hidden name="price" value="%{#session.price}"/>
+				<s:hidden name="categoryId" value="%{#session.categoryId}"/>
 				<table id="item_info" border="">
 					<tr>
 						<th scope="row">商品名</th>

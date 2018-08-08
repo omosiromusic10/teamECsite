@@ -17,7 +17,6 @@ public class ProductDetailsAction extends ActionSupport implements SessionAware 
 
 	public Map<String, Object> session;
 	private int productId;
-	private ProductInfoDTO productInfoDTO = new ProductInfoDTO();
 
 	private List<MCategoryDTO> mCategoryDtoList = new ArrayList<MCategoryDTO>();
 	private List<ProductInfoDTO> productInfoDtoList = new ArrayList<ProductInfoDTO>();
@@ -32,6 +31,7 @@ public class ProductDetailsAction extends ActionSupport implements SessionAware 
 		String result = ERROR;
 		// 選ばれた商品の商品情報を取得。productId が必要。
 		ProductInfoDAO pDAO1 = new ProductInfoDAO();
+		ProductInfoDTO productInfoDTO = new ProductInfoDTO();
 		productInfoDTO = pDAO1.getProductInfo(productId);
 		session.put("productInfoDTO", productInfoDTO);
 
@@ -87,13 +87,6 @@ public class ProductDetailsAction extends ActionSupport implements SessionAware 
 	}
 	public void setProductId(int productId) {
 		this.productId = productId;
-	}
-
-	public ProductInfoDTO getProductInfoDTO() {
-		return productInfoDTO;
-	}
-	public void setProductInfoDTO(ProductInfoDTO productInfoDTO) {
-		this.productInfoDTO = productInfoDTO;
 	}
 
 	public List<MCategoryDTO> getmCategoryDtoList() {
