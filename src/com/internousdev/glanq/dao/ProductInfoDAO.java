@@ -292,7 +292,7 @@ public class ProductInfoDAO {
     //管理者変更・編集機能時に使われるメソッド
     //AdminEditDetailsCompleteAction で使用。
     public int updateProductInfo(int productid, String productName, String productNameKana, String productDescription,
-    		int categoryId, int price, String releaseCompany, String releaseDate, String imageFileName, String imageFilePath)throws SQLException {
+    		int categoryId, int price, String releaseCompany, String releaseDate, String imageFilePath, String imageFileName)throws SQLException {
     	DBConnector dbConnector = new DBConnector();
     	Connection connection = dbConnector.getConnection();
     	int count = 0;
@@ -305,8 +305,8 @@ public class ProductInfoDAO {
     			+ "price=? , "
     			+ "release_company=? , "
     			+ "release_date=? , "
-    			+ "image_file_name=? , "
     			+ "image_file_path=? , "
+    			+ "image_file_name=? , "
     			+ "regist_date=? , "
     			+ "update_date=? , "
     			+ "WHERE product_id=?";
@@ -320,8 +320,8 @@ public class ProductInfoDAO {
     		preparedStatement.setInt(5, price);
     		preparedStatement.setString(6, releaseCompany);
     		preparedStatement.setString(7, releaseDate);
-    		preparedStatement.setString(8, imageFileName);
-    		preparedStatement.setString(9, imageFilePath);
+    		preparedStatement.setString(8, imageFilePath);
+    		preparedStatement.setString(9, imageFileName);
     		preparedStatement.setString(10, dateUtil.getDate());
     		preparedStatement.setString(11, dateUtil.getDate());
     		preparedStatement.setInt(12, productid);
