@@ -10,6 +10,11 @@ public class GoLoginAction extends ActionSupport implements SessionAware {
 	private Map<String, Object> session;
 
 	public String execute() {
+		//他ページに飛んだあともエラーメッセージが残らないように、
+		//セッションからはずす
+		session.remove("loginIdErrorMessageList");
+		session.remove("passwordErrorMessageList");
+
 		return SUCCESS;
 	}
 
