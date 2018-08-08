@@ -212,10 +212,6 @@
            <result name="success">locationChoice.jsp</result>
            <result name="error">error.html</result>
 </action>
-<action name="LocationChoiceCompleteAction" class="com.internousdev.glanq.action.LocationChoiceCompleteAction" method="execute">
-           <result name="success">settlementConfirm.jsp</result>
-           <result name="error">error.html</result>
-</action>
 
 </package>
 </struts>
