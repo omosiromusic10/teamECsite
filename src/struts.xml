@@ -166,6 +166,14 @@
            <result name="success">adminEditDetails.jsp</result>
            <result name="error">admin.jsp</result>
 </action>
+<action name="AdminEditDetailsConfirmAction" class="com.internousdev.glanq.action.AdminEditDetailsConfirmAction" method="execute">
+           <result name="succes">adminEditDetailsConfirm.jsp</result>
+           <result name="error">adminEditDetails.jsp</result>
+</action>
+<action name="AdminEditDetailsCompleteAction" class="com.internousdev.glanq.action.AdminEditDetailsCompleteAction" method="execute">
+           <result name="success">adminEditDetailsComplete.jsp</result>
+           <result name="error">adminEditDetailsConfirm.jsp</result>
+</action>
 
 <action name="AdminDeleteAction" class="com.internousdev.glanq.action.AdminDeleteAction" method="execute">
            <result name="success">adminDelete.jsp</result>
