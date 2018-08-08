@@ -40,7 +40,7 @@ function goResetPasswordAction() {
 			</s:if>
 
 			<!-- もし、passwordErrorMessageListが空でなかったら -->
-			<s:if test = "!session.passwordErrorMessageList.isEmpty()">
+			<s:if test = "!#session.passwordErrorMessageList.isEmpty()">
 				<div class = "error">
 					<div class = "error-message">
 						<!-- passwordErrorMessageListの要素を画面に表示する -->
