@@ -25,6 +25,7 @@
 </action>
 
 
+
 <!-- 2.ログイン認証機能 -->
 <action name="GoLoginAction" class="com.internousdev.glanq.action.GoLoginAction" method="execute">
            <result name="success">login.jsp</result>
