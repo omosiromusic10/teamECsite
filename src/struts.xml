@@ -184,6 +184,18 @@
            <result name="error">adminDelete.jsp</result>
 </action>
 
+<action name="AdminProductSelectAction" class="com.internosdedv.glanq.action.AdminProductSelectAction" method="execute">
+           <result name="success">adminProductSelect.jsp</result>
+           <result name="error">admin.jsp</result>
+</action>
+
+<action name="AdminPurchaseSelectAction" class="com.internosdedv.glanq.action.AdminPurchaseSelectAction" method="execute">
+           <result name="success">adminPurchaseSelect.jsp</result>
+           <result name="error">admin.jsp</result>
+</action>
+
+
+
 <!-- 14.新機能 -->
 <action name="LocationOptionAction" class="com.internousdev.glanq.action.LocationOptionAction" method="execute">
            <result name="success">locationOption.jsp</result>

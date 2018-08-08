@@ -80,18 +80,17 @@ public class AdminRegistConfirmAction extends ActionSupport implements SessionAw
 	  }
 	try{
 		switch(categoryId){
-		//　ここはcategoryIdにより変更の必要性あり！！！！！！！！！！！！！！！！
 		case 1 :
 			session.put("categoryName","全てのカテゴリー");
 			break;
 		case 2 :
-			session.put("categoryName", "本");
+			session.put("categoryName", "肉");
 			break;
 		case 3 :
-			session.put("categoryName", "家電・パソコン");
+			session.put("categoryName", "野菜");
 			break;
 		case 4 :
-			session.put("categoryName", "おもちゃ・ゲーム");
+			session.put("categoryName", "機材");
 			break;
 		}
 	}catch(Exception e){
