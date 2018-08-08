@@ -49,7 +49,7 @@
 </tr>
 <tr>
     <th scope="row"><s:label value="画像ファイル"/></th>
-    <!--  imagesの場所がフォルダの名前で　userImageFileNameで～～～.jpgを入れている。 -->
+    <!--  imagesの場所がフォルダの名前で　userImageFileNameで～～.jpgを入れている。 -->
     <td><img src="images/<s:property value="userImageFileName"/>" width="500" height="300" /></td>
 </tr>
 
