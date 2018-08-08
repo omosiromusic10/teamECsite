@@ -10,7 +10,7 @@
 <title>商品一覧</title>
 </head>
 <body>
-<!-- <jsp:include page="header.jsp"/> -->
+ <jsp:include page="header.jsp"/>
 <div id="contents">
 <h1>商品一覧画面</h1>
 <div id="product-list">
@@ -61,6 +61,6 @@
 
 
 </div>
-<!-- <s:include value="footer.jsp" /> -->
+ <s:include value="footer.jsp" />
 </body>
 </html>

@@ -10,7 +10,7 @@
 <title>商品購入履歴一覧</title>
 </head>
 <body>
-<!--  <jsp:include page="header.jsp"/> -->
+  <jsp:include page="header.jsp"/>
 <div id="contents">
 <h1>商品購入履歴一覧画面</h1>
 
@@ -53,7 +53,7 @@
 </s:else>
 
 </div>
-<!-- s:include value="footer.jsp"/> -->
+<s:include value="footer.jsp"/>
 
 </body>
 </html>
