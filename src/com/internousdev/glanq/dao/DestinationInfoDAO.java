@@ -42,6 +42,30 @@ public class DestinationInfoDAO {
 		return count;
 	}
 
+	public int delete(String id) {
+		DBConnector dbConnector = new DBConnector();
+		Connection connection = dbConnector.getConnection();
+		int count = 0;
+		String sql = "delete from product_info where id=?";
+
+		try {
+			PreparedStatement preparedStatement = connection.prepareStatement(sql);
+			preparedStatement.setString(1, id);
+
+			count = preparedStatement.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		try {
+			connection.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return count;
+	}
+
+
+
 	public List<DestinationInfoDTO> getDestinationInfo(String loginId) throws SQLException{
 		DBConnector dbConnector = new DBConnector();
 		Connection connection = dbConnector.getConnection();
