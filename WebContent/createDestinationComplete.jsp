@@ -26,6 +26,5 @@
 
 <s:include value="footer.jsp"/>
 
-
 </body>
 </html>
