@@ -22,7 +22,7 @@ public class CommonUtility {
 
 	/*ArrayListの中身を「,」で分割するメソッド*/
 	public String[] parseArrayList(String s){
-		return s.split(",",0);
+		return s.split(", ",0);
 	}
 
 	public <E> List<List<E>> devideList(List<E> list, int size){
