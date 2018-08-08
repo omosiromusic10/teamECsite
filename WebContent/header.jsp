@@ -29,6 +29,9 @@ function goLogoutAction(){
 function goSearchItemAction(){
 	document.getElementById("form").action="SearchItemAction";
 }
+function goAdminAction(){
+	document.getElementById("form").action="GoAdminAction";
+}
 </script>
 </head>
 
@@ -54,6 +57,9 @@ function goSearchItemAction(){
                                                <li><s:submit value="商品一覧" class="submit_btn" onclick="goProductListAction();"/></li>
                                        <s:if test="#session.logined==1">
                                                <li><s:submit value="マイページ" class="submit_btn" onclick="goMyPageAction();"/></li>
+                                       </s:if>
+                                       <s:if test="#session.status==1">
+                                               <li><s:submit value="管理者ホーム" class="submit_btn" onclick="goAdminAction();"/></li>
                                        </s:if>
                                   </s:form>
                              </ul>
