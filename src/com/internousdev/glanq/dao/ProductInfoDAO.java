@@ -26,7 +26,6 @@ public class ProductInfoDAO {
 		String sql = "SELECT * from product_info";
 		try{
 			PreparedStatement ps = con.prepareStatement(sql);
-			System.out.println(ps);
 			ResultSet rs = ps.executeQuery();
 			while(rs.next()){
 				ProductInfoDTO pInfo = new ProductInfoDTO();
@@ -141,7 +140,7 @@ public class ProductInfoDAO {
 		ArrayList<ProductInfoDTO> productInfoListByKeywords = new ArrayList<ProductInfoDTO>();
 		DBConnector db = new DBConnector();
 		Connection con = db.getConnection();
-		String sql = "SELECT * from product_info WHERE categoryId = " + categoryId + " AND ";
+		String sql = "SELECT * from product_info WHERE category_id = " + categoryId + " AND ";
 		boolean iFlg = true;
 		// 拡張for文。キーワードが1つか複数かにより、sql文が分岐するため記述。
 		for(String keyword : keywordsList){

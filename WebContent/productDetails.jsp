@@ -135,7 +135,7 @@ table#item_info td{
 <body>
 	<s:include value="header.jsp" />
 
-<h2>作成中です･･･</h2>
+<h2>商品詳細ページ</h2>
 
 		<!-- ～商品詳細を表示～ -->
 		<div id="item_detail">

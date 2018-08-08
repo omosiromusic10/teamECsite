@@ -28,14 +28,15 @@ public class MCategoryDAO {
 	ResultSet resultSet=preparedStatement.executeQuery();
 
 	//各変数にデータを追加
+	// resultSet.getInt("categoryId")のようになっていたのでそれぞれ修正しました。
 	while(resultSet.next()){
 	MCategoryDTO mCategoryDto=new MCategoryDTO();
-	mCategoryDto.setId(resultSet.getInt("Id"));
-	mCategoryDto.setCategoryId(resultSet.getInt("categoryId"));
-	mCategoryDto.setCategoryName(resultSet.getString("categoryName"));
-	mCategoryDto.setCategoryDescription(resultSet.getString("categoryDescription"));
-	mCategoryDto.setInsertDate(resultSet.getDate("insertDate"));
-	mCategoryDto.setUpdateDate(resultSet.getDate("updateDate"));
+	mCategoryDto.setId(resultSet.getInt("id"));
+	mCategoryDto.setCategoryId(resultSet.getInt("category_id"));
+	mCategoryDto.setCategoryName(resultSet.getString("category_name"));
+	mCategoryDto.setCategoryDescription(resultSet.getString("category_description"));
+	mCategoryDto.setInsertDate(resultSet.getDate("insert_date"));
+	mCategoryDto.setUpdateDate(resultSet.getDate("update_date"));
 
 	//追加したデータをListに格納
 	mCategoryDtoList.add(mCategoryDto);

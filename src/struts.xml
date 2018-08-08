@@ -146,15 +146,15 @@
 
 
 <!-- 13.管理者機能 -->
-<action name="AdminRegistAction" class="com.internousdev.granq.action.AdminRegistAction" method="execute">
+<action name="AdminRegistAction" class="com.internousdev.glanq.action.AdminRegistAction" method="execute">
            <result name="success">adminRegist.jsp</result>
            <result name="error">admin.jsp</result>
 </action>
-<action name="AdminRegistConfirmAction" class="com.internousdev.granq.action.AdminRegistConfirmAction" method="execute">
+<action name="AdminRegistConfirmAction" class="com.internousdev.glanq.action.AdminRegistConfirmAction" method="execute">
             <result name="success">adminRegistConfirm.jsp</result>
             <result name="error">adminRegist.jsp</result>
 </action>
-<action name="AdminRegistCompleteAction" class="com.internousdev.glanq.action.AdminRegistConfirmAction" method="execute">
+<action name="AdminRegistCompleteAction" class="com.internousdev.glanq.action.AdminRegistCompleteAction" method="execute">
            <result name="success">adminRegistComplete.jsp</result>
            <result name="error">adminRegistConfirm.jsp</result>
 </action>
