@@ -25,7 +25,7 @@
     </tr>
     </table>
     <table>
-    <s:if test="#session.parkName==A">
+    <s:if test="#session.parkName==1">
     <tr>
         <td>インターノウス株式会社</td>
     </tr>
@@ -48,7 +48,7 @@
         <td>東京都千代田区三番町1-1 KY三番町ビル 1F</td>
     </tr>
     </s:if>
-    <s:if test="#session.parkName==B">
+    <s:if test="#session.parkName==2">
     <tr>
         <td>インターノウス株式会社</td>
     </tr>
@@ -71,7 +71,7 @@
         <td>東京都千代田区霞ヶ関3-6-15</td>
     </tr>
     </s:if>
-    <s:if test="#session.parkName==C">
+    <s:if test="#session.parkName==3">
     <tr>
         <td>インターノウス株式会社</td>
     </tr>
