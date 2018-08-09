@@ -24,7 +24,7 @@ public class AdminDeleteAction extends ActionSupport implements SessionAware {
 	private int price;
 	private String categoryId;
 	private String keywords;
-	private String pageNo;
+	private int pageNo;
 	private List<MCategoryDTO> mCategoryDtoList = new ArrayList<MCategoryDTO>();
 	private List<ProductInfoDTO> productInfoDtoList = new ArrayList<ProductInfoDTO>();
 	private Map<String, Object> session;
@@ -45,11 +45,10 @@ public class AdminDeleteAction extends ActionSupport implements SessionAware {
 	if(!(productInfoDtoList==null)){
 		Pagination pagination = new Pagination();
 		PaginationDTO paginationDTO = new PaginationDTO();
-		if(pageNo == null){    //pageNoがnullの場合1ページ目
+		if(pageNo == 0){    //pageNoが0の場合1ページ目
 			paginationDTO = pagination.initialize(productInfoDtoList, 9);
 		}else{    //そうでない場合、任意のページ
-			int pageNO=Integer.parseInt(pageNo);
-			paginationDTO=pagination.getPage(productInfoDtoList,9,(pageNO));
+			paginationDTO=pagination.getPage(productInfoDtoList,9, pageNo);
 		}
 		session.put("productInfoDtoList", paginationDTO.getCurrentProductInfoPage());  //ページ情報の取得
 		session.put("totalPageSize", paginationDTO.getTotalPageSize());
@@ -149,5 +148,13 @@ public class AdminDeleteAction extends ActionSupport implements SessionAware {
 
 	public void setSession(Map<String, Object> session) {
 		this.session = session;
+	}
+
+	public int getPageNo() {
+		return pageNo;
+	}
+
+	public void setPageNo(int pageNo) {
+		this.pageNo = pageNo;
 	}
 }
