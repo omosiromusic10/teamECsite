@@ -45,7 +45,7 @@ public class CartAction extends ActionSupport implements SessionAware{
 			CartInfoDtoList = null;
 		}
 
-		session.put("CartInfoDtoList", CartInfoDtoList);
+		session.put("cartInfoDtoList", CartInfoDtoList);
 
 		/*
 		 * sessionから合計金額を取得

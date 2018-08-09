@@ -33,7 +33,7 @@
 </action>
  <action name="LoginAction" class="com.internousdev.glanq.action.LoginAction" method="execute">
            <result name="success">home.jsp</result>
-           <result name="settlement">settlementConfirm.jsp</result>
+           <result name="locationOption">locationOption.jsp</result>
            <result name="error">login.jsp</result>
            <result name="admin">admin.jsp</result>
 </action>
@@ -206,11 +206,11 @@
 <!-- 14.新機能 -->
 <action name="LocationOptionAction" class="com.internousdev.glanq.action.LocationOptionAction" method="execute">
            <result name="success">locationOption.jsp</result>
-           <result name="error">error.html</result>
+           <result name="error">login.jsp</result>
 </action>
 <action name="LocationChoiceAction" class="com.internousdev.glanq.action.LocationChoiceAction" method="execute">
            <result name="success">locationChoice.jsp</result>
-           <result name="error">error.html</result>
+           <result name="error">login.jsp</result>
 </action>
 
 </package>
