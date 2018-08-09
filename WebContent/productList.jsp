@@ -83,7 +83,7 @@
  					</div>
 					</li>
 					<li><s:property value="productName" /></li>
-					<li><s:property value="releaseCompany" /></li>
+					<li><s:property value="productNameKana" /></li>
 					<li><s:property value="price" /><span>円</span></li>
 				</ul>
 			</div>
