@@ -1,10 +1,16 @@
 package com.internousdev.glanq.action;
 
+import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 
 import org.apache.struts2.interceptor.SessionAware;
 
+import com.internousdev.glanq.dao.DestinationInfoDAO;
+import com.internousdev.glanq.dto.DestinationInfoDTO;
 import com.opensymphony.xwork2.ActionSupport;
 
 public class SettlementConfirmAction extends ActionSupport implements SessionAware{
@@ -26,7 +32,25 @@ public class SettlementConfirmAction extends ActionSupport implements SessionAwa
 	public String execute() {
 		String result = ERROR;
 
-		result = SUCCESS;
+		if(session.containsKey("loginId")) {
+			DestinationInfoDAO destinationInfoDAO = new DestinationInfoDAO();
+			List<DestinationInfoDTO> destinationInfoDtoList = new ArrayList<>();
+			try {
+				destinationInfoDtoList = destinationInfoDAO.getDestinationInfo(String.valueOf(session.get("loginId")));
+				Iterator<DestinationInfoDTO> iterator = destinationInfoDtoList.iterator();
+				if(!(iterator.hasNext())) {
+					destinationInfoDtoList = null;
+				}
+				session.put("destinationInfoDtoList", destinationInfoDtoList);
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		if(!session.containsKey("loginId")) {
+			result = ERROR;
+		}else {
+			result = SUCCESS;
+		}
 		return result;
 	}
 
