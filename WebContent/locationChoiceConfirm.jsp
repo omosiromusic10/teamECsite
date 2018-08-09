@@ -53,13 +53,13 @@
         <td>インターノウス株式会社</td>
     </tr>
     <tr>
-        <td>Aバーベキュー場</td>
+        <td>Bバーベキュー場</td>
     </tr>
     <tr>
         <td>いんたーのうすかぶしきがいしゃ</td>
     </tr>
     <tr>
-        <td>えーばーべきゅーじょう</td>
+        <td>びーばーべきゅーじょう</td>
     </tr>
     <tr>
         <td>internousdev@test.com</td>
@@ -76,13 +76,13 @@
         <td>インターノウス株式会社</td>
     </tr>
     <tr>
-        <td>Aバーベキュー場</td>
+        <td>Cバーベキュー場</td>
     </tr>
     <tr>
         <td>いんたーのうすかぶしきがいしゃ</td>
     </tr>
     <tr>
-        <td>えーばーべきゅーじょう</td>
+        <td>しーばーべきゅーじょう</td>
     </tr>
     <tr>
         <td>internousdev@test.com</td>
@@ -94,9 +94,6 @@
         <td>東京都千代田区三番町1-1 KY三番町ビル 1F</td>
     </tr>
 
-    <tr>
-        <td>東京都千代田区三番町1-1 KY三番町ビル 1F</td>
-    </tr>
     </s:if>
 
     <s:submit value="決済"/>
