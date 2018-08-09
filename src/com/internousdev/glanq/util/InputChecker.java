@@ -102,7 +102,7 @@ public class InputChecker {
 			messageList.add("全角記号");
 		}
 
-		//括弧を閉じる。これでそれぞれ"[^○○○]+"の形になる
+		//括弧を閉じる。これでそれぞれ"[^○○○]+"の形になる。
 		if(!StringUtils.isEmpty(regularExpression)){
 			regularExpression += "]+";
 		}
