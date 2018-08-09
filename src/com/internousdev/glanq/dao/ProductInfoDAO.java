@@ -307,7 +307,7 @@ public class ProductInfoDAO {
     			+ "image_file_path=? , "
     			+ "image_file_name=? , "
     			+ "regist_date=? , "
-    			+ "update_date=? , "
+    			+ "update_date=? "
     			+ "WHERE product_id=?";
 
     	try {
