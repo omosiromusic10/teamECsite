@@ -95,8 +95,8 @@ public class LoginAction extends ActionSupport implements SessionAware {
 					} catch(SQLException e) {
 						e.printStackTrace();
 					}
-					//try が走れば、決済確認画面へ
-					result = "settlement";
+					//try が走れば、場所の確認画面へ
+					result = "locationOption";
 
 				} else {
 					//try が走らなかったら、結果はSUCCESS(ホーム画面へ)
