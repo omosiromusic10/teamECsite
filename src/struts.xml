@@ -174,7 +174,7 @@
            <result name="error">admin.jsp</result>
 </action>
 <action name="AdminEditDetailsConfirmAction" class="com.internousdev.glanq.action.AdminEditDetailsConfirmAction" method="execute">
-           <result name="succes">adminEditDetailsConfirm.jsp</result>
+           <result name="success">adminEditDetailsConfirm.jsp</result>
            <result name="error">adminEditDetails.jsp</result>
 </action>
 <action name="AdminEditDetailsCompleteAction" class="com.internousdev.glanq.action.AdminEditDetailsCompleteAction" method="execute">
