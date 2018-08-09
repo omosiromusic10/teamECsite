@@ -206,11 +206,11 @@
 <!-- 14.新機能 -->
 <action name="LocationOptionAction" class="com.internousdev.glanq.action.LocationOptionAction" method="execute">
            <result name="success">locationOption.jsp</result>
-           <result name="error">error.html</result>
+           <result name="error">login.jsp</result>
 </action>
 <action name="LocationChoiceAction" class="com.internousdev.glanq.action.LocationChoiceAction" method="execute">
            <result name="success">locationChoice.jsp</result>
-           <result name="error">error.html</result>
+           <result name="error">login.jsp</result>
 </action>
 
 </package>
