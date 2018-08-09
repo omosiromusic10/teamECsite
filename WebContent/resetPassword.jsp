@@ -102,8 +102,8 @@
 				</td>
 			</tr>
 			<tr>
-				<th scope="row"><s:label value="確認用パスワード"/></th>
-				<td><s:password name="reConfirmationPassword" placeholder="確認用" class="txt"/></td>
+				<th scope="row"><s:label value="新しいパスワード(確認用)"/></th>
+				<td><s:password name="reConfirmationPassword" placeholder="新しいパスワード(確認用)" class="txt"/></td>
 			</tr>
 		</table>
 		<div class="btn">

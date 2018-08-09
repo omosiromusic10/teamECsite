@@ -42,8 +42,8 @@ public class ResetPasswordConfirmAction extends ActionSupport implements Session
 		if(loginIdErrorMessageList.size()==0
 		&& passwordErrorMessageList.size()==0
 		&& newPasswordErrorMessageList.size()==0
-				&& reConfirmationNewPasswordErrorMessageList.size()==0
-		&& newPasswordIncorrectErrorMessageList.size()==0) {
+		&& reConfirmationNewPasswordErrorMessageList.size()==0
+		&& newPasswordIncorrectErrorMessageList.size()==0){
 
 			UserInfoDAO userInfoDAO = new UserInfoDAO();
 
@@ -68,6 +68,7 @@ public class ResetPasswordConfirmAction extends ActionSupport implements Session
 			session.put("newPasswordErrorMessageList", newPasswordErrorMessageList);
 			session.put("reConfirmationNewPasswordErrorMessageList", reConfirmationNewPasswordErrorMessageList);
 			session.put("newPasswordIncorrectErrorMessageList", newPasswordIncorrectErrorMessageList);
+
 		}
 		return result;
 	}
