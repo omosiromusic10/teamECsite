@@ -77,6 +77,9 @@ public class DestinationInfoDAO {
 		return destinationInfoDtoList;
 	}
 
+	/* LocationChoiceCompleteActionで使う用 */
+	/* Destination_infoテーブルからBBQ場のIdを使ってDestinationInfoDTOListを作成する */
+
 	public List<DestinationInfoDTO> getDestinationInfoFromId(int id) throws SQLException{
 		DBConnector dbConnector = new DBConnector();
 		Connection connection = dbConnector.getConnection();
