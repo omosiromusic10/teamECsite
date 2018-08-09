@@ -15,10 +15,7 @@ public class LocationChoiceConfirmAction extends ActionSupport implements Sessio
 
 	private String categoryId;
 	private Map<String, Object> session;
-	/*
-	private String parkName;
-	*/
-	private int parkName;
+	private int parkId;
 
 	public String execute(){
 
@@ -27,12 +24,12 @@ public class LocationChoiceConfirmAction extends ActionSupport implements Sessio
 		DestinationInfoDAO destinationInfoDAO = new DestinationInfoDAO();
 		List<DestinationInfoDTO> destinationInfoDtoList = new ArrayList<>();
 		try {
-			destinationInfoDtoList = destinationInfoDAO.getDestinationInfoFromId(parkName);
+			destinationInfoDtoList = destinationInfoDAO.getDestinationInfoFromId(parkId);
 			Iterator<DestinationInfoDTO> iterator = destinationInfoDtoList.iterator();
 			if(!(iterator.hasNext())) {
 				destinationInfoDtoList = null;
 			}
-			session.put("parkName", parkName);
+			session.put("parkId", parkId);
 			session.put("destinationInfoDtoList", destinationInfoDtoList);
 			result = SUCCESS;
 
@@ -59,22 +56,14 @@ public class LocationChoiceConfirmAction extends ActionSupport implements Sessio
 	public void setSession(Map<String, Object> session) {
 		this.session = session;
 	}
-/*
-	public String getParkName() {
-		return parkName;
+
+	public int getParkId() {
+		return parkId;
 	}
 
-	public void setParkName(String parkName) {
-		this.parkName = parkName;
-	}
-*/
-
-	public int getParkName() {
-		return parkName;
+	public void setParkId(int parkId) {
+		this.parkId = parkId;
 	}
 
-	public void setParkName(int parkName) {
-		this.parkName = parkName;
-	}
 
 }
