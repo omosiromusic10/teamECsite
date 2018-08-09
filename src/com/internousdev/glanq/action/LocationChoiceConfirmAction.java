@@ -10,7 +10,10 @@ public class LocationChoiceConfirmAction extends ActionSupport implements Sessio
 
 	private String categoryId;
 	private Map<String, Object> session;
+	/*
 	private String parkName;
+	*/
+	private int parkName;
 
 	public String execute(){
 
@@ -21,6 +24,7 @@ public class LocationChoiceConfirmAction extends ActionSupport implements Sessio
 			result = SUCCESS;
 		} catch(Exception e){
 			e.printStackTrace();
+			result = ERROR;
 		}
 
 		return result;
@@ -41,12 +45,21 @@ public class LocationChoiceConfirmAction extends ActionSupport implements Sessio
 	public void setSession(Map<String, Object> session) {
 		this.session = session;
 	}
-
+/*
 	public String getParkName() {
 		return parkName;
 	}
 
 	public void setParkName(String parkName) {
+		this.parkName = parkName;
+	}
+*/
+
+	public int getParkName() {
+		return parkName;
+	}
+
+	public void setParkName(int parkName) {
 		this.parkName = parkName;
 	}
 
