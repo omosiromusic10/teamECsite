@@ -46,7 +46,7 @@ public class PurchaseHistoryInfoDAO {
 			+ " di.tel_number as tel_number,"					/* 電話番号 */
 			+ " di.user_address as user_address"				/* 住所 */
 
-			/* FROM ○○ = 場所指定。(purchase_history_infoのデータを持ってくる) */
+			/* FROM ○○ = 場所指定。(select以降に記入したデータをpurchase_history_infoのデータを持ってくる？) */
 			+ " FROM purchase_history_info as phi"
 
 			/* LEFT JOIN ○○ = 左側に○○のカラム追加(product_infoのカラムをpurchase_history_infoの左に追加) */
