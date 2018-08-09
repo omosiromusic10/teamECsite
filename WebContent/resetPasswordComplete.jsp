@@ -15,6 +15,7 @@
 <h1>パスワード再設定完了画面</h1>
 	パスワード再設定が完了しました。
 	</div>
+	<p>Homeへ戻る場合は<a href='<s:url action="HomeAction"/>'>こちら</a></p>
 <s:include value="footer.jsp"/>
 </body>
 </html>

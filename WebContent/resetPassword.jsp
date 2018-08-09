@@ -6,13 +6,13 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<link rel="stylesheet" href="./css/style.css">
+<link rel="stylesheet" href="./css/test.css">
 <title>パスワード再設定</title>
 </head>
 <body>
+<jsp:include page="header.jsp"/>
 <h1>パスワード再設定画面</h1>
 <div id="contents">
-<jsp:include page="header.jsp"/>
 
 	<s:form action="ResetPasswordConfirmAction">
 	<!-- テーブルで表示予定 -->
@@ -106,7 +106,11 @@
 				<td><s:password name="reConfirmationPassword" placeholder="確認用" class="txt"/></td>
 			</tr>
 		</table>
+		<div class="btn">
 		<s:submit value="パスワード再設定" class="submit_btn"/>
+		</div>
+		<p>Homeへ戻る場合は<a href='<s:url action="HomeAction"/>'>こちら</a></p>
+		<p>Login画面へ戻る場合は<a href='<s:url action="GoLoginAction"/>'>こちら</a></p>
 	</s:form>
 </div>
 <jsp:include page="footer.jsp"/>

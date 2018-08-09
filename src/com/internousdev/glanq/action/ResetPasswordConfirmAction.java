@@ -34,7 +34,7 @@ public class ResetPasswordConfirmAction extends ActionSupport implements Session
 		loginIdErrorMessageList = inputChecker.docheck("ログインID", loginId, 1, 8, true, false, false, true, false, false, false);
 		passwordErrorMessageList = inputChecker.docheck("現在のパスワード", password, 1, 16, true, false, false, true, false, false, false);
 		newPasswordErrorMessageList = inputChecker.docheck("新しいパスワード", newPassword, 1, 16, true, false, false, true, false, false, false);
-		reConfirmationNewPasswordErrorMessageList = inputChecker.docheck("確認用パスワード）", reConfirmationPassword, 1, 16, true, false, false, true, false, false, false);
+		reConfirmationNewPasswordErrorMessageList = inputChecker.docheck("確認用パスワード", reConfirmationPassword, 1, 16, true, false, false, true, false, false, false);
 		newPasswordIncorrectErrorMessageList = inputChecker.doPasswordCheck(newPassword, reConfirmationPassword);
 
 		//.size()メソッドは対象の要素の数を返す
@@ -50,7 +50,7 @@ public class ResetPasswordConfirmAction extends ActionSupport implements Session
 			// ユーザーが存在している場合
 			if(userInfoDAO.isExistsUserInfo(loginId, password)) {
 				//パスワードを隠匿する
-				String concealedPassword = userInfoDAO.concealPassword(password);
+				String concealedPassword = userInfoDAO.concealPassword(newPassword);
 				//sessionに格納、SUCCESSを返す
 				session.put("loginId", loginId);
 				session.put("newPassword", newPassword);
