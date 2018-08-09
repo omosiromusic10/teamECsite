@@ -86,7 +86,7 @@ public class InputChecker {
 
 		//半角記号は使用可能かどうか
 		if(availableHalfWidthSymbols){
-			regularExpression += "@.,;:!#$%&'*+-/=?^_`{|}~ ";
+			regularExpression += "@.,;:!#$%&'*+-/=?^_`{|}~() ";
 			messageList.add("半角記号");
 		}
 
@@ -98,7 +98,7 @@ public class InputChecker {
 
 		//全角記号は使用可能かどうか
 		if(availableFullWidthSymbols){
-			regularExpression += "＠．，；：！＃＄％＆’＊＋―／＝？＾＿｀｛｜｝～ー　";
+			regularExpression += "＠．，；：！＃＄％＆’＊＋―／＝？＾＿｀｛｜｝～ー、。　";
 			messageList.add("全角記号");
 		}
 
