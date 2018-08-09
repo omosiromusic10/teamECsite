@@ -98,7 +98,7 @@ public class InputChecker {
 
 		//全角記号は使用可能かどうか
 		if(availableFullWidthSymbols){
-			regularExpression += "＠．，；：！＃＄％＆’＊＋―／＝？＾＿｀｛｜｝～";
+			regularExpression += "＠．，；：！＃＄％＆’＊＋―／＝？＾＿｀｛｜｝～ー";
 			messageList.add("全角記号");
 		}
 
