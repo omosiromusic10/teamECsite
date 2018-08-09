@@ -19,7 +19,7 @@
 
   <div>
   <s:form action="LocationChoiceConfirmAction">
-      <s:hidden name="parkName" value="A"/>
+      <s:hidden name="parkName" value="1"/>
       <!-- submitボタン -->
       <!-- 画面実装でimgタブで囲むことで、画像クリックでBBQ場の選択ができるようになる...はず -->
       <s:submit value="Aバーベキュー場"/>
@@ -57,7 +57,7 @@
   </div>
   <div>
   <s:form action="LocationChoiceConfirmAction">
-      <s:hidden name="parkName" value="B"/>
+      <s:hidden name="parkName" value="2"/>
       <!-- submitボタン -->
       <!-- 画面実装でimgタブで囲むことで、画像クリックでBBQ場の選択ができるようになる...はず -->
       <s:submit value="Bバーベキュー場"/>
@@ -95,7 +95,7 @@
   </div>
   <div>
   <s:form action="LocationChoiceConfirmAction">
-      <s:hidden name="parkName" value="C"/>
+      <s:hidden name="parkName" value="3"/>
       <!-- submitボタン -->
       <!-- 画面実装でimgタブで囲むことで、画像クリックでBBQ場の選択ができるようになる...はず -->
       <s:submit value="Cバーベキュー場"/>
