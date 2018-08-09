@@ -8,6 +8,7 @@ import java.util.Map;
 
 import org.apache.struts2.interceptor.SessionAware;
 
+import com.internousdev.glanq.dao.MCategoryDAO;
 import com.internousdev.glanq.dao.ProductInfoDAO;
 import com.internousdev.glanq.dto.MCategoryDTO;
 import com.internousdev.glanq.dto.ProductInfoDTO;
@@ -24,9 +25,6 @@ public class ProductDetailsAction extends ActionSupport implements SessionAware 
 
 	private String keywords;
 
-
-
-	// 作成中です・・・
 	public String execute() throws SQLException {
 		String result = ERROR;
 		// 選ばれた商品の商品情報を取得。productId が必要。
@@ -67,9 +65,16 @@ public class ProductDetailsAction extends ActionSupport implements SessionAware 
 		List<ProductInfoDTO> relatedProductList = pDAO2.getProductInfoListByCategoryId(iCategoryId, productId, 0, 3);
 		session.put("relatedProductList", relatedProductList);
 
-//		if(!(relatedProductList.isEmpty())){
+		// セッション mCategoryDtoList はヘッダーにて用いているので、無い場合は必要。mCategoryList??
+		if(!session.containsKey("mCategoryDtoList")) {
+			MCategoryDAO mCategoryDao = new MCategoryDAO();
+			mCategoryDtoList = mCategoryDao.getMCategoryList();
+			session.put("mCategoryDtoList", mCategoryDtoList);
+		}
+
+		if(!(relatedProductList.isEmpty())){
 			result = SUCCESS;
-//		}
+		}
 		return result;
 	}
 

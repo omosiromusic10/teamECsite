@@ -18,7 +18,6 @@ import com.opensymphony.xwork2.ActionSupport;
 public class ProductListAction extends ActionSupport implements SessionAware {
 
 	public Map<String, Object> session;
-	private List<ProductInfoDTO> productInfoList = new ArrayList<ProductInfoDTO>();
 	private Pagination pagination = new Pagination();
 	private List<MCategoryDTO> mCategoryDtoList = new ArrayList<MCategoryDTO>();
 
@@ -27,14 +26,13 @@ public class ProductListAction extends ActionSupport implements SessionAware {
 	private String keywords;
 	private String pageNo = "1";
 
-	// 作成中です・・・
 	public String execute() throws SQLException{
 		String result = ERROR;
 
 		// すべての商品情報を取得。
 		ProductInfoDAO productInfoDAO = new ProductInfoDAO();
 		List<ProductInfoDTO> productInfoListAll = productInfoDAO.getProductInfoList();
-		session.put("productInfoListAll", productInfoListAll);
+		session.put("productInfoListAll", productInfoListAll);	// 予備
 
 		// ページ情報を取得。上で得た商品情報productInfoListAllを利用。1ページあたりの表示数9に設定。
 		int pageSize = 9;
@@ -45,22 +43,24 @@ public class ProductListAction extends ActionSupport implements SessionAware {
 		session.put("startRecordNo", paginationDTO.getStartRecordNo());
 		session.put("endRecordNo", paginationDTO.getEndRecordNo());
 		session.put("pageNumberList", paginationDTO.getPageNumberList());
-		session.put("productInfoDtoList", paginationDTO.getCurrentProductInfoPage());
+		session.put("productInfoDtoList", paginationDTO.getCurrentProductInfoPage());	// これが大事。
 		session.put("hasNextPage", paginationDTO.isHasNextPage());
 		session.put("hasPreviousPage", paginationDTO.isHasPreviousPage());
 		session.put("nextPageNo", paginationDTO.getNextPageNo());
 		session.put("previousPageNo", paginationDTO.getPreviousPageNo());
 
-		// セッション mCategoryDtoList はヘッダーにて用いているので、無い場合は必要。mCategoryList??
+		// セッション mCategoryDtoList はヘッダーにて用いているので、無い場合は必要。（mCategoryList??）
 		if(!session.containsKey("mCategoryDtoList")) {
 			MCategoryDAO mCategoryDao = new MCategoryDAO();
 			mCategoryDtoList = mCategoryDao.getMCategoryList();
 			session.put("mCategoryDtoList", mCategoryDtoList);
 		}
 
-		productInfoDTOList = paginationDTO.getCurrentProductInfoPage();
+		productInfoDTOList = paginationDTO.getCurrentProductInfoPage();	// 予備。セッションで処理させるなら不要
 
 		result = SUCCESS;
+
+
 		return result;
 	}
 
@@ -73,14 +73,6 @@ public class ProductListAction extends ActionSupport implements SessionAware {
 	@Override
 	public void setSession(Map<String, Object> session) {
 		this.session = session;
-	}
-
-	public List<ProductInfoDTO> getProductInfoList() {
-		return productInfoList;
-	}
-
-	public void setProductInfoList(List<ProductInfoDTO> productInfoList) {
-		this.productInfoList = productInfoList;
 	}
 
 	public List<MCategoryDTO> getmCategoryDtoList() {
