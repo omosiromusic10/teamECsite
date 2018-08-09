@@ -1,9 +1,14 @@
 package com.internousdev.glanq.action;
 
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 
 import org.apache.struts2.interceptor.SessionAware;
 
+import com.internousdev.glanq.dao.DestinationInfoDAO;
+import com.internousdev.glanq.dto.DestinationInfoDTO;
 import com.opensymphony.xwork2.ActionSupport;
 
 public class LocationChoiceConfirmAction extends ActionSupport implements SessionAware{
@@ -19,10 +24,19 @@ public class LocationChoiceConfirmAction extends ActionSupport implements Sessio
 
 		String result = ERROR;
 
+		DestinationInfoDAO destinationInfoDAO = new DestinationInfoDAO();
+		List<DestinationInfoDTO> destinationInfoDtoList = new ArrayList<>();
 		try {
+			destinationInfoDtoList = destinationInfoDAO.getDestinationInfo(String.valueOf(session.get("loginId")));
+			Iterator<DestinationInfoDTO> iterator = destinationInfoDtoList.iterator();
+			if(!(iterator.hasNext())) {
+				destinationInfoDtoList = null;
+			}
 			session.put("parkName", parkName);
+			session.put("destinationInfoDtoList", destinationInfoDtoList);
 			result = SUCCESS;
-		} catch(Exception e){
+
+		}catch(Exception e){
 			e.printStackTrace();
 			result = ERROR;
 		}
