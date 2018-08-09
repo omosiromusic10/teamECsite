@@ -76,4 +76,37 @@ public class DestinationInfoDAO {
 		}
 		return destinationInfoDtoList;
 	}
+
+	public List<DestinationInfoDTO> getDestinationInfoFromId(int id) throws SQLException{
+		DBConnector dbConnector = new DBConnector();
+		Connection connection = dbConnector.getConnection();
+		List<DestinationInfoDTO> destinationInfoDtoList = new ArrayList<DestinationInfoDTO>();
+
+		String sql = "SELECT family_name, first_name, family_name_kana, first_name_kana, user_address, tel_number, email FROM destination_info WHERE id = ?";
+
+		try {
+			connection = dbConnector.getConnection();
+			PreparedStatement ps = connection.prepareStatement(sql);
+			ps.setInt(1, id);
+			ResultSet rs = ps.executeQuery();
+
+			while(rs.next()) {
+				DestinationInfoDTO destinationInfoDTO = new DestinationInfoDTO();
+				destinationInfoDTO.setId(id);
+				destinationInfoDTO.setFamilyName(rs.getString("family_name"));
+				destinationInfoDTO.setFirstName(rs.getString("first_name"));
+				destinationInfoDTO.setFamilyNameKana(rs.getString("family_name_kana"));
+				destinationInfoDTO.setFirstNameKana(rs.getString("first_name_kana"));
+				destinationInfoDTO.setUserAddress(rs.getString("user_address"));
+				destinationInfoDTO.setEmail(rs.getString("email"));
+				destinationInfoDTO.setTelNumber(rs.getString("tel_number"));
+				destinationInfoDtoList.add(destinationInfoDTO);
+			}
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			connection.close();
+		}
+		return destinationInfoDtoList;
+	}
 }
