@@ -27,7 +27,7 @@ public class LocationChoiceConfirmAction extends ActionSupport implements Sessio
 		DestinationInfoDAO destinationInfoDAO = new DestinationInfoDAO();
 		List<DestinationInfoDTO> destinationInfoDtoList = new ArrayList<>();
 		try {
-			destinationInfoDtoList = destinationInfoDAO.getDestinationInfo(String.valueOf(session.get("loginId")));
+			destinationInfoDtoList = destinationInfoDAO.getDestinationInfoFromId(parkName);
 			Iterator<DestinationInfoDTO> iterator = destinationInfoDtoList.iterator();
 			if(!(iterator.hasNext())) {
 				destinationInfoDtoList = null;
