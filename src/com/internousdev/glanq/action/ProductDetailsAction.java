@@ -21,7 +21,7 @@ public class ProductDetailsAction extends ActionSupport implements SessionAware 
 
 	private List<MCategoryDTO> mCategoryDtoList = new ArrayList<MCategoryDTO>();
 	private List<ProductInfoDTO> productInfoDtoList = new ArrayList<ProductInfoDTO>();
-	private String categoryId;
+//	private String categoryId;
 
 	private String keywords;
 
@@ -56,7 +56,7 @@ public class ProductDetailsAction extends ActionSupport implements SessionAware 
 
 			// その他、使用したい情報。
 			session.put("categoryId", productInfoDTO.getCategoryId());
-			categoryId = session.get("categoryId").toString();
+			String categoryId = session.get("categoryId").toString();
 
 		// 関連商品のリスト relatedProductList を取得。カテゴリIDと商品IDが必要。表示数に関連する数値 0, 3 を記述。
 		// 今は、同カテゴリの商品のリストをランダムに並び替えた上で【先頭3行】を取得する設定。
@@ -110,13 +110,13 @@ public class ProductDetailsAction extends ActionSupport implements SessionAware 
 		this.productInfoDtoList = productInfoDtoList;
 	}
 
-	public String getCategoryId() {
-		return categoryId;
-	}
-
-	public void setCategoryId(String categoryId) {
-		this.categoryId = categoryId;
-	}
+//	public String getCategoryId() {
+//		return categoryId;
+//	}
+//
+//	public void setCategoryId(String categoryId) {
+//		this.categoryId = categoryId;
+//	}
 
 	public String getKeywords() {
 		return keywords;
