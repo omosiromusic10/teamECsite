@@ -188,11 +188,11 @@ table#item_info td{
 					<td><s:property value="#session.releaseCompany"/></td>
 				</tr>
 				<tr>
-					<th scope="row">発売年月</th>
+					<th scope="row">発売年月日</th>
 					<td><s:property value="#session.releaseDate"/></td>
 				</tr>
 				<tr>
-					<th scope="row">商品詳細</th>
+					<th scope="row">商品詳細情報</th>
 					<td height="52"><s:property value="#session.productDescription"/></td>
 				</tr>
 			</table>
