@@ -12,21 +12,20 @@
 #item_detail {
 	width: 880px;
 	height: 420px;
-	border: 2px solid #4481ff;
+	border: 2px solid #ddddaa;
 	border-radius: 10px;
 	margin: 0 auto;
 	margin_bottom: 30px;
-	padding: 0px auto;
+	padding: 0;
 	text-align: center;
-	background-color: #c4dbff;
+	background-color: #ffffee;
 }
 
 #item_detail #left_box{
-	float: left;
 	display: inline-block;
 	width: 350px;
 	height: auto;
-	margin: auto 0;
+	margin: 0;
 	margin-right: 1%;
 	margin-top: 20px;
 /*	border: 1px solid green; */
@@ -36,26 +35,25 @@
 	text-align: center;
 }
 #item_detail #right_box{
-	float: left;
 	display: inline-block;
-	width: 500px;
+	width: 460px;
 	height: auto;
-	margin-top: 20px;
 	text-align: left;
-/*	border: 1px solid green; */
+	border: 1px solid green;
 	padding: 0;
 	padding-top: 0px;
 }
 
 #item_detail #left_box table{
+	margin: 0;
 }
 #item_detail #left_box th{
 	font-size: 18px;
-	border: 1px solid blue;
+/* 	border: 1px solid #ffccbb */
 }
 #item_detail #left_box td{
 	font-size: 18px;
-	border: 1px solid blue;
+/* 	border: 1px solid #ffc677; */
 }
 #item_detail #item_image_box{
 	display: table-cell;
@@ -63,7 +61,9 @@
 	height: 310px;
 	vertical-align: middle;
 	text-align: center;
-	background: gray;
+	background: #ffddaa;
+	border-radius: 5px;
+    box-shadow:2px 2px #9a6e10;
 }
 #item_detail #item_image_box img{
 	max-width: 300px;
@@ -76,7 +76,7 @@
 
 table#item_info{
 	width: 450px;
-	background-color: #aaeeff;
+	background-color: #ddffcc;
 	border: 2 bouble black;
 	font-size: 18px;
 }
@@ -89,8 +89,9 @@ table#item_info td{
 	text-align: left;
 	padding: 2px;
 }
+
 #related_product_list{
-	width: 850px;
+	width: 800px;
 	margin: 0 auto;
 	border-radius: 5px;
 	background-color: #ffccbb;
@@ -103,7 +104,7 @@ table#item_info td{
 	border-radius: 5px;
     box-shadow:2px 2px #1a6ea0;
 	background-color: #ffeebb;
-	margin: 20px;
+	margin: 10px;
 	padding: 10px;
 }
 #related_product_list ul {
@@ -195,7 +196,7 @@ table#item_info td{
 					<td height="52"><s:property value="#session.productDescription"/></td>
 				</tr>
 			</table>
-			<s:submit value="カートに追加する" class="submit_btn"/>
+			<s:submit value="カートに入れる" class="submit_btn"/>
 			</s:form>
 		</div>
 	</div>
@@ -217,14 +218,12 @@ table#item_info td{
 					</div>
 					</li>
 					<li><s:property value="productName" /></li>
-<%-- 					<li><s:property value="releaseCompany" /></li> --%>
-<%-- 					<li><s:property value="price" /><span>円</span></li> --%>
 				</ul>
 			</div>
 		</s:iterator>
 	</div>
 <br>
-<a href='<s:url action="ProductListAction"/>'> 商品一覧へ</a>
+<%-- <a href='<s:url action="ProductListAction"/>'> 商品一覧へ</a> --%>
 </div>
 
 	<s:include value="footer.jsp" />
