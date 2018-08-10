@@ -85,6 +85,12 @@ public class AddCartAction extends ActionSupport implements SessionAware{
 		int totalPrice = Integer.parseInt(String.valueOf(ciDAO.getTotalPrice(userId)));
 		session.put("totalPrice", totalPrice);
 
+		try{
+			session.remove("checkListErrorMessageList");
+		}catch (Exception e){
+			e.printStackTrace();
+		}
+
 		return result;
 
 	}

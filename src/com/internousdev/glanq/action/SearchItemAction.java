@@ -42,6 +42,7 @@ public class SearchItemAction extends ActionSupport implements SessionAware {
 //	カテゴリーID１が選択された時、検索は全商品の中から行われる
 //	カテゴリーIDが２，３、または４が選択された時、検索はそれぞれのカテゴリーの中から行われる
 //	商品一覧ページで開いた際のカテゴリー未指定をelseで処理
+
 	if("1".equals(categoryId)){
 		productInfoDtoList=productInfoDAO.getProductInfoListAll(keywords.replaceAll("　"," ").split(" "));
 		result=SUCCESS;

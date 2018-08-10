@@ -62,6 +62,11 @@ public class CartAction extends ActionSupport implements SessionAware{
 			mcDTOList = mCategoryDao.getMCategoryList();
 			session.put("mCategoryDtoList", mcDTOList);
 		}
+		try{
+			session.remove("checkListErrorMessageList");
+		}catch (Exception e){
+			e.printStackTrace();
+		}
 		return result;
 	}
 

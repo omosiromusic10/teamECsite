@@ -55,6 +55,7 @@ public class DeleteCartAction extends ActionSupport implements SessionAware {
 		if(checkList == null){
 			checkListErrorMessageList.add("チェックされていません");
 			session.put("checkListErrorMessageList", checkListErrorMessageList);
+			session.remove("checkList");
 			return ERROR;
 		}
 
