@@ -5,56 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<meta http-equiv="Content-Style-Type" content="text/css"/>
-
-<style type="text/css">
-/* 何も書かないと表示が酷いのでcssを仮設定（自作のものをコピー） */
-#main{
-	text-align: center;
-
-}
-#newItemList{
-	display: inline-block;
-	width: 1000px;
-	text-align: center;
-}
-#newItemBox{
-	display: inline-block;
-	border: 2px solid #ddbb55;
-	border-radius: 5px;
-    box-shadow:2px 2px #1a6ea0;
-	background-color: #ffffdd;
-	margin: 20px;
-	padding: 10px;
-}
-#newItemList ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  margin_bottom: -2px;
-}
-#newItemList ul li {
-  padding: 2px;
-}
-#newItemList #item_image_box{
-	display: table-cell;
-	width: 230px;
-	height: 230px;
-	margin: 0 auto;
-	background: white;
-	vertical-align: middle;
-	margin-bottom: 10px;
-}
-#newItemList #item_image{
-	max-width: 230px;
-	max-height: 230px;
-	width: auto;
-	height: auto;
-	vertical-align: middle;
-
-}
-
-</style>
+	<link rel="stylesheet" href="./css/product.css">
 
 <title>商品一覧画面</title>
 </head>
