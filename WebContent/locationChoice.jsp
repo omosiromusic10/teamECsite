@@ -20,6 +20,13 @@
   <div>
   <s:form action="LocationChoiceConfirmAction">
       <s:hidden name="parkId" value="%{id}"/>
+      <s:hidden name="firstName" value="%{firstName}"/>
+      <s:hidden name="firstNameKana" value="%{firstNameKana}"/>
+      <s:hidden name="familyName" value="%{familyName}"/>
+      <s:hidden name="familyNameKana" value="%{familyNameKana}"/>
+      <s:hidden name="email" value="%{email}"/>
+      <s:hidden name="telNumber" value="%{telNumber}"/>
+      <s:hidden name="userAddress" value="%{userAddress}"/>
 
       <s:submit value="%{firstName}"/>
       <table>
