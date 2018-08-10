@@ -106,6 +106,7 @@
 <tr>
     <th scope="row"><s:label value="電話番号"/></th>
     <td><s:textfield name="telNumber" class="txt" /></td>
+    <td>*半角数字のみ</td>
 </tr>
 <!-- メールアドレス入力 -->
 <tr>
