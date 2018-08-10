@@ -14,8 +14,16 @@
 <div id="contents">
 <h1>パスワード再設定確認画面</h1>
 <s:form action="ResetPasswordCompleteAction">
-	<s:property value="#session.loginId"/><br>
-	<s:property value="#session.concealedPassword"/><br>
+	<table class="NewPassword-list">
+	<tr>
+		<th scope="row"><s:label value="ログインID"/></th>
+		<td><s:property value="#session.loginId"/></td>
+	</tr>
+	<tr>
+		<th scope="row"><s:label value="新しいパスワード"/></th>
+		<td><s:property value="#session.concealedPassword"/></td>
+	</tr>
+	</table>
 	<s:submit value="再設定" class="submit_btn" />
 </s:form>
 <p>前画面へ戻る場合は<a href='<s:url action="ResetPasswordAction"/>'>こちら</a></p>
