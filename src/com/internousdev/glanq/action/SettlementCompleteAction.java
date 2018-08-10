@@ -10,13 +10,13 @@ import org.apache.struts2.interceptor.SessionAware;
 import com.internousdev.glanq.dao.CartInfoDAO;
 import com.internousdev.glanq.dao.PurchaseHistoryInfoDAO;
 import com.internousdev.glanq.dto.CartInfoDTO;
-import com.internousdev.glanq.dto.DestinationInfoDTO;
 import com.internousdev.glanq.dto.PurchaseHistoryInfoDTO;
 import com.opensymphony.xwork2.ActionSupport;
 
 public class SettlementCompleteAction extends ActionSupport implements SessionAware{
 
-	private String id;
+	/*private String id;*/
+	private int id;
 	private String categoryId;
 	private Map<String, Object> session;
 
@@ -26,10 +26,11 @@ public class SettlementCompleteAction extends ActionSupport implements SessionAw
 		@SuppressWarnings("unchecked")//警告の抑制（警告を無視させる）
 		ArrayList<PurchaseHistoryInfoDTO> purchaseHistoryInfoDtoList = (ArrayList<PurchaseHistoryInfoDTO>)session.get("purchaseHistoryInfoDtoList");
 
-		@SuppressWarnings("unchecked")//警告の抑制（警告を無視させる）
-		ArrayList<DestinationInfoDTO> destinationInfoDtoList = (ArrayList<DestinationInfoDTO>)session.get("destinationInfoDtoList");
+		/*@SuppressWarnings("unchecked")//警告の抑制（警告を無視させる）*/
+		/* ArrayList<DestinationInfoDTO> destinationInfoDtoList = (ArrayList<DestinationInfoDTO>)session.get("destinationInfoDtoList");*/
 		for(int i=0;/*初期値*/ i<purchaseHistoryInfoDtoList.size();/*条件式*/ i++/*増減式*/) {
-			purchaseHistoryInfoDtoList.get(i).setDestinationId(destinationInfoDtoList.get(0).getId());
+			purchaseHistoryInfoDtoList.get(i).setDestinationId(id);
+			/* destinationInfoDtoList.get(0).getId() */
 		}
 
 		PurchaseHistoryInfoDAO purchaseHistoryInfoDAO = new PurchaseHistoryInfoDAO();//購入履歴にデータを渡す
@@ -62,7 +63,7 @@ public class SettlementCompleteAction extends ActionSupport implements SessionAw
 		}
 		return result;
 	}
-
+/*
 	public String getId() {
 		return id;
 	}
@@ -70,7 +71,7 @@ public class SettlementCompleteAction extends ActionSupport implements SessionAw
 	public void setId(String id) {
 		this.id = id;
 	}
-
+*/
 	public String getCategoryId() {
 		return categoryId;
 	}
@@ -85,6 +86,12 @@ public class SettlementCompleteAction extends ActionSupport implements SessionAw
 
 	public void setSession(Map<String, Object> session) {
 		this.session = session;
+	}
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
 	}
 
 
