@@ -200,7 +200,11 @@
            <result name="success">adminPurchaseSelect.jsp</result>
            <result name="error">admin.jsp</result>
 </action>
-
+<!-- 13.7.管理者データ確認画面 -->
+<action name="AdminAllSelectAction" class="com.internousdev.glanq.action.AdminAllSelectAction" method="execute">
+           <result name="success">adminAllSelect.jsp</result>
+           <result name="error">admin.jsp</result>
+</action>
 
 
 <!-- 14.新機能 -->
