@@ -25,76 +25,32 @@
     </tr>
     </table>
     <table>
-    <s:if test="#session.parkId==1">
+
     <tr>
-        <td>インターノウス株式会社</td>
+        <td><s:property value="familyName"/></td>
     </tr>
     <tr>
-        <td>Aバーベキュー場</td>
+        <td><s:property value="firstName"/></td>
     </tr>
     <tr>
-        <td>いんたーのうすかぶしきがいしゃ</td>
+        <td><s:property value="familyNameKana"/></td>
     </tr>
     <tr>
-        <td>えーばーべきゅーじょう</td>
+        <td><s:property value="firstNameKana"/></td>
     </tr>
     <tr>
-        <td>internousdev@test.com</td>
+        <td><s:property value="email"/></td>
     </tr>
     <tr>
-        <td>12345678900</td>
+        <td><s:property value="telNumber"/></td>
     </tr>
     <tr>
-        <td>東京都千代田区三番町1-1 KY三番町ビル 1F</td>
-    </tr>
-    </s:if>
-    <s:if test="#session.parkId==2">
-    <tr>
-        <td>インターノウス株式会社</td>
-    </tr>
-    <tr>
-        <td>Bバーベキュー場</td>
-    </tr>
-    <tr>
-        <td>いんたーのうすかぶしきがいしゃ</td>
-    </tr>
-    <tr>
-        <td>びーばーべきゅーじょう</td>
-    </tr>
-    <tr>
-        <td>internousdev@test.com</td>
-    </tr>
-    <tr>
-        <td>12345678900</td>
-    </tr>
-    <tr>
-        <td>東京都千代田区霞ヶ関3-6-15</td>
-    </tr>
-    </s:if>
-    <s:if test="#session.parkId==3">
-    <tr>
-        <td>インターノウス株式会社</td>
-    </tr>
-    <tr>
-        <td>Cバーベキュー場</td>
-    </tr>
-    <tr>
-        <td>いんたーのうすかぶしきがいしゃ</td>
-    </tr>
-    <tr>
-        <td>しーばーべきゅーじょう</td>
-    </tr>
-    <tr>
-        <td>internousdev@test.com</td>
-    </tr>
-    <tr>
-        <td>12345678900</td>
-    </tr>
-    <tr>
-        <td>東京都千代田区三番町1-1 KY三番町ビル 1F</td>
+        <td><s:property value="userAddress"/></td>
     </tr>
 
-    </s:if>
+
+
+    <s:hidden name="id" value="%{parkId}"/>
 
     <s:submit value="決済"/>
 

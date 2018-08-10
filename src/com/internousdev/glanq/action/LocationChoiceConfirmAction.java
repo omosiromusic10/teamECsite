@@ -16,6 +16,13 @@ public class LocationChoiceConfirmAction extends ActionSupport implements Sessio
 	private String categoryId;
 	private Map<String, Object> session;
 	private int parkId;
+	private String firstName;
+	private String firstNameKana;
+	private String familyName;
+	private String familyNameKana;
+	private String email;
+	private String telNumber;
+	private String userAddress;
 
 	public String execute(){
 
@@ -30,6 +37,7 @@ public class LocationChoiceConfirmAction extends ActionSupport implements Sessio
 				destinationInfoDtoList = null;
 			}
 			session.put("parkId", parkId);
+			session.put("firstName", firstName);
 			session.put("destinationInfoDtoList", destinationInfoDtoList);
 			result = SUCCESS;
 
@@ -64,6 +72,64 @@ public class LocationChoiceConfirmAction extends ActionSupport implements Sessio
 	public void setParkId(int parkId) {
 		this.parkId = parkId;
 	}
+
+	public String getFirstName() {
+		return firstName;
+	}
+
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+
+	public String getFirstNameKana() {
+		return firstNameKana;
+	}
+
+	public void setFirstNameKana(String firstNameKana) {
+		this.firstNameKana = firstNameKana;
+	}
+
+	public String getFamilyName() {
+		return familyName;
+	}
+
+	public void setFamilyName(String familyName) {
+		this.familyName = familyName;
+	}
+
+	public String getFamilyNameKana() {
+		return familyNameKana;
+	}
+
+	public void setFamilyNameKana(String familyNameKana) {
+		this.familyNameKana = familyNameKana;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getTelNumber() {
+		return telNumber;
+	}
+
+	public void setTelNumber(String telNumber) {
+		this.telNumber = telNumber;
+	}
+
+	public String getUserAddress() {
+		return userAddress;
+	}
+
+	public void setUserAddress(String userAddress) {
+		this.userAddress = userAddress;
+	}
+
+
 
 
 }
