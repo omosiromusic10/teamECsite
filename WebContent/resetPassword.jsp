@@ -109,8 +109,8 @@
 		<div class="btn">
 		<s:submit value="パスワード再設定" class="submit_btn"/>
 		</div>
-		<p>Homeへ戻る場合は<a href='<s:url action="HomeAction"/>'>こちら</a></p>
-		<p>Login画面へ戻る場合は<a href='<s:url action="GoLoginAction"/>'>こちら</a></p>
+		<!-- <p>Homeへ戻る場合は<a href='<s:url action="HomeAction"/>'>こちら</a></p>  仕様にないです-->
+		<!-- <p>Login画面へ戻る場合は<a href='<s:url action="GoLoginAction"/>'>こちら</a></p>　仕様にないです -->
 	</s:form>
 </div>
 <jsp:include page="footer.jsp"/>
