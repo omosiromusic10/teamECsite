@@ -49,6 +49,15 @@ function goResetPasswordAction() {
 				</div>
 			</s:if>
 
+			<!-- もし、loginErrorMessageListが空でなかったら -->
+			<s:if test="!#session.loginErrorMessageList.isEmpty()">
+				<div class="error">
+					<div class="error-message">
+						<s:iterator value="#session.loginErrorMessageList"><s:property /><br></s:iterator>
+					</div>
+				</div>
+			</s:if>
+
 			<table class = "vertical-list-table">
 				<tr>
 					<th scope = "row"><s:label value = "ログインID:" /></th>

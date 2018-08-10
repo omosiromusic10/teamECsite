@@ -4,7 +4,9 @@ import java.util.Map;
 
 import org.apache.struts2.interceptor.SessionAware;
 
+import com.internousdev.glanq.dao.CartInfoDAO;
 import com.internousdev.glanq.dao.UserInfoDAO;
+import com.internousdev.glanq.dto.UserInfoDTO;
 import com.opensymphony.xwork2.ActionSupport;
 
 public class CreateUserCompleteAction extends ActionSupport implements SessionAware{
@@ -15,7 +17,9 @@ public class CreateUserCompleteAction extends ActionSupport implements SessionAw
 	 *
 	 * DAOクラスの登録用メソッドを呼び出し、情報を渡す
 	 *
-	 * 登録がうまくいけばSUCCESSを返す
+	 * その後、ログイン認証を行う
+	 * カート内に商品があればそれを登録したIDに引き継ぐ
+	 * 認証がうまくいけばSUCCESSを返す
 	 */
 
 	private String loginId;
@@ -38,12 +42,30 @@ public class CreateUserCompleteAction extends ActionSupport implements SessionAw
 		//ユーザー登録用メソッドを呼び出し、引数に情報を渡す
 
 		if(count > 0){
-			result = SUCCESS;
-		}
-		//登録件数が1件でもあればSUCCESS
 
+			//	登録できていればログイン認証に移る
+				if(userInfoDAO.login(loginId, password) > 0) {
+					UserInfoDTO userInfoDTO = userInfoDAO.getUserInfo(loginId, password);
+					//ユーザー情報を取得し、ユーザーID, status をセッションに格納
+					session.put("loginId", userInfoDTO.getUserId());
+					session.put("status", userInfoDTO.getStatus());
+
+					CartInfoDAO cartInfoDAO = new CartInfoDAO();
+					@SuppressWarnings("unused")
+					int counts = cartInfoDAO.linkToLoginId(String.valueOf(session.get("tempUserId")), loginId);
+					/**
+					 * 仮ユーザーIDを元にカート情報を作成した
+					 * ユーザーIDに紐付ける
+					 */
+				}
+				//ログインフラグをsessionに格納
+
+				session.put("logined", 1);
+				result = SUCCESS;
+		}
 		return result;
 	}
+
 
 
 	public String getLoginId() {

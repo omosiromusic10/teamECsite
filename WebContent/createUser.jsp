@@ -134,7 +134,7 @@
 
 					<tr>
 						<th scope="row">パスワード</th>
-						<td><s:textfield name="password" value="%{#session.password}" label="パスワード" placeholder="パスワード" class="txt" /></td>
+						<td><s:password name="password" value="" label="パスワード" placeholder="パスワード" class="txt" /></td>
 					</tr>
 
 					<!-- session内に格納された情報を表示

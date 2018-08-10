@@ -14,6 +14,7 @@ public class GoLoginAction extends ActionSupport implements SessionAware {
 		//セッションからはずす
 		session.remove("loginIdErrorMessageList");
 		session.remove("passwordErrorMessageList");
+		session.remove("loginErrorMessageList");
 
 		return SUCCESS;
 	}

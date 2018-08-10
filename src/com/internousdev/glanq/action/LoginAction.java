@@ -23,6 +23,7 @@ public class LoginAction extends ActionSupport implements SessionAware {
 
 	private List<String> loginIdErrorMessageList = new ArrayList<String>();
 	private List<String> passwordErrorMessageList = new ArrayList<String>();
+	private List<String> loginErrorMessageList = new ArrayList<String>();
 
 	private Map<String, Object> session;
 
@@ -31,6 +32,9 @@ public class LoginAction extends ActionSupport implements SessionAware {
 
 		String result = ERROR;
 
+			session.remove("loginIdErrorMessageList");
+			session.remove("passwordErrorMessageList");
+			session.remove("loginErrorMessageList");
 
 		//「ログインID保存」のチェックボックスに使う
 		//trueの場合sessionに格納
@@ -48,15 +52,6 @@ public class LoginAction extends ActionSupport implements SessionAware {
 		InputChecker inputChecker = new InputChecker();
 		loginIdErrorMessageList = inputChecker.docheck("ログインID", loginId, 1, 8, true, false, false, true, false, false, false);
 		passwordErrorMessageList = inputChecker.docheck("パスワード", password, 1, 16, true, false, false, true, false, false, false);
-
-		//ログインIDとパスワード両方にエラーメッセージが入った場合、
-		//エラーメッセージを格納、ログインフラグを降ろす
-		if(loginIdErrorMessageList.size()!=0
-				&& passwordErrorMessageList.size()!=0) {
-					session.put("loginIdErrorMessageList", loginIdErrorMessageList);
-					session.put("passwordErrorMessageList", passwordErrorMessageList);
-					session.put("logined", 0);
-		}
 
 		UserInfoDAO userInfoDAO = new UserInfoDAO();
 		//ユーザーが存在していて、
@@ -112,6 +107,22 @@ public class LoginAction extends ActionSupport implements SessionAware {
 				//セッションにログインフラグを格納
 				session.put("logined", 1);
 		}
+
+		if(session.get("logined").equals(0)){
+			loginErrorMessageList.add("入力されたパスワードが異なります。");
+		}
+
+		//ログインIDとパスワード両方にエラーメッセージが入った場合、
+		//エラーメッセージを格納、ログインフラグを降ろす
+		if(loginIdErrorMessageList.size()!=0
+				|| passwordErrorMessageList.size()!=0
+				|| loginErrorMessageList.size()!=0) {
+					session.put("loginIdErrorMessageList", loginIdErrorMessageList);
+					session.put("passwordErrorMessageList", passwordErrorMessageList);
+					session.put("loginErrorMessageList",loginErrorMessageList);
+					session.put("logined", 0);
+		}
+
 		return result;
 	}
 
