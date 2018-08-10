@@ -28,16 +28,16 @@
 			<!-- 商品一覧の部分 -->
 			<h3>商品の一覧を表示</h3>
 
-			<div id="hit">
-				全<s:property value='#session.totalRecordSize'/>件中 <s:property value='#session.startRecordNo'/> ～
-						<s:if test="#session.endRecordNo > #session.totalRecordSize">
-							<s:property value='#session.totalRecordSize'/>
-						</s:if>
-						<s:else>
-							<s:property value='#session.endRecordNo'/>
-						</s:else>
-						件目を表示
-			</div>
+<!-- 			<div id="hit"> -->
+<%-- 				全<s:property value='#session.totalRecordSize'/>件中 <s:property value='#session.startRecordNo'/> ～ --%>
+<%-- 						<s:if test="#session.endRecordNo > #session.totalRecordSize"> --%>
+<%-- 							<s:property value='#session.totalRecordSize'/> --%>
+<%-- 						</s:if> --%>
+<%-- 						<s:else> --%>
+<%-- 							<s:property value='#session.endRecordNo'/> --%>
+<%-- 						</s:else> --%>
+<!-- 						件目を表示 -->
+<!-- 			</div> -->
 
 			<s:iterator value="#session.productInfoDtoList">
 			<div id="newItemBox">

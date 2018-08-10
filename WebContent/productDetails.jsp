@@ -99,7 +99,6 @@
 		</s:iterator>
 	</div>
 <br>
-<%-- <a href='<s:url action="ProductListAction"/>'> 商品一覧へ</a> --%>
 </div>
 
 	<s:include value="footer.jsp" />
