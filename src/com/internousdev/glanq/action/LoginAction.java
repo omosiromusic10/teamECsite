@@ -32,6 +32,7 @@ public class LoginAction extends ActionSupport implements SessionAware {
 
 		String result = ERROR;
 
+			//セッションに格納したメッセージをはずす
 			session.remove("loginIdErrorMessageList");
 			session.remove("passwordErrorMessageList");
 			session.remove("loginErrorMessageList");
@@ -106,9 +107,9 @@ public class LoginAction extends ActionSupport implements SessionAware {
 			}
 				//セッションにログインフラグを格納
 				session.put("logined", 1);
-		}
 
-		if(session.get("logined").equals(0)){
+		//ユーザーが存在しない場合、エラーメッセージを格納
+		}else{
 			loginErrorMessageList.add("入力されたパスワードが異なります。");
 		}
 
