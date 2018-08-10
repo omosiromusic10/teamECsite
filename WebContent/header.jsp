@@ -42,25 +42,30 @@ function goAdminAction(){
                      <div id="header-menu">
                              <ul>
                                   <s:form id="form" name="form">
-                                       <s:if test='#session.containsKey("mCategoryDtoList")'>
+                                       <s:if test="#session.status==1">
+                                               <li><s:submit value="管理者ホーム" class="submit_btn" onclick="goAdminAction();"/></li>
+                                       </s:if>
+                                       <s:if test='#session.containsKey("mCategoryDtoList") && #session.status!=1'>
                                                <li><s:select name="categoryId" list="#session.mCategoryDtoList" listValue="categoryName" listKey="categoryId" class="cs-div" id="categoryId"/></li>
                                        </s:if>
+                                       <s:if test="#session.logined==0 || #session.status==0">
                                                <li><s:textfield name="keywords" class="txt-keywords" placeholder="検索ワード" /></li>
                                                <li><s:submit value="商品検索" class="submit_btn" onclick="goSearchItemAction();"/></li>
+                                       </s:if>
                                        <s:if test="#session.logined==1">
                                                <li><s:submit value="ログアウト" class="submit_btn" onclick="goLogoutAction();"/></li>
                                        </s:if>
                                        <s:else>
                                                <li><s:submit value="ログイン" class="submit_btn" onclick="goLoginAction();"/></li>
                                        </s:else>
+                                       <s:if test="#session.logined==0 || #session.status==0">
                                                <li><s:submit value="カート" class="submit_btn" onclick="goCartAction();"/></li>
                                                <li><s:submit value="商品一覧" class="submit_btn" onclick="goProductListAction();"/></li>
-                                       <s:if test="#session.logined==1">
+                                       </s:if>
+                                       <s:if test="#session.logined==1 && #session.status==0">
                                                <li><s:submit value="マイページ" class="submit_btn" onclick="goMyPageAction();"/></li>
                                        </s:if>
-                                       <s:if test="#session.status==1">
-                                               <li><s:submit value="管理者ホーム" class="submit_btn" onclick="goAdminAction();"/></li>
-                                       </s:if>
+
                                   </s:form>
                              </ul>
                      </div>
