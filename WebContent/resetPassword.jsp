@@ -17,12 +17,10 @@
 	<s:form action="ResetPasswordConfirmAction">
 	<!-- テーブルで表示予定 -->
 
+	<table class="leaf"></table>
+
 	<table class="vertical-list-table">
 
-			<tr>
-				<th scope="row"><s:label value="ログインID"/></th>
-				<td><s:textfield name="loginId" placeholder="ログインID" class="txt"/></td>
-			</tr>
 			<tr>
 				<td>
 					<s:if test="!#session.loginIdErrorMessageList.isEmpty()">
@@ -34,6 +32,10 @@
 						</div>
 					</s:if>
 				</td>
+			</tr>
+			<tr>
+				<th scope="row"><s:label value="ログインID"/></th>
+				<td><s:textfield name="loginId" placeholder="ログインID" class="txt"/></td>
 			</tr>
 
 
@@ -113,7 +115,7 @@
 			</tr>
 		</table>
 
-	<div class="btn">
+	<div class="submit-btn-box">
 		<s:submit value="パスワード再設定" class="submit_btn"/>
 	</div>
 	</s:form>

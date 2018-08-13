@@ -14,7 +14,10 @@
 <div id="contents">
 <h1>パスワード再設定確認画面</h1>
 <s:form action="ResetPasswordCompleteAction">
-	<table class="NewPassword-list">
+
+	<table class="leaf"></table>
+
+	<table class="vertical-list-table">
 	<tr>
 		<th scope="row"><s:label value="ログインID"/></th>
 		<td><s:property value="#session.loginId"/></td>
@@ -24,7 +27,9 @@
 		<td><s:property value="#session.concealedPassword"/></td>
 	</tr>
 	</table>
+	<div class="submit-btn-box">
 	<s:submit value="再設定" class="submit_btn" />
+	</div>
 </s:form>
 	</div>
 <s:include value="footer.jsp"/>
