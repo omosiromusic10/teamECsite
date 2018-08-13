@@ -13,7 +13,7 @@
 
 	<s:include value="header.jsp" />
 
-<h2>商品一覧ページ</h2>
+<h1>商品一覧ページ</h1>
 
 <div id="main">
 	<!-- 検索結果が無い場合 -->
