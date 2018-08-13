@@ -26,7 +26,6 @@
 	</table>
 	<s:submit value="再設定" class="submit_btn" />
 </s:form>
-<!-- <p>前画面へ戻る場合は<a href='<s:url action="ResetPasswordAction"/>'>こちら</a></p> 仕様にないです -->
 	</div>
 <s:include value="footer.jsp"/>
 </body>

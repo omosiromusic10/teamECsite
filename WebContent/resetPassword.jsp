@@ -2,11 +2,11 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="s" uri="/struts-tags" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<!DOCTYPE html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<link rel="stylesheet" href="./css/test.css">
+<link rel="stylesheet" href="./css/style.css">
 <title>パスワード再設定</title>
 </head>
 <body>
@@ -16,7 +16,13 @@
 
 	<s:form action="ResetPasswordConfirmAction">
 	<!-- テーブルで表示予定 -->
-		<table class="vertical-list-table">
+
+	<table class="vertical-list-table">
+
+			<tr>
+				<th scope="row"><s:label value="ログインID"/></th>
+				<td><s:textfield name="loginId" placeholder="ログインID" class="txt"/></td>
+			</tr>
 			<tr>
 				<td>
 					<s:if test="!#session.loginIdErrorMessageList.isEmpty()">
@@ -29,10 +35,8 @@
 					</s:if>
 				</td>
 			</tr>
-			<tr>
-				<th scope="row"><s:label value="ログインID"/></th>
-				<td><s:textfield name="loginId" placeholder="ログインID" class="txt"/></td>
-			</tr>
+
+
 			<tr>
 				<td>
 					<s:if test="!#session.passwordErrorMessageList.isEmpty()">
@@ -61,6 +65,7 @@
 				<th scope="row"><s:label value="パスワード"/></th>
 				<td><s:password name="password" placeholder="パスワード" class="txt"/></td>
 			</tr>
+
 			<tr>
 				<td>
 					<s:if test="!#session.newPasswordErrorMessageList.isEmpty()">
@@ -89,6 +94,7 @@
 				<th scope="row"><s:label value="新しいパスワード"/></th>
 				<td><s:password name="newPassword" placeholder="新しいパスワード" class="txt"/></td>
 			</tr>
+
 			<tr>
 				<td>
 					<s:if test="!#session.reConfirmationNewPasswordErrorMessageList.isEmpty()">
@@ -106,11 +112,10 @@
 				<td><s:password name="reConfirmationPassword" placeholder="新しいパスワード(確認用)" class="txt"/></td>
 			</tr>
 		</table>
-		<div class="btn">
+
+	<div class="btn">
 		<s:submit value="パスワード再設定" class="submit_btn"/>
-		</div>
-		<!-- <p>Homeへ戻る場合は<a href='<s:url action="HomeAction"/>'>こちら</a></p>  仕様にないです-->
-		<!-- <p>Login画面へ戻る場合は<a href='<s:url action="GoLoginAction"/>'>こちら</a></p>　仕様にないです -->
+	</div>
 	</s:form>
 </div>
 <jsp:include page="footer.jsp"/>
