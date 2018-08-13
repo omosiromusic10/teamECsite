@@ -89,6 +89,4 @@ public class AdminAllSelectAction extends ActionSupport implements SessionAware{
 	}
 
 
-
-
 }

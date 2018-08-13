@@ -58,6 +58,14 @@
     </div>
 </div>
 
+<div class="submit_btn_box">
+    <div id=".contents-btn-set">
+    <s:form action="AdminAllSelectAction">
+        <s:submit value="会員・カート・宛先・カテゴリ一覧画面" class="submit_btn2"/>
+    </s:form>
+    </div>
+</div>
+
 </div>
 
 <s:include value="footer.jsp"/>

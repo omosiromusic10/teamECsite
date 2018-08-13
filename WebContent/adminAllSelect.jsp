@@ -36,9 +36,9 @@
 
 <!-- セッションからの表示項目 -->
 <tbody>
-<s:iterator value="#session.CartInfoAllDtolist">
+<s:iterator value="#session.CartInfoAllDtoList">
 <tr>
-<td><s:property value="Id"/></td>
+<td><s:property value="id"/></td>
 <td><s:property value="userId"/></td>
 <td><s:property value="tempUserId"/></td>
 <td><s:property value="productId"/></td>
@@ -147,7 +147,7 @@
 
 <h2>ユーザーデータ</h2>
 <!-- ユーザーデータがある時 -->
-<s:if test="#session.userInfoAllDtoList.size() > 0">
+<s:if test="#session.UserInfoAllDtoList.size() > 0">
 <table class="horizontal-list-table">
 
 <!-- ユーザー情報の頭 -->
@@ -170,7 +170,7 @@
 
 <!-- セッションからの表示項目 -->
 <tbody>
-<s:iterator value="#session.userInfoAllDtoList">
+<s:iterator value="#session.UserInfoAllDtoList">
 <tr>
 <td><s:property value="Id"/></td>
 <td><s:property value="userId"/></td>
