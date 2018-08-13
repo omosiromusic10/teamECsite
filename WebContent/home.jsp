@@ -36,11 +36,11 @@ $(document).ready(function(){
 
 <!-- 	大きくスライドを作る -->
 	<ul class="slider">
-		<li><img src="./images/sample.jpg" width="980" height="500" alt="" ></li>
-		<li><img src="./images/sample.jpg" width="980" height="500" alt=""></li>
-		<li><img src="./images/sample.jpg" width="980" height="500" alt=""></li>
-		<li><img src="./images/sample.jpg" width="980" height="500" alt=""></li>
-		<li><img src="./images/sample.jpg" width="980" height="500" alt=""></li>
+		<li><img src="./images/yakiniku1.jpg" width="980" height="500" alt="" ></li>
+		<li><img src="./images/yakiniku1.jpg" width="980" height="500" alt=""></li>
+		<li><img src="./images/yakiniku1.jpg" width="980" height="500" alt=""></li>
+		<li><img src="./images/yakiniku1.jpg" width="980" height="500" alt=""></li>
+		<li><img src="./images/yakiniku1.jpg" width="980" height="500" alt=""></li>
 	</ul>
 
 
