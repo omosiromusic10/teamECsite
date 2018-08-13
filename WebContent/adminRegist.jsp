@@ -100,17 +100,6 @@
 </div>
 </div>
 </s:form>
-<br>
-<h2>○新規のカテゴリーを作成の場合は</h2>
-<s:form action="CreateCategoryAction">
-<div class="submit_btn_box">
-<div id=".contents-btn-set">
-<s:submit value="カテゴリ作成画面へ" class="submit_btn" />
-</div>
-</div>
-
-</s:form>
-
 
 </div>
 

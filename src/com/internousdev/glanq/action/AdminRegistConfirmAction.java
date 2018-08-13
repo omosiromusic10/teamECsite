@@ -10,6 +10,8 @@ import org.apache.commons.io.FileUtils;
 import org.apache.struts2.ServletActionContext;
 import org.apache.struts2.interceptor.SessionAware;
 
+import com.internousdev.glanq.dao.MCategoryDAO;
+import com.internousdev.glanq.dto.MCategoryDTO;
 import com.internousdev.glanq.util.InputChecker;
 import com.opensymphony.xwork2.ActionSupport;
 
@@ -36,6 +38,7 @@ public class AdminRegistConfirmAction extends ActionSupport implements SessionAw
 	private List<String>releaseDateErrorMessageList = new ArrayList<String>();
 
 	private List<String>userImageFileNameErrorMessageList = new ArrayList<String>();
+
 
 	private int categoryId;
 	private List<String> categoryIdList = new ArrayList<String>();
@@ -76,24 +79,16 @@ public class AdminRegistConfirmAction extends ActionSupport implements SessionAw
 			userImageFileName="";
 			result = ERROR;
 	  }
-	try{
-		switch(categoryId){
-		case 1 :
-			session.put("categoryName","全てのカテゴリー");
-			break;
-		case 2 :
-			session.put("categoryName", "肉");
-			break;
-		case 3 :
-			session.put("categoryName", "野菜");
-			break;
-		case 4 :
-			session.put("categoryName", "機材");
-			break;
-		}
-	}catch(Exception e){
-		e.printStackTrace();
-	}
+
+        //ここでmCategoryDtoListを使用してcategoryIdを表示された名前で取ってくる。
+		MCategoryDAO mCategoryDAO = new MCategoryDAO();
+		MCategoryDTO mCategoryDTO = mCategoryDAO.getMCategory(categoryId);
+		//ユーザーID, status をセッションに格納
+		//putされたcategoryIdをメソッド内でセレクトし、categoryNameをsession内に保存する。
+		session.put("categoryName", mCategoryDTO.getCategoryName());
+
+
+
 
 		productNameErrorMessageList = inputChecker.docheck("商品名", productName, 1, 32, true, true, true, true, true, true, true);
 		productNameKanaErrorMessageList = inputChecker.docheck("商品名ふりがな", productNameKana, 1, 32, false, false, true, false, false, false, true);
@@ -102,10 +97,6 @@ public class AdminRegistConfirmAction extends ActionSupport implements SessionAw
 		releaseCompanyErrorMessageList  = inputChecker.docheck("発売会社名", releaseCompany, 1, 16, true, true, true, true, false, true, false);
 		releaseDateErrorMessageList  = inputChecker.docheck("発売年月", releaseDate, 1, 16, false, true, false, true, true, false, false);
 		userImageFileNameErrorMessageList = inputChecker.docheck("画像ファイル", userImageFileName, 1, 32, true, true, true, true, true, true, true);
-
-
-		//mCategoryListからセレクトした物をproduct_infoのcategoryId から、くっつけて
-		//  選択したmCategoryテーブル内のcategoryId == product_infoのcategoryId    の存在にしてあげれば product_info のcategoryIdはつく。
 
 		if(productNameErrorMessageList.size()==0
 		&& productNameKanaErrorMessageList.size()==0
@@ -259,5 +250,6 @@ public class AdminRegistConfirmAction extends ActionSupport implements SessionAw
 	public void setUserImageFileNameErrorMessageList(List<String> userImageFileNameErrorMessageList) {
 		this.userImageFileNameErrorMessageList = userImageFileNameErrorMessageList;
 	}
+
 
 }

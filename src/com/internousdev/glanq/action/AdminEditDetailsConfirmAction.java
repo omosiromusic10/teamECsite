@@ -10,6 +10,8 @@ import org.apache.commons.io.FileUtils;
 import org.apache.struts2.ServletActionContext;
 import org.apache.struts2.interceptor.SessionAware;
 
+import com.internousdev.glanq.dao.MCategoryDAO;
+import com.internousdev.glanq.dto.MCategoryDTO;
 import com.internousdev.glanq.util.InputChecker;
 import com.opensymphony.xwork2.ActionSupport;
 
@@ -67,6 +69,7 @@ public class AdminEditDetailsConfirmAction extends ActionSupport implements Sess
         session.put("productId", productId);
         session.put("userImage", userImage);
 
+
         //ファイルアップロードの処理
         if(!(userImage == null)){
         	String filePath = ServletActionContext.getServletContext().getRealPath("/").concat("images");
@@ -86,25 +89,12 @@ public class AdminEditDetailsConfirmAction extends ActionSupport implements Sess
         	userImageFileName="";
         	result = ERROR;
         }
-        try{
-        	switch(categoryId){
-        	case 1:
-        		session.put("categoryName","全てのカテゴリー");
-        		break;
-        	case 2:
-        		session.put("categoryName","肉");
-        		break;
-        	case 3:
-        		session.put("categoryName","野菜");
-        		break;
-        	case 4:
-        		session.put("categoryName","機材");
-        		break;
-
-        	}
-        }catch(Exception e){
-        	e.printStackTrace();
-        }
+      //ここでmCategoryDtoListを使用してcategoryIdを表示された名前で取ってくる。
+      		MCategoryDAO mCategoryDAO = new MCategoryDAO();
+      		MCategoryDTO mCategoryDTO = mCategoryDAO.getMCategory(categoryId);
+      		//ユーザーID, status をセッションに格納
+      		//putされたcategoryIdをメソッド内でセレクトし、categoryNameをsession内に保存する。
+      		session.put("categoryName", mCategoryDTO.getCategoryName());
 
 	//リストの中を正規表現判定
 	productNameErrorMessageList = inputChecker.docheck("商品名",productName,1,32,true,true,true,true,true,true,true);
