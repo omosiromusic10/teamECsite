@@ -112,4 +112,38 @@ public class DestinationInfoDAO {
 		}
 		return destinationInfoDtoList;
 	}
+
+	/* AdminAllSelectActionで使う用 */
+	/* Destination_infoテーブルから全てのデータを抜き出してDestinationInfoDTOListを作成する */
+	public List<DestinationInfoDTO> getDestinationInfoAllList() throws SQLException{
+		DBConnector dbConnector = new DBConnector();
+		Connection connection = dbConnector.getConnection();
+		List<DestinationInfoDTO> destinationInfoDtoList = new ArrayList<DestinationInfoDTO>();
+
+		String sql = "SELECT * FROM destination_info";
+
+		try {
+			connection = dbConnector.getConnection();
+			PreparedStatement ps = connection.prepareStatement(sql);
+			ResultSet rs = ps.executeQuery();
+
+			while(rs.next()) {
+				DestinationInfoDTO destinationInfoDTO = new DestinationInfoDTO();
+				destinationInfoDTO.setId(rs.getInt("id"));
+				destinationInfoDTO.setFamilyName(rs.getString("family_name"));
+				destinationInfoDTO.setFirstName(rs.getString("first_name"));
+				destinationInfoDTO.setFamilyNameKana(rs.getString("family_name_kana"));
+				destinationInfoDTO.setFirstNameKana(rs.getString("first_name_kana"));
+				destinationInfoDTO.setUserAddress(rs.getString("user_address"));
+				destinationInfoDTO.setEmail(rs.getString("email"));
+				destinationInfoDTO.setTelNumber(rs.getString("tel_number"));
+				destinationInfoDtoList.add(destinationInfoDTO);
+			}
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			connection.close();
+		}
+		return destinationInfoDtoList;
+	}
 }
