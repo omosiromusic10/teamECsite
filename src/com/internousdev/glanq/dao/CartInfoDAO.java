@@ -284,28 +284,7 @@ public class CartInfoDAO {
 		 * 両テーブルに共通するproduct_idを単純結合
 		 * その中でuser_idと一致する項目を取得
 		 */
-		String sql = "select"
-				+ " ci.id,"
-				+ " ci.user_id,"
-				+ " ci.temp_user_id,"
-				+ " ci.product_id,"
-				+ " sum(ci.product_count) as product_count,"/*購入個数の合計値*/
-				+ " pi.price,"
-				+ " pi.regist_date,"
-				+ " pi.update_date,"
-				+ " pi.product_name,"
-				+ " pi.product_name_kana,"
-				+ " pi.product_description,"
-				+ " pi.category_id,"
-				+ " pi.image_file_path,"
-				+ " pi.image_file_name,"
-				+ " pi.release_date,"
-				+ " pi.release_company,"
-				+ " pi.status,"
-				+ " (sum(ci.product_count) * pi.price) as subtotal"/*合計金額*/
-				+ " FROM cart_info as ci"
-				+ " LEFT JOIN product_info as pi"
-				+ " ON ci.product_id = pi.product_id";
+		String sql = "select * from cart_info";
 		try{
 			PreparedStatement ps = con.prepareStatement(sql);
 			ResultSet rs = ps.executeQuery();
@@ -320,16 +299,6 @@ public class CartInfoDAO {
 				ciDTO.setPrice(rs.getInt("price"));
 				ciDTO.setRegistDate(rs.getDate("regist_date"));
 				ciDTO.setUpdateDate(rs.getDate("update_date"));
-				ciDTO.setProductName(rs.getString("product_name"));
-				ciDTO.setProductNameKana(rs.getString("product_name_kana"));
-				ciDTO.setProductDescription(rs.getString("product_description"));
-				ciDTO.setCategoryId(rs.getInt("category_id"));
-				ciDTO.setImageFilePath(rs.getString("image_file_path"));
-				ciDTO.setImageFileName(rs.getString("image_file_name"));
-				ciDTO.setReleaseDate(rs.getDate("release_date"));
-				ciDTO.setReleaseCompany(rs.getString("release_company"));
-				ciDTO.setStatus(rs.getString("status"));
-				ciDTO.setSubtotal(rs.getInt("subtotal"));
 				CartInfoDtoList.add(ciDTO);
 			}
 

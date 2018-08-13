@@ -392,7 +392,6 @@ public class UserInfoDAO {
 	public List<UserInfoDTO> getUserInfoAllList(){
 		DBConnector db = new DBConnector();
 		Connection con = db.getConnection();
-		UserInfoDTO userInfoDTO = new UserInfoDTO();
 
 		List<UserInfoDTO> userInfoDtoList = new ArrayList<UserInfoDTO>();
 
@@ -403,6 +402,7 @@ public class UserInfoDAO {
 			ResultSet rs = ps.executeQuery();
 
 			while(rs.next()){
+				UserInfoDTO userInfoDTO = new UserInfoDTO();
 				userInfoDTO.setId(rs.getInt("id"));
 				userInfoDTO.setUserId(rs.getString("user_id"));
 				userInfoDTO.setPassword(rs.getString("password"));
