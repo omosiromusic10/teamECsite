@@ -21,7 +21,6 @@ public class ProductDetailsAction extends ActionSupport implements SessionAware 
 
 	private List<MCategoryDTO> mCategoryDtoList = new ArrayList<MCategoryDTO>();
 	private List<ProductInfoDTO> productInfoDtoList = new ArrayList<ProductInfoDTO>();
-//	private String categoryId;
 
 	private String keywords;
 
@@ -109,14 +108,6 @@ public class ProductDetailsAction extends ActionSupport implements SessionAware 
 	public void setProductInfoDtoList(List<ProductInfoDTO> productInfoDtoList) {
 		this.productInfoDtoList = productInfoDtoList;
 	}
-
-//	public String getCategoryId() {
-//		return categoryId;
-//	}
-//
-//	public void setCategoryId(String categoryId) {
-//		this.categoryId = categoryId;
-//	}
 
 	public String getKeywords() {
 		return keywords;

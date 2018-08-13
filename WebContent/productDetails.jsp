@@ -48,7 +48,7 @@
 					<td><s:property value="#session.productName"/></td>
 				</tr>
 				<tr>
-					<th scope="row">ふりがな</th>
+					<th scope="row">商品名ふりがな</th>
 					<td><s:property value="#session.productNameKana"/></td>
 				</tr>
 				<tr>
@@ -72,7 +72,7 @@
 					<td height="52"><s:property value="#session.productDescription"/></td>
 				</tr>
 			</table>
-			<s:submit value="カートに入れる" class="submit_btn"/>
+			<s:submit value="カートに追加" class="submit_btn"/>
 			</s:form>
 		</div>
 	</div>
