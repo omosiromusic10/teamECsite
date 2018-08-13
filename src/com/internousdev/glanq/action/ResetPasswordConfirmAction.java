@@ -58,7 +58,7 @@ public class ResetPasswordConfirmAction extends ActionSupport implements Session
 				result = SUCCESS;
 			//ユーザーが存在していない場合
 			} else {
-				passwordIncorrectErrorMessageList.add("パスワードかログインIDに間違いがあります。");
+				passwordIncorrectErrorMessageList.add("入力されたパスワードが異なります。");
 				session.put("passwordIncorrectErrorMessageList", passwordIncorrectErrorMessageList);
 			}
 		//sessionにエラーメッセージを格納
