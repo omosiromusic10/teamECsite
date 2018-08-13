@@ -6,6 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>locationOption</title>
+<link rel="stylesheet" type="text/css" href="css/location.css"/>
 </head>
 <body>
 <!-- ヘッダーをインクルード -->
