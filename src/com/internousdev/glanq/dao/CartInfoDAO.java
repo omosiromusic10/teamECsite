@@ -270,7 +270,7 @@ public class CartInfoDAO {
 
 
 	/* AdminAllSelectActionで使う用 */
-	public List<CartInfoDTO> getCartInfoAllDtoList(String loginId){
+	public List<CartInfoDTO> getCartInfoAllDtoList(){
 		DBConnector dbc = new DBConnector();
 		Connection con = dbc.getConnection();
 		List<CartInfoDTO> CartInfoDtoList = new ArrayList<CartInfoDTO>();

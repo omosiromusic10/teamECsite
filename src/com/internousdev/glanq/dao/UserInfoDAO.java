@@ -389,7 +389,7 @@ public class UserInfoDAO {
 
 	/* AdminAllSelectActionで使う用 */
 	/* user_infoテーブルから全てのデータを抜き出してUserInfoDTOListを作成する */
-	public List<UserInfoDTO> getUserInfoAllList() throws SQLException{
+	public List<UserInfoDTO> getUserInfoAllList(){
 		DBConnector db = new DBConnector();
 		Connection con = db.getConnection();
 		UserInfoDTO userInfoDTO = new UserInfoDTO();
