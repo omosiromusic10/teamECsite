@@ -8,6 +8,7 @@
 <meta charset="UTF-8">
 <link rel="stylesheet" href="./css/style.css">
 <title>宛先情報完了</title>
+<meta http-equiv="refresh" content="3;URL='SettlementConfirmAction'"/> <!-- 3秒後、自動的にホーム画面へ遷移 -->
 </head>
 <body>
 <jsp:include page="header.jsp" />
@@ -19,9 +20,6 @@
 宛先情報の登録が完了しました。
 </div>
 
-<s:form action="SettlementConfirmAction">
-		  <s:submit value="決済画面へ" class="submit_btn" />
-</s:form>
 </div>
 
 <s:include value="footer.jsp"/>
