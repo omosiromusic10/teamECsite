@@ -79,7 +79,7 @@
 					<td><s:submit value="カートに追加" class="submit_btn"/></td>
 				</tr>
 			</table>
-
+（調整中）
 <%-- 			<s:select name="productCount" list="%{#session.productCountList}"/>個 --%>
 
 
