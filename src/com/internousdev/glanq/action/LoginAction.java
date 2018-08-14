@@ -41,12 +41,12 @@ public class LoginAction extends ActionSupport implements SessionAware {
 		//trueの場合sessionに格納
 		if(savedLoginId==true) {
 			session.put("savedLoginId", true);
-			session.put("loginId", loginId);
+			session.put("saveId", loginId);
 
 		//それ以外はsessionからはずす
 		} else {
 			session.put("savedLoginId", false);
-			session.remove("loginId", loginId);
+			session.remove("saveId", loginId);
 		}
 
 		//正規表現検証(質問の内容,値,最小文字数,最大文字数,半角数字,漢字,ひらがな,半角数字,半角記号,カタカナ,全角記号)

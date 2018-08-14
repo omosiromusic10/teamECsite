@@ -13,7 +13,6 @@ public class LogoutAction extends ActionSupport implements SessionAware{
 
 
 	private String categoryId;
-
 	private Map<String, Object> session;
 	public String execute() {
 
@@ -37,7 +36,6 @@ public class LogoutAction extends ActionSupport implements SessionAware{
 		UserInfoDTO userInfoDto = new UserInfoDTO();
 		userInfoDto=userInfoDao.getUserInfo(loginId);
 
-
 		String loginPassword = userInfoDto.getPassword();
 
 		//countにloginIdとloginPasswordを代入
@@ -53,11 +51,13 @@ public class LogoutAction extends ActionSupport implements SessionAware{
 			session.put("savedLoginId", savedLoginId);
 
 		//sessionの中へloginId(key)を基にloginId(value)を登録する
-			session.put("loginId", loginId);
+			session.put("saveId", loginId);
 
 		//SUCCESS処理を実行
 			result = SUCCESS;
 		}
+
+
 		//resultが返る
 		return result;
 	}
