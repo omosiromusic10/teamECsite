@@ -1,7 +1,7 @@
 @CHARSET "UTF-8";
 
 
-/*ヘッダー関連*/
+                                                                                                                                        /*ヘッダー(仮)*/
 #header {
 	position : fixed;
 	float : left;
@@ -155,4 +155,31 @@
 }
 .header_btn:active{
 	background: #ffff80;
+}
+
+
+                                                                                                                                        /* スクロール追従フッター(仮)*/
+#footer {
+	position : fixed;
+	text-align : center;
+	bottom : 0;
+	clear : both;
+	left : 0;
+	z-index : 10;
+	width : 100%;
+	padding : 10px;
+	color : #ffffff;
+	background-color : #008000;
+    filter:alpha(opacity=50);
+    -moz-opacity: 0.5;
+    opacity: 0.5;
+}
+
+                                                                                                                                          /*エラーメッセージ*/
+.error{
+	text-align:center;
+	font-size:30px;
+	font-weight:900;
+	color:red;
+	padding-top:100px;
 }
