@@ -74,6 +74,8 @@ public class DeleteCartAction extends ActionSupport implements SessionAware {
 			session.put("checkListErrorMessageList", checkListErrorMessageList);
 			return ERROR;
 		}else{
+
+			//エラーメッセージの重複表示対策
 			String userId =null;
 			List<CartInfoDTO> cartInfoDtoList = new ArrayList<CartInfoDTO>();
 

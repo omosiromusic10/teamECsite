@@ -23,6 +23,8 @@ public class CartAction extends ActionSupport implements SessionAware{
 
 	public String execute(){
 		String result = ERROR;
+
+		//エラーメッセージの重複表示対策
 		String userId = null;
 		CartInfoDAO ciDAO = new CartInfoDAO();
 		List<CartInfoDTO> CartInfoDtoList = new ArrayList<CartInfoDTO>();
