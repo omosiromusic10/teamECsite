@@ -142,7 +142,7 @@ public class InputChecker {
 	public List<String> doPasswordCheck(String newPassword, String reConfirmationPassward){
 		List<String> resultList = new ArrayList<String>();
 		if(!(newPassword.equals(reConfirmationPassward))){
-			resultList.add("入力したパスワードが異なります。");
+			resultList.add("入力されたパスワードが異なります。");
 		}
 		/**
 		 * 引数として渡された2つのパスワードが等しいかどうか
