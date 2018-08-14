@@ -11,9 +11,11 @@
 </head>
 <body>
 
-	<s:include value="header.jsp" />
+<s:include value="header.jsp" />
 
-<h1>商品一覧ページ</h1>
+<div id="top">
+	<h1>商品一覧ページ</h1>
+</div>
 
 <div id="contents">
 	<!-- 検索結果が無い場合 -->

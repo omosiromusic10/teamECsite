@@ -11,6 +11,21 @@
 	animation-duration: 2s;/* アニメーション時間 */
 	animation-name: BottomToTop;/* アニメーション名 */
 }
+
+/* #top{ */
+/* 	margin-top: 150px; */
+/* } */
+
+h1{
+	animation-duration: 2s;/* アニメーション時間 */
+	animation-name: RightToLeft;/* アニメーション名 */
+}
+
+#hit{
+	display: inline-block;
+	width: 1000px;
+	text-align: center;
+}
 #newItemList{
 	display: inline-block;
 	width: 1000px;
@@ -163,7 +178,6 @@ table#buy{
 }
 
 #item_detail .submit_btn{
-	display: inline-block;
 	width: 150px;
 	height: 50px;
 	border-radius: 25px;
@@ -228,10 +242,6 @@ table#buy{
 	}
 }
 
-h1{
-	animation-duration: 2s;/* アニメーション時間 */
-	animation-name: RightToLeft;/* アニメーション名 */
-}
 
 /* 「RightToLeft」の動作内容 */
 @keyframes RightToLeft {
