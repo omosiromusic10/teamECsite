@@ -56,6 +56,11 @@ public class ProductListAction extends ActionSupport implements SessionAware {
 			session.put("mCategoryDtoList", mCategoryDtoList);
 		}
 
+		// セッションlogined はヘッダーにて用いているので、無い場合は非ログイン状態として0を入れる。
+		if(!session.containsKey("logined")) {
+			session.put("logined", 0);
+		}
+
 		productInfoDTOList = paginationDTO.getCurrentProductInfoPage();	// 予備。セッションで処理させるなら不要
 
 		result = SUCCESS;

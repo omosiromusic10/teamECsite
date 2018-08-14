@@ -71,6 +71,11 @@ public class ProductDetailsAction extends ActionSupport implements SessionAware 
 			session.put("mCategoryDtoList", mCategoryDtoList);
 		}
 
+		// セッションlogined はヘッダーにて用いているので、無い場合は非ログイン状態として0を入れる。
+		if(!session.containsKey("logined")) {
+			session.put("logined", 0);
+		}
+
 		if(!(relatedProductList.isEmpty())){
 			result = SUCCESS;
 		}
