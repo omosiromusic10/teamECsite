@@ -33,10 +33,7 @@
 					</s:if>
 				</td>
 			</tr>
-			<tr>
-				<th scope="row"><s:label value="ログインID"/></th>
-				<td><s:textfield name="loginId" placeholder="ログインID" class="txt"/></td>
-			</tr>
+
 
 
 			<tr>
@@ -63,10 +60,7 @@
 					</s:if>
 				</td>
 			</tr>
-			<tr>
-				<th scope="row"><s:label value="パスワード"/></th>
-				<td><s:password name="password" placeholder="パスワード" class="txt"/></td>
-			</tr>
+
 
 			<tr>
 				<td>
@@ -92,10 +86,7 @@
 					</s:if>
 				</td>
 			</tr>
-			<tr>
-				<th scope="row"><s:label value="新しいパスワード"/></th>
-				<td><s:password name="newPassword" placeholder="新しいパスワード" class="txt"/></td>
-			</tr>
+
 
 			<tr>
 				<td>
@@ -109,12 +100,26 @@
 					</s:if>
 				</td>
 			</tr>
+
+			<tr>
+				<th scope="row"><s:label value="ログインID"/></th>
+				<td><s:textfield name="loginId" placeholder="ログインID" class="txt"/></td>
+			</tr>
+
+			<tr>
+				<th scope="row"><s:label value="パスワード"/></th>
+				<td><s:password name="password" placeholder="パスワード" class="txt"/></td>
+			</tr>
+			<tr>
+				<th scope="row"><s:label value="新しいパスワード"/></th>
+				<td><s:password name="newPassword" placeholder="新しいパスワード" class="txt"/></td>
+			</tr>
 			<tr>
 				<th scope="row"><s:label value="新しいパスワード(確認用)"/></th>
 				<td><s:password name="reConfirmationPassword" placeholder="新しいパスワード(確認用)" class="txt"/></td>
 			</tr>
-		</table>
 
+		</table>
 	<div class="submit-btn-box">
 		<s:submit value="パスワード再設定" class="submit_btn"/>
 	</div>
