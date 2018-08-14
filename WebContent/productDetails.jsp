@@ -15,7 +15,7 @@
 
 	<h1>商品詳細ページ</h1>
 
-<div id="main">
+<div id="contents">
 
 
 	<!-- ～商品詳細を表示～ -->
@@ -56,10 +56,10 @@
 					<th scope="row">値段</th>
 					<td><s:property value="#session.price"/><span>円</span></td>
 				</tr>
-				<tr>
-					<th scope="row">購入個数</th>
-					<td><s:select name="productCount" list="%{#session.productCountList}"/>個</td>
-				</tr>
+<!-- 				<tr> -->
+<!-- 					<th scope="row">購入個数</th> -->
+<%-- 					<td><s:select name="productCount" list="%{#session.productCountList}"/>個</td> --%>
+<!-- 				</tr> -->
 				<tr>
 					<th scope="row">発売会社</th>
 					<td><s:property value="#session.releaseCompany"/></td>
@@ -73,7 +73,16 @@
 					<td height="52"><s:property value="#session.productDescription"/></td>
 				</tr>
 			</table>
-			<s:submit value="カートに追加" class="submit_btn"/>
+			<table id="buy">
+				<tr>
+					<td><s:select name="productCount" list="%{#session.productCountList}"/>個</td>
+					<td><s:submit value="カートに追加" class="submit_btn"/></td>
+				</tr>
+			</table>
+
+<%-- 			<s:select name="productCount" list="%{#session.productCountList}"/>個 --%>
+
+
 			</s:form>
 		</div>
 	</div>
@@ -85,12 +94,12 @@
 			<div id="product_box">
 				<ul>
 					<li>
-					<div id="item_image_box">
+					<div id="product_image_box">
 					<a href='<s:url action="ProductDetailsAction">
 							<s:param name="productId" value="%{productId}"/>
 							</s:url>'>
 
-							<img id="item_image" src="<s:property value='imageFilePath'/>/<s:property value='imageFileName'/>">
+							<img id="product_image" src="<s:property value='imageFilePath'/>/<s:property value='imageFileName'/>">
 					</a>
 					</div>
 					</li>
