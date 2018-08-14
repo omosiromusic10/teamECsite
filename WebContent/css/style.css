@@ -26,26 +26,26 @@
     background-color: #757575;
     box-sizing: border-box;
     height: 100%;
-    padding: 10px 40px; /*メニュー内部上下左右余白*/
+    padding: 10px 40px;
     position: fixed;
-    right: -300px; /*メニュー横幅①と合わせる*/
+    right: -300px;
     top: 0;
     transition: transform 0.3s linear 0s; /*0.3s は変化するのにかかる時間*/
-    width: 300px; /*メニュー横幅①*/
+    width: 300px;
     z-index: 1000;
 }
 #header-menu ul{
 	 list-style:none;
 }
 #header-menu::before {
-    background-color: #fff; /*ボタン部分背景色*/
-    border-radius: 0 0 0 10px; /*左下角丸*/
-    color: #333; /*アイコン（フォント）色*/
-    content: "≡"; /*メニューアイコン*/
+    background-color: #fff;
+    border-radius: 0 0 0 10px;
+    color: #333;
+    content: "≡";
     display: block;
-    font-size: 50px; /*アイコン（フォント）サイズ*/
+    font-size: 50px;
     height: 50px;
-    line-height: 50px; /*縦位置中央化*/
+    line-height: 50px;
     position: absolute;
     right: 100%;
     text-align: center;
@@ -175,8 +175,8 @@
     opacity: 0.5;
 }
 
-                                                                                                                                          /*エラーメッセージ*/
-.error{
+ /*エラーメッセージ*/
+.error_message{
 	text-align:center;
 	font-size:30px;
 	font-weight:900;
