@@ -268,9 +268,9 @@ clear:both;
 
 <!-- 	大きくスライドを作る -->
 	<ul class="slider">
-		<li><img src="./images/sample.jpg" width="100%" height="600" alt="" ></li>
-		<li><img src="./images/sample.jpg" width="100%" height="600" alt="" ></li>
-		<li><img src="./images/sample.jpg" width="100%" height="600" alt="" ></li>
+		<li><img src="./images/yakiniku1.jpg" width="100%" height="600" alt="" ></li>
+		<li><img src="./images/yakiniku1.jpg" width="100%" height="600" alt="" ></li>
+		<li><img src="./images/yakiniku1.jpg" width="100%" height="600" alt="" ></li>
 	</ul>
 
 <div class="space"></div>
@@ -304,7 +304,7 @@ GlanQでは3つのBBQ場と提携しており、食材を各BBQ場に送り完�
 <div class="BBQ1">
 <h3>BBQ場1</h3>
 <div class="BBQ1_img">
-<img src="./images/sample.jpg" width="200" height="200" alt="">
+<img src="./images/yakiniku1.jpg" width="200" height="200" alt="">
 </div>
 <div class="BBQ1_text">
 <p>内容</p>
@@ -323,7 +323,7 @@ GlanQでは3つのBBQ場と提携しており、食材を各BBQ場に送り完�
 <p>川沿いですずしくて</p>
 <p>いいとこー！いいとこー！いいとこー！いいとこー！いいとこー！いいとこー！</p>
 <p>いいとこー！いいとこー！</p></div>
-<div class="BBQ2_img"><img src="./images/sample.jpg" width="200" height="200" alt=""></div>
+<div class="BBQ2_img"><img src="./images/yakiniku1.jpg" width="200" height="200" alt=""></div>
 </div>
 
 <div class="space2"></div>
@@ -331,7 +331,7 @@ GlanQでは3つのBBQ場と提携しており、食材を各BBQ場に送り完�
 
 <div class="BBQ3">
 <h3>BBQ場3</h3>
-<div class="BBQ3_img"><img src="./images/sample.jpg" width="200" height="200" alt=""></div>
+<div class="BBQ3_img"><img src="./images/yakiniku1.jpg" width="200" height="200" alt=""></div>
 <div class="BBQ3_text">
 <p>内容</p>
 <p>駅近！</p>
