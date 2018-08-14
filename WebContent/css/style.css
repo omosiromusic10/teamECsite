@@ -1,0 +1,158 @@
+@CHARSET "UTF-8";
+
+
+/*ヘッダー関連*/
+#header {
+	position : fixed;
+	float : left;
+	width : 100%;
+	height : 100px;
+	padding : 10px;
+}
+
+
+/*サイトロゴ*/
+#header-title{
+	font-family: 'Mv Boli',cursive;
+	font-size:30px;
+	font-weight:800;
+	padding-left:20px;
+	color:#000000;
+}
+
+
+/*スライド式メニュー*/
+#header-menu {
+    background-color: #fff;
+    box-sizing: border-box;
+    height: 100%;
+    padding: 10px 40px; /*メニュー内部上下左右余白*/
+    position: fixed;
+    right: -300px; /*メニュー横幅①と合わせる*/
+    top: 0;
+    transition: transform 0.3s linear 0s; /*0.3s は変化するのにかかる時間*/
+    width: 300px; /*メニュー横幅①*/
+    z-index: 1000;
+}
+#header-menu ul{
+	 list-style:none;
+}
+#header-menu::before {
+    background-color: #fff; /*ボタン部分背景色*/
+    border-radius: 0 0 0 10px; /*左下角丸*/
+    color: #333; /*アイコン（フォント）色*/
+    content: "≡"; /*メニューアイコン*/
+    display: block;
+    font-size: 50px; /*アイコン（フォント）サイズ*/
+    height: 50px;
+    line-height: 50px; /*縦位置中央化*/
+    position: absolute;
+    right: 100%;
+    text-align: center;
+    top: 0;
+    width: 50px;
+}
+#menu-background { /*透過背景部分*/
+    background-color: #333;
+    display: block;
+    height: 100%;
+    opacity: 0;
+    position: fixed;
+    right: 0;
+    top: 0;
+    transition: all 0.3s linear 0s; /*0.3s は変化するのにかかる時間*/
+    width: 100%;
+    z-index: -1;
+}
+#header-menu:hover {
+    transform: translate(-300px); /*メニュー横幅①と合わせる*/
+}
+#header-menu:hover + #menu-background {
+    opacity: 0.5;
+    z-index: 999;
+}
+
+
+/*メニューコンテンツ*/
+
+.cs-div { /*カテゴリ選択*/
+	height : 25px;
+	border: 1px solid #ccc;
+	border-radius: 3px;
+	overflow: hidden;
+	background: #fafafa no-repeat;
+	width: 95%;
+}
+.cs-div select {
+	margin: 0;
+	padding: 5px 8px;
+	height : 25px;
+	width: 95%;
+	border: none;
+	box-shadow: none;
+	background: transparent;
+	background-image: none;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	-o-appearance: none;
+	appearance: none;
+}
+
+.cs-div select:focus {
+	outline: none;
+}
+.txt-keywords { /*キーワード検索*/
+	width : 95%;
+	height : 20px;
+	padding-left : 5%;
+	box-shadow: 0 0 7px #000000;
+    border: 1px solid #c0c0c0;
+    border-radius: 100px;
+    margin-top:10px; /*幅*/
+}
+.txt-keywords:focus {
+	border: 1px solid #000000;
+	color : #c0c0c0;
+	outline: 0;
+}
+
+.submit_btn_box{ /*透明ボタン*/
+	width : 45%;
+	display : block;
+	margin-top : 20px;
+	margin-bottom : 10px;
+	margin-left : 3%;
+	text-align:center;
+}
+.submit_btn {
+  -webkit-appearance: none;
+  background: transparent;
+  border-color: currentcolor;
+  border-style: solid;
+  border-width: 1px;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  color: inherit;
+  cursor: pointer;
+  display: inline-block;
+  font: inherit;
+  line-height: normal;
+  margin-top:10px;
+  padding: .4em .75em;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  white-space: normal;
+  border:none;
+}
+.submit_btn:hover{
+    background: #fff;
+    color: #1da1f2;
+}
+.submit_btn:active{
+	background: #ffff80;
+}
