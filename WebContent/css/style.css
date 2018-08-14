@@ -183,3 +183,90 @@
 	color:red;
 	padding-top:100px;
 }
+
+/*画面遷移時の共通エフェクト*/
+
+
+/* 右から左へのフェードイン「RightToLeft」の動作内容 */
+@keyframes RightToLeft {
+  0% {
+    opacity: 0;/* 透明 */
+    transform: translateX(50px);/* X軸方向に50px */
+  }
+  100% {
+    opacity: 1;/* 不透明 */
+    transform: translateX(0);
+  }
+}
+
+
+/* 下から上へのフェードイン「BottomTotop」の動作内容 */
+@keyframes BottomToTop {
+  0% {
+    opacity: 0;/* 透明 */
+    transform: translateY(50px);/* Y軸方向に50px */
+  }
+  100% {
+    opacity: 1;/* 不透明 */
+    transform: translateY(0);
+  }
+}
+
+/*単純なフェードイン「fadeIn」の動作内容*/
+@keyframes fadeIn {
+    0% {opacity: 0}
+    100% {opacity: 1}
+}
+
+@-webkit-keyframes fadeIn {
+    0% {opacity: 0}
+    100% {opacity: 1}
+}
+
+/*文字関連*/
+
+h1{
+width:90%;
+margin-left:3%;
+margin-right:3%;
+animation-duration: 2s;/* アニメーション時間 */
+animation-name: RightToLeft;/* アニメーション名 */
+}
+
+.error{
+width:80%;
+margin:0 auto;
+animation: fadeIn 5s ease 0s 1 normal;
+-webkit-animation: fadeIn 5s ease 0s 1 normal;
+}
+
+.info{
+width:80%;
+margin:0 auto;
+animation: fadeIn 5s ease 0s 1 normal;
+-webkit-animation: fadeIn 5s ease 0s 1 normal;
+}
+
+/*リスト関連*/
+
+.vertical-list-table{
+width:80%;
+margin:0 auto;
+animation-duration: 2s;/* アニメーション時間 */
+animation-name: BottomToTop;/* アニメーション名 */
+}
+
+.horizontal-list table{
+width:90%;
+animation-duration: 2s;/* アニメーション時間 */
+animation-name: BottomToTop;/* アニメーション名 */
+}
+
+/*ボタン関連*/
+
+.submit_btn_box{
+width:200px;
+height:50px;
+animation: fadeIn 5s ease 0s 1 normal;
+-webkit-animation: fadeIn 5s ease 0s 1 normal;
+}
