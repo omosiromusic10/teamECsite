@@ -1,5 +1,5 @@
+@CHARSET "UTF-8";
 
-/* ======== productList.jsp ======== */
 #contents{
 	text-align: center;
 	width:100%;
@@ -8,19 +8,18 @@
 	height: auto;
 	padding-bottom:110px;
 
-	animation-duration: 2s;/* ƒAƒjƒ[ƒVƒ‡ƒ“ŠÔ */
-	animation-name: BottomToTop;/* ƒAƒjƒ[ƒVƒ‡ƒ“–¼ */
+	animation-duration: 2s;/* ã‚¢ãƒ‹ãƒ¡ãƒ¼ã‚·ãƒ§ãƒ³æ™‚é–“ */
+	animation-name: BottomToTop;/* ã‚¢ãƒ‹ãƒ¡ãƒ¼ã‚·ãƒ§ãƒ³å */
 }
-
 /* #top{ */
 /* 	margin-top: 150px; */
 /* } */
 
 h1{
-	animation-duration: 2s;/* ƒAƒjƒ[ƒVƒ‡ƒ“ŠÔ */
-	animation-name: RightToLeft;/* ƒAƒjƒ[ƒVƒ‡ƒ“–¼ */
+	animation-duration: 2s;/* ã‚¢ãƒ‹ãƒ¡ãƒ¼ã‚·ãƒ§ãƒ³æ™‚é–“ */
+	animation-name: RightToLeft;/* ã‚¢ãƒ‹ãƒ¡ãƒ¼ã‚·ãƒ§ãƒ³å */
 }
-
+/* ======== productList.jsp ======== */
 #hit{
 	display: inline-block;
 	width: 1000px;
@@ -99,7 +98,7 @@ h1{
 	border-radius: 10px;
 	margin: 0 auto;
 	margin_bottom: 0px;
-	padding: 30px;
+	padding: 25px;
 	text-align: center;
 	background-color: #ffffee;
 }
@@ -142,6 +141,7 @@ h1{
 	display: table-cell;
 	width: 330px;
 	height: 330px;
+	padding: 0;
 	vertical-align: middle;
 	text-align: center;
 	background: #ffddaa;
@@ -182,9 +182,20 @@ table#buy{
 	height: 50px;
 	border-radius: 25px;
     box-shadow:2px 2px #9a6e10;
+	font-size: 18px;
 }
 
-
+#relate_logo{
+	display: inline-block;
+	width: 100px;
+	height: 40px;
+	line-height: 0px;
+	border-radius: 10px;
+	background-color: #ffccbb;
+	margin-right: 700px;
+	margin-top: 20px;
+	margin-bottom: -10px;
+}
 #related_product_list{
 	width: 800px;
 	margin: 0 auto;
@@ -243,25 +254,25 @@ table#buy{
 }
 
 
-/* uRightToLeftv‚Ì“®ì“à—e */
+/* ã€ŒRightToLeftã€ã®å‹•ä½œå†…å®¹ */
 @keyframes RightToLeft {
 	0% {
-		opacity: 0;/* “§–¾ */
-		transform: translateX(50px);/* X²•ûŒü‚É50px */
+		opacity: 0;/* é€æ˜ */
+		transform: translateX(50px);/* Xè»¸æ–¹å‘ã«50px */
 	}
 	100% {
-		opacity: 1;/* •s“§–¾ */
+		opacity: 1;/* ä¸é€æ˜ */
 		transform: translateX(0);
 	}
 }
 
 @keyframes BottomToTop {
 	0% {
-		opacity: 0;/* “§–¾ */
-		transform: translateY(50px);/* Y²•ûŒü‚É50px */
+		opacity: 0;/* é€æ˜ */
+		transform: translateY(50px);/* Yè»¸æ–¹å‘ã«50px */
 	}
 	100% {
-		opacity: 1;/* •s“§–¾ */
+		opacity: 1;/* ä¸é€æ˜ */
 		transform: translateY(0);
 	}
 }

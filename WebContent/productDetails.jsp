@@ -87,7 +87,9 @@
 	</div>
 
 	<!-- ～関連商品を表示～ -->
-	<h3>↓関連商品↓</h3>
+	<div id="relate_logo">
+		<h3>関連商品</h3>
+	</div>
 	<div id="related_product_list">
 		<s:iterator value="#session.relatedProductList">
 			<div id="product_box">
