@@ -23,7 +23,7 @@
 
 /*スライド式メニュー*/
 #header-menu {
-    background-color: #fff;
+    background-color: #757575;
     box-sizing: border-box;
     height: 100%;
     padding: 10px 40px; /*メニュー内部上下左右余白*/
@@ -116,7 +116,7 @@
 	outline: 0;
 }
 
-.submit_btn_box{ /*透明ボタン*/
+.header_btn_box{ /*透明ボタン*/
 	width : 45%;
 	display : block;
 	margin-top : 20px;
@@ -124,7 +124,7 @@
 	margin-left : 3%;
 	text-align:center;
 }
-.submit_btn {
+.header_btn {
   -webkit-appearance: none;
   background: transparent;
   border-color: currentcolor;
@@ -149,10 +149,10 @@
   white-space: normal;
   border:none;
 }
-.submit_btn:hover{
+.header_btn:hover{
     background: #fff;
     color: #1da1f2;
 }
-.submit_btn:active{
+.header_btn:active{
 	background: #ffff80;
 }
