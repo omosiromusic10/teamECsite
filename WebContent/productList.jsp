@@ -15,7 +15,7 @@
 
 <h1>商品一覧ページ</h1>
 
-<div id="main">
+<div id="contents">
 	<!-- 検索結果が無い場合 -->
 	<s:if test="#session.productInfoDtoList == null">
 		<div class="info">
@@ -24,22 +24,21 @@
 	</s:if>
 
 	<s:else>
+		<div id="hit">
+			全<s:property value='#session.totalRecordSize'/>件中 <s:property value='#session.startRecordNo'/> ～
+					<s:if test="#session.endRecordNo > #session.totalRecordSize">
+						<s:property value='#session.totalRecordSize'/>
+					</s:if>
+					<s:else>
+							<s:property value='#session.endRecordNo'/>
+					</s:else>
+					件目を表示
+		</div>
+		<br>
 		<div id="newItemList">
 			<!-- 商品一覧の部分 -->
-			<h3>商品の一覧を表示</h3>
-
-<!-- 			<div id="hit"> -->
-<%-- 				全<s:property value='#session.totalRecordSize'/>件中 <s:property value='#session.startRecordNo'/> ～ --%>
-<%-- 						<s:if test="#session.endRecordNo > #session.totalRecordSize"> --%>
-<%-- 							<s:property value='#session.totalRecordSize'/> --%>
-<%-- 						</s:if> --%>
-<%-- 						<s:else> --%>
-<%-- 							<s:property value='#session.endRecordNo'/> --%>
-<%-- 						</s:else> --%>
-<!-- 						件目を表示 -->
-<!-- 			</div> -->
-
 			<s:iterator value="#session.productInfoDtoList">
+			<div id="hiddenBox">
 			<div id="newItemBox">
 				<ul>
 					<li>
@@ -56,6 +55,7 @@
 					<li><s:property value="productNameKana" /></li>
 					<li><s:property value="price" /><span>円</span></li>
 				</ul>
+			</div>
 			</div>
 			</s:iterator>
 			<br>
