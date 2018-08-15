@@ -267,6 +267,11 @@ animation-name: RightToLeft;/* アニメーション名 */
 .error{
 width:80%;
 margin:0 auto;
+padding:20px;
+font-size : 1.1em;
+font-weight:600;
+color: #ff0000;
+background-color: #f5fb88;
 animation: fadeIn 5s ease 0s 1 normal;
 -webkit-animation: fadeIn 5s ease 0s 1 normal;
 }
