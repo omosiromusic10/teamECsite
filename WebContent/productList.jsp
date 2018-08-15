@@ -28,7 +28,7 @@
 
 	<s:else>
 		<s:if test="#session.startRecordNo > #session.totalRecordSize">
-			このページには商品情報がありません。
+			<div id="hit">[!] このページには商品情報がありません。</div>
 		</s:if>
 		<s:else>
 		<div id="hit">
