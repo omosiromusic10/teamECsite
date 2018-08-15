@@ -62,7 +62,14 @@ insert into user_info VALUES
 (21, "admin9", "admin9", "インターノウス", "管理者ユーザー9", "いんたーのうす", "かんりしゃゆーざー9", 0, "admin9@gmail.com", 1, 0, now(), now()),
 (22, "admin10", "admin10", "インターノウス", "管理者ユーザー10", "いんたーのうす", "かんりしゃゆーざー10", 0, "admin10@gmail.com", 1, 0, now(), now()),
 (23, "admin11", "admin11", "インターノウス", "管理者ユーザー11", "いんたーのうす", "かんりしゃゆーざー11", 0, "admin11@gmail.com", 1, 0, now(), now()),
-(24, "admin12", "admin12", "インターノウス", "管理者ユーザー12", "いんたーのうす", "かんりしゃゆーざー12", 0, "admin12@gmail.com", 1, 0, now(), now());
+(24, "admin12", "admin12", "インターノウス", "管理者ユーザー12", "いんたーのうす", "かんりしゃゆーざー12", 0, "admin12@gmail.com", 1, 0, now(), now()),
+(25, "test", "123", "シナリオ", "試験", "しなりお", "しけん", 0, "shinario1@gmail.com", 0, 0, now(), now()),
+(26, "123", "test", "シナリオ", "試験", "しなりお", "しけん", 0, "shinario2@gmail.com", 0, 0, now(), now()),
+(27, "test123", "test123", "シナリオ", "試験", "しなりお", "しけん", 0, "shinario3@gmil.com", 0, 0, now(), now()),
+(28, "a", "test", "シナリオ", "試験", "しなりお", "しけん", 0, "shinario4@gmil.com", 0, 0, now(), now()),
+(29, "aaaaaaaa", "test", "シナリオ", "試験", "しなりお", "しけん", 0, "shinario5@gmil.com", 0, 0, now(), now()),
+(30, "test2", "a", "シナリオ", "試験", "しなりお", "しけん", 0, "shinario6@gmil.com", 0, 0, now(), now()),
+(31, "test3", "aaaaaaaaaaaaaaaa", "シナリオ", "試験", "しなりお", "しけん", 0, "shinario7@gmil.com", 0, 0, now(), now());
 -- 商品情報テーブル作成
 /*
  * 備考
