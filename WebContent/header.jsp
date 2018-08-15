@@ -33,12 +33,18 @@ function goAdminAction(){
 	document.getElementById("form").action="GoAdminAction";
 }
 </script>
+<style type="text/css">
+a:link { color:#96e6a1; text-decoration:none }
+a:visited { color:#96e6a1; text-decoration:none }
+a:hover { color:#96e6a1; text-decoration:none }
+a:active { color:#96e6a1; text-decoration:none }
+</style>
 </head>
 
 <body>
 <header>
              <div id="header">
-                     <div id="header-title">GLANQ</div>
+                     <div id="header-title"><a href="http://localhost:8080/glanq/HomeAction">GLANQ</a></div>
                      <div id="header-menu">
                              <ul>
                                   <s:form id="form" name="form">
@@ -50,7 +56,7 @@ function goAdminAction(){
                                        </s:if>
                                        <s:if test="#session.logined==0 || #session.status==0">
                                                <li><s:textfield name="keywords" class="txt-keywords" placeholder="検索ワード" />
-                                               <s:submit value="商品検索" class="header_btn" onclick="goSearchItemAction();"/></li>
+                                               <s:submit value="検索" class="header_search_btn" onclick="goSearchItemAction();"/></li>
                                        </s:if>
                                        <s:if test="#session.logined==1">
                                                <li><s:submit value="ログアウト" class="header_btn" onclick="goLogoutAction();"/></li>
@@ -70,6 +76,8 @@ function goAdminAction(){
                              </ul>
                      </div>
                      </div>
+
 </header>
+<div id="menu-background"></div>
 </body>
 </html>
