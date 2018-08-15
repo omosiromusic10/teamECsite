@@ -21,9 +21,9 @@ table{
 	  position: relative;
 	  margin-bottom: 0px;
 	  margin-left: 0px;
-	  padding: 10px 0;
-	  font-size: 1.45em;
-	  line-height: 25px;
+	  padding: 8px 0;
+	  font-size: 1.35em;
+	  line-height: 10px;
 	  border-style: none;
 	  border-collapse: collapse;
 }
@@ -32,7 +32,7 @@ table{
 	width: 18%;
 	background: #8CD790;
 	color: white;
-	padding: 22px;
+	padding: 18px;
   	letter-spacing: 0.075em;
   	border-style: none;
   	white-space: nowrap;
@@ -132,17 +132,17 @@ table{
   letter-spacing: 0.05em;
 }
 
-.form .field #password{
-  border: none;
-  background: #E8E9EA;
-  width: 82%;
-  margin: 0;
-  padding-left: 19.5%;
-  color: #313A3D;
-  font-size: 1.4em;
-  letter-spacing: 0.05em;
-  height: 65px;
-}
+/* .form .field #password{		入力フォーム、パスワード用のデザイン */
+/*   border: none; */
+/*   background: #E8E9EA; */
+/*   width: 80.5%; */
+/*   margin: 0; */
+/*   padding-left: 19.5%; */
+/*   color: #313A3D; */
+/*   font-size: 1.4em; */
+/*   letter-spacing: 0.05em; */
+/*   height: 63px; */
+/* } */
 
 .form .field .txt:focus, form .field .txt.focused{					/* 文字入力欄を選択状態、あるいは文字が入力された状態の入力枠のデザイン */
   outline: none;

@@ -6,6 +6,7 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
+		<link rel="stylesheet" href="./css/style.css">
 		<link rel="stylesheet" href="./css/createUser.css">
 
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
