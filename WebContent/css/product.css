@@ -11,9 +11,9 @@
 	animation-duration: 2s;/* アニメーション時間 */
 	animation-name: BottomToTop;/* アニメーション名 */
 }
-/* #top{ */
-/* 	margin-top: 150px; */
-/* } */
+#top{
+	min-width: 300px;
+}
 
 h1{
 	animation-duration: 2s;/* アニメーション時間 */
@@ -24,6 +24,8 @@ h1{
 	display: inline-block;
 	width: 1000px;
 	text-align: center;
+	padding-bottom: 15px;
+	font-size: 18px;
 }
 #newItemList{
 	display: inline-block;
@@ -68,10 +70,9 @@ h1{
   list-style: none;
   padding: 0;
   margin: 0;
-  margin_bottom: -2px;
 }
 #newItemList ul li {
-  padding: 2px;
+  padding: 3px;
 }
 #newItemList #item_image_box{
 	display: table-cell;
@@ -97,7 +98,6 @@ h1{
 	border: 2px solid #ddddaa;
 	border-radius: 10px;
 	margin: 0 auto;
-	margin_bottom: 0px;
 	padding: 25px;
 	text-align: center;
 	background-color: #ffffee;
@@ -114,6 +114,8 @@ h1{
 }
 #item_detail h2{
 	text-align: center;
+	margin-top: 10px;
+	margin-bottom: 10px;
 }
 #item_detail #right_box{
 	display: inline-block;
@@ -175,30 +177,64 @@ table#item_info td{
 
 table#buy{
 	display: inline-block;
+	font-size: 20px;
+}
+table#buy tr td{
+	height: 70px;
+}
+table#buy select{
+	font-size: 18px;
+	border: 1px;
 }
 
 #item_detail .submit_btn{
+	border: none;
 	width: 150px;
 	height: 50px;
+	margin: 5px;
 	border-radius: 25px;
-    box-shadow:2px 2px #9a6e10;
+    box-shadow:2px 2px #646d77;
 	font-size: 18px;
+    cursor: pointer;
+}
+#item_detail .submit_btn:hover{
+	width: 160px;
+	height: 60px;
+	margin: 0;
+	border-radius: 30px;
+    background-color:#80ffff;
+    box-shadow:2px 2px #0073db;
+	font-size: 20px;
+    cursor: pointer;
+    opacity:0.9;
+    background: #80ffff;
 }
 
 #relate_logo{
+	z-index: 0;
+	position: relative;
 	display: inline-block;
 	width: 100px;
-	height: 40px;
-	line-height: 0px;
-	border-radius: 10px;
+	height: 37px;
+	border: 1px solid #e48881;
+	line-height: 32px;
+	border-radius: 7px;
 	background-color: #ffccbb;
 	margin-right: 700px;
 	margin-top: 20px;
-	margin-bottom: -10px;
+	margin-bottom: -7px;
+	font-size: 18px;
+}
+#relate_logo{
+	font-weight: bold;
+
 }
 #related_product_list{
+	z-index: 1;
+	position: relative;
 	width: 800px;
 	margin: 0 auto;
+	border: 1px solid #e48881;
 	border-radius: 5px;
 	background-color: #ffccbb;
 	text-align: center;
@@ -214,9 +250,14 @@ table#buy{
 	padding: 10px;
 }
 #related_product_list ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+#related_product_list ul li {
+	list-style: none;
+	padding: 5px;
+	margin-bottom: -5px;
 }
 #related_product_list #product_image_box{
 	display: table-cell;
@@ -225,7 +266,6 @@ table#buy{
 	margin: 0 auto;
 	background: white;
 	vertical-align: middle;
-	margin-bottom: 10px;
 }
 #related_product_list #product_image{
 	max-width: 200px;

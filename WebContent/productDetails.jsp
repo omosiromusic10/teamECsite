@@ -17,7 +17,7 @@
 
 <div id="contents">
 
-
+	<br><br>
 	<!-- ～商品詳細を表示～ -->
 	<div id="item_detail">
 		<div id="left_box">
@@ -85,10 +85,10 @@
 			</s:form>
 		</div>
 	</div>
-
+	<br><br>
 	<!-- ～関連商品を表示～ -->
 	<div id="relate_logo">
-		<h3>関連商品</h3>
+		<a id="logo">関連商品</a>
 	</div>
 	<div id="related_product_list">
 		<s:iterator value="#session.relatedProductList">
