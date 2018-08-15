@@ -6,7 +6,11 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<link rel="stylesheet" href="./css/glanq.css">
+		<link rel="stylesheet" href="./css/createUser.css">
+
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+
 		<title>ユーザー情報入力</title>
 	</head>
 	<body>
@@ -95,53 +99,72 @@
 
 
 			<!-- ここから送信フォーム -->
-			<s:form action="CreateUserConfirmAction">
-				<table class="vertical-list-table">
-					<tr>
-						<th scope="row">姓</th>
-						<td><s:textfield name="familyName" value="%{#session.familyName}" label="姓" placeholder="姓" class="txt" /></td>
-					</tr>
+<section>
 
-					<tr>
-						<th scope="row">名</th>
-						<td><s:textfield name="firstName" value="%{#session.firstName}" label="名" placeholder="名" class="txt" /></td>
-					</tr>
+    <s:form action="CreateUserConfirmAction" cssClass="form">
+	      <div class="field name-box">
+	      		<label class="defaultLabel">姓</label>
+		        <s:textfield name="familyName" value="%{#session.familyName}" label="姓" placeholder="姓" class="txt" />
+        		<label class="accordion">半角英語、漢字、ひらがな　1文字以上16文字以下</label>
+		        <span class="nice">Nice!</span>
+	      </div>
 
-					<tr>
-						<th scope="row">姓ふりがな</th>
-						<td><s:textfield name="familyNameKana" value="%{#session.familyNameKana}" label="姓ふりがな" placeholder="姓ふりがな" class="txt" /></td>
-					</tr>
+	      <div class="field name-box">
+	      		<label class="defaultLabel">名</label>
+		        <s:textfield name="firstName" value="%{#session.firstName}" label="名" placeholder="名" class="txt" />
+        		<label class="accordion">名</label>
+		        <span class="nice">Nice!</span>
+	      </div>
 
-					<tr>
-						<th scope="row">名ふりがな</th>
-						<td><s:textfield name="firstNameKana" value="%{#session.firstNameKana}" label="名ふりがな" placeholder="名ふりがな" class="txt" /></td>
-					</tr>
+	      <div class="field name-box">
+	      		<label class="defaultLabel">姓ふりがな</label>
+		        <s:textfield name="familyNameKana" value="%{#session.familyNameKana}" label="姓ふりがな" placeholder="姓ふりがな" class="txt" />
+        		<label class="accordion">姓ふりがな</label>
+		        <span class="nice">Nice!</span>
+	      </div>
 
-					<tr>
-						<th scope="row">性別</th>
-						<td><s:radio name="sex" list="%{#session.sexList}" value="%{#session.sex}" label="性別" placeholder="性別" /></td>
-					</tr>
+	      <div class="field name-box">
+	      		<label class="defaultLabel">名ふりがな</label>
+		        <s:textfield name="firstNameKana" value="%{#session.firstNameKana}" label="名ふりがな" placeholder="名ふりがな" class="txt" />
+        		<label class="accordion">名ふりがな</label>
+		        <span class="nice">Nice!</span>
+	      </div>
 
-					<tr>
-						<th scope="row">メールアドレス</th>
-						<td><s:textfield name="email" value="%{#session.email}" label="メールアドレス" placeholder="メールアドレス" class="txt" /></td>
-					</tr>
+	      	<table class="sexbox">
+	      	<tr>
+	      		<th scope="row" class="sexth">性別</th>
+	      		<td class="sextd"><s:radio name="sex" list="%{#session.sexList}" value="%{#session.sex}"  placeholder="性別" class="checkbox" /></td>
+	      	</tr>
+	      	</table>
 
-					<tr>
-						<th scope="row">ログインID</th>
-						<td><s:textfield name="loginId" value="%{#session.loginId}" label="ログインID" placeholder="ログインID" class="txt" /></td>
-					</tr>
+	      <div class="field name-box">
+	      		<label class="defaultLabel">メールアドレス</label>
+		        <s:textfield name="email" value="%{#session.email}" label="メールアドレス" placeholder="メールアドレス" class="txt" />
+        		<label class="accordion">メールアドレス</label>
+		        <span class="nice">Nice!</span>
+	      </div>
 
-					<tr>
-						<th scope="row">パスワード</th>
-						<td><s:password name="password" value="" label="パスワード" placeholder="パスワード" class="txt" /></td>
-					</tr>
+	      <div class="field name-box">
+	      		<label class="defaultLabel">ログインID</label>
+		        <s:textfield name="loginId" value="%{#session.loginId}" label="ログインID" placeholder="ログインID" class="txt" />
+        		<label class="accordion">ログインID</label>
+		        <span class="nice">Nice!</span>
+	      </div>
+
+	      <div class="field name-box">
+	      		<label class="defaultLabel">パスワード</label>
+		        <s:password name="password" value="%{#session.password}" label="パスワード" placeholder="パスワード" class="txt" />
+        		<label class="accordion">パスワード</label>
+		        <span class="nice">Nice!</span>
+	      </div>
+
+
+
 
 					<!-- session内に格納された情報を表示
 						すでに入力された情報があり、入力エラーなどでこのページに戻された際に
 						再度入力する手間を省く -->
 
-				</table>
 					<div class="submit_btn_box">
 						<div id=".contents-btn-set">
 							<s:submit value="登録" />
@@ -149,9 +172,14 @@
 					</div>
 
 			</s:form>
+
+		</section>
+
 		</div>
 
 		<s:include value="footer.jsp" />
+
+	<script type="text/javascript" src="./js/form.js"></script>
 
 	</body>
 </html>
