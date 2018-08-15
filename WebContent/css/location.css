@@ -1,0 +1,27 @@
+h1{
+	animation-duration: 2s;/* アニメーション時間 */
+	animation-name: RightToLeft;/* アニメーション名 */
+}
+
+/* 「RightToLeft」の動作内容 */
+@keyframes RightToLeft {
+  0% {
+    opacity: 0;/* 透明 */
+    transform: translateX(50px);/* X軸方向に50px */
+    }
+  100% {
+    opacity: 1;/* 不透明 */
+    transform: translateX(0);
+  }
+
+#contents{
+    padding-top : 70px;
+	margin-top : 50px;
+	margin : 0 auto;
+	width : 100%;
+	height : auto;
+	padding-bottom : 10px;
+	margin-bottom : 100px;
+	overflow : auto; /* コンテンツの表示を自動に設定（スクロール）*/
+}
+}
