@@ -45,19 +45,18 @@
 font-family: 'Hiragino Kaku Gothic Pro','ヒラギノ角ゴ Pro W3','メイリオ',Meiryo,'ＭＳ Ｐゴシック',sans-serif;
 }
 #header-menu::before {
-    background-color:#d4fc79;
     border-radius: 0 0 0 10px;
-    color: #333;
-    content: "≡";
+    content: '';
+    background-image: url(../images/buger.jpg);
+    background-size: contain;
     display: block;
-    font-size: 50px;
-    height: 50px;
+    width:70px;
+    height:70px;
     line-height: 50px;
     position: absolute;
     right: 100%;
     text-align: center;
     top: 0;
-    width: 50px;
 }
 #menu-background { /*透過背景部分*/
     background-color: #333;
@@ -67,7 +66,7 @@ font-family: 'Hiragino Kaku Gothic Pro','ヒラギノ角ゴ Pro W3','メイリ�
     position: fixed;
     right: 0;
     top: 0;
-    transition: all 0.3s linear 0s; /*0.3s は変化するのにかかる時間*/
+    transition: all 0.1s linear 0s; /*0.3s は変化するのにかかる時間*/
     width: 100%;
     z-index: -1;
 }
@@ -122,7 +121,7 @@ font-family: 'Hiragino Kaku Gothic Pro','ヒラギノ角ゴ Pro W3','メイリ�
 	color : #c0c0c0;
 	outline: 0;
 }
-.header_search_btn {
+.header_search_btn { /*検索ボタン*/
 	width:25%;
 	 display:inline-block;
   -webkit-appearance: none;
@@ -267,6 +266,11 @@ animation-name: RightToLeft;/* アニメーション名 */
 .error{
 width:80%;
 margin:0 auto;
+padding:20px;
+font-size : 1.1em;
+font-weight:600;
+color: #ff0000;
+background-color: #f5fb88;
 animation: fadeIn 5s ease 0s 1 normal;
 -webkit-animation: fadeIn 5s ease 0s 1 normal;
 }
