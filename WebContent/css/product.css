@@ -185,12 +185,14 @@ table#item_info td{
 
 table#buy{;
 	display: inline-block;
-	width: 230px;
+	width: 260px;
 	font-size: 20px;
+	font-weight: bold;
 }
 table#buy tr td{
 	border: 0px;
 	height: 70px;
+	padding-right: 15px;
 }
 table#buy select{
 /* 	z-index: 1;	要ヘッダーとの兼ね合い */
@@ -210,18 +212,23 @@ table#buy select{
     box-shadow:2px 2px #646d77;
 	font-size: 18px;
     cursor: pointer;
+	-webkit-transition: 0.3s;
+	-moz-transition: 0.3s;
+	-o-transition: 0.3s;
+	-ms-transition: 0.3s;
+ 	transition: all 0.3s ease;
 }
 #item_detail .submit_btn:hover{
 	width: 160px;
 	height: 60px;
 	margin: 0;
 	border-radius: 30px;
-    background-color:#80ffff;
+    background-color:#39dda4;
     box-shadow:2px 2px #0073db;
 	font-size: 20px;
+/* 	font-weight: bold; */
     cursor: pointer;
-    opacity:0.9;
-    background: #80ffff;
+    opacity:0.8;
 }
 
 #relate_logo{
@@ -259,6 +266,16 @@ table#buy select{
 	background-color: #ffeebb;
 	margin: 10px;
 	padding: 10px;
+}
+#related_product_list #product_box:hover{
+	animation-name: huriko;
+	animation-duration: 0.3s;
+	animation-timing-function: ease;
+	animation-delay: 0s;
+	animation-iteration-count: 1;
+	animation-direction: alternate;
+	animation-fill-mode: forwards;
+	animation-play-state: running;
 }
 #related_product_list ul {
 	list-style: none;
