@@ -13,11 +13,12 @@
 
 <s:include value="header.jsp" />
 
-<div id="top">
-	<h1>商品一覧ページ</h1>
-</div>
 
 <div id="contents">
+	<div id="top">
+		<h1>商品一覧ページ</h1>
+	</div>
+
 	<!-- 検索結果が無い場合 -->
 	<s:if test="#session.productInfoDtoList == null">
 		<div class="info">

@@ -8,6 +8,7 @@
 	height: auto;
 	padding-bottom:110px;
 
+	padding-top:100px;
 	animation-duration: 2s;/* アニメーション時間 */
 	animation-name: BottomToTop;/* アニメーション名 */
 }
@@ -16,6 +17,7 @@
 }
 
 h1{
+	text-align: left;
 	animation-duration: 2s;/* アニメーション時間 */
 	animation-name: RightToLeft;/* アニメーション名 */
 }

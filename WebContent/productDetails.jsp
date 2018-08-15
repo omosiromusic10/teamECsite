@@ -13,9 +13,9 @@
 
 	<s:include value="header.jsp" />
 
-	<h1>商品詳細ページ</h1>
 
 <div id="contents">
+	<h1>商品詳細ページ</h1>
 
 	<br><br>
 	<!-- ～商品詳細を表示～ -->
