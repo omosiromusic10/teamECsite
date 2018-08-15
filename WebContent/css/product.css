@@ -105,12 +105,13 @@ h1{
 
 #item_detail #left_box{
 	display: inline-block;
-	width: 330px;
-	height: auto;
+	width: 335px;
+	height: 400px;
 	margin: 0;
 	margin-right: 40px;
 /* 	border: 1px solid green; */
 	padding-top: 0px;
+	text-align: center;
 }
 #item_detail h2{
 	text-align: center;
@@ -120,21 +121,24 @@ h1{
 #item_detail #right_box{
 	display: inline-block;
 	width: 460px;
-	height: auto;
+	height: 400px;
 	text-align: center;
 /* 	border: 1px solid green; */
 	margin: 0;
 	padding: 0;
+	padding-top: 0px;
 }
 
 #item_detail #left_box table{
 	margin: 0;
 }
 #item_detail #left_box th{
+	border: 0px;
 	font-size: 18px;
 /* 	border: 1px solid #ffccbb */
 }
 #item_detail #left_box td{
+	border: 0px;
 	font-size: 18px;
 	text-align: left;
 /* 	border: 1px solid #ffc677; */
@@ -148,7 +152,8 @@ h1{
 	text-align: center;
 	background: #ffddaa;
 	border-radius: 5px;
-    box-shadow:2px 2px #9a6e10;
+/*     box-shadow: 2px 2px #9a6e10; */
+	filter: drop-shadow(10px 10px 10px rgba(0,0,0,0.6));
 }
 #item_detail img{
 	max-width: 300px;
@@ -170,16 +175,19 @@ table#item_info th{
 	padding: 5px;
 }
 table#item_info td{
+	border: 1 solid black;
 	width: 100%;
 	text-align: left;
 	padding: 4px;
 }
 
-table#buy{
+table#buy{;
 	display: inline-block;
+	width: 230px;
 	font-size: 20px;
 }
 table#buy tr td{
+	border: 0px;
 	height: 70px;
 }
 table#buy select{
