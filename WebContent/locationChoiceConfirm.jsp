@@ -49,8 +49,6 @@
         <td><s:property value="userAddress"/></td>
     </tr>
 
-
-
     <s:hidden name="id" value="%{parkId}"/>
 
     <s:submit value="決済"/>
