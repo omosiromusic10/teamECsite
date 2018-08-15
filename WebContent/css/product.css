@@ -188,7 +188,8 @@ table#item_info td{
 
 table#buy{;
 	display: inline-block;
-	width: 330px;
+	width: 400px;
+	height: 75px;
 	font-size: 20px;
 	font-weight: bold;
 }
@@ -198,12 +199,13 @@ table#buy tr th{
 	height: 70px;
 	padding-right: 0px;
 /* 	border: 1px solid black; */
+	text-align: right;
 }
 table#buy tr td{
 	border: 0px;
 	width: 200px;
 	height: 70px;
-	padding-right: 15px;
+/* 	padding-right: 15px; */
 /* 	border: 1px solid black; */
 }
 table#buy select{
