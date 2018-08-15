@@ -249,17 +249,105 @@ animation: fadeIn 5s ease 0s 1 normal;
 
 /*リスト関連*/
 
-.vertical-list-table{
-width:80%;
-margin:0 auto;
-animation-duration: 2s;/* アニメーション時間 */
-animation-name: BottomToTop;/* アニメーション名 */
+table.vertical-list-table {
+	width: 90%;
+	border-collapse: separate;
+	border-spacing: 0;
+	text-align: left;
+	font-size: 1.4rem;
+	line-height: 1.5;
+	border-top: 1px solid #ccc;
+	border-left: 1px solid #ccc;
+	width:80%;
+	margin:0 auto;
+	animation-duration: 2s;アニメーション時間
+	animation-name: BottomToTop;アニメーション名
 }
 
-.horizontal-list table{
-width:90%;
-animation-duration: 2s;/* アニメーション時間 */
-animation-name: BottomToTop;/* アニメーション名 */
+table.vertical-list-table th {
+	width: 25%;
+	padding: 10px;
+	font-weight: 400;
+	vertical-align: top;
+	border-right: 1px solid #ccc;
+	border-bottom: 1px solid #ccc;
+	border-top: 1px solid #fff;
+	border-left: 1px solid #fff;
+	color:black;
+}
+
+table.vertical-list-table td {
+	width: 75%;
+	padding: 10px;
+	vertical-align: top;
+	border-right: 1px solid #ccc;
+	border-bottom: 1px solid #ccc;
+}
+
+table.vertical-list-table, th, td {
+	margin : 3%;
+	border-collapse: collapse;
+	border: 1px solid #ccc;
+	line-height: 1.5;
+}
+
+table.vertical-list-table-mini {
+	width: 100%;
+	border-collapse: separate;
+	border-spacing: 0;
+	text-align: left;
+	font-size: 1.0rem;
+	line-height: 1.5;
+	border-top: 1px solid #ccc;
+	border-left: 1px solid #ccc;
+}
+
+table.vertical-list-table-mini th {
+	width: 35%;
+	padding: 10px;
+	font-weight: 400;
+	vertical-align: middle;
+	border-right: 1px solid #ccc;
+	border-bottom: 1px solid #ccc;
+	border-top: 1px solid #fff;
+	border-left: 1px solid #fff;
+	color:black;
+}
+
+table.vertical-list-table-mini td {
+	width: 65%;
+	padding: 10px;
+	vertical-align: middle;
+	border-right: 1px solid #ccc;
+	border-bottom: 1px solid #ccc;
+}
+
+
+table.horizontal-list-table, th, td {
+	margin : 3%;
+	width : 90%;
+	border-collapse: collapse;
+	border: 1px solid #ccc;
+	line-height: 1.5;
+	animation-duration: 2s;アニメーション時間
+	animation-name: BottomToTop;アニメーション名
+}
+
+table.horizontal-list-table th {
+	width: 150px;
+	padding: 10px;
+	font-weight: bold;
+	font-size: 0.8em;
+	text-align: center;
+	vertical-align: top;
+	color: black;
+}
+table.horizontal-list-table td {
+	width: 350px;
+	padding: 10px;
+	font-size: 0.8em;
+	text-align: center;
+	vertical-align: top;
 }
 
 /*ボタン関連*/
