@@ -7,6 +7,7 @@
 <head>
 <meta charset="UTF-8">
 <link rel="stylesheet" href="./css/style.css">
+<link rel="stylesheet" href="./css/login.css">
 <title>ログイン</title>
 
 <!-- 任意のHTMLタグで指定したIDにマッチするドキュメント要素を取得するメソッド -->
@@ -81,10 +82,10 @@ function goResetPasswordAction() {
 				<!-- セッションのsavedLoginIdにtrueが格納されていたら(ログインID保存にチェックが入っていたら)、 -->
 				<s:if test = "#session.savedLoginId==true">
 					<!-- チェックボックスにチェックが付いている状態にする -->
-					<s:checkbox name = "savedLoginId" checked = "checked" />
+					<s:checkbox class = "checkbox" name = "savedLoginId" checked = "checked" />
 				</s:if>
 				<s:else>
-					<s:checkbox name = "savedLoginId" />
+					<s:checkbox class = "checkbox" name = "savedLoginId" />
 				</s:else>
 				<s:label value = "ログインID保存" /><br>
 			</div>

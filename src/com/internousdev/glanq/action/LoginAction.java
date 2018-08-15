@@ -10,16 +10,21 @@ import org.apache.struts2.interceptor.SessionAware;
 
 import com.internousdev.glanq.dao.CartInfoDAO;
 import com.internousdev.glanq.dao.DestinationInfoDAO;
+import com.internousdev.glanq.dao.MCategoryDAO;
 import com.internousdev.glanq.dao.UserInfoDAO;
 import com.internousdev.glanq.dto.DestinationInfoDTO;
+import com.internousdev.glanq.dto.MCategoryDTO;
 import com.internousdev.glanq.dto.UserInfoDTO;
 import com.internousdev.glanq.util.InputChecker;
 import com.opensymphony.xwork2.ActionSupport;
 
 public class LoginAction extends ActionSupport implements SessionAware {
+	private String categoryId;
 	private String loginId;
 	private String password;
 	private boolean savedLoginId;
+
+	private List<MCategoryDTO> mCategoryDtoList = new ArrayList<MCategoryDTO>();
 
 	private List<String> loginIdErrorMessageList = new ArrayList<String>();
 	private List<String> passwordErrorMessageList = new ArrayList<String>();
@@ -53,6 +58,13 @@ public class LoginAction extends ActionSupport implements SessionAware {
 		InputChecker inputChecker = new InputChecker();
 		loginIdErrorMessageList = inputChecker.docheck("ログインID", loginId, 1, 8, true, false, false, true, false, false, false);
 		passwordErrorMessageList = inputChecker.docheck("パスワード", password, 1, 16, true, false, false, true, false, false, false);
+
+		//ヘッダーのカテゴリーがおかしくならないようにするため必要
+		if(!session.containsKey("mCategoryList")) {
+			MCategoryDAO mCategoryDAO = new MCategoryDAO();
+			mCategoryDtoList = mCategoryDAO.getMCategoryList();
+			session.put("mCategoryDtoList", mCategoryDtoList);
+		}
 
 		UserInfoDAO userInfoDAO = new UserInfoDAO();
 		//ユーザーが存在していて、
@@ -127,6 +139,14 @@ public class LoginAction extends ActionSupport implements SessionAware {
 		return result;
 	}
 
+
+	public String getCategoryId() {
+		return categoryId;
+	}
+
+	public void setCategoryId(String categoryId) {
+		this.categoryId = categoryId;
+	}
 
 	public String getLoginId() {
 		return loginId;
