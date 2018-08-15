@@ -105,28 +105,28 @@
 	      <div class="field name-box">
 	      		<label class="defaultLabel">姓</label>
 		        <s:textfield name="familyName" value="%{#session.familyName}" label="姓" placeholder="姓" class="txt" />
-        		<label class="accordion">半角英語、漢字、ひらがな　1文字以上16文字以下</label>
+        		<label class="accordion">半角英語、漢字、ひらがな 1文字以上16文字以下</label>
 		        <span class="nice">Nice!</span>
 	      </div>
 
 	      <div class="field name-box">
 	      		<label class="defaultLabel">名</label>
 		        <s:textfield name="firstName" value="%{#session.firstName}" label="名" placeholder="名" class="txt" />
-        		<label class="accordion">名</label>
+        		<label class="accordion">半角英語、漢字、ひらがな 1文字以上16文字以下</label>
 		        <span class="nice">Nice!</span>
 	      </div>
 
 	      <div class="field name-box">
 	      		<label class="defaultLabel">姓ふりがな</label>
 		        <s:textfield name="familyNameKana" value="%{#session.familyNameKana}" label="姓ふりがな" placeholder="姓ふりがな" class="txt" />
-        		<label class="accordion">姓ふりがな</label>
+        		<label class="accordion">ひらがな 1文字以上16文字以下</label>
 		        <span class="nice">Nice!</span>
 	      </div>
 
 	      <div class="field name-box">
 	      		<label class="defaultLabel">名ふりがな</label>
 		        <s:textfield name="firstNameKana" value="%{#session.firstNameKana}" label="名ふりがな" placeholder="名ふりがな" class="txt" />
-        		<label class="accordion">名ふりがな</label>
+        		<label class="accordion">ひらがな 1文字以上16文字以下</label>
 		        <span class="nice">Nice!</span>
 	      </div>
 
@@ -140,21 +140,21 @@
 	      <div class="field name-box">
 	      		<label class="defaultLabel">メールアドレス</label>
 		        <s:textfield name="email" value="%{#session.email}" label="メールアドレス" placeholder="メールアドレス" class="txt" />
-        		<label class="accordion">メールアドレス</label>
+        		<label class="accordion">半角英数字、半角記号 14文字以上32文字以下</label>
 		        <span class="nice">Nice!</span>
 	      </div>
 
 	      <div class="field name-box">
 	      		<label class="defaultLabel">ログインID</label>
 		        <s:textfield name="loginId" value="%{#session.loginId}" label="ログインID" placeholder="ログインID" class="txt" />
-        		<label class="accordion">ログインID</label>
+        		<label class="accordion">半角英数字 1文字以上8文字以下</label>
 		        <span class="nice">Nice!</span>
 	      </div>
 
 	      <div class="field name-box">
 	      		<label class="defaultLabel">パスワード</label>
 		        <s:password name="password" value="%{#session.password}" label="パスワード" placeholder="パスワード" class="txt" />
-        		<label class="accordion">パスワード</label>
+        		<label class="accordion">半角英数字 1文字以上16文字以下</label>
 		        <span class="nice">Nice!</span>
 	      </div>
 
