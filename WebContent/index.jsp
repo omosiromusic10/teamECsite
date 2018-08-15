@@ -11,10 +11,6 @@ pageEncoding="UTF-8" %>
 <meta http-equiv="refresh" content="0;URL='HomeAction'" />
 <title>glanq</title>
 </head>
-
 <body>
-<div id="footer">
-       <s:include value="footer.jsp" />
-</div>
 </body>
 </html>

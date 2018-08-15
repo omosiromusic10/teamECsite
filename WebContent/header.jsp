@@ -10,6 +10,24 @@
 <link rel="stylesheet" href="./css/style.css">
         <title>ヘッダー</title>
 <script>
+function goAdminRegistAction(){
+	document.getElementById("form").action="AdminRegistAction";
+}
+function goAdminEditAction(){
+	document.getElementById("form").action="AdminEditAction";
+}
+function goAdminDeleteAction(){
+	document.getElementById("form").action="AdminDeleteAction";
+}
+function goAdminProductSelectAction(){
+	document.getElementById("form").action="AdminProductSelectAction";
+}
+function goAdminPurchaseSelectAction(){
+	document.getElementById("form").action="AdminPurchaseSelectAction";
+}
+function goAdminAllSelectAction(){
+	document.getElementById("form").action="AdminAllSelectAction";
+}
 function goLoginAction(){
 	document.getElementById("form").action="GoLoginAction";
 }
@@ -50,6 +68,12 @@ a:active { color:#96e6a1; text-decoration:none }
                                   <s:form id="form" name="form">
                                        <s:if test="#session.status==1">
                                                <li><s:submit value="管理者ホーム" class="header_btn" onclick="goAdminAction();"/></li>
+                                               <li><s:submit value="商品追加画面" class="header_btn" onclick="goAdminRegistAction();"/></li>
+                                               <li><s:submit value="商品更新・編集画面" class="header_btn" onclick="goAdminEditAction();"/></li>
+                                               <li><s:submit value="商品削除画面" class="header_btn" onclick="goAdminDeleteAction();"/></li>
+                                               <li><s:submit value="商品一覧画面" class="header_btn" onclick="goAdminProductSelectAction();"/></li>
+                                               <li><s:submit value="購入履歴画面" class="header_btn" onclick="goAdminPurchaseSelectAction();"/></li>
+                                               <li><s:submit value="データ一覧画面" class="header_btn" onclick="goAdminAllSelectAction();"/></li>
                                        </s:if>
                                        <s:if test='#session.containsKey("mCategoryDtoList") && #session.status!=1'>
                                                <li><s:select name="categoryId" list="#session.mCategoryDtoList" listValue="categoryName" listKey="categoryId" class="cs-div" id="categoryId"/></li>
@@ -75,9 +99,8 @@ a:active { color:#96e6a1; text-decoration:none }
                                   </s:form>
                              </ul>
                      </div>
+                     <div id="menu-background"></div>
                      </div>
-
 </header>
-<div id="menu-background"></div>
 </body>
 </html>
