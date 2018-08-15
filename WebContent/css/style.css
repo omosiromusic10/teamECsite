@@ -264,8 +264,8 @@ table.vertical-list-table {
 	border-left: 1px solid #ccc;
 	width:80%;
 	margin:0 auto;
-	animation-duration: 2s;アニメーション時間
-	animation-name: BottomToTop;アニメーション名
+	animation-duration: 2s;/* アニメーション時間 */
+	animation-name: BottomToTop;/* アニメーション名 */
 }
 
 table.vertical-list-table th {
@@ -334,8 +334,8 @@ table.horizontal-list-table, th, td {
 	border-collapse: collapse;
 	border: 1px solid #ccc;
 	line-height: 1.5;
-	animation-duration: 2s;アニメーション時間
-	animation-name: BottomToTop;アニメーション名
+	animation-duration: 2s;/* アニメーション時間 */
+	animation-name: BottomToTop;/* アニメーション名 */
 }
 
 table.horizontal-list-table th {
