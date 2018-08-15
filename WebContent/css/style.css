@@ -384,10 +384,52 @@ table.horizontal-list-table td {
 }
 
 /*ボタン関連*/
-
 .submit_btn_box{
-width:200px;
-height:50px;
-animation: fadeIn 5s ease 0s 1 normal;
--webkit-animation: fadeIn 5s ease 0s 1 normal;
+	width:200px;
+	height:50px;
+	display : block;
+	margin-top : 5px;
+	margin-bottom : 5px;
+	margin-left : 3%;
+	padding-left : 42%;
+	float : left;
+	/*フェードイン*/
+	animation: fadeIn 5s ease 0s 1 normal;
+    -webkit-animation: fadeIn 5s ease 0s 1 normal;
+    /**/
+}
+
+/*ボタンの中の要素*/
+.submit_btn {
+    padding: 0.5em 1em;
+    text-decoration:none;
+    width:100px;
+	height : 35px;
+	margin-top : -5px;
+	margin-left : 6px;
+    font-size:10px;
+    text-align:center;
+
+    /*画面操作*/
+    background-color: #C5E99B;
+    border: 2px solid black;
+    color: black !important;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    -webkit-transition: all .3s;
+    transition: all .3s;
+}
+
+/*ホバー時のボタンの中の要素*/
+.submit_btn:hover{
+	box-shadow:2px 2px black;
+    cursor: pointer;
+
+    /*変化後の色味*/
+    background-color: #8CD790;
+    border: 2px solid black;
+    color: black !important;
+    /*角の丸み*/
+    border-radius: 200px;
 }
