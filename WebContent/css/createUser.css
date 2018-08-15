@@ -35,12 +35,14 @@ table{
 	padding: 22px;
   	letter-spacing: 0.075em;
   	border-style: none;
+  	white-space: nowrap;
 }
 
 .sextd{				/* 性別選択欄選択枠のデザイン */
 	margin-left: 0px;
 	background: #E8E9EA;
 	border-style: none;
+	white-space: nowrap;
 
 }
 
@@ -61,9 +63,25 @@ table{
 	left: 0;
 	line-height: 30px;
 	background: #8CD790;
+  	white-space: nowrap;
 	padding: 16.5px 0;
 	margin: 0 auto;
 	font-size: 1.45em;
+	letter-spacing: 0.075em;
+	color: white;
+}
+
+.defaultLabel-mini{			/* 入力欄左の項目部分のデザイン(文字長いとき用) */
+	position: absolute;
+	width: 18%;
+	top: 0;
+	left: 0;
+	line-height: 15px;
+	background: #8CD790;
+  	white-space: nowrap;
+	padding: 16.5px 0;
+	margin: 0 auto;
+	font-size: 1em;
 	letter-spacing: 0.075em;
 	color: white;
 }
