@@ -43,7 +43,7 @@
 			<s:hidden name="releaseCompany" value="%{#session.releaseCompany}"/>
 			<s:hidden name="price" value="%{#session.price}"/>
 			<s:hidden name="categoryId" value="%{#session.categoryId}"/>
-			<table id="item_info" border="">
+			<table id="item_info">
 				<tr>
 					<th scope="row">商品名</th>
 					<td><s:property value="#session.productName"/></td>
@@ -56,10 +56,6 @@
 					<th scope="row">値段</th>
 					<td><s:property value="#session.price"/><span>円</span></td>
 				</tr>
-<!-- 				<tr> -->
-<!-- 					<th scope="row">購入個数</th> -->
-<%-- 					<td><s:select name="productCount" list="%{#session.productCountList}"/>個</td> --%>
-<!-- 				</tr> -->
 				<tr>
 					<th scope="row">発売会社</th>
 					<td><s:property value="#session.releaseCompany"/></td>
@@ -79,7 +75,7 @@
 					<td><s:submit value="カートに追加" class="submit_btn"/></td>
 				</tr>
 			</table>
-<%-- 			<s:select name="productCount" list="%{#session.productCountList}"/>個 --%>
+
 
 
 			</s:form>
