@@ -71,7 +71,7 @@
 			</table>
 			<table id="buy">
 				<tr>
-					<td><s:select name="productCount" list="%{#session.productCountList}"/>個</td>
+					<th><s:select name="productCount" list="%{#session.productCountList}"/>個</th>
 					<td><s:submit value="カートに追加" class="submit_btn"/></td>
 				</tr>
 			</table>

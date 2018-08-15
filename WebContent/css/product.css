@@ -92,6 +92,9 @@ h1{
 	height: auto;
 	vertical-align: middle;
 }
+.pager{
+	color: #004000;
+}
 
 /* ======== productDetails.jsp ======== */
 #item_detail {
@@ -185,14 +188,23 @@ table#item_info td{
 
 table#buy{;
 	display: inline-block;
-	width: 260px;
+	width: 330px;
 	font-size: 20px;
 	font-weight: bold;
 }
+table#buy tr th{
+	border: 0px;
+	width: 120px;
+	height: 70px;
+	padding-right: 0px;
+/* 	border: 1px solid black; */
+}
 table#buy tr td{
 	border: 0px;
+	width: 200px;
 	height: 70px;
 	padding-right: 15px;
+/* 	border: 1px solid black; */
 }
 table#buy select{
 /* 	z-index: 1;	要ヘッダーとの兼ね合い */
@@ -310,11 +322,9 @@ table#buy select{
 	33% {
 		transform: rotate(-3deg);
 	}
-
 	66% {
 		transform: rotate(1deg);
 	}
-
 	100% {
 		transform: rotate(0deg);
 /* 		background: #33ccff; */
