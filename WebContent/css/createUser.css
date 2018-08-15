@@ -4,7 +4,6 @@
 
 section {
   background: white;
-  margin: 60px auto 120px;
   text-align: center;
   padding: 50px 0 110px;
   width: 80%;
@@ -25,6 +24,8 @@ table{
 	  padding: 10px 0;
 	  font-size: 1.45em;
 	  line-height: 25px;
+	  border-style: none;
+	  border-collapse: collapse;
 }
 
 .sexth{				/* 性別選択欄左側の枠のデザイン */
@@ -34,11 +35,13 @@ table{
 	padding: 22px;
   	font-family: 'SSStandard';
   	letter-spacing: 0.075em;
+  	border-style: none;
 }
 
 .sextd{				/* 性別選択欄選択枠のデザイン */
 	margin-left: 0px;
 	background: #E8E9EA;
+	border-style: none;
 
 }
 

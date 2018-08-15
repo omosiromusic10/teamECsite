@@ -26,6 +26,10 @@
 	</s:if>
 
 	<s:else>
+		<s:if test="#session.startRecordNo > #session.totalRecordSize">
+			このページには商品情報がありません。
+		</s:if>
+		<s:else>
 		<div id="hit">
 			全<s:property value='#session.totalRecordSize'/>件中 <s:property value='#session.startRecordNo'/> ～
 					<s:if test="#session.endRecordNo > #session.totalRecordSize">
@@ -36,6 +40,7 @@
 					</s:else>
 					件目を表示
 		</div>
+		</s:else>
 		<br>
 		<div id="newItemList">
 			<!-- 商品一覧の部分 -->

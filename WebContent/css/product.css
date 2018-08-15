@@ -98,17 +98,17 @@ h1{
 	border: 2px solid #ddddaa;
 	border-radius: 10px;
 	margin: 0 auto;
-	padding: 25px;
+	padding: 20px;
 	text-align: center;
 	background-color: #ffffee;
 }
 
 #item_detail #left_box{
 	display: inline-block;
-	width: 335px;
-	height: 400px;
+	width: 345px;
+	height: 390px;
 	margin: 0;
-	margin-right: 40px;
+	margin-right: 35px;
 /* 	border: 1px solid green; */
 	padding-top: 0px;
 	text-align: center;
@@ -145,19 +145,19 @@ h1{
 }
 #item_detail #item_image_box{
 	display: table-cell;
-	width: 330px;
-	height: 330px;
+	width: 340px;
+	height: 340px;
 	padding: 0;
 	vertical-align: middle;
 	text-align: center;
 	background: #ffddaa;
 	border-radius: 5px;
-/*     box-shadow: 2px 2px #9a6e10; */
-	filter: drop-shadow(10px 10px 10px rgba(0,0,0,0.6));
+    box-shadow: 2px 2px #9a6e10;
+/* 	filter: drop-shadow(5px 5px 5px rgba(0,0,0,0.6)); */
 }
 #item_detail img{
-	max-width: 300px;
-	max-height: 300px;
+	max-width: 310px;
+	max-height: 310px;
 	width: auto;
 	height: auto;
 	vertical-align: middle;
@@ -166,19 +166,19 @@ h1{
 
 table#item_info{
 	width: 450px;
-	background-color: #ddffcc;
-	border: 2 bouble black;
+/* 	border: 2 bouble black; */
 	font-size: 18px;
 }
 table#item_info th{
 	width: 33%;
 	padding: 5px;
+	background-color: #ddffcc;
 }
 table#item_info td{
-	border: 1 solid black;
 	width: 100%;
 	text-align: left;
 	padding: 4px;
+	background: white;
 }
 
 table#buy{;
@@ -191,11 +191,15 @@ table#buy tr td{
 	height: 70px;
 }
 table#buy select{
+/* 	z-index: 1;	要ヘッダーとの兼ね合い */
+/* 	position: relative; */
 	font-size: 18px;
 	border: 1px;
 }
 
 #item_detail .submit_btn{
+/* 	z-index: 1; */
+/* 	position: relative; */
 	border: none;
 	width: 150px;
 	height: 50px;
@@ -219,7 +223,7 @@ table#buy select{
 }
 
 #relate_logo{
-	z-index: 0;
+	z-index: -2;
 	position: relative;
 	display: inline-block;
 	width: 100px;
@@ -228,20 +232,17 @@ table#buy select{
 	line-height: 32px;
 	border-radius: 7px;
 	background-color: #ffccbb;
-	margin-right: 700px;
+	margin-right: 713px;
 	margin-top: 20px;
 	margin-bottom: -7px;
 	font-size: 18px;
-}
-#relate_logo{
 	font-weight: bold;
-
 }
 #related_product_list{
-	z-index: 1;
-	position: relative;
-	width: 800px;
+	width: 820px;
+	height: 290px;
 	margin: 0 auto;
+	padding: 0;
 	border: 1px solid #e48881;
 	border-radius: 5px;
 	background-color: #ffccbb;
