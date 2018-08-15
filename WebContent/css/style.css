@@ -39,9 +39,10 @@
 }
 #header-menu ul{
 	 list-style:none;
+font-family: 'Hiragino Kaku Gothic Pro','ヒラギノ角ゴ Pro W3','メイリオ',Meiryo,'ＭＳ Ｐゴシック',sans-serif;
 }
 #header-menu::before {
-    background-color: #fff;
+    background-color:#d4fc79;
     border-radius: 0 0 0 10px;
     color: #333;
     content: "≡";

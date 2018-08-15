@@ -120,7 +120,7 @@ $(function(){
 
 <s:include value="header.jsp" />
 
-
+<div id="wrapper">
 <!-- 	大きくスライドを作る -->
 	<ul class="slider">
 		<li><img src="./images/yakiniku3.jpg"  height="600" alt="" ></li>
@@ -212,7 +212,7 @@ GlanQでは3つのBBQ場と提携しており、<br>食材を各BBQ場に送り�
 </div>
 
 
-
+</div>
 
 
 	<s:include value="footer.jsp" />
