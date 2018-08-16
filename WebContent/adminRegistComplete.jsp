@@ -7,6 +7,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta http-equiv="refresh" content="3;URL='GoAdminAction'"/>
+<link rel="stylesheet" href="./css/style.css">
 <!-- 3秒後に管理者ホーム画面に戻るよう指示。 -->
 <title>商品登録官僚</title>
 </head>
