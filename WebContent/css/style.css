@@ -407,6 +407,17 @@ section{
     -webkit-animation: fadeIn 5s ease 0s 1 normal;
     /**/
 }
+/*ボタン拡大ver*/
+.submit_btn_box2{
+	width : 500px;
+	display : block;
+	margin-top : 10px;
+	margin-left : 200px;
+	float:left;
+	/*フェードイン*/
+	animation: fadeIn 5s ease 0s 1 normal;
+	-webkit-animation: fadeIn 5s ease 0s 1 normal;
+}
 
 /*ボタンの中の要素*/
 .submit_btn {
@@ -429,6 +440,27 @@ section{
     -webkit-transition: all .3s;
     transition: all .3s;
 }
+.submit_btn2{
+	padding : 0.5em 1em;
+	text-decoration: none;
+	width: 100%;
+	height : 100px;
+	margin-top : -5px;
+	margin-left : 6px;
+	margin-bottom:10px;
+	font-size : 50px;
+	text-align : center;
+	/*画面操作*/
+	background-color: #C5E99B;
+    border: 2px solid black;
+    color: black !important;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    -webkit-transition: all .3s;
+    transition: all .3s;
+}
+
 
 /*ホバー時のボタンの中の要素*/
 .submit_btn:hover{
@@ -441,4 +473,14 @@ section{
     color: black !important;
     /*角の丸み*/
     border-radius: 200px;
+}
+.submit_btn2:hover{
+	box-shadow:2px 2px black;
+	cursor: pointer;
+
+	background-color: #8CD790;
+	border: 2px solid black;
+	color: black !important;
+
+	border-radius: 200px;
 }
