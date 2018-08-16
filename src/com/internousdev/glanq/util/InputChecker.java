@@ -135,7 +135,6 @@ public class InputChecker {
 			}
 		}
 		return resultList;
-
 	}
 
 	//④引数として渡された「新しいパスワード」と「再確認用パスワード」が等しいかどうか
