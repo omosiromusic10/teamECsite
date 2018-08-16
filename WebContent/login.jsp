@@ -8,6 +8,10 @@
 <meta charset="UTF-8">
 <link rel="stylesheet" href="./css/style.css">
 <link rel="stylesheet" href="./css/login.css">
+<!-- <link rel="stylesheet" href="./css/createUser.css"> -->
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
 <title>ログイン</title>
 
 <!-- 任意のHTMLタグで指定したIDにマッチするドキュメント要素を取得するメソッド -->
@@ -28,7 +32,7 @@ function goResetPasswordAction() {
 <jsp:include page="header.jsp" />
 <div id = "contents">
 	<h1>ログイン画面</h1>
-		<s:form id = "form" action = "LoginAction">
+		<s:form action = "LoginAction" cssClass="form">
 
 			<!-- もし、loginIdErrorMessageListが空でなかったら -->
 			<s:if test = "!#session.loginIdErrorMessageList.isEmpty()">
@@ -59,7 +63,10 @@ function goResetPasswordAction() {
 				</div>
 			</s:if>
 
-			<table class = "vertical-list-table">
+
+
+
+			<%-- <table class = "vertical-list-table">
 				<tr>
 					<th scope = "row"><s:label value = "ログインID:" /></th>
 						<!-- セッションのsavedLoginIdにtrueが格納されていたら(ログインID保存にチェックが入っていたら)、 -->
@@ -76,7 +83,37 @@ function goResetPasswordAction() {
 					<th scope = "row"><s:label value = "パスワード:" /></th>
 							<td><s:password name = "password" class = "txt" placeholder = "パスワード" autocomplete = "off" /></td>
 				</tr>
-			</table>
+			</table> --%>
+
+
+			<%--  <s:form action="LoginAction" cssClass="form"> --%>
+	      <div class="field name-box">
+	      		<label class="defaultLabel">ログインID</label>
+	      		<s:if test = "#session.savedLoginId==true">
+		        <s:textfield name="loginId" value="%{#session.saveId}" label="ログインID" class="txt" />
+        		<!-- <label class="accordion">半角英語、漢字、ひらがな 1文字以上16文字以下</label> -->
+		       <%--  <span class="nice">Nice!</span> --%>
+		        </s:if>
+
+		        <s:else>
+		        <s:textfield name="loginId" label="ログインID" placeholder="ログインID" class="txt" />
+        		<!-- <label class="accordion">半角英語、漢字、ひらがな 1文字以上16文字以下</label> -->
+		       <%--  <span class="nice">Nice!</span> --%>
+		        </s:else>
+
+	      </div>
+
+		<div class="field name-box">
+	      		<label class="defaultLabel">パスワード</label>
+		        <s:password name="password" label="パスワード" placeholder="パスワード" class="txt" />
+        		<!-- <label class="accordion">半角英数字 1文字以上16文字以下</label> -->
+		        <%-- <span class="nice">Nice!</span> --%>
+	      </div>
+	      <%-- </s:form> --%>
+
+
+
+
 
 			<div class = "box">
 				<!-- セッションのsavedLoginIdにtrueが格納されていたら(ログインID保存にチェックが入っていたら)、 -->
@@ -113,5 +150,6 @@ function goResetPasswordAction() {
 		</div>
 </div>
 <s:include value = "footer.jsp" />
+<script type="text/javascript" src="./js/form.js"></script>
 </body>
 </html>
