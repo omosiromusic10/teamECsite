@@ -317,10 +317,9 @@ color: #158b2b;
 font-size: 50px;
 padding: 10px 0;
 text-align: center;
-margin: 1.5em 0;
 width:90%;
-margin-left:3%;
-margin-right:3%;
+margin: 0 auto;
+margin-bottom: 50px;
 animation-duration: 2s;/* アニメーション時間 */
 animation-name: RightToLeft;/* アニメーション名 */
 }
@@ -545,7 +544,7 @@ section{
 
 #contents{
 	width:100%;
-	padding-top:10px;
+	padding-top:100px;
 	margin:0 auto;
 	height: auto;
 	padding-bottom:110px;
