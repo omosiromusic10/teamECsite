@@ -9,12 +9,16 @@
 <link rel="stylesheet" href="./css/style.css">
 <link rel="stylesheet" href="./css/admin.css">
 <title>管理者画面</title>
+<style>
+h1{
+    margin-bottom:150px;
+}
+</style>
 </head>
 <body>
  <jsp:include page="header.jsp"/>
 <div id="contents">
 <h1>管理者ホーム画面</h1>
-
 
 <!--  ここでボタンを五つ作成しています。 -->
 <!--  商品追加・変更・削除・商品一覧・購入履歴一覧の五つのボタンです。 -->
@@ -62,7 +66,7 @@
 <div class="submit_btn_box2">
     <div id=".contents-btn-set">
     <s:form action="AdminAllSelectAction">
-        <s:submit value="会員・カート・宛先・カテゴリ一覧画面" class="submit_btn2"/>
+        <s:submit value="データ確認画面" class="submit_btn2"/>
     </s:form>
     </div>
 </div>

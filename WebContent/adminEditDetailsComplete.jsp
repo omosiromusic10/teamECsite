@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<!-- <meta http-equiv="refresh" content="3;URL='GoAdminAction'" /> -->
+ <meta http-equiv="refresh" content="3;URL='GoAdminAction'" />
 <link rel = "stylesheet" href = "./css/style.css">
 <link rel = "stylesheet" href = "./css/complete.css">
 <title>商品更新登録完了</title>

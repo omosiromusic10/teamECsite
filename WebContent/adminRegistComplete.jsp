@@ -15,8 +15,15 @@
 <div id="contents">
 <h1>商品登録完了画面</h1>
 <div class="success">
-商品情報の登録が完了しました。
+<div>
+    <img class="kusa" src="images/kusa.svg">
+    <img class="ushi" src="images/ushi.svg">
+    <img class="kusa" src="images/kusa.svg">
+</div>
+<p>
+商品情報の登録が完了しました。<br>
 3秒後に管理ホームに戻ります。
+</p>
 </div>
 
 <s:include value="footer.jsp" />
