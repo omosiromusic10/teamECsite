@@ -15,9 +15,11 @@
 
 
 <div id="contents">
-	<div id="top">
+	<div id="top_l">
 		<h1>商品一覧ページ</h1>
 	</div>
+
+	<div id="fadein_c">
 
 	<!-- 検索結果が無い場合 -->
 	<s:if test="#session.productInfoDtoList == null">
@@ -91,7 +93,9 @@
 			<br>
 			<br>
 		</div>
+
 	</s:else>
+	</div>
 </div>
 
 	<s:include value="footer.jsp" />

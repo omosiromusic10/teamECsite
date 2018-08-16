@@ -15,9 +15,14 @@
 
 
 <div id="contents">
-	<h1>商品詳細ページ</h1>
+	<div id="top_d">
+		<h1>商品詳細ページ</h1>
+	</div>
 
 	<br><br>
+
+	<div id="fadein_c">
+
 	<!-- ～商品詳細を表示～ -->
 	<div id="item_detail">
 		<div id="left_box">
@@ -104,6 +109,8 @@
 				</ul>
 			</div>
 		</s:iterator>
+	</div>
+
 	</div>
 <br>
 </div>

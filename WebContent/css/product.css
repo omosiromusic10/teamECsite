@@ -9,19 +9,27 @@
 	padding-bottom:110px;
 
 	padding-top:100px;
+}
+
+#fadein_c{
 	animation-duration: 2s;/* アニメーション時間 */
 	animation-name: BottomToTop;/* アニメーション名 */
 }
-#top{
-	min-width: 300px;
-}
-
-h1{
-	text-align: left;
-	animation-duration: 2s;/* アニメーション時間 */
-	animation-name: RightToLeft;/* アニメーション名 */
-}
 /* ======== productList.jsp ======== */
+#top_l{
+	display: inline-block;
+	width: 1000px;
+	padding: 0 auto;
+	text-align: center;
+	padding-bottom: 15px;
+}
+#top_l h1{
+	width: 94%;
+/* 	text-align: left; */
+/* 	animation-duration: 2s;アニメーション時間 */
+/* 	animation-name: RightToLeft;アニメーション名 */
+ }
+
 #hit{
 	display: inline-block;
 	width: 1000px;
@@ -50,14 +58,15 @@ h1{
 #hiddenBox:hover{
 	background-color: #4aa5ff;
 
-	animation-name: huriko;
-	animation-duration: 0.3s;
-	animation-timing-function: ease;
-	animation-delay: 0s;
-	animation-iteration-count: 1;
-	animation-direction: alternate;
-	animation-fill-mode: forwards;
-	animation-play-state: running;
+/* 	animation: huriko 0.3s ease 0s 1 alternate; */
+	-webkit-animation: huriko 0.3s ease 0s 1 alternate;
+	-ms-animation: huriko 0.3s ease 0s 1 alternate;
+	-moz-animation: huriko 0.3s ease 0s 1 alternate;
+	-o-animation: huriko 0.3s ease 0s 1 alternate;
+/* 	animation-fill-mode: forwards; */
+/* 	-webkit-animation-fill-mode: forwards; */
+/* 	animation-play-state: running; */
+/* 	-webkit-animation-play-state: running; */
 }
 #newItemBox{
 	display: inline-block;
@@ -97,6 +106,19 @@ h1{
 }
 
 /* ======== productDetails.jsp ======== */
+#top_d{
+	display: inline-block;
+	width: 880px;
+	padding: 0 auto;
+	text-align: center;
+	padding-bottom: 15px;
+}
+#top_d h1{
+	width: 94%;
+/* 	text-align: left; */
+/* 	animation-duration: 2s;アニメーション時間 */
+/* 	animation-name: RightToLeft;アニメーション名 */
+ }
 #item_detail {
 	width: 880px;
 	height: auto;
@@ -138,12 +160,12 @@ h1{
 	margin: 0;
 }
 #item_detail #left_box th{
-	border: 0px;
+	border: 0px solid #ccc;
 	font-size: 18px;
 /* 	border: 1px solid #ffccbb */
 }
 #item_detail #left_box td{
-	border: 0px;
+	border: 0px solid #ccc;
 	font-size: 18px;
 	text-align: left;
 /* 	border: 1px solid #ffc677; */
@@ -175,18 +197,20 @@ table#item_info{
 	font-size: 18px;
 }
 table#item_info th{
+	border: 1px solid #ccc;
 	width: 33%;
 	padding: 5px;
 	background-color: #ddffcc;
 }
 table#item_info td{
+	border: 1px solid #ccc;
 	width: 100%;
 	text-align: left;
 	padding: 4px;
 	background: white;
 }
 
-table#buy{;
+table#buy{
 	display: inline-block;
 	width: 400px;
 	height: 75px;
@@ -317,20 +341,35 @@ table#buy select{
 	vertical-align: middle;
 }
 
-@keyframes huriko {
-	0% {
-		transform: rotate(0deg);
-	}
-	33% {
-		transform: rotate(-3deg);
-	}
-	66% {
-		transform: rotate(1deg);
-	}
-	100% {
-		transform: rotate(0deg);
-/* 		background: #33ccff; */
-	}
+/* @keyframes huriko { */
+/* 	0% {transform: rotate(0deg);} */
+/* 	33% {transform: rotate(-3deg);} */
+/* 	66% {transform: rotate(1deg);} */
+/* 	100% {transform: rotate(0deg);background: #33ccff;} */
+/* } */
+@-webkit-keyframes huriko {
+	0% {transform: rotate(0deg);z-index: 1;}
+	33% {transform: rotate(-3deg);}
+	66% {transform: rotate(1deg);}
+	100% {transform: rotate(0deg);/* background: #33ccff; */}
+}
+@-ms-keyframes huriko {
+	0% {transform: rotate(0deg);}
+	33% {transform: rotate(-3deg);}
+	66% {transform: rotate(1deg);}
+	100% {transform: rotate(0deg);/* background: #33ccff; */}
+}
+@-moz-keyframes huriko {
+	0% {transform: rotate(0deg);}
+	33% {transform: rotate(-3deg);}
+	66% {transform: rotate(1deg);}
+	100% {transform: rotate(0deg);/* background: #33ccff; */}
+}
+@-o-keyframes huriko {
+	0% {transform: rotate(0deg);}
+	33% {transform: rotate(-3deg);}
+	66% {transform: rotate(1deg);}
+	100% {transform: rotate(0deg);/* background: #33ccff; */}
 }
 
 
