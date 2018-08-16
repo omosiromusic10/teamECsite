@@ -18,6 +18,7 @@
 
     <!-- 場所を確認し、完了にするのか場所を選択し直すのかボタンを追加する -->
     <!-- 以前から入っているsession情報を読み込ませ、内容を表示させる。 -->
+    <div id="fadein_container">
 
     <s:form action="SettlementCompleteAction">
 
@@ -61,6 +62,7 @@
     <s:form action="LocationChoiceAction">
     <s:submit value="場所選択画面へ" class="submit_btn"/>
     </s:form>
+    </div>
 
 </div>
 

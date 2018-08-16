@@ -18,7 +18,7 @@
 
   <!-- とりあえずで作ったからレイアウトは許してほしい -->
  <s:iterator value="#session.destinationInfoDtoList" status="st">
-  <div id="location_table_box">
+  <div class="location_table_box">
   <s:form action="LocationChoiceConfirmAction">
       <s:hidden name="parkId" value="%{id}"/>
       <s:hidden name="firstName" value="%{firstName}"/>

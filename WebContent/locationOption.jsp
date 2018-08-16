@@ -25,7 +25,7 @@
 
 
 
-  <div id="image_btn_container">
+  <div id="fadein_container">
     <div class="img_button">
 
       <s:form action="SettlementConfirmAction">
