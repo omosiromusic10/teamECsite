@@ -12,22 +12,13 @@
 	height : auto;
 	padding-bottom : 10px;
 	margin-bottom : 100px;
-	overflow : auto;
-}
 
+}
 
 .left{
 	width:15%;
 	height:100px;
 	float:left;
-
-}
-
-.Gif{
-	text-align:center;
-}
-.gif{
-	border-radius:20px;
 }
 
 .right{
@@ -39,9 +30,13 @@
 .center{
 	width:70%;
 	float:left;
+	margin:0 auto;
 }
 
-
+#gif{
+text-align:center;
+border-radius:30px;
+}
 
 .concept{
    text-align:center;
@@ -71,6 +66,7 @@ width:100%
   border: none !important;
   background: none !important;
 }
+
 /* スライドショーを画面いっぱいに */
 .slider img{
   width: 100% !important;
@@ -85,8 +81,8 @@ width:100%
     opacity : 0;
     width:0px; height:0px;
     padding-top:40px;
-    border:5px yellowgreen outset;
-    background-color:yellowgreen;
+    border:5px #8CD790 outset;
+    background-color:#8CD790;
     animation-name:Con;
     animation-duration:2s;
     animation-fill-mode:forwards;
@@ -107,13 +103,13 @@ width:100%
 }
 
 .intro_title {
-  margin:0 auto;
+	margin:0 auto;
     opacity : 0;
     width:0px; height:0px;
     padding-top:50px;
     transform : translate(0, 50px);
     transition : all 2s;
-    background-color:yellowgreen;
+    background-color:#8CD790;
     animation-name:Con2;
     animation-duration:2s;
     animation-fill-mode:forwards;
@@ -163,10 +159,13 @@ width:100%
 /* 内容 */
 
 .BBQ1_img{
-float:left;
-height:250px;
-padding-top:10px;
+	float:left;
+	padding-top:10px;
+	border-radius:40px;
+    -webkit-border-radius: 40px;
+    -moz-border-radius: 40px;
 }
+
 .BBQ1_text{
  	position: relative;
 	display: inline-block;
@@ -255,9 +254,11 @@ clear:both;
 }
 
 .BBQ2_img{
-float:left;
-height:250px;
-padding-top:10px;
+	float:left;
+	padding-top:10px;
+	border-radius:40px;
+    -webkit-border-radius: 40px;
+    -moz-border-radius: 40px;
 }
 
 
@@ -265,9 +266,11 @@ padding-top:10px;
 clear:both;
 }
 .BBQ3_img{
-float:left;
-height:250px;
-padding-top:10px;
+	float:left;
+	padding-top:10px;
+	border-radius:40px;
+    -webkit-border-radius: 40px;
+    -moz-border-radius: 40px;
 }
 .BBQ3_text{
  	position: relative;
@@ -318,8 +321,8 @@ padding-top:10px;
     opacity : 0;
     width:0px; height:0px;
     transform : translate(0, 0);
-    background-color:yellowgreen;
-    border:3px yellowgreen double;
+    background-color:#8CD790;
+    border:3px #8CD790 double;
     animation-name:Left1;
     animation-duration:2s;
     animation-fill-mode:forwards;
@@ -332,8 +335,14 @@ padding-top:10px;
 }
 @keyframes Left1{
 0%{width:0px; height:0px; border-radius:0px; background-color:white; opacity:0;}
-100%{width:100px; height:100px; background-color:yellowgreen; border-radius:100px; opacity:1;}
+100%{width:100px; height:100px; background-color:#8CD790; border-radius:100px; opacity:1;}
 }
+
+.left:hover{
+
+
+}
+
 
 
 .left2 {
@@ -343,8 +352,8 @@ padding-top:10px;
     width:0px; height:0px;
     transform : translate(0, 0);
     transition : all 1s;
-    background-color:yellowgreen;
-    border:3px yellowgreen double;
+    background-color:#8CD790;
+    border:3px #8CD790 double;
     animation-name:Left2;
     animation-duration:2s;
     animation-fill-mode:forwards;
@@ -357,7 +366,7 @@ padding-top:10px;
 }
 @keyframes Left2{
 0%{width:0px; height:0px; border-radius:0px; background-color:white; opacity:0;}
-100%{width:100px; height:100px; background-color:yellowgreen; border-radius:100px; opacity:1;}
+100%{width:100px; height:100px; background-color:#8CD790; border-radius:100px; opacity:1;}
 }
 
 .left3 {
@@ -367,8 +376,8 @@ padding-top:10px;
     width:0px; height:0px;
     transform : translate(0, 0);
     transition : all 1s;
-    background-color:yellowgreen;
-    border:3px yellowgreen double;
+    background-color:#8CD790;
+    border:3px #8CD790 double;
     animation-name:Left3;
     animation-duration:2s;
     animation-fill-mode:forwards;
@@ -381,18 +390,18 @@ padding-top:10px;
 }
 @keyframes Left3{
 0%{width:0px; height:0px; border-radius:0px; background-color:white; opacity:0;}
-100%{width:80px; height:80px; background-color:yellowgreen; border-radius:80px; opacity:1;}
+100%{width:80px; height:80px; background-color:#8CD790; border-radius:80px; opacity:1;}
 }
 
 .left4 {
 	position:relative;
 	left:100%;
-	  opacity : 0;
+	opacity : 0;
     width:0px; height:0px;
     transform : translate(0, 0);
     transition : all 1s;
-    background-color:yellowgreen;
-    border:3px yellowgreen double;
+     background-color: #8CD790;
+    border:3px #8CD790 double;
     animation-name:Left4;
     animation-duration:2s;
     animation-fill-mode:forwards;
@@ -405,7 +414,7 @@ padding-top:10px;
 }
 @keyframes Left4{
 0%{width:0px; height:0px; border-radius:0px; background-color:white; opacity:0;}
-100%{width:60px; height:60px; background-color:yellowgreen; border-radius:60px; opacity:1;}
+100%{width:60px; height:60px; background-color:#8CD790; border-radius:60px; opacity:1;}
 }
 
 
@@ -416,8 +425,8 @@ padding-top:10px;
     width:0px; height:0px;
     transform : translate(0, 0);
     transition : all 1s;
-    background-color:yellowgreen;
-    border:3px yellowgreen double;
+    background-color:#8CD790;
+    border:3px #8CD790 double;
     animation-name:Left5;
     animation-duration:2s;
     animation-fill-mode:forwards;
@@ -430,7 +439,7 @@ padding-top:10px;
 }
 @keyframes Left5{
 0%{width:0px; height:0px; border-radius:0px; background-color:white; opacity:0;}
-100%{width:40px; height:40px; background-color:yellowgreen; border-radius:40px; opacity:1;}
+100%{width:40px; height:40px; background-color:#8CD790; border-radius:40px; opacity:1;}
 }
 
 .left6 {
@@ -440,8 +449,8 @@ padding-top:10px;
     width:0px; height:0px;
     transform : translate(0, 0);
     transition : all 1s;
-    background-color:yellowgreen;
-    border:3px yellowgreen double;
+    background-color:#8CD790;
+    border:3px #8CD790 double;
     animation-name:Left6;
     animation-duration:2s;
     animation-fill-mode:forwards;
@@ -454,7 +463,7 @@ padding-top:10px;
 }
 @keyframes Left6{
 0%{width:0px; height:0px; border-radius:0px; background-color:white; opacity:0;}
-100%{width:15px; height:15px; background-color:yellowgreen; border-radius:15px; opacity:1;}
+100%{width:15px; height:15px; background-color:#8CD790; border-radius:15px; opacity:1;}
 }
 
 
@@ -463,15 +472,17 @@ padding-top:10px;
 .right1 {
 	position:relative;
 	right:0%;
+	z-index:-100;
     opacity : 0;
     width:0px; height:0px;
     transform : translate(0, 0);
-    background-color:yellowgreen;
-    border:3px yellowgreen double;
+    background-color:#8CD790;
+    border:3px #8CD790 double;
     animation-name:Right1;
     animation-duration:2s;
     animation-fill-mode:forwards;
     animation-play-state:paused;
+
 }
 .right1.scrollanime1 {
     opacity : 1;
@@ -480,19 +491,19 @@ padding-top:10px;
 }
 @keyframes Right1{
 0%{width:0px; height:0px; border-radius:0px; background-color:white; opacity:0;}
-100%{width:100px; height:100px; background-color:yellowgreen; border-radius:100px; opacity:1;}
+100%{width:100px; height:100px; background-color:#8CD790; border-radius:100px; opacity:1;}
 }
-
 
 .right2 {
 	position:relative;
 	right:50%;
+	z-index:-100;
     opacity : 0;
     width:0px; height:0px;
     transform : translate(0, 0);
     transition : all 1s;
-    background-color:yellowgreen;
-    border:3px yellowgreen double;
+    background-color:#8CD790;
+    border:3px #8CD790 double;
     animation-name:Right2;
     animation-duration:2s;
     animation-fill-mode:forwards;
@@ -505,18 +516,19 @@ padding-top:10px;
 }
 @keyframes Right2{
 0%{width:0px; height:0px; border-radius:0px; background-color:white; opacity:0;}
-100%{width:100px; height:100px; background-color:yellowgreen; border-radius:100px; opacity:1;}
+100%{width:100px; height:100px; background-color:#8CD790; border-radius:100px; opacity:1;}
 }
 
 .right3 {
 	position:relative;
 	right:5%;
+	z-index:-100;
     opacity : 0;
     width:0px; height:0px;
     transform : translate(0, 0);
     transition : all 1s;
-    background-color:yellowgreen;
-    border:3px yellowgreen double;
+    background-color:#8CD790;
+    border:3px #8CD790 double;
     animation-name:Right3;
     animation-duration:2s;
     animation-fill-mode:forwards;
@@ -529,18 +541,19 @@ padding-top:10px;
 }
 @keyframes Right3{
 0%{width:0px; height:0px; border-radius:0px; background-color:white; opacity:0;}
-100%{width:80px; height:80px; background-color:yellowgreen; border-radius:80px; opacity:1;}
+100%{width:80px; height:80px; background-color:#8CD790; border-radius:80px; opacity:1;}
 }
 
 .right4 {
 	position:relative;
 	right:40%;
-	  opacity : 0;
+	z-index:-100;
+	opacity : 0;
     width:0px; height:0px;
     transform : translate(0, 0);
     transition : all 1s;
-    background-color:yellowgreen;
-    border:3px yellowgreen double;
+    background-color:#8CD790;
+    border:3px #8CD790 double;
     animation-name:Right4;
     animation-duration:2s;
     animation-fill-mode:forwards;
@@ -553,19 +566,20 @@ padding-top:10px;
 }
 @keyframes Right4{
 0%{width:0px; height:0px; border-radius:0px; background-color:white; opacity:0;}
-100%{width:60px; height:60px; background-color:yellowgreen; border-radius:60px; opacity:1;}
+100%{width:60px; height:60px; background-color:#8CD790; border-radius:60px; opacity:1;}
 }
 
 
 .right5 {
 	position:relative;
 	right:0%;
+	z-index:-100;
     opacity : 0;
     width:0px; height:0px;
     transform : translate(0, 0);
     transition : all 1s;
-    background-color:yellowgreen;
-    border:3px yellowgreen double;
+    background-color:#8CD790;
+    border:3px #8CD790 double;
     animation-name:Right5;
     animation-duration:2s;
     animation-fill-mode:forwards;
@@ -578,18 +592,19 @@ padding-top:10px;
 }
 @keyframes Right5{
 0%{width:0px; height:0px; border-radius:0px; background-color:white; opacity:0;}
-100%{width:40px; height:40px; background-color:yellowgreen; border-radius:40px; opacity:1;}
+100%{width:40px; height:40px; background-color:#8CD790; border-radius:40px; opacity:1;}
 }
 
 .right6 {
 	position:relative;
-	right:35%;
+	right:25%;
+	z-index:-100;
     opacity : 0;
     width:0px; height:0px;
     transform : translate(0, 0);
     transition : all 1s;
-    background-color:yellowgreen;
-    border:3px yellowgreen double;
+    background-color:#8CD790;
+    border:3px #8CD790 double;
     animation-name:Right6;
     animation-duration:2s;
     animation-fill-mode:forwards;
@@ -602,9 +617,8 @@ padding-top:10px;
 }
 @keyframes Right6{
 0%{width:0px; height:0px; border-radius:0px; background-color:white; opacity:0;}
-100%{width:20px; height:20px; background-color:yellowgreen; border-radius:20px; opacity:1;}
+100%{width:20px; height:20px; background-color:#8CD790; border-radius:20px; opacity:1;}
 }
-
 
 .space1{
   height:150px;
