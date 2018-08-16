@@ -114,3 +114,12 @@
 	text-align: center;
 	vertical-align: center;
 }
+/* adminDeleteópÇ…çÏÇ¡ÇøÇ·Ç¢Ç‹ÇµÇΩÅB */
+.pager2{
+    width:100%;
+	text-align:center;
+	color:blue;
+	position:relative;
+	bottom:50px;
+
+}

@@ -8,6 +8,7 @@
 <head>
 <meta charset="UTF-8">
 <link rel="stylesheet" href="./css/style.css">
+<link rel="stylesheet" href="./css/admin.css">
 <title>商品削除画面</title>
 </head>
 
@@ -65,8 +66,10 @@
                     </div>
 
        </s:form>
-
-<div class="pager">
+</s:else>
+</div>
+<!-- css用にpager2にしちゃいました。 -->
+<div class="pager2">
 <s:iterator begin="1" end="#session.totalPageSize" status="pageNo">
     <s:if test="#session.currentPageNo == #pageNo.count">
         <s:property value="%{#pageNo.count}"/>
@@ -78,11 +81,6 @@
 </s:iterator>
 </div>
 
-</s:else>
-</div>
-
-<div id="footer">
-     <s:include value="footer.jsp"/>
-</div>
+<s:include value="footer.jsp"/>
 </body>
 </html>
