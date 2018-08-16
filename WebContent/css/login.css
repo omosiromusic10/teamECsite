@@ -5,8 +5,6 @@
 width: 90%;
 margin: 2em auto;
 text-align: left;
-animation-duration: 2s;/* アニメーション時間 */
-animation-name: BottomToTop;/* アニメーション名 */
 }
 
 .box .label {
@@ -25,10 +23,8 @@ position: absolute;
 z-index: 1;
 top: 0.125rem;
 left: 0.1875rem;
-/* width: 0.75rem;
-height: 0.375rem; */
-width: 30px;
-height: 30px;
+width: 0.75rem;
+height: 0.375rem;
 content: '';
 -webkit-transition: -webkit-transform 0.4s cubic-bezier(0.45, 1.8, 0.5, 0.75);
 transition:         transform 0.4s cubic-bezier(0.45, 1.8, 0.5, 0.75);
@@ -54,18 +50,7 @@ border: 2px solid #00ff00;
 background: #c8ffc8;
 }
 
-/* 下から上へのフェードイン「BottomTotop」の動作内容 */
-@keyframes BottomToTop {
-  0% {
-    opacity: 0;/* 透明 */
-    transform: translateY(50px);/* Y軸方向に50px */
-  }
-  100% {
-    opacity: 1;/* 不透明 */
-    transform: translateY(0);
-  }
-}
-
+ */
 /* 入力フォーム */
 .form {				/* 入力フォームのデザイン */
   width: 100%;
