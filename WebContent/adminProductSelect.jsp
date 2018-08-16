@@ -7,6 +7,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" href="./css/style.css">
+<link rel="stylesheet" href="./css/admin.css">
 <title>商品一覧</title>
 </head>
 <body>
@@ -58,7 +59,8 @@
 </s:iterator>
 </div>
 
-
+<br>
+<br>
 
 </div>
  <s:include value="footer.jsp" />

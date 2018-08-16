@@ -6,6 +6,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" href="./css/style.css">
+<link rel="stylesheet" href="./css/admin.css">
 <title>商品編集画面</title>
 </head>
 <body>
@@ -54,7 +55,8 @@
 </s:iterator>
 </div>
 
-
+<br>
+<br>
 
 </div>
 	<div id="footer">
