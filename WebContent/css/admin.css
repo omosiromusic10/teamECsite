@@ -76,13 +76,13 @@
     -webkit-transition: all .3s;
     transition: all .3s;
 }
-/*ホライゾンテーブル追加*/
+/*テーブル追加*/
 .horizontal-list-table, th, td{
 	box-shadow:2px 2px #1a6ea0;
 	background-color: #ffffdd;
 }
 
-/*ホライゾンテーブル作成*/
+/*テーブル作成*/
 .horizontal-list-table2, th, td {
 	margin : 3%;
 	margin-left:7%;
