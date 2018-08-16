@@ -120,7 +120,7 @@ $(function(){
             var elemPos = $(this).offset().top;
             var scroll = $(window).scrollTop();
             var windowHeight = $(window).height();
-            if (scroll > elemPos - windowHeight + 250){
+            if (scroll > elemPos - windowHeight + 300){
                 $(this).addClass('scrollanime2');
             }
         });
@@ -133,7 +133,7 @@ $(function(){
             var elemPos = $(this).offset().top;
             var scroll = $(window).scrollTop();
             var windowHeight = $(window).height();
-            if (scroll > elemPos - windowHeight + 250){
+            if (scroll > elemPos - windowHeight + 300){
                 $(this).addClass('scrollanime3');
             }
         });
@@ -146,7 +146,7 @@ $(function(){
             var elemPos = $(this).offset().top;
             var scroll = $(window).scrollTop();
             var windowHeight = $(window).height();
-            if (scroll > elemPos - windowHeight + 250){
+            if (scroll > elemPos - windowHeight + 300){
                 $(this).addClass('scrollanime4');
             }
         });
@@ -159,89 +159,26 @@ $(function(){
             var elemPos = $(this).offset().top;
             var scroll = $(window).scrollTop();
             var windowHeight = $(window).height();
-            if (scroll > elemPos - windowHeight + 250){
+            if (scroll > elemPos - windowHeight + 300){
                 $(this).addClass('scrollanime5');
             }
         });
     });
 });
-
 $(function(){
     $(window).scroll(function (){
         $('.left6').each(function(){
             var elemPos = $(this).offset().top;
             var scroll = $(window).scrollTop();
             var windowHeight = $(window).height();
-            if (scroll > elemPos - windowHeight + 250){
+            if (scroll > elemPos - windowHeight + 300){
                 $(this).addClass('scrollanime6');
             }
         });
     });
 });
-$(function(){
-    $(window).scroll(function (){
-        $('.left7').each(function(){
-            var elemPos = $(this).offset().top;
-            var scroll = $(window).scrollTop();
-            var windowHeight = $(window).height();
-            if (scroll > elemPos - windowHeight + 250){
-                $(this).addClass('scrollanime7');
-            }
-        });
-    });
-});
 
-$(function(){
-    $(window).scroll(function (){
-        $('.left8').each(function(){
-            var elemPos = $(this).offset().top;
-            var scroll = $(window).scrollTop();
-            var windowHeight = $(window).height();
-            if (scroll > elemPos - windowHeight + 250){
-                $(this).addClass('scrollanime8');
-            }
-        });
-    });
-});
 
-$(function(){
-    $(window).scroll(function (){
-        $('.left9').each(function(){
-            var elemPos = $(this).offset().top;
-            var scroll = $(window).scrollTop();
-            var windowHeight = $(window).height();
-            if (scroll > elemPos - windowHeight + 250){
-                $(this).addClass('scrollanime9');
-            }
-        });
-    });
-});
-
-$(function(){
-    $(window).scroll(function (){
-        $('.left10').each(function(){
-            var elemPos = $(this).offset().top;
-            var scroll = $(window).scrollTop();
-            var windowHeight = $(window).height();
-            if (scroll > elemPos - windowHeight + 250){
-                $(this).addClass('scrollanime10');
-            }
-        });
-    });
-});
-
-$(function(){
-    $(window).scroll(function (){
-        $('.left11').each(function(){
-            var elemPos = $(this).offset().top;
-            var scroll = $(window).scrollTop();
-            var windowHeight = $(window).height();
-            if (scroll > elemPos - windowHeight + 250){
-                $(this).addClass('scrollanime11');
-            }
-        });
-    });
-});
 // 右サイド
 $(function(){
     $(window).scroll(function (){
@@ -250,7 +187,7 @@ $(function(){
             var scroll = $(window).scrollTop();
             var windowHeight = $(window).height();
             if (scroll > elemPos - windowHeight + 250){
-                $(this).addClass('scrollanime12');
+                $(this).addClass('scrollanime1');
             }
         });
     });
@@ -262,8 +199,8 @@ $(function(){
             var elemPos = $(this).offset().top;
             var scroll = $(window).scrollTop();
             var windowHeight = $(window).height();
-            if (scroll > elemPos - windowHeight + 250){
-                $(this).addClass('scrollanime13');
+            if (scroll > elemPos - windowHeight + 300){
+                $(this).addClass('scrollanime2');
             }
         });
     });
@@ -275,8 +212,8 @@ $(function(){
             var elemPos = $(this).offset().top;
             var scroll = $(window).scrollTop();
             var windowHeight = $(window).height();
-            if (scroll > elemPos - windowHeight + 250){
-                $(this).addClass('scrollanime14');
+            if (scroll > elemPos - windowHeight + 300){
+                $(this).addClass('scrollanime3');
             }
         });
     });
@@ -288,8 +225,8 @@ $(function(){
             var elemPos = $(this).offset().top;
             var scroll = $(window).scrollTop();
             var windowHeight = $(window).height();
-            if (scroll > elemPos - windowHeight + 250){
-                $(this).addClass('scrollanime15');
+            if (scroll > elemPos - windowHeight + 300){
+                $(this).addClass('scrollanime4');
             }
         });
     });
@@ -301,8 +238,8 @@ $(function(){
             var elemPos = $(this).offset().top;
             var scroll = $(window).scrollTop();
             var windowHeight = $(window).height();
-            if (scroll > elemPos - windowHeight + 250){
-                $(this).addClass('scrollanime16');
+            if (scroll > elemPos - windowHeight + 300){
+                $(this).addClass('scrollanime5');
             }
         });
     });
@@ -314,76 +251,13 @@ $(function(){
             var elemPos = $(this).offset().top;
             var scroll = $(window).scrollTop();
             var windowHeight = $(window).height();
-            if (scroll > elemPos - windowHeight + 250){
-                $(this).addClass('scrollanime17');
-            }
-        });
-    });
-});
-$(function(){
-    $(window).scroll(function (){
-        $('.right7').each(function(){
-            var elemPos = $(this).offset().top;
-            var scroll = $(window).scrollTop();
-            var windowHeight = $(window).height();
-            if (scroll > elemPos - windowHeight + 250){
-                $(this).addClass('scrollanime18');
+            if (scroll > elemPos - windowHeight + 300){
+                $(this).addClass('scrollanime6');
             }
         });
     });
 });
 
-$(function(){
-    $(window).scroll(function (){
-        $('.right8').each(function(){
-            var elemPos = $(this).offset().top;
-            var scroll = $(window).scrollTop();
-            var windowHeight = $(window).height();
-            if (scroll > elemPos - windowHeight + 250){
-                $(this).addClass('scrollanime19');
-            }
-        });
-    });
-});
-
-$(function(){
-    $(window).scroll(function (){
-        $('.right9').each(function(){
-            var elemPos = $(this).offset().top;
-            var scroll = $(window).scrollTop();
-            var windowHeight = $(window).height();
-            if (scroll > elemPos - windowHeight + 250){
-                $(this).addClass('scrollanime20');
-            }
-        });
-    });
-});
-
-$(function(){
-    $(window).scroll(function (){
-        $('.right10').each(function(){
-            var elemPos = $(this).offset().top;
-            var scroll = $(window).scrollTop();
-            var windowHeight = $(window).height();
-            if (scroll > elemPos - windowHeight + 250){
-                $(this).addClass('scrollanime21');
-            }
-        });
-    });
-});
-
-$(function(){
-    $(window).scroll(function (){
-        $('.right11').each(function(){
-            var elemPos = $(this).offset().top;
-            var scroll = $(window).scrollTop();
-            var windowHeight = $(window).height();
-            if (scroll > elemPos - windowHeight + 250){
-                $(this).addClass('scrollanime22');
-            }
-        });
-    });
-});
 
 </script>
 </head>
@@ -394,29 +268,32 @@ $(function(){
 
 <div id="wrapper">
 <!-- 	大きくスライドを作る -->
-	<ul class="slider">
-		<li><img src="./images/yakiniku3.jpg"  height="600" alt="" ></li>
-		<li><img src="./images/yakiniku2.jpg"  height="600" alt="" ></li>
-		<li><img src="./images/yakiniku1.jpg"  height="600" alt="" ></li>
-	</ul>
 
-<div class="space1"></div>
 
-<div class="left">
-<div class="left1"></div><div class="space1"></div>
-<div class="left2"></div><div class="space1"></div>
-<div class="left3"></div><div class="space1"></div>
-<div class="left4"></div><div class="space1"></div>
-<div class="left5"></div><div class="space1"></div>
-<div class="left6"></div><div class="space1"></div>
-<div class="left7"></div><div class="space1"></div>
-<div class="left8"></div><div class="space1"></div>
-<div class="left9"></div><div class="space1"></div>
-<div class="left10"></div><div class="space1"></div>
-<div class="left11"></div><div class="space1"></div>
-<div class="left11"></div><div class="space1"></div>
-<div class="left11"></div><div class="space1"></div>
-</div>
+
+<!-- <div class="Gif"><img src="./images/OP_Real.gif" height="600" width=60% class="gif"></div> -->
+<!-- <!-- 	<ul class="slider"> --> -->
+<!-- <!-- 		<li><img src="./images/yakiniku3.jpg"  height="600" alt="" ></li> --> -->
+<!-- <!-- 		<li><img src="./images/yakiniku2.jpg"  height="600" alt="" ></li> --> -->
+<!-- <!-- 		<li><img src="./images/yakiniku1.jpg"  height="600" alt="" ></li> --> -->
+<!-- <!-- 	</ul> --> -->
+
+<!-- <div class="space1"></div> -->
+
+<!-- <div class="left"> -->
+<!-- <div class="left1"></div><div class="space2"></div> -->
+<!-- <div class="left2"></div><div class="space2"></div> -->
+<!-- <div class="left3"></div><div class="space3"></div> -->
+<!-- <div class="left4"></div><div class="space3"></div> -->
+<!-- <div class="left5"></div><div class="space3"></div> -->
+<!-- <div class="left6"></div><div class="space4"></div> -->
+<!-- <div class="left1"></div><div class="space2"></div> -->
+<!-- <div class="left2"></div><div class="space2"></div> -->
+<!-- <div class="left3"></div><div class="space3"></div> -->
+<!-- <div class="left4"></div><div class="space3"></div> -->
+<!-- <div class="left5"></div><div class="space3"></div> -->
+<!-- <div class="left6"></div><div class="space4"></div> -->
+<!-- </div> -->
 
 <div class="center">
 <!-- サイトコンセプト -->
@@ -490,19 +367,20 @@ GlanQでは3つのBBQ場と提携しており、<br>食材を各BBQ場に送り�
 
 
 <div class="right">
-<div class="right1"></div><div class="space1"></div>
-<div class="right1"></div><div class="space1"></div>
-<div class="right2"></div><div class="space1"></div>
-<div class="right3"></div><div class="space1"></div>
-<div class="right4"></div><div class="space1"></div>
-<div class="right5"></div><div class="space1"></div>
-<div class="right6"></div><div class="space1"></div>
-<div class="right7"></div><div class="space1"></div>
-<div class="right8"></div><div class="space1"></div>
-<div class="right9"></div><div class="space1"></div>
-<div class="right10"></div><div class="space1"></div>
-<div class="right11"></div><div class="space1"></div>
-<div class="right11"></div><div class="space1"></div>
+
+<div class="right1"></div><div class="space2"></div>
+<div class="right2"></div><div class="space2"></div>
+<div class="right3"></div><div class="space3"></div>
+<div class="right4"></div><div class="space3"></div>
+<div class="right5"></div><div class="space3"></div>
+<div class="right6"></div><div class="space4"></div>
+<div class="right1"></div><div class="space2"></div>
+<div class="right2"></div><div class="space2"></div>
+<div class="right3"></div><div class="space3"></div>
+<div class="right4"></div><div class="space3"></div>
+<div class="right5"></div><div class="space3"></div>
+<div class="right6"></div><div class="space4"></div>
+
 </div>
 
 
