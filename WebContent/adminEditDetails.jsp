@@ -6,6 +6,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" href="./css/style.css">
+<link rel="stylesheet" href="./css/admin.css">
 <title>商品編集画面</title>
 </head>
 <body>
@@ -96,12 +97,15 @@
 <div class="submit_btn_box">
 <div id=".contents-btn-set">
 	<s:submit value="更新確認画面へ" class="submit_btn"/>
+
+
 </div>
 </div>
 </s:form>
 </div>
-	<div id="footer">
+
+
+
 		<s:include value="footer.jsp"/>
-	</div>
 </body>
 </html>

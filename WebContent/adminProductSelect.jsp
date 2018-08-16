@@ -18,7 +18,7 @@
 
 
 <!-- テーブルの頭を作成 -->
-<table class="horizontal-list-table">
+<table class="horizontal-list-table2">
 <thead>
 <tr>
 <th><s:label value="商品画像" /></th>
@@ -34,7 +34,7 @@
 <!-- ここでProductListのiteratorを用いて表示させる。 -->
 <s:iterator value="#session.productInfoDtoList">
 <tr>
-    <td><img src='<s:property value="imageFilePath"/>/<s:property value="imageFileName"/>' class="item-image-box-200"/><br></td>
+    <td><img src='<s:property value="imageFilePath"/>/<s:property value="imageFileName"/>' class="item-image-box-100"/><br></td>
     <td><s:property value="productName"/></td>
     <td><s:property value="productNameKana"/></td>
     <td><s:property value="price"/>円</td>

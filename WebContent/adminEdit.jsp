@@ -15,7 +15,7 @@
 <h1>商品編集画面</h1>
 <div id="product-list">
 
-<table class="horizontal-list-table">
+<table class="horizontal-list-table2">
 <!-- テーブルで表示する予定 -->
 <thead>
 	<tr>
@@ -32,7 +32,7 @@
 	<tr>
 		<td><a href='<s:url action="AdminEditDetailsAction">
 			<s:param name="productId" value="%{productId}"/>
-			</s:url>'><img src='<s:property value="imageFilePath" />/<s:property value="imageFileName" />' class="item-image-box-200" /></a><br></td>
+			</s:url>'><img src='<s:property value="imageFilePath" />/<s:property value="imageFileName" />' class="item-image-box-100" /></a><br></td>
 		<td><s:property value="productName"/></td>
 		<td><s:property value="productNameKana"/></td>
 		<td><s:property value="price"/>円</td>
@@ -57,11 +57,11 @@
 
 <br>
 <br>
+<br>
+<br>
 
 </div>
-	<div id="footer">
 		<s:include value="footer.jsp"/>
-	</div>
 
 </body>
 </html>

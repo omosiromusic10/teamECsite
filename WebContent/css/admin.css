@@ -1,18 +1,22 @@
-.item-image-box-200{
-	width:200px;
-	height:200px;
+#contents{
+	padding-bottom:100px;
+}
+.item-image-box-100{
+	width:100px;
+	height:100px;
 }
 .pager{
     width:100%;
 	text-align:center;
+	color:blue;
 }
 
 /*ボタン拡大ver*/
 .submit_btn_box2{
 	width : 500px;
 	display : block;
-	margin-top : 10px;
 	margin-left : 200px;
+	margin-top:10px;
 	float:left;
 	/*フェードイン*/
 	animation: fadeIn 5s ease 0s 1 normal;
@@ -37,4 +41,36 @@
     box-sizing: border-box;
     -webkit-transition: all .3s;
     transition: all .3s;
+}
+/*ホライズンテスト*/
+.horizontal-list-table2, th, td {
+	margin : 3%;
+	margin-left:7%;
+	margin-right:7%;
+	width : 80%;
+	border-collapse: collapse;
+	border: 1px solid #ccc;
+	line-height: 1.5;
+	animation-duration: 2s;/* アニメーション時間 */
+	animation-name: BottomToTop;/* アニメーション名 */
+}
+
+.horizontal-list-table2 th {
+	width: 150px;
+	padding: 10px;
+	font-weight: bold;
+	font-size: 0.8em;
+	text-align: center;
+	vertical-align: top;
+	color: black;
+	background-image: url(../images/naname3.jpg);
+}
+.horizontal-list-table2 td {
+	box-shadow:2px 2px #1a6ea0;
+	background-color: #ffffdd;
+	width: 350px;
+	padding: 10px;
+	font-size: 20px;
+	text-align: center;
+	vertical-align: center;
 }

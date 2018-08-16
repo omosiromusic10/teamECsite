@@ -8,6 +8,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta http-equiv="Content-Script-Type" content="text/javascript" >
 <link rel="stylesheet" href="./css/style.css">
+<link rel="stylesheet" href="./css/admin.css">
 <title>商品登録・追加</title>
 
 </head>
@@ -103,12 +104,8 @@
 
 </div>
 
-<br>
-<br>
 
-<div id="footer">
     <s:include value="footer.jsp" />
-</div>
 
 </body>
 </html>
