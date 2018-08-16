@@ -3,8 +3,8 @@
 	height:200px;
 }
 .pager{
-	margin-left:48%;
-	margin-right:48%;
+    width:100%;
+	text-align:center;
 }
 h1{
     margin-bottom:100px;
