@@ -19,20 +19,26 @@
   <!-- とりあえずで作ったからレイアウトは許してほしい -->
  <s:iterator value="#session.destinationInfoDtoList" status="st">
   <div class="location_table_box">
-  <s:form action="LocationChoiceConfirmAction">
-      <s:hidden name="parkId" value="%{id}"/>
-      <s:hidden name="firstName" value="%{firstName}"/>
-      <s:hidden name="firstNameKana" value="%{firstNameKana}"/>
-      <s:hidden name="familyName" value="%{familyName}"/>
-      <s:hidden name="familyNameKana" value="%{familyNameKana}"/>
-      <s:hidden name="email" value="%{email}"/>
-      <s:hidden name="telNumber" value="%{telNumber}"/>
-      <s:hidden name="userAddress" value="%{userAddress}"/>
+
 
       <table class="location_table">
           <tr>
               <td rowspan="7">
-                  <s:submit class="img" type="image" src="./images/bbq%{id}.jpg"/>
+              <s:form class="img_button2" action="LocationChoiceConfirmAction">
+                  <s:hidden name="parkId" value="%{id}"/>
+                  <s:hidden name="firstName" value="%{firstName}"/>
+                  <s:hidden name="firstNameKana" value="%{firstNameKana}"/>
+                  <s:hidden name="familyName" value="%{familyName}"/>
+                  <s:hidden name="familyNameKana" value="%{familyNameKana}"/>
+                  <s:hidden name="email" value="%{email}"/>
+                  <s:hidden name="telNumber" value="%{telNumber}"/>
+                  <s:hidden name="userAddress" value="%{userAddress}"/>
+                  <s:submit type="image" src="./images/bbq%{id}.jpg">
+                      <div class="mask">
+	                      <div class="caption">ここに送る</div>
+	                  </div>
+	              </s:submit>
+	          </s:form>
               </td>
               <td>会場名</td>
               <td><s:property value="firstName"/></td>
@@ -62,7 +68,7 @@
               <td><s:property value="userAddress"/></td>
           </tr>
       </table>
-  </s:form>
+
   </div>
 </s:iterator>
 
