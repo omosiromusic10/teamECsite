@@ -8,7 +8,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" href="./css/style.css">
-<meta http-equiv="refresh" content="3;URL='HomeAction'"/>
+<meta http-equiv="refresh" content="3;URL='GoAdminAction'"/>
      <title>商品削除完了</title>
 </head>
 

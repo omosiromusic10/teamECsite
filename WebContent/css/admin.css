@@ -1,5 +1,5 @@
 #contents{
-	padding-bottom:100px;
+	margin-bottom:100px;
 }
 .item-image-box-100{
 	width:100px;
@@ -80,6 +80,7 @@
 .horizontal-list-table, th, td{
 	box-shadow:2px 2px #1a6ea0;
 	background-color: #ffffdd;
+	margin-bottom:20px;
 }
 
 /*テーブル作成*/
@@ -87,6 +88,7 @@
 	margin : 3%;
 	margin-left:7%;
 	margin-right:7%;
+	margin-bottom:20px;
 	width : 80%;
 	border-collapse: collapse;
 	border: 1px solid #ccc;
@@ -114,12 +116,10 @@
 	text-align: center;
 	vertical-align: center;
 }
-/* adminDelete用に作っちゃいました。 */
 .pager2{
     width:100%;
 	text-align:center;
 	color:blue;
 	position:relative;
 	bottom:50px;
-
 }

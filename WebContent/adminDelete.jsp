@@ -68,7 +68,6 @@
        </s:form>
 </s:else>
 </div>
-<!-- css用にpager2にしちゃいました。 -->
 <div class="pager2">
 <s:iterator begin="1" end="#session.totalPageSize" status="pageNo">
     <s:if test="#session.currentPageNo == #pageNo.count">

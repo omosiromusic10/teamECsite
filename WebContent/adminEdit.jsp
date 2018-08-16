@@ -55,11 +55,6 @@
 </s:iterator>
 </div>
 
-<br>
-<br>
-<br>
-<br>
-
 </div>
 		<s:include value="footer.jsp"/>
 
