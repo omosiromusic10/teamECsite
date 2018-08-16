@@ -30,7 +30,9 @@
 
 	<s:else>
 		<s:if test="#session.startRecordNo > #session.totalRecordSize">
-			<div id="hit">[!] このページには商品情報がありません。</div>
+			<div id="hit">
+				<div class="info">[!] このページには商品情報がありません</div>
+			</div>
 		</s:if>
 		<s:else>
 		<div id="hit">

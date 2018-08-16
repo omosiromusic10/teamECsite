@@ -115,6 +115,8 @@
 }
 #top_d h1{
 	width: 94%;
+	margin-left:3%;
+	margin-right:3%;
 /* 	text-align: left; */
 /* 	animation-duration: 2s;アニメーション時間 */
 /* 	animation-name: RightToLeft;アニメーション名 */
@@ -255,6 +257,7 @@ table#buy select{
 	-o-transition: 0.3s;
 	-ms-transition: 0.3s;
  	transition: all 0.3s ease;
+ 	outline: none;
 }
 #item_detail .submit_btn:hover{
 	width: 160px;
