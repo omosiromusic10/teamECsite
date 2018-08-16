@@ -143,13 +143,14 @@
 					<!-- 宛先情報確認ボタン -->
 					<div class="submit_btn_box">
 						<div id=".contents-btn-set">
-							<s:submit value="登録" />
+							<s:submit value="登録" class="submit_btn" />
 						</div>
 					</div>
 
 			</s:form>
 
 		</section>
+</div>
 
 <s:include value="footer.jsp"/>
 	<script type="text/javascript" src="./js/form.js"></script>
