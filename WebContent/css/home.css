@@ -27,7 +27,6 @@
 	width:15%;
 	height:100px;
 	float:left;
-    background-color:yellowgreen;
 }
 
 .center{
@@ -316,22 +315,510 @@ padding-top:10px;
     animation-duration:2s;
     animation-fill-mode:forwards;
     animation-play-state:paused;
-
-
 }
 .left1.scrollanime1 {
     opacity : 1;
     transform : translate(0, 0);
     animation-play-state:running;
 }
-
 @keyframes Left1{
 0%{width:0px; height:0px; border-radius:0px; background-color:white; opacity:0;}
-100%{width:150px; height:150px; background-color:yellowgreen; border-radius:150px; opacity:1;}
-
+100%{width:50px; height:50px; background-color:yellowgreen; border-radius:50px; opacity:1;}
 }
 
+
+.left2 {
+  margin:0 auto;
+    opacity : 0;
+    width:0px; height:0px;
+    transform : translate(0, 0);
+    transition : all 1s;
+    background-color:yellowgreen;
+    border:3px yellowgreen double;
+    animation-name:Left1;
+    animation-duration:2s;
+    animation-fill-mode:forwards;
+    animation-play-state:paused;
+}
+.left2.scrollanime2 {
+    opacity : 1;
+    transform : translate(0, 0);
+    animation-play-state:running;
+}
+@keyframes Left2{
+0%{width:0px; height:0px; border-radius:0px; background-color:white; opacity:0;}
+100%{width:50px; height:50px; background-color:yellowgreen; border-radius:50px; opacity:1;}
+}
+
+.left3 {
+  margin:0 auto;
+    opacity : 0;
+    width:0px; height:0px;
+    transform : translate(0, 0);
+    transition : all 1s;
+    background-color:yellowgreen;
+    border:3px yellowgreen double;
+    animation-name:Left1;
+    animation-duration:2s;
+    animation-fill-mode:forwards;
+    animation-play-state:paused;
+}
+.left3.scrollanime3 {
+    opacity : 1;
+    transform : translate(0, 0);
+    animation-play-state:running;
+}
+@keyframes Left3{
+0%{width:0px; height:0px; border-radius:0px; background-color:white; opacity:0;}
+100%{width:50px; height:50px; background-color:yellowgreen; border-radius:50px; opacity:1;}
+}
+
+.left4 {
+  margin:0 auto;
+    opacity : 0;
+    width:0px; height:0px;
+    transform : translate(0, 0);
+    transition : all 1s;
+    background-color:yellowgreen;
+    border:3px yellowgreen double;
+    animation-name:Left1;
+    animation-duration:2s;
+    animation-fill-mode:forwards;
+    animation-play-state:paused;
+}
+.left4.scrollanime4 {
+    opacity : 1;
+    transform : translate(0, 0);
+    animation-play-state:running;
+}
+@keyframes Left4{
+0%{width:0px; height:0px; border-radius:0px; background-color:white; opacity:0;}
+100%{width:50px; height:50px; background-color:yellowgreen; border-radius:50px; opacity:1;}
+}
+
+
+.left5 {
+  margin:0 auto;
+    opacity : 0;
+    width:0px; height:0px;
+    transform : translate(0, 0);
+    transition : all 1s;
+    background-color:yellowgreen;
+    border:3px yellowgreen double;
+    animation-name:Left1;
+    animation-duration:2s;
+    animation-fill-mode:forwards;
+    animation-play-state:paused;
+}
+.left5.scrollanime5 {
+    opacity : 1;
+    transform : translate(0, 0);
+    animation-play-state:running;
+}
+@keyframes Left5{
+0%{width:0px; height:0px; border-radius:0px; background-color:white; opacity:0;}
+100%{width:50px; height:50px; background-color:yellowgreen; border-radius:50px; opacity:1;}
+}
+
+.left6 {
+  margin:0 auto;
+    opacity : 0;
+    width:0px; height:0px;
+    transform : translate(0, 0);
+    transition : all 1s;
+    background-color:yellowgreen;
+    border:3px yellowgreen double;
+    animation-name:Left1;
+    animation-duration:2s;
+    animation-fill-mode:forwards;
+    animation-play-state:paused;
+}
+.left6.scrollanime6 {
+    opacity : 1;
+    transform : translate(0, 0);
+    animation-play-state:running;
+}
+@keyframes Left6{
+0%{width:0px; height:0px; border-radius:0px; background-color:white; opacity:0;}
+100%{width:50px; height:50px; background-color:yellowgreen; border-radius:50px; opacity:1;}
+}
+
+.left7 {
+  margin:0 auto;
+    opacity : 0;
+    width:0px; height:0px;
+    transform : translate(0, 0);
+    transition : all 1s;
+    background-color:yellowgreen;
+    border:3px yellowgreen double;
+    animation-name:Left1;
+    animation-duration:2s;
+    animation-fill-mode:forwards;
+    animation-play-state:paused;
+}
+.left7.scrollanime7 {
+    opacity : 1;
+    transform : translate(0, 0);
+    animation-play-state:running;
+}
+@keyframes Left7{
+0%{width:0px; height:0px; border-radius:0px; background-color:white; opacity:0;}
+100%{width:50px; height:50px; background-color:yellowgreen; border-radius:50px; opacity:1;}
+}
+
+
+.left8 {
+  margin:0 auto;
+    opacity : 0;
+    width:0px; height:0px;
+    transform : translate(0, 0);
+    transition : all 1s;
+    background-color:yellowgreen;
+    border:3px yellowgreen double;
+    animation-name:Left1;
+    animation-duration:2s;
+    animation-fill-mode:forwards;
+    animation-play-state:paused;
+}
+.left8.scrollanime8 {
+    opacity : 1;
+    transform : translate(0, 0);
+    animation-play-state:running;
+}
+@keyframes Left8{
+0%{width:0px; height:0px; border-radius:0px; background-color:white; opacity:0;}
+100%{width:50px; height:50px; background-color:yellowgreen; border-radius:50px; opacity:1;}
+}
+
+.left9 {
+  margin:0 auto;
+    opacity : 0;
+    width:0px; height:0px;
+    transform : translate(0, 0);
+    transition : all 1s;
+    background-color:yellowgreen;
+    border:3px yellowgreen double;
+    animation-name:Left1;
+    animation-duration:2s;
+    animation-fill-mode:forwards;
+    animation-play-state:paused;
+}
+.left9.scrollanime9 {
+    opacity : 1;
+    transform : translate(0, 0);
+    animation-play-state:running;
+}
+@keyframes Left9{
+0%{width:0px; height:0px; border-radius:0px; background-color:white; opacity:0;}
+100%{width:50px; height:50px; background-color:yellowgreen; border-radius:50px; opacity:1;}
+}
+
+.left10 {
+  margin:0 auto;
+    opacity : 0;
+    width:0px; height:0px;
+    transform : translate(0, 0);
+    transition : all 1s;
+    background-color:yellowgreen;
+    border:3px yellowgreen double;
+    animation-name:Left1;
+    animation-duration:2s;
+    animation-fill-mode:forwards;
+    animation-play-state:paused;
+}
+.left10.scrollanime10 {
+    opacity : 1;
+    transform : translate(0, 0);
+    animation-play-state:running;
+}
+@keyframes Left10{
+0%{width:0px; height:0px; border-radius:0px; background-color:white; opacity:0;}
+100%{width:50px; height:50px; background-color:yellowgreen; border-radius:50px; opacity:1;}
+}
+
+
+.left11 {
+  margin:0 auto;
+    opacity : 0;
+    width:0px; height:0px;
+    transform : translate(0, 0);
+    transition : all 1s;
+    background-color:yellowgreen;
+    border:3px yellowgreen double;
+    animation-name:Left1;
+    animation-duration:2s;
+    animation-fill-mode:forwards;
+    animation-play-state:paused;
+}
+.left11.scrollanime11 {
+    opacity : 1;
+    transform : translate(0, 0);
+    animation-play-state:running;
+}
+@keyframes Left11{
+0%{width:0px; height:0px; border-radius:0px; background-color:white; opacity:0;}
+100%{width:50px; height:50px; background-color:yellowgreen; border-radius:50px; opacity:1;}
+}
+
+
 /* 右サイドアニメーション */
+.right1 {
+  margin:0 auto;
+    opacity : 0;
+    width:0px; height:0px;
+    transform : translate(0, 0);
+    transition : all 1s;
+    background-color:yellowgreen;
+    border:3px yellowgreen double;
+    animation-name:Right1;
+    animation-duration:2s;
+    animation-fill-mode:forwards;
+    animation-play-state:paused;
+}
+.right1.scrollanime12 {
+    opacity : 1;
+    transform : translate(0, 0);
+    animation-play-state:running;
+}
+@keyframes Right1{
+0%{width:0px; height:0px; border-radius:0px; background-color:white; opacity:0;}
+100%{width:50px; height:50px; background-color:yellowgreen; border-radius:50px; opacity:1;}
+}
+
+
+.right2 {
+  margin:0 auto;
+    opacity : 0;
+    width:0px; height:0px;
+    transform : translate(0, 0);
+    transition : all 1s;
+    background-color:yellowgreen;
+    border:3px yellowgreen double;
+    animation-name:Right1;
+    animation-duration:2s;
+    animation-fill-mode:forwards;
+    animation-play-state:paused;
+}
+.right2.scrollanime13 {
+    opacity : 1;
+    transform : translate(0, 0);
+    animation-play-state:running;
+}
+@keyframes Right2{
+0%{width:0px; height:0px; border-radius:0px; background-color:white; opacity:0;}
+100%{width:50px; height:50px; background-color:yellowgreen; border-radius:50px; opacity:1;}
+}
+
+
+.right3 {
+  margin:0 auto;
+    opacity : 0;
+    width:0px; height:0px;
+    transform : translate(0, 0);
+    transition : all 1s;
+    background-color:yellowgreen;
+    border:3px yellowgreen double;
+    animation-name:Right1;
+    animation-duration:2s;
+    animation-fill-mode:forwards;
+    animation-play-state:paused;
+}
+.right3.scrollanime14 {
+    opacity : 1;
+    transform : translate(0, 0);
+    animation-play-state:running;
+}
+@keyframes Right3{
+0%{width:0px; height:0px; border-radius:0px; background-color:white; opacity:0;}
+100%{width:50px; height:50px; background-color:yellowgreen; border-radius:50px; opacity:1;}
+}
+
+.right4 {
+  margin:0 auto;
+    opacity : 0;
+    width:0px; height:0px;
+    transform : translate(0, 0);
+    transition : all 1s;
+    background-color:yellowgreen;
+    border:3px yellowgreen double;
+    animation-name:Right1;
+    animation-duration:2s;
+    animation-fill-mode:forwards;
+    animation-play-state:paused;
+}
+.right4.scrollanime15 {
+    opacity : 1;
+    transform : translate(0, 0);
+    animation-play-state:running;
+}
+@keyframes Right4{
+0%{width:0px; height:0px; border-radius:0px; background-color:white; opacity:0;}
+100%{width:50px; height:50px; background-color:yellowgreen; border-radius:50px; opacity:1;}
+}
+
+.right5 {
+  margin:0 auto;
+    opacity : 0;
+    width:0px; height:0px;
+    transform : translate(0, 0);
+    transition : all 1s;
+    background-color:yellowgreen;
+    border:3px yellowgreen double;
+    animation-name:Right1;
+    animation-duration:2s;
+    animation-fill-mode:forwards;
+    animation-play-state:paused;
+}
+.right5.scrollanime16 {
+    opacity : 1;
+    transform : translate(0, 0);
+    animation-play-state:running;
+}
+@keyframes Right5{
+0%{width:0px; height:0px; border-radius:0px; background-color:white; opacity:0;}
+100%{width:50px; height:50px; background-color:yellowgreen; border-radius:50px; opacity:1;}
+}
+
+.right6 {
+  margin:0 auto;
+    opacity : 0;
+    width:0px; height:0px;
+    transform : translate(0, 0);
+    transition : all 1s;
+    background-color:yellowgreen;
+    border:3px yellowgreen double;
+    animation-name:Right1;
+    animation-duration:2s;
+    animation-fill-mode:forwards;
+    animation-play-state:paused;
+}
+.right6.scrollanime17 {
+    opacity : 1;
+    transform : translate(0, 0);
+    animation-play-state:running;
+}
+@keyframes Right6{
+0%{width:0px; height:0px; border-radius:0px; background-color:white; opacity:0;}
+100%{width:50px; height:50px; background-color:yellowgreen; border-radius:50px; opacity:1;}
+}
+
+.right7 {
+  margin:0 auto;
+    opacity : 0;
+    width:0px; height:0px;
+    transform : translate(0, 0);
+    transition : all 1s;
+    background-color:yellowgreen;
+    border:3px yellowgreen double;
+    animation-name:Right1;
+    animation-duration:2s;
+    animation-fill-mode:forwards;
+    animation-play-state:paused;
+}
+.right7.scrollanime18 {
+    opacity : 1;
+    transform : translate(0, 0);
+    animation-play-state:running;
+}
+@keyframes Right7{
+0%{width:0px; height:0px; border-radius:0px; background-color:white; opacity:0;}
+100%{width:50px; height:50px; background-color:yellowgreen; border-radius:50px; opacity:1;}
+}
+
+
+.right8 {
+  margin:0 auto;
+    opacity : 0;
+    width:0px; height:0px;
+    transform : translate(0, 0);
+    transition : all 1s;
+    background-color:yellowgreen;
+    border:3px yellowgreen double;
+    animation-name:Right1;
+    animation-duration:2s;
+    animation-fill-mode:forwards;
+    animation-play-state:paused;
+}
+.right8.scrollanime19 {
+    opacity : 1;
+    transform : translate(0, 0);
+    animation-play-state:running;
+}
+@keyframes Right8{
+0%{width:0px; height:0px; border-radius:0px; background-color:white; opacity:0;}
+100%{width:50px; height:50px; background-color:yellowgreen; border-radius:50px; opacity:1;}
+}
+
+.right9 {
+  margin:0 auto;
+    opacity : 0;
+    width:0px; height:0px;
+    transform : translate(0, 0);
+    transition : all 1s;
+    background-color:yellowgreen;
+    border:3px yellowgreen double;
+    animation-name:Right1;
+    animation-duration:2s;
+    animation-fill-mode:forwards;
+    animation-play-state:paused;
+}
+.right9.scrollanime20 {
+    opacity : 1;
+    transform : translate(0, 0);
+    animation-play-state:running;
+}
+@keyframes Right9{
+0%{width:0px; height:0px; border-radius:0px; background-color:white; opacity:0;}
+100%{width:50px; height:50px; background-color:yellowgreen; border-radius:50px; opacity:1;}
+}
+
+.right10 {
+  margin:0 auto;
+    opacity : 0;
+    width:0px; height:0px;
+    transform : translate(0, 0);
+    transition : all 1s;
+    background-color:yellowgreen;
+    border:3px yellowgreen double;
+    animation-name:Right1;
+    animation-duration:2s;
+    animation-fill-mode:forwards;
+    animation-play-state:paused;
+}
+.right10.scrollanime21 {
+    opacity : 1;
+    transform : translate(0, 0);
+    animation-play-state:running;
+}
+@keyframes Right10{
+0%{width:0px; height:0px; border-radius:0px; background-color:white; opacity:0;}
+100%{width:50px; height:50px; background-color:yellowgreen; border-radius:50px; opacity:1;}
+}
+
+
+.right11 {
+  margin:0 auto;
+    opacity : 0;
+    width:0px; height:0px;
+    transform : translate(0, 0);
+    transition : all 1s;
+    background-color:yellowgreen;
+    border:3px yellowgreen double;
+    animation-name:Right1;
+    animation-duration:2s;
+    animation-fill-mode:forwards;
+    animation-play-state:paused;
+}
+.right11.scrollanime22 {
+    opacity : 1;
+    transform : translate(0, 0);
+    animation-play-state:running;
+}
+@keyframes Right11{
+0%{width:0px; height:0px; border-radius:0px; background-color:white; opacity:0;}
+100%{width:50px; height:50px; background-color:yellowgreen; border-radius:50px; opacity:1;}
+}
+
 
 .space1{
   height:150px;

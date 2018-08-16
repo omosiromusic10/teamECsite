@@ -100,6 +100,7 @@ $(function(){
     });
 });
 
+//左サイド
 $(function(){
     $(window).scroll(function (){
         $('.left1').each(function(){
@@ -108,6 +109,277 @@ $(function(){
             var windowHeight = $(window).height();
             if (scroll > elemPos - windowHeight + 250){
                 $(this).addClass('scrollanime1');
+            }
+        });
+    });
+});
+
+$(function(){
+    $(window).scroll(function (){
+        $('.left2').each(function(){
+            var elemPos = $(this).offset().top;
+            var scroll = $(window).scrollTop();
+            var windowHeight = $(window).height();
+            if (scroll > elemPos - windowHeight + 250){
+                $(this).addClass('scrollanime2');
+            }
+        });
+    });
+});
+
+$(function(){
+    $(window).scroll(function (){
+        $('.left3').each(function(){
+            var elemPos = $(this).offset().top;
+            var scroll = $(window).scrollTop();
+            var windowHeight = $(window).height();
+            if (scroll > elemPos - windowHeight + 250){
+                $(this).addClass('scrollanime3');
+            }
+        });
+    });
+});
+
+$(function(){
+    $(window).scroll(function (){
+        $('.left4').each(function(){
+            var elemPos = $(this).offset().top;
+            var scroll = $(window).scrollTop();
+            var windowHeight = $(window).height();
+            if (scroll > elemPos - windowHeight + 250){
+                $(this).addClass('scrollanime4');
+            }
+        });
+    });
+});
+
+$(function(){
+    $(window).scroll(function (){
+        $('.left5').each(function(){
+            var elemPos = $(this).offset().top;
+            var scroll = $(window).scrollTop();
+            var windowHeight = $(window).height();
+            if (scroll > elemPos - windowHeight + 250){
+                $(this).addClass('scrollanime5');
+            }
+        });
+    });
+});
+
+$(function(){
+    $(window).scroll(function (){
+        $('.left6').each(function(){
+            var elemPos = $(this).offset().top;
+            var scroll = $(window).scrollTop();
+            var windowHeight = $(window).height();
+            if (scroll > elemPos - windowHeight + 250){
+                $(this).addClass('scrollanime6');
+            }
+        });
+    });
+});
+$(function(){
+    $(window).scroll(function (){
+        $('.left7').each(function(){
+            var elemPos = $(this).offset().top;
+            var scroll = $(window).scrollTop();
+            var windowHeight = $(window).height();
+            if (scroll > elemPos - windowHeight + 250){
+                $(this).addClass('scrollanime7');
+            }
+        });
+    });
+});
+
+$(function(){
+    $(window).scroll(function (){
+        $('.left8').each(function(){
+            var elemPos = $(this).offset().top;
+            var scroll = $(window).scrollTop();
+            var windowHeight = $(window).height();
+            if (scroll > elemPos - windowHeight + 250){
+                $(this).addClass('scrollanime8');
+            }
+        });
+    });
+});
+
+$(function(){
+    $(window).scroll(function (){
+        $('.left9').each(function(){
+            var elemPos = $(this).offset().top;
+            var scroll = $(window).scrollTop();
+            var windowHeight = $(window).height();
+            if (scroll > elemPos - windowHeight + 250){
+                $(this).addClass('scrollanime9');
+            }
+        });
+    });
+});
+
+$(function(){
+    $(window).scroll(function (){
+        $('.left10').each(function(){
+            var elemPos = $(this).offset().top;
+            var scroll = $(window).scrollTop();
+            var windowHeight = $(window).height();
+            if (scroll > elemPos - windowHeight + 250){
+                $(this).addClass('scrollanime10');
+            }
+        });
+    });
+});
+
+$(function(){
+    $(window).scroll(function (){
+        $('.left11').each(function(){
+            var elemPos = $(this).offset().top;
+            var scroll = $(window).scrollTop();
+            var windowHeight = $(window).height();
+            if (scroll > elemPos - windowHeight + 250){
+                $(this).addClass('scrollanime11');
+            }
+        });
+    });
+});
+// 右サイド
+$(function(){
+    $(window).scroll(function (){
+        $('.right1').each(function(){
+            var elemPos = $(this).offset().top;
+            var scroll = $(window).scrollTop();
+            var windowHeight = $(window).height();
+            if (scroll > elemPos - windowHeight + 250){
+                $(this).addClass('scrollanime12');
+            }
+        });
+    });
+});
+
+$(function(){
+    $(window).scroll(function (){
+        $('.right2').each(function(){
+            var elemPos = $(this).offset().top;
+            var scroll = $(window).scrollTop();
+            var windowHeight = $(window).height();
+            if (scroll > elemPos - windowHeight + 250){
+                $(this).addClass('scrollanime13');
+            }
+        });
+    });
+});
+
+$(function(){
+    $(window).scroll(function (){
+        $('.right3').each(function(){
+            var elemPos = $(this).offset().top;
+            var scroll = $(window).scrollTop();
+            var windowHeight = $(window).height();
+            if (scroll > elemPos - windowHeight + 250){
+                $(this).addClass('scrollanime14');
+            }
+        });
+    });
+});
+
+$(function(){
+    $(window).scroll(function (){
+        $('.right4').each(function(){
+            var elemPos = $(this).offset().top;
+            var scroll = $(window).scrollTop();
+            var windowHeight = $(window).height();
+            if (scroll > elemPos - windowHeight + 250){
+                $(this).addClass('scrollanime15');
+            }
+        });
+    });
+});
+
+$(function(){
+    $(window).scroll(function (){
+        $('.right5').each(function(){
+            var elemPos = $(this).offset().top;
+            var scroll = $(window).scrollTop();
+            var windowHeight = $(window).height();
+            if (scroll > elemPos - windowHeight + 250){
+                $(this).addClass('scrollanime16');
+            }
+        });
+    });
+});
+
+$(function(){
+    $(window).scroll(function (){
+        $('.right6').each(function(){
+            var elemPos = $(this).offset().top;
+            var scroll = $(window).scrollTop();
+            var windowHeight = $(window).height();
+            if (scroll > elemPos - windowHeight + 250){
+                $(this).addClass('scrollanime17');
+            }
+        });
+    });
+});
+$(function(){
+    $(window).scroll(function (){
+        $('.right7').each(function(){
+            var elemPos = $(this).offset().top;
+            var scroll = $(window).scrollTop();
+            var windowHeight = $(window).height();
+            if (scroll > elemPos - windowHeight + 250){
+                $(this).addClass('scrollanime18');
+            }
+        });
+    });
+});
+
+$(function(){
+    $(window).scroll(function (){
+        $('.right8').each(function(){
+            var elemPos = $(this).offset().top;
+            var scroll = $(window).scrollTop();
+            var windowHeight = $(window).height();
+            if (scroll > elemPos - windowHeight + 250){
+                $(this).addClass('scrollanime19');
+            }
+        });
+    });
+});
+
+$(function(){
+    $(window).scroll(function (){
+        $('.right9').each(function(){
+            var elemPos = $(this).offset().top;
+            var scroll = $(window).scrollTop();
+            var windowHeight = $(window).height();
+            if (scroll > elemPos - windowHeight + 250){
+                $(this).addClass('scrollanime20');
+            }
+        });
+    });
+});
+
+$(function(){
+    $(window).scroll(function (){
+        $('.right10').each(function(){
+            var elemPos = $(this).offset().top;
+            var scroll = $(window).scrollTop();
+            var windowHeight = $(window).height();
+            if (scroll > elemPos - windowHeight + 250){
+                $(this).addClass('scrollanime21');
+            }
+        });
+    });
+});
+
+$(function(){
+    $(window).scroll(function (){
+        $('.right11').each(function(){
+            var elemPos = $(this).offset().top;
+            var scroll = $(window).scrollTop();
+            var windowHeight = $(window).height();
+            if (scroll > elemPos - windowHeight + 250){
+                $(this).addClass('scrollanime22');
             }
         });
     });
@@ -131,10 +403,19 @@ $(function(){
 <div class="space1"></div>
 
 <div class="left">
-<div class="left1"></div>
-<div class="left2"></div>
-<div class="left3"></div>
-
+<div class="left1"></div><div class="space1"></div>
+<div class="left2"></div><div class="space1"></div>
+<div class="left3"></div><div class="space1"></div>
+<div class="left4"></div><div class="space1"></div>
+<div class="left5"></div><div class="space1"></div>
+<div class="left6"></div><div class="space1"></div>
+<div class="left7"></div><div class="space1"></div>
+<div class="left8"></div><div class="space1"></div>
+<div class="left9"></div><div class="space1"></div>
+<div class="left10"></div><div class="space1"></div>
+<div class="left11"></div><div class="space1"></div>
+<div class="left11"></div><div class="space1"></div>
+<div class="left11"></div><div class="space1"></div>
 </div>
 
 <div class="center">
@@ -209,6 +490,19 @@ GlanQでは3つのBBQ場と提携しており、<br>食材を各BBQ場に送り�
 
 
 <div class="right">
+<div class="right1"></div><div class="space1"></div>
+<div class="right1"></div><div class="space1"></div>
+<div class="right2"></div><div class="space1"></div>
+<div class="right3"></div><div class="space1"></div>
+<div class="right4"></div><div class="space1"></div>
+<div class="right5"></div><div class="space1"></div>
+<div class="right6"></div><div class="space1"></div>
+<div class="right7"></div><div class="space1"></div>
+<div class="right8"></div><div class="space1"></div>
+<div class="right9"></div><div class="space1"></div>
+<div class="right10"></div><div class="space1"></div>
+<div class="right11"></div><div class="space1"></div>
+<div class="right11"></div><div class="space1"></div>
 </div>
 
 
