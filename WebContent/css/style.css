@@ -230,9 +230,30 @@ font-family: 'Hiragino Kaku Gothic Pro','ヒラギノ角ゴ Pro W3','メイリ�
   }
 }
 
+@-webkit-keyframes RightToLeft {
+  0% {
+    opacity: 0;/* 透明 */
+    transform: translateX(50px);/* X軸方向に50px */
+  }
+  100% {
+    opacity: 1;/* 不透明 */
+    transform: translateX(0);
+  }
+}
 
 /* 下から上へのフェードイン「BottomTotop」の動作内容 */
 @keyframes BottomToTop {
+  0% {
+    opacity: 0;/* 透明 */
+    transform: translateY(50px);/* Y軸方向に50px */
+  }
+  100% {
+    opacity: 1;/* 不透明 */
+    transform: translateY(0);
+  }
+}
+
+@-webkit-keyframes BottomToTop {
   0% {
     opacity: 0;/* 透明 */
     transform: translateY(50px);/* Y軸方向に50px */
