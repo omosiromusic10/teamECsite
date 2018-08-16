@@ -24,19 +24,7 @@
 
   <p>自宅に配送するか、提携しているBBQ場へ直接配送するかを選択できます。</p>
 
-  <!--
-  <figure>
-    <div class="image"><img src="./images/zitaku.jpg" /></div>
-    <figcaption>
 
-      <s:form action="SettlementConfirmAction">
-        <s:submit value="BBQ" type="image" src="./images/zitaku_overray.jpg"/>
-      </s:form>
-
-     <p>testtesttest</p>
-    </figcaption>
-  </figure>
- -->
 
   <div id="image_btn_container">
     <div class="img_button">
@@ -67,35 +55,8 @@
 
 	</div>
 
-
-
-
-<!--
-	<div class="img_button">
-
-      <s:form action="LocationChoiceAction">
-
-	    <s:submit value="BBQ場" class="button_img" type="image" src="./images/bbqzyo_btn.jpg"/>
-
-	  </s:form>
-	  <div class="mask">
-	    <div class="caption">BBQ場へ発送</div>
-	  </div>
-	</div>
- -->
- <!--
-    <div class="myimage">
-      <s:submit value="BBQ場" class="alt_text" type="image" src="./images/bbqzyo_btn.jpg"/>
-    </div>
-
-	<div id="image_btn_container">
-    <s:form action="LocationChoiceAction">
-	  <s:submit value="BBQ場" class="image_submit_btn" type="image" src="./images/bbqzyo_btn.jpg"/>
-    </s:form>
-    </div>
-
   </div>
- -->
+
 
 </div>
 
