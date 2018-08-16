@@ -319,7 +319,7 @@ GlanQでは3つのBBQ場と提携しており、<br>食材を各BBQ場に送り�
 <div class="BBQ1">
 <h3>BBQ場1</h3>
 
-<img src="./images/basyo1.jpg" width="200" height="200" alt="" class="BBQ1_img" >
+<img src="./images/basyo1.jpg" width="180" height="180" alt="" class="BBQ1_img" >
 
 <div class="BBQ1_text">
 <p>お子様連れの方にオススメ♪</p>
@@ -339,7 +339,7 @@ GlanQでは3つのBBQ場と提携しており、<br>食材を各BBQ場に送り�
 <p>このBBQ場の最大のポイント！</p>
 <p>太陽に照らされる眩しい川を</p>
 <p>眺めながら食べるお肉は絶品でしょう♪</p></div>
-<img src="./images/basyo2.jpg" width="200" height="200" alt="" class="BBQ2_img" >
+<img src="./images/basyo2.jpg" width="180" height="180" alt="" class="BBQ2_img" >
 </div>
 
 <div class="space2"></div>
@@ -347,7 +347,7 @@ GlanQでは3つのBBQ場と提携しており、<br>食材を各BBQ場に送り�
 
 <div class="BBQ3">
 <h3>BBQ場3</h3>
-<img src="./images/basyo3.jpg" width="200" height="200" alt="" class="BBQ3_img">
+<img src="./images/basyo3.jpg" width="180" height="180" alt="" class="BBQ3_img">
 <div class="BBQ3_text">
 <p>駅からたったの徒歩5分！</p>
 <p>アクセスの良さが一番のBBQ場です。</p>
