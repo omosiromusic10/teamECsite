@@ -24,6 +24,7 @@
 
   <p>自宅に配送するか、提携しているBBQ場へ直接配送するかを選択できます。</p>
 
+  <!--
   <figure>
     <div class="image"><img src="./images/zitaku.jpg" /></div>
     <figcaption>
@@ -35,23 +36,40 @@
      <p>testtesttest</p>
     </figcaption>
   </figure>
+ -->
 
-  <!--
   <div id="image_btn_container">
     <div class="img_button">
 
       <s:form action="SettlementConfirmAction">
 
-	    <s:submit value="自宅" class="button_img" type="image" src="./images/zitaku.jpg">
+	    <s:submit type="image" src="./images/zitaku.jpg">
 	        <div class="mask">
-	            <div class="caption">自宅へ配送</div>
+	            <div class="caption">自宅に配送</div>
 	        </div>
 	    </s:submit>
 
 	  </s:form>
 
 	</div>
--->
+
+	<div class="img_button">
+
+      <s:form action="LocationChoiceAction">
+
+	    <s:submit type="image" src="./images/bbqzyo_btn.jpg">
+	        <div class="mask">
+	            <div class="caption">BBQ場に配送</div>
+	        </div>
+	    </s:submit>
+
+	  </s:form>
+
+	</div>
+
+
+
+
 <!--
 	<div class="img_button">
 
@@ -65,6 +83,7 @@
 	  </div>
 	</div>
  -->
+ <!--
     <div class="myimage">
       <s:submit value="BBQ場" class="alt_text" type="image" src="./images/bbqzyo_btn.jpg"/>
     </div>
@@ -76,10 +95,10 @@
     </div>
 
   </div>
-
-<!--
-</div>
  -->
+
+</div>
+
 <!-- フッターをインクルード -->
 <jsp:include page="footer.jsp" />
 </body>
