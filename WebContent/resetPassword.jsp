@@ -81,7 +81,6 @@
 						</div>
 					</s:if>
 
-<section>
 
     <s:form action="ResetPasswordConfirmAction" cssClass="form">
 
@@ -115,13 +114,13 @@
 
 					<div class="submit_btn_box">
 						<div id=".contents-btn-set">
-							<s:submit value="登録" />
+							<s:submit value="登録" class="submit_btn" />
 						</div>
 					</div>
 
 			</s:form>
 
-		</section>
+
 
 </div>
 <jsp:include page="footer.jsp"/>
