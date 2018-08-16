@@ -16,9 +16,14 @@
 <div id="contents">
 <h1>決済完了画面</h1>
 <div class="success">
-<h1>決済が完了しました。</h1>
+<div>
+	<img class = "kusa" src= "images/kusa.svg">
+	<img class = "ushi" src= "images/ushi.svg">
+	<img class = "kusa" src= "images/kusa.svg">
+</div>
+<p>決済が完了しました。
 <br>
-<h3>3秒後にホーム画面に戻ります。</h3>
+3秒後にホーム画面に戻ります。</p>
 </div>
 </div>
 

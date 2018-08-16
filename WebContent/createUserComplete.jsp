@@ -16,16 +16,14 @@
 		<div id="contents">
 			<h1>登録完了画面</h1>
 			<div class="success">
-				ユーザー登録が完了しました。
+			<div>
+            	<img class = "kusa" src= "images/kusa.svg">
+            	<img class = "ushi" src= "images/ushi.svg">
+            	<img class = "kusa" src= "images/kusa.svg">
+        	</div>
+				<p>ユーザー登録が完了しました。</p>
 			</div>
 		</div>
-
-		<div>
-            <img class = "kusa" src= "images/kusa.svg">
-            <img class = "ushi" src= "images/ushi.svg">
-            <img class = "kusa" src= "images/kusa.svg">
-        </div>
-
 		<div id="footer">
 			<s:include value="footer.jsp" />
 		</div>

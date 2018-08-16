@@ -14,8 +14,13 @@
 <jsp:include page="header.jsp" />
 <div id="contents">
 	<h1>パスワード再設定完了画面</h1>
-		<div class="complete">
-		パスワード再設定が完了しました。
+		<div class="success">
+		<div>
+			<img class = "kusa" src= "images/kusa.svg">
+			<img class = "ushi" src= "images/ushi.svg">
+			<img class = "kusa" src= "images/kusa.svg">
+        </div>
+		<p>パスワード再設定が完了しました。</p>
 		</div>
 </div>
 <s:include value="footer.jsp"/>

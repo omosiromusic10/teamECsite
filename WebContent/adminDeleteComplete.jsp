@@ -14,10 +14,16 @@
 
 <body>
 <jsp:include page="header.jsp"/>
-
 <div id="contents">
      <h1>商品削除画面</h1>
-     商品を削除しました。
+     	<div class = "success">
+		<div>
+			<img class = "kusa" src= "images/kusa.svg">
+			<img class = "ushi" src= "images/ushi.svg">
+			<img class = "kusa" src= "images/kusa.svg">
+		</div>
+     	<p>商品を削除しました。</p>
+     	</div>
 </div>
 
 <s:include value="footer.jsp"/>

@@ -17,7 +17,12 @@
 
 <!-- 完了画面表示 -->
 <div class="success">
-宛先情報の登録が完了しました。
+<div>
+	<img class = "kusa" src= "images/kusa.svg">
+	<img class = "ushi" src= "images/ushi.svg">
+	<img class = "kusa" src= "images/kusa.svg">
+</div>
+<p>宛先情報の登録が完了しました。</p>
 </div>
 
 </div>
