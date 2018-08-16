@@ -69,6 +69,7 @@ font-family: 'Hiragino Kaku Gothic Pro','ヒラギノ角ゴ Pro W3','メイリ�
     transition: all 0.1s linear 0s; /*0.3s は変化するのにかかる時間*/
     width: 100%;
     z-index: -1;
+    pointer-events: none;
 }
 #header-menu:hover {
     transform: translate(-300px); /*メニュー横幅①と合わせる*/
