@@ -52,17 +52,17 @@ function goAdminAction(){
 }
 </script>
 <style type="text/css">
-a:link { color:#96e6a1; text-decoration:none }
-a:visited { color:#96e6a1; text-decoration:none }
-a:hover { color:#96e6a1; text-decoration:none }
-a:active { color:#96e6a1; text-decoration:none }
+.headerLogo:link { color:#96e6a1; text-decoration:none }
+.headerLogo:visited { color:#96e6a1; text-decoration:none }
+.headerLogo:hover { color:#96e6a1; text-decoration:none }
+.headerLogo:active { color:#96e6a1; text-decoration:none }
 </style>
 </head>
 
 <body>
 <header>
              <div id="header">
-                     <div id="header-title"><a href="http://localhost:8080/glanq/HomeAction">GLANQ</a></div>
+                     <div id="header-title"><a class="headerLogo" href="http://localhost:8080/glanq/HomeAction">GLANQ</a></div>
                      <div id="header-menu">
                              <ul>
                                   <s:form id="form" name="form">
