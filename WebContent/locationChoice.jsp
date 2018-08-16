@@ -35,7 +35,9 @@
                   <s:hidden name="userAddress" value="%{userAddress}"/>
                   <s:submit type="image" src="./images/bbq%{id}.jpg">
                       <div class="mask">
-	                      <div class="caption">ここに送る</div>
+                          <s:if test="id==1"><div class="caption">家族と</div></s:if>
+                          <s:if test="id==2"><div class="caption">友達と</div></s:if>
+                          <s:if test="id==3"><div class="caption">恋人と</div></s:if>
 	                  </div>
 	              </s:submit>
 	          </s:form>
