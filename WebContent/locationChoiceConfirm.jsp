@@ -20,14 +20,16 @@
     <!-- 以前から入っているsession情報を読み込ませ、内容を表示させる。 -->
 
     <s:form action="SettlementCompleteAction">
-    <table>
-    <tr>
-    <td><!-- ここに画像を挿入 img src を用いて --></td>
-    </tr>
-    </table>
-    <table>
+
+    <table class="location_table">
 
     <tr>
+        <td rowspan="7">
+        <s:if test="parkId==1"><img src="./images/bbq1.jpg"></s:if>
+        <s:if test="parkId==2"><img src="./images/bbq2.jpg"></s:if>
+        <s:if test="parkId==3"><img src="./images/bbq3.jpg"></s:if>
+
+        </td>
         <td><s:property value="familyName"/></td>
     </tr>
     <tr>
@@ -48,12 +50,11 @@
     <tr>
         <td><s:property value="userAddress"/></td>
     </tr>
-
+    </table>
     <s:hidden name="id" value="%{parkId}"/>
+    <br><br>
 
     <s:submit value="決済" class="submit_btn"/>
-
-    </table>
     </s:form>
 
 <h2>やり直したい方はこちら</h2>
