@@ -18,7 +18,7 @@
 
   <!-- とりあえずで作ったからレイアウトは許してほしい -->
  <s:iterator value="#session.destinationInfoDtoList" status="st">
-  <div>
+  <div id="location_table_box">
   <s:form action="LocationChoiceConfirmAction">
       <s:hidden name="parkId" value="%{id}"/>
       <s:hidden name="firstName" value="%{firstName}"/>
@@ -29,11 +29,12 @@
       <s:hidden name="telNumber" value="%{telNumber}"/>
       <s:hidden name="userAddress" value="%{userAddress}"/>
 
-      <table id="location_table">
-          <tr><td rowspan="7">
-                  <s:if test="id==1"><s:submit type="image" src="./images/bbq1.jpg"/></s:if>
-                  <s:if test="id==2"><s:submit type="image" src="./images/bbq2.jpg"/></s:if>
-                  <s:if test="id==3"><s:submit type="image" src="./images/bbq3.jpg"/></s:if>
+      <table class="location_table">
+          <tr>
+              <td rowspan="7">
+                  <s:if test="id==1"><s:submit class="img" type="image" src="./images/bbq1.jpg"/></s:if>
+                  <s:if test="id==2"><s:submit class="img" type="image" src="./images/bbq2.jpg"/></s:if>
+                  <s:if test="id==3"><s:submit class="img" type="image" src="./images/bbq3.jpg"/></s:if>
               </td>
               <td>会場名</td>
               <td><s:property value="firstName"/></td>
