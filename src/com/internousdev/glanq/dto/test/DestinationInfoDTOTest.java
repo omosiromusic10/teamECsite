@@ -2,6 +2,10 @@ package com.internousdev.glanq.dto.test;
 
 import static org.junit.Assert.*;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import org.junit.Test;
 
 import com.internousdev.glanq.dto.DestinationInfoDTO;
@@ -962,6 +966,1140 @@ public class DestinationInfoDTOTest {
 		String actual = dto.getFamilyNameKana();
 		assertEquals(expected, actual);
 	}
+
+	// set FamilyKana test
+
+	@Test
+	public void testSetFamilyNameKana1() {
+		DestinationInfoDTO dto = new DestinationInfoDTO();
+		String expected="0";
+
+		dto.setFamilyNameKana(expected);
+		String actual = dto.getFamilyNameKana();
+		assertEquals(expected, actual);
+	}
+
+	@Test
+	public void testSetFamilyNameKana2() {
+		DestinationInfoDTO dto = new DestinationInfoDTO();
+		String expected="2147483647";
+
+		dto.setFamilyNameKana(expected);
+		String actual = dto.getFamilyNameKana();
+		assertEquals(expected, actual);
+	}
+
+	@Test
+	public void testSetFamilyNameKana3() {
+		DestinationInfoDTO dto = new DestinationInfoDTO();
+		String expected="-2147483647";
+
+		dto.setFamilyNameKana(expected);
+		String actual = dto.getFamilyNameKana();
+		assertEquals(expected, actual);
+	}
+
+	@Test
+	public void testSetFamilyNameKana4() {
+		DestinationInfoDTO dto = new DestinationInfoDTO();
+		String expected="null";
+
+		dto.setFamilyNameKana(expected);
+		String actual = dto.getFamilyNameKana();
+		assertEquals(expected, actual);
+	}
+
+	@Test
+	public void testSetFamilyNameKana5() {
+		DestinationInfoDTO dto = new DestinationInfoDTO();
+		String expected="";
+
+		dto.setFamilyNameKana(expected);
+		String actual = dto.getFamilyNameKana();
+		assertEquals(expected, actual);
+	}
+
+	@Test
+	public void testSetFamilyNameKana6() {
+		DestinationInfoDTO dto = new DestinationInfoDTO();
+		String expected=" ";
+
+		dto.setFamilyNameKana(expected);
+		String actual = dto.getFamilyNameKana();
+		assertEquals(expected, actual);
+	}
+
+	@Test
+	public void testSetFamilyNameKana7() {
+		DestinationInfoDTO dto = new DestinationInfoDTO();
+		String expected="　";
+
+		dto.setFamilyNameKana(expected);
+		String actual = dto.getFamilyNameKana();
+		assertEquals(expected, actual);
+	}
+
+	@Test
+	public void testSetFamilyNameKana8() {
+		DestinationInfoDTO dto = new DestinationInfoDTO();
+		String expected="abc123";
+
+		dto.setFamilyNameKana(expected);
+		String actual = dto.getFamilyNameKana();
+		assertEquals(expected, actual);
+	}
+
+	@Test
+	public void testSetFamilyNameKana9() {
+		DestinationInfoDTO dto = new DestinationInfoDTO();
+		String expected="abc123";
+
+		dto.setFamilyNameKana(expected);
+		String actual = dto.getFamilyNameKana();
+		assertEquals(expected, actual);
+	}
+
+	@Test
+	public void testSetFamilyNameKana10() {
+		DestinationInfoDTO dto = new DestinationInfoDTO();
+		String expected="abc123あいう１２３";
+
+		dto.setFamilyNameKana(expected);
+		String actual = dto.getFamilyNameKana();
+		assertEquals(expected, actual);
+	}
+
+	@Test
+	public void testSetFamilyNameKana11() {
+		DestinationInfoDTO dto = new DestinationInfoDTO();
+		String expected="abc123あいう１２３漢字";
+
+		dto.setFamilyNameKana(expected);
+		String actual = dto.getFamilyNameKana();
+		assertEquals(expected, actual);
+	}
+
+	@Test
+	public void testSetFamilyNameKana12() {
+		DestinationInfoDTO dto = new DestinationInfoDTO();
+		String expected="ａｂｃあいう１２３漢字";
+
+		dto.setFamilyNameKana(expected);
+		String actual = dto.getFamilyNameKana();
+		assertEquals(expected, actual);
+	}
+
+	// get FirstNameKana test
+
+	@Test
+	public void testGetFirstNameKana() {
+		DestinationInfoDTO dto = new DestinationInfoDTO();
+		String expected="0";
+
+		dto.setFirstNameKana(expected);
+		String actual = dto.getFirstNameKana();
+		assertEquals(expected, actual);
+	}
+
+	@Test
+	public void testGetFirstNameKana2() {
+		DestinationInfoDTO dto = new DestinationInfoDTO();
+		String expected="2147483647";
+
+		dto.setFirstNameKana(expected);
+		String actual = dto.getFirstNameKana();
+		assertEquals(expected, actual);
+	}
+
+	@Test
+	public void testGetFirstNameKana3() {
+		DestinationInfoDTO dto = new DestinationInfoDTO();
+		String expected="-2147483647";
+
+		dto.setFirstNameKana(expected);
+		String actual = dto.getFirstNameKana();
+		assertEquals(expected, actual);
+	}
+
+	@Test
+	public void testGetFirstNameKana4() {
+		DestinationInfoDTO dto = new DestinationInfoDTO();
+		String expected="null";
+
+		dto.setFirstNameKana(expected);
+		String actual = dto.getFirstNameKana();
+		assertEquals(expected, actual);
+	}
+
+	@Test
+	public void testGetFirstNameKana5() {
+		DestinationInfoDTO dto = new DestinationInfoDTO();
+		String expected="";
+
+		dto.setFirstNameKana(expected);
+		String actual = dto.getFirstNameKana();
+		assertEquals(expected, actual);
+	}
+
+	@Test
+	public void testGetFirstNameKana6() {
+		DestinationInfoDTO dto = new DestinationInfoDTO();
+		String expected= " ";
+
+		dto.setFirstNameKana(expected);
+		String actual = dto.getFirstNameKana();
+		assertEquals(expected, actual);
+	}
+
+	@Test
+	public void testGetFirstNameKana7() {
+		DestinationInfoDTO dto = new DestinationInfoDTO();
+		String expected= "　";
+
+		dto.setFirstNameKana(expected);
+		String actual = dto.getFirstNameKana();
+		assertEquals(expected, actual);
+	}
+
+	@Test
+	public void testGetFirstNameKana8() {
+		DestinationInfoDTO dto = new DestinationInfoDTO();
+		String expected= "abc123";
+
+		dto.setFirstNameKana(expected);
+		String actual = dto.getFirstNameKana();
+		assertEquals(expected, actual);
+	}
+
+	@Test
+	public void testGetFirstNameKana9() {
+		DestinationInfoDTO dto = new DestinationInfoDTO();
+		String expected= "あいう１２３";
+
+		dto.setFirstNameKana(expected);
+		String actual = dto.getFirstNameKana();
+		assertEquals(expected, actual);
+	}
+
+	@Test
+	public void testGetFirstNameKana10() {
+		DestinationInfoDTO dto = new DestinationInfoDTO();
+		String expected= "abc123あいう１２３";
+
+		dto.setFirstNameKana(expected);
+		String actual = dto.getFirstNameKana();
+		assertEquals(expected, actual);
+	}
+
+	@Test
+	public void testGetFirstNameKana11() {
+		DestinationInfoDTO dto = new DestinationInfoDTO();
+		String expected= "abc123あいう１２３漢字";
+
+		dto.setFirstNameKana(expected);
+		String actual = dto.getFirstNameKana();
+		assertEquals(expected, actual);
+	}
+
+	@Test
+	public void testGetFirstNameKana12() {
+		DestinationInfoDTO dto = new DestinationInfoDTO();
+		String expected= "ａｂｃあいう１２３漢字";
+
+		dto.setFirstNameKana(expected);
+		String actual = dto.getFirstNameKana();
+		assertEquals(expected, actual);
+	}
+
+	@Test
+	public void testSetFirstNameKana1() {
+		DestinationInfoDTO dto = new DestinationInfoDTO();
+		String expected="0";
+
+		dto.setFirstNameKana(expected);
+		String actual = dto.getFirstNameKana();
+		assertEquals(expected, actual);
+	}
+
+	@Test
+	public void testSetFirstNameKana2() {
+		DestinationInfoDTO dto = new DestinationInfoDTO();
+		String expected="2147483647";
+
+		dto.setFirstNameKana(expected);
+		String actual = dto.getFirstNameKana();
+		assertEquals(expected, actual);
+	}
+
+	@Test
+	public void testSetFirstNameKana3() {
+		DestinationInfoDTO dto = new DestinationInfoDTO();
+		String expected="-2147483647";
+
+		dto.setFirstNameKana(expected);
+		String actual = dto.getFirstNameKana();
+		assertEquals(expected, actual);
+	}
+
+	@Test
+	public void testSetFirstNameKana4() {
+		DestinationInfoDTO dto = new DestinationInfoDTO();
+		String expected="null";
+
+		dto.setFirstNameKana(expected);
+		String actual = dto.getFirstNameKana();
+		assertEquals(expected, actual);
+	}
+
+	@Test
+	public void testSetFirstNameKana5() {
+		DestinationInfoDTO dto = new DestinationInfoDTO();
+		String expected="";
+
+		dto.setFirstNameKana(expected);
+		String actual = dto.getFirstNameKana();
+		assertEquals(expected, actual);
+	}
+
+	@Test
+	public void testSetFirstNameKana6() {
+		DestinationInfoDTO dto = new DestinationInfoDTO();
+		String expected= " ";
+
+		dto.setFirstNameKana(expected);
+		String actual = dto.getFirstNameKana();
+		assertEquals(expected, actual);
+	}
+
+	@Test
+	public void testSetFirstNameKana7() {
+		DestinationInfoDTO dto = new DestinationInfoDTO();
+		String expected= "　";
+
+		dto.setFirstNameKana(expected);
+		String actual = dto.getFirstNameKana();
+		assertEquals(expected, actual);
+	}
+
+	@Test
+	public void testSetFirstNameKana8() {
+		DestinationInfoDTO dto = new DestinationInfoDTO();
+		String expected= "abc123";
+
+		dto.setFirstNameKana(expected);
+		String actual = dto.getFirstNameKana();
+		assertEquals(expected, actual);
+	}
+
+	@Test
+	public void testSetFirstNameKana9() {
+		DestinationInfoDTO dto = new DestinationInfoDTO();
+		String expected= "あいう１２３";
+
+		dto.setFirstNameKana(expected);
+		String actual = dto.getFirstNameKana();
+		assertEquals(expected, actual);
+	}
+
+	@Test
+	public void testSetFirstNameKana10() {
+		DestinationInfoDTO dto = new DestinationInfoDTO();
+		String expected= "abc123あいう１２３";
+
+		dto.setFirstNameKana(expected);
+		String actual = dto.getFirstNameKana();
+		assertEquals(expected, actual);
+	}
+
+	@Test
+	public void testSetFirstNameKana11() {
+		DestinationInfoDTO dto = new DestinationInfoDTO();
+		String expected= "abc123あいう１２３漢字";
+
+		dto.setFirstNameKana(expected);
+		String actual = dto.getFirstNameKana();
+		assertEquals(expected, actual);
+	}
+
+	// get UserAddress test
+
+	@Test
+	public void testGetUserAddress1() {
+		DestinationInfoDTO dto = new DestinationInfoDTO();
+		String expected= "0";
+
+		dto.setUserAddress(expected);
+		String actual = dto.getUserAddress();
+		assertEquals(expected, actual);
+	}
+
+	@Test
+	public void testGetUserAddress2() {
+		DestinationInfoDTO dto = new DestinationInfoDTO();
+		String expected= "2147483647";
+
+		dto.setUserAddress(expected);
+		String actual = dto.getUserAddress();
+		assertEquals(expected, actual);
+	}
+
+	@Test
+	public void testGetUserAddress3() {
+		DestinationInfoDTO dto = new DestinationInfoDTO();
+		String expected= "-2147483647";
+
+		dto.setUserAddress(expected);
+		String actual = dto.getUserAddress();
+		assertEquals(expected, actual);
+	}
+
+	@Test
+	public void testGetUserAddress4() {
+		DestinationInfoDTO dto = new DestinationInfoDTO();
+		String expected= "null";
+
+		dto.setUserAddress(expected);
+		String actual = dto.getUserAddress();
+		assertEquals(expected, actual);
+	}
+
+	@Test
+	public void testGetUserAddress5() {
+		DestinationInfoDTO dto = new DestinationInfoDTO();
+		String expected= "";
+
+		dto.setUserAddress(expected);
+		String actual = dto.getUserAddress();
+		assertEquals(expected, actual);
+	}
+
+	@Test
+	public void testGetUserAddress6() {
+		DestinationInfoDTO dto = new DestinationInfoDTO();
+		String expected= " ";
+
+		dto.setUserAddress(expected);
+		String actual = dto.getUserAddress();
+		assertEquals(expected, actual);
+	}
+
+	@Test
+	public void testGetUserAddress7() {
+		DestinationInfoDTO dto = new DestinationInfoDTO();
+		String expected= "　";
+
+		dto.setUserAddress(expected);
+		String actual = dto.getUserAddress();
+		assertEquals(expected, actual);
+	}
+
+	@Test
+	public void testGetUserAddress8() {
+		DestinationInfoDTO dto = new DestinationInfoDTO();
+		String expected= "abc123";
+
+		dto.setUserAddress(expected);
+		String actual = dto.getUserAddress();
+		assertEquals(expected, actual);
+	}
+
+	@Test
+	public void testGetUserAddress9() {
+		DestinationInfoDTO dto = new DestinationInfoDTO();
+		String expected= "あいう１２３";
+
+		dto.setUserAddress(expected);
+		String actual = dto.getUserAddress();
+		assertEquals(expected, actual);
+	}
+
+	@Test
+	public void testGetUserAddress10() {
+		DestinationInfoDTO dto = new DestinationInfoDTO();
+		String expected= "abc123あいう１２３";
+
+		dto.setUserAddress(expected);
+		String actual = dto.getUserAddress();
+		assertEquals(expected, actual);
+	}
+
+	@Test
+	public void testGetUserAddress11() {
+		DestinationInfoDTO dto = new DestinationInfoDTO();
+		String expected= "abc123あいう１２３漢字";
+
+		dto.setUserAddress(expected);
+		String actual = dto.getUserAddress();
+		assertEquals(expected, actual);
+	}
+
+	@Test
+	public void testGetUserAddress12() {
+		DestinationInfoDTO dto = new DestinationInfoDTO();
+		String expected= "ａｂｃあいう１２３漢字";
+
+		dto.setUserAddress(expected);
+		String actual = dto.getUserAddress();
+		assertEquals(expected, actual);
+	}
+
+	//set UserAddress test
+
+	@Test
+	public void testSetUserAddress1() {
+		DestinationInfoDTO dto = new DestinationInfoDTO();
+		String expected= "0";
+
+		dto.setUserAddress(expected);
+		String actual = dto.getUserAddress();
+		assertEquals(expected, actual);
+	}
+
+	@Test
+	public void testSetUserAddress2() {
+		DestinationInfoDTO dto = new DestinationInfoDTO();
+		String expected= "2147483647";
+
+		dto.setUserAddress(expected);
+		String actual = dto.getUserAddress();
+		assertEquals(expected, actual);
+	}
+
+	@Test
+	public void testSetUserAddress3() {
+		DestinationInfoDTO dto = new DestinationInfoDTO();
+		String expected= "-2147483647";
+
+		dto.setUserAddress(expected);
+		String actual = dto.getUserAddress();
+		assertEquals(expected, actual);
+	}
+
+	@Test
+	public void testSetUserAddress4() {
+		DestinationInfoDTO dto = new DestinationInfoDTO();
+		String expected= "null";
+
+		dto.setUserAddress(expected);
+		String actual = dto.getUserAddress();
+		assertEquals(expected, actual);
+	}
+
+	@Test
+	public void testSetUserAddress5() {
+		DestinationInfoDTO dto = new DestinationInfoDTO();
+		String expected= "";
+
+		dto.setUserAddress(expected);
+		String actual = dto.getUserAddress();
+		assertEquals(expected, actual);
+	}
+
+	@Test
+	public void testSetUserAddress6() {
+		DestinationInfoDTO dto = new DestinationInfoDTO();
+		String expected= " ";
+
+		dto.setUserAddress(expected);
+		String actual = dto.getUserAddress();
+		assertEquals(expected, actual);
+	}
+
+	@Test
+	public void testSetUserAddress7() {
+		DestinationInfoDTO dto = new DestinationInfoDTO();
+		String expected= "　";
+
+		dto.setUserAddress(expected);
+		String actual = dto.getUserAddress();
+		assertEquals(expected, actual);
+	}
+
+	@Test
+	public void testSetUserAddress8() {
+		DestinationInfoDTO dto = new DestinationInfoDTO();
+		String expected= "abc123";
+
+		dto.setUserAddress(expected);
+		String actual = dto.getUserAddress();
+		assertEquals(expected, actual);
+	}
+
+	@Test
+	public void testSetUserAddress9() {
+		DestinationInfoDTO dto = new DestinationInfoDTO();
+		String expected= "あいう１２３";
+
+		dto.setUserAddress(expected);
+		String actual = dto.getUserAddress();
+		assertEquals(expected, actual);
+	}
+
+	@Test
+	public void testSetUserAddress10() {
+		DestinationInfoDTO dto = new DestinationInfoDTO();
+		String expected= "abc123あいう１２３";
+
+		dto.setUserAddress(expected);
+		String actual = dto.getUserAddress();
+		assertEquals(expected, actual);
+	}
+
+	@Test
+	public void testSetUserAddress11() {
+		DestinationInfoDTO dto = new DestinationInfoDTO();
+		String expected= "abc123あいう１２３漢字";
+
+		dto.setUserAddress(expected);
+		String actual = dto.getUserAddress();
+		assertEquals(expected, actual);
+	}
+
+	@Test
+	public void testSetUserAddress12() {
+		DestinationInfoDTO dto = new DestinationInfoDTO();
+		String expected= "ａｂｃあいう１２３漢字";
+
+		dto.setUserAddress(expected);
+		String actual = dto.getUserAddress();
+		assertEquals(expected, actual);
+	}
+
+	// get Telnumber test
+	@Test
+	public void testGetTelNumber1() {
+		DestinationInfoDTO dto = new DestinationInfoDTO();
+		String expected= "0";
+
+		dto.setTelNumber(expected);
+		String actual = dto.getTelNumber();
+		assertEquals(expected, actual);
+	}
+
+	@Test
+	public void testGetTelNumber2() {
+		DestinationInfoDTO dto = new DestinationInfoDTO();
+		String expected= "2147483647";
+
+		dto.setTelNumber(expected);
+		String actual = dto.getTelNumber();
+		assertEquals(expected, actual);
+	}
+
+	@Test
+	public void testGetTelNumber3() {
+		DestinationInfoDTO dto = new DestinationInfoDTO();
+		String expected= "-2147483647";
+
+		dto.setTelNumber(expected);
+		String actual = dto.getTelNumber();
+		assertEquals(expected, actual);
+	}
+
+	@Test
+	public void testGetTelNumber4() {
+		DestinationInfoDTO dto = new DestinationInfoDTO();
+		String expected= "null";
+
+		dto.setTelNumber(expected);
+		String actual = dto.getTelNumber();
+		assertEquals(expected, actual);
+	}
+
+	@Test
+	public void testGetTelNumber5() {
+		DestinationInfoDTO dto = new DestinationInfoDTO();
+		String expected= "";
+
+		dto.setTelNumber(expected);
+		String actual = dto.getTelNumber();
+		assertEquals(expected, actual);
+	}
+
+	@Test
+	public void testGetTelNumber6() {
+		DestinationInfoDTO dto = new DestinationInfoDTO();
+		String expected= " ";
+
+		dto.setTelNumber(expected);
+		String actual = dto.getTelNumber();
+		assertEquals(expected, actual);
+	}
+
+	@Test
+	public void testGetTelNumber7() {
+		DestinationInfoDTO dto = new DestinationInfoDTO();
+		String expected= "　";
+
+		dto.setTelNumber(expected);
+		String actual = dto.getTelNumber();
+		assertEquals(expected, actual);
+	}
+
+	@Test
+	public void testGetTelNumber8() {
+		DestinationInfoDTO dto = new DestinationInfoDTO();
+		String expected= "abc123";
+
+		dto.setTelNumber(expected);
+		String actual = dto.getTelNumber();
+		assertEquals(expected, actual);
+	}
+
+	@Test
+	public void testGetTelNumber9() {
+		DestinationInfoDTO dto = new DestinationInfoDTO();
+		String expected= "あいう１２３";
+
+		dto.setTelNumber(expected);
+		String actual = dto.getTelNumber();
+		assertEquals(expected, actual);
+	}
+
+	@Test
+	public void testGetTelNumber10() {
+		DestinationInfoDTO dto = new DestinationInfoDTO();
+		String expected= "abc123あいう１２３";
+
+		dto.setTelNumber(expected);
+		String actual = dto.getTelNumber();
+		assertEquals(expected, actual);
+	}
+
+	@Test
+	public void testGetTelNumber11() {
+		DestinationInfoDTO dto = new DestinationInfoDTO();
+		String expected= "abc123あいう１２３漢字";
+
+		dto.setTelNumber(expected);
+		String actual = dto.getTelNumber();
+		assertEquals(expected, actual);
+	}
+
+	@Test
+	public void testGetTelNumber12() {
+		DestinationInfoDTO dto = new DestinationInfoDTO();
+		String expected= "ａｂｃあいう１２３漢字";
+
+		dto.setTelNumber(expected);
+		String actual = dto.getTelNumber();
+		assertEquals(expected, actual);
+	}
+
+	//set TelNumber
+	@Test
+	public void testSetTelNumber1() {
+		DestinationInfoDTO dto = new DestinationInfoDTO();
+		String expected= "0";
+
+		dto.setTelNumber(expected);
+		String actual = dto.getTelNumber();
+		assertEquals(expected, actual);
+	}
+	@Test
+	public void testSetTelNumber2() {
+		DestinationInfoDTO dto = new DestinationInfoDTO();
+		String expected= "2147483647";
+
+		dto.setTelNumber(expected);
+		String actual = dto.getTelNumber();
+		assertEquals(expected, actual);
+	}
+	@Test
+	public void testSetTelNumber3() {
+		DestinationInfoDTO dto = new DestinationInfoDTO();
+		String expected= "-2147483647";
+
+		dto.setTelNumber(expected);
+		String actual = dto.getTelNumber();
+		assertEquals(expected, actual);
+	}
+	@Test
+	public void testSetTelNumber4() {
+		DestinationInfoDTO dto = new DestinationInfoDTO();
+		String expected= "null";
+
+		dto.setTelNumber(expected);
+		String actual = dto.getTelNumber();
+		assertEquals(expected, actual);
+	}
+	@Test
+	public void testSetTelNumber5() {
+		DestinationInfoDTO dto = new DestinationInfoDTO();
+		String expected= "";
+
+		dto.setTelNumber(expected);
+		String actual = dto.getTelNumber();
+		assertEquals(expected, actual);
+	}
+	@Test
+	public void testSetTelNumber6() {
+		DestinationInfoDTO dto = new DestinationInfoDTO();
+		String expected= " ";
+
+		dto.setTelNumber(expected);
+		String actual = dto.getTelNumber();
+		assertEquals(expected, actual);
+	}
+	@Test
+	public void testSetTelNumber7() {
+		DestinationInfoDTO dto = new DestinationInfoDTO();
+		String expected= "　";
+
+		dto.setTelNumber(expected);
+		String actual = dto.getTelNumber();
+		assertEquals(expected, actual);
+	}
+	@Test
+	public void testSetTelNumber8() {
+		DestinationInfoDTO dto = new DestinationInfoDTO();
+		String expected= "abc123";
+
+		dto.setTelNumber(expected);
+		String actual = dto.getTelNumber();
+		assertEquals(expected, actual);
+	}
+	@Test
+	public void testSetTelNumber9() {
+		DestinationInfoDTO dto = new DestinationInfoDTO();
+		String expected= "あいう１２３";
+
+		dto.setTelNumber(expected);
+		String actual = dto.getTelNumber();
+		assertEquals(expected, actual);
+	}
+	@Test
+	public void testSetTelNumber10() {
+		DestinationInfoDTO dto = new DestinationInfoDTO();
+		String expected= "abc123あいう１２３";
+
+		dto.setTelNumber(expected);
+		String actual = dto.getTelNumber();
+		assertEquals(expected, actual);
+	}
+	@Test
+	public void testSetTelNumber11() {
+		DestinationInfoDTO dto = new DestinationInfoDTO();
+		String expected= "abc123あいう１２３漢字";
+
+		dto.setTelNumber(expected);
+		String actual = dto.getTelNumber();
+		assertEquals(expected, actual);
+	}
+	@Test
+	public void testSetTelNumber12() {
+		DestinationInfoDTO dto = new DestinationInfoDTO();
+		String expected= "ａｂｃあいう１２３漢字";
+
+		dto.setTelNumber(expected);
+		String actual = dto.getTelNumber();
+		assertEquals(expected, actual);
+	}
+
+	// get Email test
+
+	@Test
+	public void testGetEmail1() {
+		DestinationInfoDTO dto = new DestinationInfoDTO();
+		String expected= "0";
+
+		dto.setEmail(expected);
+		String actual = dto.getEmail();
+		assertEquals(expected, actual);
+	}
+	@Test
+	public void testGetEmail2() {
+		DestinationInfoDTO dto = new DestinationInfoDTO();
+		String expected= "2147483647";
+
+		dto.setEmail(expected);
+		String actual = dto.getEmail();
+		assertEquals(expected, actual);
+	}
+	@Test
+	public void testGetEmail3() {
+		DestinationInfoDTO dto = new DestinationInfoDTO();
+		String expected= "-2147483647";
+
+		dto.setEmail(expected);
+		String actual = dto.getEmail();
+		assertEquals(expected, actual);
+	}
+	@Test
+	public void testGetEmail4() {
+		DestinationInfoDTO dto = new DestinationInfoDTO();
+		String expected= "null";
+
+		dto.setEmail(expected);
+		String actual = dto.getEmail();
+		assertEquals(expected, actual);
+	}
+	@Test
+	public void testGetEmail5() {
+		DestinationInfoDTO dto = new DestinationInfoDTO();
+		String expected= "";
+
+		dto.setEmail(expected);
+		String actual = dto.getEmail();
+		assertEquals(expected, actual);
+	}
+	@Test
+	public void testGetEmail6() {
+		DestinationInfoDTO dto = new DestinationInfoDTO();
+		String expected= " ";
+
+		dto.setEmail(expected);
+		String actual = dto.getEmail();
+		assertEquals(expected, actual);
+	}
+	@Test
+	public void testGetEmail7() {
+		DestinationInfoDTO dto = new DestinationInfoDTO();
+		String expected= "　";
+
+		dto.setEmail(expected);
+		String actual = dto.getEmail();
+		assertEquals(expected, actual);
+	}
+	@Test
+	public void testGetEmail8() {
+		DestinationInfoDTO dto = new DestinationInfoDTO();
+		String expected= "abc123";
+
+		dto.setEmail(expected);
+		String actual = dto.getEmail();
+		assertEquals(expected, actual);
+	}
+	@Test
+	public void testGetEmail9() {
+		DestinationInfoDTO dto = new DestinationInfoDTO();
+		String expected= "あいう１２３";
+
+		dto.setEmail(expected);
+		String actual = dto.getEmail();
+		assertEquals(expected, actual);
+	}
+	@Test
+	public void testGetEmail10() {
+		DestinationInfoDTO dto = new DestinationInfoDTO();
+		String expected= "abc123あいう１２３";
+
+		dto.setEmail(expected);
+		String actual = dto.getEmail();
+		assertEquals(expected, actual);
+	}
+	@Test
+	public void testGetEmail11() {
+		DestinationInfoDTO dto = new DestinationInfoDTO();
+		String expected= "abc123あいう１２３漢字";
+
+		dto.setEmail(expected);
+		String actual = dto.getEmail();
+		assertEquals(expected, actual);
+	}
+	@Test
+	public void testGetEmail12() {
+		DestinationInfoDTO dto = new DestinationInfoDTO();
+		String expected= "ａｂｃあいう１２３漢字";
+
+		dto.setEmail(expected);
+		String actual = dto.getEmail();
+		assertEquals(expected, actual);
+	}
+
+	//set Email test
+
+	@Test
+	public void testSetEmail1() {
+		DestinationInfoDTO dto = new DestinationInfoDTO();
+		String expected= "0";
+
+		dto.setEmail(expected);
+		String actual = dto.getEmail();
+		assertEquals(expected, actual);
+	}
+	@Test
+	public void testSetEmail2() {
+		DestinationInfoDTO dto = new DestinationInfoDTO();
+		String expected= "2147483647";
+
+		dto.setEmail(expected);
+		String actual = dto.getEmail();
+		assertEquals(expected, actual);
+	}
+	@Test
+	public void testSetEmail3() {
+		DestinationInfoDTO dto = new DestinationInfoDTO();
+		String expected= "-2147483647";
+
+		dto.setEmail(expected);
+		String actual = dto.getEmail();
+		assertEquals(expected, actual);
+	}
+	@Test
+	public void testSetEmail4() {
+		DestinationInfoDTO dto = new DestinationInfoDTO();
+		String expected= "null";
+
+		dto.setEmail(expected);
+		String actual = dto.getEmail();
+		assertEquals(expected, actual);
+	}
+	@Test
+	public void testSetEmail5() {
+		DestinationInfoDTO dto = new DestinationInfoDTO();
+		String expected= "";
+
+		dto.setEmail(expected);
+		String actual = dto.getEmail();
+		assertEquals(expected, actual);
+	}
+	@Test
+	public void testSetEmail6() {
+		DestinationInfoDTO dto = new DestinationInfoDTO();
+		String expected= " ";
+
+		dto.setEmail(expected);
+		String actual = dto.getEmail();
+		assertEquals(expected, actual);
+	}
+	@Test
+	public void testSetEmail7() {
+		DestinationInfoDTO dto = new DestinationInfoDTO();
+		String expected= "　";
+
+		dto.setEmail(expected);
+		String actual = dto.getEmail();
+		assertEquals(expected, actual);
+	}
+	@Test
+	public void testSetEmail8() {
+		DestinationInfoDTO dto = new DestinationInfoDTO();
+		String expected= "abc123";
+
+		dto.setEmail(expected);
+		String actual = dto.getEmail();
+		assertEquals(expected, actual);
+	}
+	@Test
+	public void testSetEmail9() {
+		DestinationInfoDTO dto = new DestinationInfoDTO();
+		String expected= "あいう１２３";
+
+		dto.setEmail(expected);
+		String actual = dto.getEmail();
+		assertEquals(expected, actual);
+	}
+	@Test
+	public void testSetEmail10() {
+		DestinationInfoDTO dto = new DestinationInfoDTO();
+		String expected= "abc123あいう１２３";
+
+		dto.setEmail(expected);
+		String actual = dto.getEmail();
+		assertEquals(expected, actual);
+	}
+	@Test
+	public void testSetEmail11() {
+		DestinationInfoDTO dto = new DestinationInfoDTO();
+		String expected= "abc123あいう１２３漢字";
+
+		dto.setEmail(expected);
+		String actual = dto.getEmail();
+		assertEquals(expected, actual);
+	}
+	@Test
+	public void testSetEmail12() {
+		DestinationInfoDTO dto = new DestinationInfoDTO();
+		String expected= "ａｂｃあいう１２３漢字";
+
+		dto.setEmail(expected);
+		String actual = dto.getEmail();
+		assertEquals(expected, actual);
+	}
+
+	// get RegistDate test
+	@Test
+	public void testGetRegistDate1() {
+		DestinationInfoDTO dto = new DestinationInfoDTO();
+		Date expected = null;
+
+		dto.setRegistDate(expected);
+		Date actual = dto.getRegistDate();
+		assertEquals(expected, actual);
+	}
+	@Test
+	public void testGetRegistDate2() throws ParseException {
+		DestinationInfoDTO dto = new DestinationInfoDTO();
+
+		SimpleDateFormat sdf= new SimpleDateFormat("yyyyMMdd HH:mm:ss");
+		Date expected = sdf.parse("20180420 12:00:00");
+		dto.setRegistDate(expected);
+		assertEquals(expected, dto.getRegistDate());
+	}
+
+	//set RegistDate test
+	@Test
+	public void testSetRegistDate1() {
+		DestinationInfoDTO dto = new DestinationInfoDTO();
+		Date expected = null;
+
+		dto.setRegistDate(expected);
+		Date actual = dto.getRegistDate();
+		assertEquals(expected, actual);
+	}
+	@Test
+	public void testSetRegistDate2() throws ParseException {
+		DestinationInfoDTO dto = new DestinationInfoDTO();
+
+		SimpleDateFormat sdf= new SimpleDateFormat("yyyyMMdd HH:mm:ss");
+		Date expected = sdf.parse("20180420 12:00:00");
+		dto.setRegistDate(expected);
+		assertEquals(expected, dto.getRegistDate());
+	}
+
+	// get UpdateDate test
+	@Test
+	public void testGetUpdateDate1() {
+		DestinationInfoDTO dto = new DestinationInfoDTO();
+		Date expected = null;
+
+		dto.setUpdateDate(expected);
+		Date actual = dto.getUpdateDate();
+		assertEquals(expected, actual);
+	}
+	@Test
+	public void testGetUpdateDate2() throws ParseException{
+		DestinationInfoDTO dto = new DestinationInfoDTO();
+
+		SimpleDateFormat sdf=new SimpleDateFormat("yyyyMMdd HH:mm:ss");
+		Date expected = sdf.parse("20180420 12:00:00");
+		dto.setUpdateDate(expected);
+		assertEquals(expected,dto.getUpdateDate());
+	}
+
+	@Test
+	public void testSetUpdateDate1() {
+		DestinationInfoDTO dto = new DestinationInfoDTO();
+		Date expected = null;
+
+		dto.setUpdateDate(expected);
+		Date actual = dto.getUpdateDate();
+		assertEquals(expected, actual);
+	}
+	@Test
+	public void testSetUpdateDate2() throws ParseException{
+		DestinationInfoDTO dto = new DestinationInfoDTO();
+
+		SimpleDateFormat sdf=new SimpleDateFormat("yyyyMMdd HH:mm:ss");
+		Date expected = sdf.parse("20180420 12:00:00");
+		dto.setUpdateDate(expected);
+		assertEquals(expected,dto.getUpdateDate());
+	}
+
+
+
+
 
 
 
