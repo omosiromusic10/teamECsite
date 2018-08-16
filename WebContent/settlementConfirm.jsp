@@ -8,6 +8,7 @@
 <head>
 <meta charset="UTF-8">
 <link rel="stylesheet" href="./css/style.css">
+<link rel="stylesheet" type="text/css" href="css/settlement.css"/>
 <title>決済確認</title>
 </head>
 
