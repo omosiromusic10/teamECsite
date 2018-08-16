@@ -3,18 +3,16 @@
 /* 入力フォーム用　行くよー */
 
 section {
-  background: white;
-  text-align: center;
-  padding: 50px 0 110px;
-  width: 80%;
-  max-width: 1100px;
-  margin:0 auto;
+	position: relative;
+  	background: white;
+  	text-align: center;
+ 	padding: 50px 0 0 0;
+  	width: 80%;
+  	margin:0 auto;
+  	height: auto;
+  	z-index: 5;
 }
 
-table{
-	margin: 0 auto;
-	border-collapse:collapse;
-}
 
 .sexbox{			/* 性別選択行のデザイン */
 	  width: 99.99%;
@@ -26,6 +24,8 @@ table{
 	  line-height: 10px;
 	  border-style: none;
 	  border-collapse: collapse;
+	  margin: 0 auto;
+	border-collapse:collapse;
 }
 
 .sexth{				/* 性別選択欄左側の枠のデザイン */

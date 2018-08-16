@@ -158,17 +158,14 @@
         		<label class="accordion">半角英数字 1文字以上16文字以下</label>
 		        <span class="nice">Nice!</span>
 	      </div>
-
-
-
-
+			<br><br><br>
 					<!-- session内に格納された情報を表示
 						すでに入力された情報があり、入力エラーなどでこのページに戻された際に
 						再度入力する手間を省く -->
 
 					<div class="submit_btn_box">
 						<div id=".contents-btn-set">
-							<s:submit value="登録" />
+							<s:submit value="登録" class = "submit_btn" />
 						</div>
 					</div>
 

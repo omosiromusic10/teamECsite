@@ -20,6 +20,12 @@
 			</div>
 		</div>
 
+		<div>
+            <img class = "kusa" src= "images/kusa.svg">
+            <img class = "ushi" src= "images/ushi.svg">
+            <img class = "kusa" src= "images/kusa.svg">
+        </div>
+
 		<div id="footer">
 			<s:include value="footer.jsp" />
 		</div>
