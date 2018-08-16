@@ -453,7 +453,7 @@ section{
 }
 
 
-.horizontal-list-table, th, td {
+.horizontal-list-table th, .horizontal-list-table td {
 	margin : 3%;
 	width : 90%;
 	border-collapse: collapse;
