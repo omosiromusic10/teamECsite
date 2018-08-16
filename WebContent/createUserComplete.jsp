@@ -24,9 +24,9 @@
 				<p>ユーザー登録が完了しました。</p>
 			</div>
 		</div>
-		<div id="footer">
+	
 			<s:include value="footer.jsp" />
-		</div>
+	
 
 	</body>
 </html>

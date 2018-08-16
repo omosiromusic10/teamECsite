@@ -26,8 +26,8 @@
 		</p>
 		</div>
 </div>
-<div id="footer">
+
 	<s:include value="footer.jsp"/>
-</div>
+
 </body>
 </html>

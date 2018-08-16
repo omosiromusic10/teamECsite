@@ -122,10 +122,10 @@
 			</div>
 			</s:else>
 			<!-- フッターとの関連付け -->
-			<div id="footer">
+	
 				<s:include value="footer.jsp"/>
 			</div>
 
-		</div>
+	
 		</body>
 </html>
