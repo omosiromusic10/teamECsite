@@ -51,14 +51,14 @@
 
     <s:hidden name="id" value="%{parkId}"/>
 
-    <s:submit value="決済"/>
+    <s:submit value="決済" class="submit_btn"/>
 
     </table>
     </s:form>
 
 <h2>やり直したい方はこちら</h2>
     <s:form action="LocationChoiceAction">
-    <s:submit value="場所選択画面へ"/>
+    <s:submit value="場所選択画面へ" class="submit_btn"/>
     </s:form>
 
 </div>
