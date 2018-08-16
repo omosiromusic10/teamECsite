@@ -270,7 +270,8 @@ $(function(){
 
 <!-- 	gifファイルの埋め込み -->
 <div id="gif">
-<iframe src="https://publish.animatron.io/9823755b9c5846762c9d7e92?w=1000&h=562&a=1&r=1&c=0" width="1000" height="562" frameborder="0"></iframe></div>
+<iframe src="https://publish.animatron.io/d43a755ba247605c570ef086?w=1200&h=675&a=1&r=1&c=0" width="1200" height="675" frameborder="0"></iframe>
+</div>
 
 <div class="space1"></div>
 
