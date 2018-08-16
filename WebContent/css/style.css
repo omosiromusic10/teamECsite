@@ -270,17 +270,25 @@ margin:0 auto;
 padding:20px;
 font-size : 1.1em;
 font-weight:600;
-color: #e7f499;
-background-color: #95fc50;
-  text-shadow: 1px 1px 0 #ff0000,
-               -1px 1px 0 #ff0000,
-               1px -1px 0 #ff0000,
-               -1px -1px 0 #ff0000;
+color: #ff0080;
+background-color: #f5ffe6;
+  text-shadow: 1px 1px 0 #e7f499,
+               -1px 1px 0 #e7f499,
+               1px -1px 0 #e7f499,
+               -1px -1px 0 #e7f499;
 }
 
 .info{
 width:80%;
 margin:0 auto;
+font-size : 1.1em;
+font-weight:600;
+color: #0080ff;
+background-color: #caf9fd;
+  text-shadow: 1px 1px 0 #ffffff,
+               -1px 1px 0 #ffffff,
+               1px -1px 0 #ffffff,
+               -1px -1px 0 #ffffff;
 animation: fadeIn 5s ease 0s 1 normal;
 -webkit-animation: fadeIn 5s ease 0s 1 normal;
 }
