@@ -70,9 +70,20 @@ h1{
 	color:			#fff;
 }
 
+.img {
+	width: 300px;
+	height: 300px;
+}
 
+#location_table_box{
+	width: 100%;
+}
 
+.location_table {
+	margin: 0 auto;
+	margin-top: 10px;
 
+}
 
 
 
