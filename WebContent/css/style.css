@@ -215,6 +215,39 @@ font-family: 'Hiragino Kaku Gothic Pro','ヒラギノ角ゴ Pro W3','メイリ�
 	padding-top:100px;
 }
 
+/* complete画面 */
+.ushi {
+	widht: 100px;
+	height: 100px;
+	padding-right: 25px
+}
+
+.kusa {
+	widht: 30px;
+	height: 30px;
+}
+
+.success {
+	text-align: center;
+    padding: 60px 30px;
+    margin: auto;
+    color: #565656;
+    background: rgba(197,233,155,0.4);
+    box-shadow: 0px 0px 0px 10px rgba(197,233,155,0.4);
+    border: dashed 2px #8CD790;
+    border-radius: 8px;
+    width: 800px;
+    height: auto;
+}
+
+.success p {
+    margin: 0;
+    padding: 0;
+    font-size: 36px;
+    font-family: 'Avenir','Helvetica Neue','Helvetica','Arial','Hiragino Sans','ヒラギノ角ゴシック',YuGothic,'Yu Gothic','メイリオ', Meiryo,'ＭＳ Ｐゴシック','MS PGothic'
+}
+
+
 /*画面遷移時の共通エフェクト*/
 
 

@@ -6,8 +6,9 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<meta http-equiv="refresh" content="3;URL='GoAdminAction'" />
+<!-- <meta http-equiv="refresh" content="3;URL='GoAdminAction'" /> -->
 <link rel = "stylesheet" href = "./css/style.css">
+<link rel = "stylesheet" href = "./css/complete.css">
 <title>商品更新登録完了</title>
 </head>
 <body>
@@ -15,8 +16,15 @@
 <div id = "contents">
 	<h1>商品更新登録完了</h1>
 		<div class = "success">
-		商品情報の更新登録が完了しました。
+		<div>
+			<img class = "kusa" src= "images/kusa.svg">
+			<img class = "ushi" src= "images/ushi.svg">
+			<img class = "kusa" src= "images/kusa.svg">
+		</div>
+		<p>
+		商品情報の更新登録が完了しました。	<br>
 		3秒後に管理ホームに戻ります。
+		</p>
 		</div>
 </div>
 <div id="footer">
