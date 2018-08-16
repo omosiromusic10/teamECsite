@@ -2,6 +2,10 @@
 
 /* 入力フォーム用　行くよー */
 
+.lock{
+	min-width: 1200px;
+}
+
 section {
 	position: relative;
   	background: white;
@@ -11,20 +15,21 @@ section {
   	margin:0 auto;
   	height: auto;
   	z-index: 5;
+  	min-width: 1135px:
 }
 
 
 .sexbox{			/* 性別選択行のデザイン */
-	  width: 99.99%;
-	  position: relative;
-	  margin-bottom: 0px;
-	  margin-left: 0px;
-	  padding: 8px 0;
-	  font-size: 1.35em;
-	  line-height: 10px;
-	  border-style: none;
-	  border-collapse: collapse;
-	  margin: 0 auto;
+	min-width: 99.99%;
+	position: relative;
+	margin-bottom: 0px;
+	margin-left: 0px;
+	padding: 8px 0;
+	font-size: 1.35em;
+	line-height: 10px;
+	border-style: none;
+	border-collapse: collapse;
+	margin: 0 auto;
 	border-collapse:collapse;
 }
 

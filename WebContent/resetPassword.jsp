@@ -17,6 +17,8 @@
 <h1>パスワード再設定画面</h1>
 <div id="contents">
 
+<div class="lock">
+
 	<!-- テーブルで表示予定
 	だったんですけどね・・・ -->
 
@@ -81,7 +83,7 @@
 						</div>
 					</s:if>
 
-
+	<section>
     <s:form action="ResetPasswordConfirmAction" cssClass="form">
 
 	      <div class="field name-box">
@@ -112,6 +114,8 @@
 		        <span class="nice">Nice!</span>
 	      </div>
 
+	      <br><br><br>
+
 					<div class="submit_btn_box">
 						<div id=".contents-btn-set">
 							<s:submit value="登録" class="submit_btn" />
@@ -120,7 +124,9 @@
 
 			</s:form>
 
+			</section>
 
+</div>
 
 </div>
 <jsp:include page="footer.jsp"/>
