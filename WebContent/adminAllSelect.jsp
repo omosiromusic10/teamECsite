@@ -62,7 +62,7 @@
 
 
 <h2>宛先情報データ</h2>
-<!-- 宛先情報データがある時 -->
+<!-- 宛先情報データがある時。 -->
 <s:if test="#session.DestinationInfoAllDtoList.size() > 0">
 <table class="horizontal-list-table">
 

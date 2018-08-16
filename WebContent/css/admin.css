@@ -76,7 +76,7 @@
     -webkit-transition: all .3s;
     transition: all .3s;
 }
-/*テーブル追加*/
+/*テーブルの追加*/
 .horizontal-list-table, th, td{
 	box-shadow:2px 2px #1a6ea0;
 	background-color: #ffffdd;
