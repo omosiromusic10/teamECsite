@@ -10,26 +10,60 @@
 	text-align:center;
 	color:blue;
 }
+.colorbox{
+	box-shadow:2px 2px #1a6ea0;
+	background-color: #ffffdd;
+	width: 1550px;
+	height:500px;
+	padding:20px;
+	position:relative;
+}
 
 /*ボタン拡大ver*/
-.submit_btn_box2{
+.submit_btn_box1 , .submit_btn_box2 , .submit_btn_box3 , .submit_btn_box4 , .submit_btn_box5 , .submit_btn_box6{
 	width : 500px;
+	height : 100px;
 	display : block;
-	margin-left : 200px;
-	margin-top:10px;
 	float:left;
 	/*フェードイン*/
 	animation: fadeIn 5s ease 0s 1 normal;
 	-webkit-animation: fadeIn 5s ease 0s 1 normal;
 }
+.submit_btn_box1{
+	position:absolute;
+	top:  50px;
+	left: 200px;
+}
+.submit_btn_box2{
+	position:absolute;
+	top: 50px;
+	right: 200px;
+}
+.submit_btn_box3{
+	position:absolute;
+	top: 200px;
+	left: 200px;
+}
+.submit_btn_box4{
+	position:absolute;
+	top: 200px;
+	right:200px;
+}
+.submit_btn_box5{
+	position:absolute;
+	top: 350px;
+	left: 200px;
+}
+.submit_btn_box6{
+	position:absolute;
+	top: 350px;
+	right: 200px;
+}
 .submit_btn2{
 	padding : 0.5em 1em;
 	text-decoration: none;
 	width: 100%;
-	height : 100px;
-	margin-top : -5px;
-	margin-left : 6px;
-	margin-bottom:20px;
+	height: 100%;
 	font-size : 50px;
 	text-align : center;
 	/*画面操作*/
@@ -42,7 +76,13 @@
     -webkit-transition: all .3s;
     transition: all .3s;
 }
-/*ホライズンテスト*/
+/*ホライゾンテーブル追加*/
+.horizontal-list-table, th, td{
+	box-shadow:2px 2px #1a6ea0;
+	background-color: #ffffdd;
+}
+
+/*ホライゾンテーブル作成*/
 .horizontal-list-table2, th, td {
 	margin : 3%;
 	margin-left:7%;
