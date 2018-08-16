@@ -269,10 +269,12 @@ margin:0 auto;
 padding:20px;
 font-size : 1.1em;
 font-weight:600;
-color: #ff0000;
-background-color: #f5fb88;
-animation: fadeIn 5s ease 0s 1 normal;
--webkit-animation: fadeIn 5s ease 0s 1 normal;
+color: #e7f499;
+background-color: #95fc50;
+  text-shadow: 1px 1px 0 #ff0000,
+               -1px 1px 0 #ff0000,
+               1px -1px 0 #ff0000,
+               -1px -1px 0 #ff0000;
 }
 
 .info{
