@@ -160,7 +160,7 @@ width:100%
 
 .BBQ1_img{
 	float:left;
-	padding-top:25px;
+	margin-top:25px;
 	border-radius:40px;
     -webkit-border-radius: 40px;
     -moz-border-radius: 40px;
@@ -255,7 +255,7 @@ clear:both;
 
 .BBQ2_img{
 	float:left;
-	padding-top:25px;
+margin-top:25px;
 	border-radius:40px;
     -webkit-border-radius: 40px;
     -moz-border-radius: 40px;
@@ -267,7 +267,7 @@ clear:both;
 }
 .BBQ3_img{
 	float:left;
-	padding-top:25px;
+margin-top:25px;
 	border-radius:40px;
     -webkit-border-radius: 40px;
     -moz-border-radius: 40px;
