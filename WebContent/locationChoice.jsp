@@ -32,9 +32,7 @@
       <table class="location_table">
           <tr>
               <td rowspan="7">
-                  <s:if test="id==1"><s:submit class="img" type="image" src="./images/bbq1.jpg"/></s:if>
-                  <s:if test="id==2"><s:submit class="img" type="image" src="./images/bbq2.jpg"/></s:if>
-                  <s:if test="id==3"><s:submit class="img" type="image" src="./images/bbq3.jpg"/></s:if>
+                  <s:submit class="img" type="image" src="./images/bbq%{id}.jpg"/>
               </td>
               <td>会場名</td>
               <td><s:property value="firstName"/></td>
