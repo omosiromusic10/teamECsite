@@ -9,6 +9,8 @@ import com.opensymphony.xwork2.ActionSupport;
 public class ResetPasswordAction extends ActionSupport implements SessionAware{
 	private String categoryId;
 	private Map<String,Object>session;
+	private String loginId;
+	private boolean savedLoginId;
 
 	public String execute(){
 
@@ -19,6 +21,12 @@ public class ResetPasswordAction extends ActionSupport implements SessionAware{
 		session.remove("newPasswordErrorMessageList");
 		session.remove("reConfirmationNewPasswordErrorMessageList");
 		session.remove("newPasswordIncorrectErrorMessageList");
+
+		//「ログイン保存」チェックボックス対応の為変更
+		if(savedLoginId==true){
+			session.put("savedLoginId", true);
+			session.put("saveId", loginId);
+		}
 
 		//天国か地獄か。。。
 		String result = ERROR;
@@ -40,6 +48,22 @@ public class ResetPasswordAction extends ActionSupport implements SessionAware{
 
 	public void setSession(Map<String, Object> session) {
 		this.session = session;
+	}
+
+	public boolean isSavedLoginId() {
+		return savedLoginId;
+	}
+
+	public void setSavedLoginId(boolean savedLoginId) {
+		this.savedLoginId = savedLoginId;
+	}
+
+	public String getLoginId() {
+		return loginId;
+	}
+
+	public void setLoginId(String loginId) {
+		this.loginId = loginId;
 	}
 
 

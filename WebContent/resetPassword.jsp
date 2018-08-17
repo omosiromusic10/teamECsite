@@ -88,9 +88,16 @@
 
 	      <div class="field name-box">
 	      		<label class="defaultLabel">ログインID</label>
+	      		<s:if test="#session.savedLoginId==true">
+	      		<s:textfield name="loginId" value="%{#session.saveId}" label="ログインID" class="txt"/>
+	      		<label class="accordion">半角英数字 1文字以上8文字以下</label>
+		        <span class="nice">Nice!</span>
+	      		</s:if>
+	      		<s:else>
 		        <s:textfield name="loginId"  label="ログインID" placeholder="ログインID" class="txt" />
         		<label class="accordion">半角英数字 1文字以上8文字以下</label>
 		        <span class="nice">Nice!</span>
+		        </s:else>
 	      </div>
 
 	      <div class="field name-box">
