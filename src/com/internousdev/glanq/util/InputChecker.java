@@ -36,7 +36,7 @@ public class InputChecker {
 
 
 		//②入力文字数内に収まっているかどうか
-		if(value.length() < minLength || value.length() > maxLength){
+		if((value.length() < minLength || value.length() > maxLength) && (!(StringUtils.isEmpty(value)))){
 			resultList.add(propertyName + "は、" + minLength + "文字以上" + maxLength + "文字以下で入力してください");
 		}
 

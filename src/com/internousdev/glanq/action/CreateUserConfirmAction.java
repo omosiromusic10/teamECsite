@@ -55,8 +55,8 @@ public class CreateUserConfirmAction extends ActionSupport implements SessionAwa
 		InputChecker inputChecker = new InputChecker();
 		familyNameErrorMessageList = inputChecker.docheck("姓", familyName, 1, 16, true, true, true, false, false, false, false);
 		firstNameErrorMessageList= inputChecker.docheck("名", firstName, 1, 16, true, true, true, false, false, false, false);
-		familyNameKanaErrorMessageList = inputChecker.docheck("姓かな", familyNameKana, 1, 16, false, false, true, false, false, false, false);
-		firstNameKanaErrorMessageList = inputChecker.docheck("名かな", firstNameKana, 1, 16, false, false, true, false, false, false, false);
+		familyNameKanaErrorMessageList = inputChecker.docheck("姓ふりがな", familyNameKana, 1, 16, false, false, true, false, false, false, false);
+		firstNameKanaErrorMessageList = inputChecker.docheck("名ふりがな", firstNameKana, 1, 16, false, false, true, false, false, false, false);
 		emailErrorMessageList = inputChecker.docheck("メールアドレス", email, 14, 32, true, false, false, true, true, false, false);
 		loginIdErrorMessageList = inputChecker.docheck("ログインID", loginId, 1, 8, true, false, false, true, false, false, false);
 		passwordErrorMessageList = inputChecker.docheck("パスワード", password, 1, 16, true, false, false, true, false, false, false);
@@ -66,6 +66,7 @@ public class CreateUserConfirmAction extends ActionSupport implements SessionAwa
 		 * そして、その情報に使用可能な文字列をtrueで渡していく
 		 * 結果はエラーメッセージを入れるリストに格納していく
 		 */
+		session.remove("duplicateList");
 
 		if(familyNameErrorMessageList.size()==0
 				&& firstNameErrorMessageList.size()==0
