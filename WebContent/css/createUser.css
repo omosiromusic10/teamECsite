@@ -160,7 +160,8 @@ section {
   color: rgba(0, 0, 0, 0);
 }
 
-.form .field .defaultLabel.focused{				/* 文字入力後のラベルの文字色変更用　※上の背景色にそろえておこう！！ */
+.form .field .defaultLabel.focused,
+.form .field .defaultLabel-mini.focused{				/* 文字入力後のラベルの文字色変更用　※上の背景色にそろえておこう！！ */
   color: #8CD790;
 }
 .form .field:hover .accordion {					/* 入力欄にホバーした際のラベルのデザイン */
