@@ -32,7 +32,7 @@
      </div>
 </s:if>
 <!-- 姓かな入力エラー -->
-<s:if test="!#session.familyNamekanaErrorMessageList.isEmpty()">
+<s:if test="!#session.familyNameKanaErrorMessageList.isEmpty()">
      <div class="error">
          <div class="error-message">
              <s:iterator value="#session.familyNameKanaErrorMessageList"><s:property /><br></s:iterator>

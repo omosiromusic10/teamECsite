@@ -56,9 +56,9 @@ public class CreateDestinationConfirmAction extends ActionSupport implements Ses
 		firstNameErrorMessageList = inputChecker.docheck("名", firstName, 1, 16, true, true, true, false, false, false, true);
 		familyNameKanaErrorMessageList = inputChecker.docheck("姓ふりがな", familyNameKana, 1, 16, false, false, true, false, false, false, false);
 		firstNameKanaErrorMessageList = inputChecker.docheck("名ふりがな", firstNameKana, 1, 16, false, false, true, false, false, false, false);
-		userAddressErrorMessageList = inputChecker.docheck("住所", userAddress, 15, 50, false, true, true, true, true, true, false);
+		userAddressErrorMessageList = inputChecker.docheck("住所", userAddress, 15, 50, true, true, true, true, true, true, false);
 		telNumberErrorMessageList = inputChecker.docheck("電話番号", telNumber, 10, 13, false, false, false, true, false, false, false);
-		emailErrorMessageList = inputChecker.docheck("メールアドレス", email, 18, 32, true, false, false, true, true, false, false);
+		emailErrorMessageList = inputChecker.docheck("メールアドレス", email, 14, 32, true, false, false, true, true, false, false);
 		if(familyNameErrorMessageList.size()==0
 		&& firstNameErrorMessageList.size()==0
 		&&	familyNameKanaErrorMessageList.size()==0
@@ -70,7 +70,7 @@ public class CreateDestinationConfirmAction extends ActionSupport implements Ses
 		} else {
 			session.put("familyNameErrorMessageList", familyNameErrorMessageList);
 			session.put("firstNameErrorMessageList", firstNameErrorMessageList);
-			session.put("famimyNameKanaErrorMessageList", familyNameKanaErrorMessageList);
+			session.put("familyNameKanaErrorMessageList", familyNameKanaErrorMessageList);
 			session.put("firstNameKanaErrorMessageList", firstNameKanaErrorMessageList);
 			session.put("emailErrorMessageList", emailErrorMessageList);
 			session.put("telNumberErrorMessageList", telNumberErrorMessageList);
