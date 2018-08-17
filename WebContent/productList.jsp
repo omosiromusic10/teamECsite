@@ -84,6 +84,7 @@
 					<a href="<s:url action='SearchItemAction'>
 							<s:param name='pageNo' value='%{#pageNo.count}'/>
 							<s:param name='categoryId' value='%{categoryId}'/>
+							<s:param name='keywords' value='%{keywords}'/>
 							</s:url> ">
 
 						<s:property value="%{#pageNo.count}"/>

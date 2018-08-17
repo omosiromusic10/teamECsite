@@ -140,16 +140,25 @@ public class ProductInfoDAO {
 		ArrayList<ProductInfoDTO> productInfoListByKeywords = new ArrayList<ProductInfoDTO>();
 		DBConnector db = new DBConnector();
 		Connection con = db.getConnection();
-		String sql = "SELECT * from product_info WHERE category_id = " + categoryId + " AND ";
+		String sql = "SELECT * from product_info";
 		boolean iFlg = true;
-		// 拡張for文。キーワードが1つか複数かにより、sql文が分岐するため記述。
+		// 拡張for文。キーワード検索でキーワードが1つか複数かにより、sql文が分岐するため記述。
 		for(String keyword : keywordsList){
-			if(iFlg){
-				sql += "(product_name like '%" + keyword + "%' or product_name_kana like '%" + keyword + "%') ";
-				iFlg = false;
-			}else{
-				sql += "AND (product_name like '%" + keyword + "%' or product_name_kana like '%" + keyword + "%')";
+			// キーワードにスペースが複数続けて入力されkeywordListが生成されている場合を考慮。
+			if(!(keyword.trim()).equals("")){
+				if(iFlg){
+					sql += " WHERE (product_name like '%" + keyword.trim() + "%' or product_name_kana like '%" + keyword.trim() + "%')";
+					iFlg = false;
+				}else{
+					sql += " OR (product_name like '%" + keyword.trim() + "%' or product_name_kana like '%" + keyword.trim() + "%')";
+				}
 			}
+		}
+		// カテゴリ検索。キーワードが空だった場合はANDではなくWHEREでつなぐ。
+		if(iFlg){
+			sql += (" WHERE category_id = " + categoryId);
+		}else{
+			sql += (" AND category_id = " + categoryId);
 		}
 		try{
 			PreparedStatement ps = con.prepareStatement(sql);
@@ -186,15 +195,18 @@ public class ProductInfoDAO {
 		ArrayList<ProductInfoDTO> productInfoListByKeywords = new ArrayList<ProductInfoDTO>();
 		DBConnector db = new DBConnector();
 		Connection con = db.getConnection();
-		String sql = "SELECT * from product_info WHERE ";
+		String sql = "SELECT * from product_info";
 		boolean iFlg = true;
 		// 拡張for文。キーワードが1つか複数かにより、sql文が分岐するため記述。
 		for(String keyword : keywordsList){
-			if(iFlg){
-				sql += "(product_name like '%" + keyword + "%' or product_name_kana like '%" + keyword + "%') ";
-				iFlg = false;
-			}else{
-				sql += "AND (product_name like '%" + keyword + "%' or product_name_kana like '%" + keyword + "%')";
+			// キーワードにスペースが複数続けて入力されkeywordListが生成されている場合を考慮。
+			if(!(keyword.trim()).equals("")){
+				if(iFlg){
+					sql += " WHERE (product_name like '%" + keyword.trim() + "%' or product_name_kana like '%" + keyword.trim() + "%') ";
+					iFlg = false;
+				}else{
+					sql += "OR (product_name like '%" + keyword.trim() + "%' or product_name_kana like '%" + keyword.trim() + "%')";
+				}
 			}
 		}
 		try{
