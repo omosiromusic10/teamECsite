@@ -62,7 +62,7 @@ function goAdminAction(){
 <body>
 <header>
              <div id="header">
-                     <div id="header-title"><a class="headerLogo" href="http://localhost:8080/glanq/HomeAction">GLANQ</a></div>
+                     <div id="header-title"><a class="headerLogo" href="http://www.internousdev.com/glanq/HomeAction">GLANQ</a></div>
                      <div id="header-menu">
                              <ul>
                                   <s:form id="form" name="form">
