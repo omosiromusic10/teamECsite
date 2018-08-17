@@ -130,6 +130,7 @@ public class DestinationInfoDAO {
 			while(rs.next()) {
 				DestinationInfoDTO destinationInfoDTO = new DestinationInfoDTO();
 				destinationInfoDTO.setId(rs.getInt("id"));
+				destinationInfoDTO.setUserId(rs.getString("user_id"));
 				destinationInfoDTO.setFamilyName(rs.getString("family_name"));
 				destinationInfoDTO.setFirstName(rs.getString("first_name"));
 				destinationInfoDTO.setFamilyNameKana(rs.getString("family_name_kana"));
@@ -137,6 +138,9 @@ public class DestinationInfoDAO {
 				destinationInfoDTO.setUserAddress(rs.getString("user_address"));
 				destinationInfoDTO.setEmail(rs.getString("email"));
 				destinationInfoDTO.setTelNumber(rs.getString("tel_number"));
+				destinationInfoDTO.setRegistDate(rs.getDate("regist_date"));
+				destinationInfoDTO.setUpdateDate(rs.getDate("update_date"));
+
 				destinationInfoDtoList.add(destinationInfoDTO);
 			}
 		}catch(SQLException e) {
