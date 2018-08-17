@@ -66,7 +66,16 @@ public class CreateUserConfirmAction extends ActionSupport implements SessionAwa
 		 * そして、その情報に使用可能な文字列をtrueで渡していく
 		 * 結果はエラーメッセージを入れるリストに格納していく
 		 */
+
+		session.remove("familyNameErrorMessageList");
+		session.remove("firstNameErrorMessageList");
+		session.remove("familyNameKanaErrorMessageList");
+		session.remove("firstNameKanaErrorMessageList");
+		session.remove("emailErrorMessageList");
+		session.remove("loginIdErrorMessageList");
+		session.remove("passwordErrorMessageList");
 		session.remove("duplicateList");
+		//エラーメッセージを一度排除
 
 		if(familyNameErrorMessageList.size()==0
 				&& firstNameErrorMessageList.size()==0
@@ -87,6 +96,7 @@ public class CreateUserConfirmAction extends ActionSupport implements SessionAwa
 			session.put("emailErrorMessageList", emailErrorMessageList);
 			session.put("loginIdErrorMessageList", loginIdErrorMessageList);
 			session.put("passwordErrorMessageList", passwordErrorMessageList);
+			session.put("check", 1);
 			result = ERROR;
 			/**
 			 * エラーメッセージに格納された要素がひとつでも存在する場合は
