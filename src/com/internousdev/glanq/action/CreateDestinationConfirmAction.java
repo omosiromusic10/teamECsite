@@ -52,8 +52,8 @@ public class CreateDestinationConfirmAction extends ActionSupport implements Ses
 
 		InputChecker inputChecker = new InputChecker();
 //		フォームの入力内容をinputCheckerを使用しチェックする。-----------------------------------------------
-		familyNameErrorMessageList = inputChecker.docheck("姓", familyName, 1, 16, true, true, true, false, false, false, true);
-		firstNameErrorMessageList = inputChecker.docheck("名", firstName, 1, 16, true, true, true, false, false, false, true);
+		familyNameErrorMessageList = inputChecker.docheck("姓", familyName, 1, 16, true, true, true, false, false, false, false);
+		firstNameErrorMessageList = inputChecker.docheck("名", firstName, 1, 16, true, true, true, false, false, false, false);
 		familyNameKanaErrorMessageList = inputChecker.docheck("姓ふりがな", familyNameKana, 1, 16, false, false, true, false, false, false, false);
 		firstNameKanaErrorMessageList = inputChecker.docheck("名ふりがな", firstNameKana, 1, 16, false, false, true, false, false, false, false);
 		userAddressErrorMessageList = inputChecker.docheck("住所", userAddress, 15, 50, true, true, true, true, true, true, false);
