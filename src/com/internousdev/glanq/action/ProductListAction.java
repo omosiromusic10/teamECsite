@@ -21,7 +21,7 @@ public class ProductListAction extends ActionSupport implements SessionAware {
 	private Pagination pagination = new Pagination();
 	private List<MCategoryDTO> mCategoryDtoList = new ArrayList<MCategoryDTO>();
 
-	private List<ProductInfoDTO> productInfoDTOList = new ArrayList<ProductInfoDTO>();
+//	private List<ProductInfoDTO> productInfoDTOList = new ArrayList<ProductInfoDTO>();
 	private String categoryId;
 	private String keywords;
 	private String pageNo = "1";
@@ -61,7 +61,7 @@ public class ProductListAction extends ActionSupport implements SessionAware {
 			session.put("logined", 0);
 		}
 
-		productInfoDTOList = paginationDTO.getCurrentProductInfoPage();	// 予備。セッションで処理させるなら不要
+//		productInfoDTOList = paginationDTO.getCurrentProductInfoPage();	// 予備。セッションで処理させるなら不要
 
 		result = SUCCESS;
 
@@ -88,13 +88,13 @@ public class ProductListAction extends ActionSupport implements SessionAware {
 		this.mCategoryDtoList = mCategoryDtoList;
 	}
 
-	public List<ProductInfoDTO> getProductInfoDTOList() {
-		return productInfoDTOList;
-	}
-
-	public void setProductInfoDTOList(List<ProductInfoDTO> productInfoDTOList) {
-		this.productInfoDTOList = productInfoDTOList;
-	}
+//	public List<ProductInfoDTO> getProductInfoDTOList() {
+//		return productInfoDTOList;
+//	}
+//
+//	public void setProductInfoDTOList(List<ProductInfoDTO> productInfoDTOList) {
+//		this.productInfoDTOList = productInfoDTOList;
+//	}
 
 	public String getCategoryId() {
 		return categoryId;
