@@ -25,7 +25,8 @@
                            <thead>
                                  <tr>
                                         <th><s:label value="#" /></th>
-                                        <th><s:label value="名前" /></th>
+                                        <th><s:label value="姓" /></th>
+                                        <th><s:label value="名" /></th>
                                         <th><s:label value="ふりがな" /></th>
                                         <th><s:label value="住所" /></th>
                                         <th><s:label value="電話番号" /></th>
@@ -46,7 +47,10 @@
                                            </td>
 
                                            <td>
-                                              <s:property value="familyName" /><span>　</span><s:property value="firstName" /><br>
+                                              <s:property value="familyName" />
+                                           </td>
+                                           <td>
+                                           	<s:property value="firstName" />
                                            </td>
                                            <td>
                                               <s:property value="familyNameKana" /><span>　</span><s:property value="firstNameKana" /><br>
