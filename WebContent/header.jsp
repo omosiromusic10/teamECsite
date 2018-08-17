@@ -9,6 +9,16 @@
 <meta charset="UTF-8">
 <link rel="stylesheet" href="./css/style.css">
         <title>ヘッダー</title>
+
+<script type="text/javascript">
+
+    var sessionTimeout = function() {
+    	location.href = "TimeoutAction"
+    }
+    setTimeout(sessionTimeout, 600000)
+
+</script>
+
 <script>
 function goAdminRegistAction(){
 	document.getElementById("form").action="AdminRegistAction";
