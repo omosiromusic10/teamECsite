@@ -99,14 +99,14 @@
 			<h2><s:label value="カート合計金額 :"/><s:property value="#session.totalPrice"/>円</h2><br>
 
 			<!-- 決済ボタン -->
-			<div class="submit_btn_box">
+			<div class="submit_btn_box_c">
 			<div id=".contents-btn-set">
 			<s:submit value="決済" class="submit_btn"/>
 			</div>
 			</div>
 
 			<!-- 削除ボタン -->
-			<div class="submit_btn_box">
+			<div class="submit_btn_box_c">
 			<div id=".contents-btn-set">
 			<s:submit value="削除" class="submit_btn" onclick="this.form.action='DeleteCartAction';"/>
 			</div>
@@ -121,11 +121,13 @@
 			カートに情報はありません
 			</div>
 			</s:else>
-			<!-- フッターとの関連付け -->
-	
-				<s:include value="footer.jsp"/>
+
+
 			</div>
 
-	
+			<!-- フッターとの関連付け -->
+				<s:include value="footer.jsp"/>
+
+
 		</body>
 </html>
