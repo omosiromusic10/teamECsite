@@ -18,12 +18,21 @@
 <div id="contents">
        <h1>削除画面</h1>
 
+<s:if test="#session.checkListErrorMessageList != null">
+    <div class="error">
+    <div class="error-message">
+        <s:iterator value="#session.checkListErrorMessageList"><s:property /><br></s:iterator>
+    </div>
+    </div>
+</s:if>
+
 <s:if test="productInfoDtoList==null">
        <div class="info">商品がありません。</div>
 </s:if>
 
 <s:else>
        <s:form id="form" action="AdminDeleteCompleteAction">
+
                     <table class="horizontal-list-table">
                                <thead>
                                      <tr>

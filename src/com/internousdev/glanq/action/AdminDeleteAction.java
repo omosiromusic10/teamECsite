@@ -32,6 +32,8 @@ public class AdminDeleteAction extends ActionSupport implements SessionAware {
 	public String execute() throws SQLException{
 	String result = ERROR;
 
+	session.remove("checkListErrorMessageList");
+
 	ProductInfoDAO productInfoDao = new ProductInfoDAO();
 	productInfoDtoList = productInfoDao.getProductInfoList();
 
