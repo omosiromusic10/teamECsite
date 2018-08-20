@@ -15,27 +15,40 @@
 
 }
 
+
+#gif{
+text-align:center;
+border-radius:30px;
+}
+
+.main{
+	width:100%;
+	margin:0 auto;
+	margin-bottom:110px;
+	min-width: 1300px;
+	height: auto;
+}
+
 .left{
 	width:12%;
-	height:100px;
+	height:100%;
+		margin:0 auto;
 	float:left;
 }
 
 .right{
 	width:12%;
-	height:100px;
+	height:100%;
+	margin:0 auto;
 	float:left;
 }
 
 .center{
 	width:76%;
+	height:100%;
 	float:left;
 	margin:0 auto;
-}
-
-#gif{
-text-align:center;
-border-radius:30px;
+	   		padding-bottom:110px;
 }
 
 .concept{
@@ -57,21 +70,6 @@ border-bottom:1px solid black;
 width:100%
 }
 
-/* スライドショーの枠線消し */
-.bx-wrapper {
-  margin: 0 !important;
-  -moz-box-shadow: none !important;
-  -webkit-box-shadow: none !important;
-  box-shadow: none !important;
-  border: none !important;
-  background: none !important;
-}
-
-/* スライドショーを画面いっぱいに */
-.slider img{
-  width: 100% !important;
-}
-
 
 
 /* BBQ場紹介 */
@@ -80,7 +78,8 @@ width:100%
     margin:0 auto;
     opacity : 0;
     width:0px; height:0px;
-    padding-top:40px;
+    padding-top:2%;
+    padding-bottom:5%;
     border:5px #8CD790 outset;
     background-color:#8CD790;
     animation-name:Con;
@@ -98,15 +97,16 @@ width:100%
 }
 @keyframes Con{
 0%{width:0px; height:0px; border-radius:0px; opacity:0;}
-50%{width:600px; height:250px; border-radius:450px; opacity:0.75;}
-100%{width:600px; height:250px; border-radius:450px; background-color:white; opacity:0.75;}
+50%{width:60%; height:10%; border-radius:70%; opacity:0.75;}
+100%{width:60%; height:10%; border-radius:70%; background-color:white; opacity:0.75;}
 }
 
 .intro_title {
 	margin:0 auto;
     opacity : 0;
     width:0px; height:0px;
-    padding-top:50px;
+    padding-top:4%;
+    padding-bottom:10%;
     transform : translate(0, 50px);
     transition : all 2s;
     background-color:#8CD790;
@@ -122,11 +122,12 @@ width:100%
 }
 @keyframes Con2{
 0%{width:0px; height:0px; border-radius:0px; opacity:0;}
-100%{width:600px; height:200px; border-radius:450px; opacity:0.75;}
+100%{width:80%; height:25%; border-radius:70%; opacity:0.75;}
 }
 
 .BBQ1 {
     margin:0 auto;
+    height:20%;
     opacity : 0;
     transform : translate(-100px, 100px);
     transition : all 2s;
@@ -137,6 +138,7 @@ width:100%
 }
 .BBQ2 {
     margin:0 auto;
+    height:20%;
     opacity : 0;
     transform : translate(100px, 100px);
     transition : all 2s;
@@ -147,6 +149,8 @@ width:100%
 }
 .BBQ3 {
     margin:0 auto;
+    min-width: 590px;
+    height:20%;
     opacity : 0;
     transform : translate(-100px, 100px);
     transition : all 2s;
@@ -160,19 +164,27 @@ width:100%
 
 .BBQ1_img{
 	float:left;
-	margin-top:25px;
-	border-radius:40px;
+	width:30%;
+	height:100%;
+	display: inline-block;
+	min-height: 200px;
+	min-width:200px;
+	height: auto !important;
+	margin-top:4%;
+	border-radius:40%;
     -webkit-border-radius: 40px;
     -moz-border-radius: 40px;
 }
 
 .BBQ1_text{
  	position: relative;
+ 	float:right;
 	display: inline-block;
-	margin-left:30px;
-	padding: 7px 10px;
-	margin: 1.5em 0 1.5em 15px;
-	width: 70%;
+	margin-left:10%;
+	padding: 3% 5%;
+	margin: 32px 0 0 15px;
+	width:60%;
+	height:100%;
     text-aline:left;
 	background: #FFF;
  	border: solid 3px #555;
@@ -215,10 +227,11 @@ clear:both;
 	float:left;
  	position: relative;
 	display: inline-block;
-	margin-left:30px;
-	padding: 7px 10px;
-	margin: 1.5em 15px 1.5em 0 ;
-	width: 70%;
+	margin-left:10%;
+	padding: 3% 5%;
+	margin: 32px 0 0 15px;
+	width:60%;
+	height:100%;
     text-aline:left;
 	background: #FFF;
  	border: solid 3px #555;
@@ -254,31 +267,45 @@ clear:both;
 }
 
 .BBQ2_img{
-	float:left;
-margin-top:25px;
-	border-radius:40px;
+	float:right;
+	width:30%;
+	height:100%;
+	display: inline-block;
+	min-height: 200px;
+	min-width:200px;
+	height: auto !important;
+	margin-top:4%;
+	border-radius:40%;
     -webkit-border-radius: 40px;
     -moz-border-radius: 40px;
 }
 
 
 .BBQ3{
-clear:both;
+	clear:both;
 }
 .BBQ3_img{
 	float:left;
-margin-top:25px;
-	border-radius:40px;
+width:30%;
+	height:100%;
+	display: inline-block;
+	min-height: 200px;
+	min-width:200px;
+	height: auto !important;
+	margin-top:4%;
+	border-radius:40%;
     -webkit-border-radius: 40px;
     -moz-border-radius: 40px;
 }
 .BBQ3_text{
+	float:right;
  	position: relative;
 	display: inline-block;
-	margin-left:30px;
-	padding: 7px 10px;
-	margin: 1.5em 0 1.5em 15px;
-	width: 70%;
+	margin-left:10%;
+	padding: 3% 5%;
+	margin: 32px 0 0 15px;
+	width:60%;
+	height:100%;
     text-aline:left;
 	background: #FFF;
  	border: solid 3px #555;
@@ -319,7 +346,6 @@ margin-top:25px;
 	position:relative;
 	left:50%;
     opacity : 0;
-    width:0px; height:0px;
     margin:0 auto;
     transform : translate(0, 0);
     background-color:#8CD790;
@@ -336,12 +362,7 @@ margin-top:25px;
 }
 @keyframes Left1{
 0%{width:0px; height:0px; border-radius:0px; background-color:white; opacity:0;}
-100%{width:100px; height:100px; background-color:#8CD790; border-radius:100px; opacity:1;}
-}
-
-.left:hover{
-
-
+100%{width:100px; height:100px; background-color:#8CD790; border-radius:50%; opacity:1;}
 }
 
 
@@ -367,7 +388,7 @@ margin-top:25px;
     animation-play-state:running;
 }
 @keyframes Left2{
-0%{width:0px; height:0px; border-radius:0px; background-color:white; opacity:0;}
+0%{width:0px; height:0; border-radius:0px; background-color:white; opacity:0;}
 100%{width:100px; height:100px; background-color:#8CD790; border-radius:100px; opacity:1;}
 }
 
@@ -645,6 +666,3 @@ clear:both;
   height:50px;
 }
 
-.space4{
-	height:300px;
-}

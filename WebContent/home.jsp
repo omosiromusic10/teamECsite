@@ -40,7 +40,7 @@ $(function(){
             var scroll = $(window).scrollTop();
             var windowHeight = $(window).height();
 //          300pxスクロールでscrollinが始動
-            if (scroll > elemPos - windowHeight + 250){
+            if (scroll > elemPos - windowHeight + 200){
                 $(this).addClass('scrollin');
             }
         });
@@ -54,7 +54,7 @@ $(function(){
             var elemPos = $(this).offset().top;
             var scroll = $(window).scrollTop();
             var windowHeight = $(window).height();
-            if (scroll > elemPos - windowHeight + 250){
+            if (scroll > elemPos - windowHeight + 200){
                 $(this).addClass('scrollin2');
             }
         });
@@ -67,7 +67,7 @@ $(function(){
             var elemPos = $(this).offset().top;
             var scroll = $(window).scrollTop();
             var windowHeight = $(window).height();
-            if (scroll > elemPos - windowHeight + 250){
+            if (scroll > elemPos - windowHeight + 200){
                 $(this).addClass('scrollin3');
             }
         });
@@ -80,7 +80,7 @@ $(function(){
             var elemPos = $(this).offset().top;
             var scroll = $(window).scrollTop();
             var windowHeight = $(window).height();
-            if (scroll > elemPos - windowHeight + 250){
+            if (scroll > elemPos - windowHeight + 200){
                 $(this).addClass('scrollin4');
             }
         });
@@ -93,7 +93,7 @@ $(function(){
             var elemPos = $(this).offset().top;
             var scroll = $(window).scrollTop();
             var windowHeight = $(window).height();
-            if (scroll > elemPos - windowHeight + 250){
+            if (scroll > elemPos - windowHeight + 200){
                 $(this).addClass('scrollin5');
             }
         });
@@ -259,6 +259,7 @@ $(function(){
 });
 
 
+
 </script>
 </head>
 
@@ -272,6 +273,8 @@ $(function(){
 <div id="gif">
 <iframe src="https://publish.animatron.io/d43a755ba247605c570ef086?w=1200&h=675&a=1&r=1&c=0" width="1200" height="675" frameborder="0"></iframe>
 </div>
+
+<div class="main">
 
 <div class="space1"></div>
 
@@ -287,7 +290,7 @@ $(function(){
 <div class="left3"></div><div class="space3"></div>
 <div class="left4"></div><div class="space3"></div>
 <div class="left5"></div><div class="space3"></div>
-<div class="left6"></div><div class="space4"></div>
+<div class="left6"></div><div class="space1"></div>
 </div>
 
 <div class="center">
@@ -320,7 +323,7 @@ GlanQでは3つのBBQ場と提携しており、<br>食材を各BBQ場に送り�
 <div class="BBQ1">
 <h3>BBQ場1</h3>
 
-<img src="./images/basyo1.jpg" width="180" height="180" alt="" class="BBQ1_img" >
+<img src="./images/basyo1.jpg" width="100%" height="100%" alt="" class="BBQ1_img" >
 
 <div class="BBQ1_text">
 <p>お子様連れの方にオススメ♪</p>
@@ -340,7 +343,7 @@ GlanQでは3つのBBQ場と提携しており、<br>食材を各BBQ場に送り�
 <p>このBBQ場の最大のポイント！</p>
 <p>太陽に照らされる眩しい川を</p>
 <p>眺めながら食べるお肉は絶品でしょう♪</p></div>
-<img src="./images/basyo2.jpg" width="180" height="180" alt="" class="BBQ2_img" >
+<img src="./images/basyo2.jpg" width="100%" height="100%" alt="" class="BBQ2_img" >
 </div>
 
 <div class="space2"></div>
@@ -348,7 +351,7 @@ GlanQでは3つのBBQ場と提携しており、<br>食材を各BBQ場に送り�
 
 <div class="BBQ3">
 <h3>BBQ場3</h3>
-<img src="./images/basyo3.jpg" width="180" height="180" alt="" class="BBQ3_img">
+<img src="./images/basyo3.jpg" width="100%" height="100%" alt="" class="BBQ3_img">
 <div class="BBQ3_text">
 <p>駅からたったの徒歩5分！</p>
 <p>アクセスの良さが一番のBBQ場です。</p>
@@ -375,13 +378,13 @@ GlanQでは3つのBBQ場と提携しており、<br>食材を各BBQ場に送り�
 <div class="right3"></div><div class="space3"></div>
 <div class="right4"></div><div class="space3"></div>
 <div class="right5"></div><div class="space3"></div>
-<div class="right6"></div>
+<div class="right6"></div><div class="space1"></div>
 
 </div>
 
 
 </div>
-
+</div>
 
 	<s:include value="footer.jsp" />
 
