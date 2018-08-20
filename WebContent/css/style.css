@@ -1,15 +1,18 @@
 @CHARSET "UTF-8";
 
 
-                                                                                                                                        /*ヘッダー(仮)*/
+/*ヘッダー*/
 #header {
 	position : fixed;
 	z-index: 10;
 	float : left;
-	width : 150px;
-	height : 45px;
-	padding : 10px;
+	width : 100%;
+	height : 70px;
+	top:0;
+	left:0;
+	background:#fff;
 }
+
 
 
 /*サイトロゴ*/
@@ -18,6 +21,7 @@
 	font-size:30px;
 	font-weight:800;
 	padding-left:20px;
+	padding-top:10px;
 	color:#96e6a1;
 	position:fixed;
 	z-index:10000000;
@@ -190,7 +194,7 @@ font-family: 'Hiragino Kaku Gothic Pro','ヒラギノ角ゴ Pro W3','メイリ�
 }
 
 
-                                                                                                                                        /* スクロール追従フッター(仮)*/
+ /* スクロール追従フッター*/
 #footer {
 	position : fixed;
 	text-align : center;
