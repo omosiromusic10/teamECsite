@@ -62,7 +62,7 @@ function goResetPasswordAction() {
 
 			<table class = "vertical-list-table">
 				<tr>
-					<th scope = "row"><s:label value = "ログインID:" /></th>
+					<th scope = "row"><s:label value = "ログインID" /></th>
 					<!-- セッションのsavedLoginIdにtrueが格納されていたら(ログインID保存にチェックが入っていたら)、 -->
 					<s:if test = "#session.savedLoginId==true">
 					<!-- ログインIDのテキストフィールドにセッションからloginIdを取得し表示させる -->
@@ -73,7 +73,7 @@ function goResetPasswordAction() {
 					</s:else>
 				</tr>
 				<tr>
-					<th scope = "row"><s:label value = "パスワード:" /></th>
+					<th scope = "row"><s:label value = "パスワード" /></th>
 					<td><s:password name = "password" class = "txt" placeholder = "パスワード" autocomplete = "off" /></td>
 				</tr>
 			</table>
@@ -90,13 +90,13 @@ function goResetPasswordAction() {
 				<s:label value = "ログインID保存" /><br>
 			</div>
 
-			<div class = "submit_btn_box">
+			<div class = "submit_btn_box_l">
 				<s:submit value = "ログイン" class = "submit_btn" onclick = "goLoginAction();" />
 			</div>
 		</s:form>
 
-		<br>
-		<div class = "submit_btn_box">
+
+		<div class = "submit_btn_box_l">
 			<div id = ".contents-btn-set">
 				<s:form action = "CreateUserAction">
 					<s:submit value = "新規ユーザー登録" class = "submit_btn" />
@@ -104,7 +104,7 @@ function goResetPasswordAction() {
 			</div>
 		</div>
 
-		<div class = "submit_btn_box">
+		<div class = "submit_btn_box_l">
 			<div id = ".contents-btn-set">
 				<s:form action = "ResetPasswordAction">
 					<s:submit value = "パスワード再設定" class = "submit_btn" />
