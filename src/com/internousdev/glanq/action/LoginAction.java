@@ -69,16 +69,24 @@ public class LoginAction extends ActionSupport implements SessionAware {
 		UserInfoDAO userInfoDAO = new UserInfoDAO();
 		//ユーザーが存在していて、
 		if(userInfoDAO.isExistsUserInfo(loginId, password)) {
+
 			//ログインが成功していたら、
 			if(userInfoDAO.login(loginId, password) > 0) {
+
 				//ユーザー情報を取得し、
 				UserInfoDTO userInfoDTO = userInfoDAO.getUserInfo(loginId, password);
 				//ユーザーID, status をセッションに格納
 				session.put("loginId", userInfoDTO.getUserId());
 				session.put("status", userInfoDTO.getStatus());
-
-
 				int count = 0;
+
+				String sta = String.valueOf(session.get("status"));
+				//statusに1が入っていたら、管理者画面へ
+				if(sta.equals("1")) {
+					result = "admin";
+					session.put("logined", 1);
+					return result;
+				}
 
 				CartInfoDAO cartInfoDAO = new CartInfoDAO();
 
@@ -106,17 +114,14 @@ public class LoginAction extends ActionSupport implements SessionAware {
 					//try が走れば、場所の確認画面へ
 					result = "locationOption";
 
+
 				} else {
 					//try が走らなかったら、結果はSUCCESS(ホーム画面へ)
 					result = SUCCESS;
 				}
 			}
 
-			String sta = String.valueOf(session.get("status"));
-			//statusに1が入っていたら、管理者画面へ
-			if(sta.equals("1")) {
-				result = "admin";
-			}
+
 				//セッションにログインフラグを格納
 				session.put("logined", 1);
 

@@ -268,8 +268,10 @@ public class CartInfoDAO {
 		return count;
 	}
 
-
-	/* AdminAllSelectActionで使う用 */
+	/*
+	 * 以下管理者用メソッド
+	 * AdminAllSelectActionで使う用
+	 */
 	public List<CartInfoDTO> getCartInfoAllDtoList(){
 		DBConnector dbc = new DBConnector();
 		Connection con = dbc.getConnection();
