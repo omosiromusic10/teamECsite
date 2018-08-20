@@ -83,8 +83,8 @@
 	</tr>
 
 	<tr>
-		<th scope="row">発売年月</th>
-			<td><s:textfield name="releaseDate" value="%{#session.releaseDate}" label="発売年月" placeholder="発売年月" class="txt"/></td>
+		<th scope="row">発売年月日</th>
+			<td><s:textfield name="releaseDate" value="%{#session.releaseDate}" label="発売年月日" placeholder="発売年月日" class="txt"/></td>
 	</tr>
 
 	<tr>

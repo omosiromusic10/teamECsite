@@ -47,7 +47,7 @@
 </tr>
 
 <tr>
-<th scope="row"><s:label value="発売年月"/></th>
+<th scope="row"><s:label value="発売年月日"/></th>
 <td><s:property value="releaseDate"/></td>
 </tr>
 

@@ -10,6 +10,14 @@
 	text-align:center;
 	color:blue;
 }
+
+
+
+/*・・・画像を真ん中寄せにし、尚且つスクロールや画面を小さくしても枠内に収まる用設定。
+・・・絶対値はその分固定の位置になってしまうのでｶﾗｰﾎﾞｯｸｽが動いても固定のままになってしまう。
+仕様書とは内容が少し違うが、やりたかった事は実現出来た。
+*/
+
 .colorbox{
 	box-shadow:2px 2px #1a6ea0;
 	background-color: #ffffdd;
@@ -18,6 +26,7 @@
 	overflow:hidden;
 	padding-bottom:50px;
 	/* position:relative; */
+	text-align:center;
 
 }
 
@@ -29,7 +38,7 @@
 	/*フェードイン*/
 	animation: fadeIn 5s ease 0s 1 normal;
 	-webkit-animation: fadeIn 5s ease 0s 1 normal;
-	margin:50px 8.5% 0px 8.5%;
+    margin:50px 100px 0px 100px;
 	text-align:center;
 }
 

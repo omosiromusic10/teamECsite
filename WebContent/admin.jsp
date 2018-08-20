@@ -27,6 +27,7 @@
     </div>
 </div>
 
+
 <div class="submit_btn_box1">
     <div id=".contents-btn-set">
     <s:form action="AdminEditAction">
