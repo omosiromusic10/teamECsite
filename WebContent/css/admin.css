@@ -14,51 +14,25 @@
 	box-shadow:2px 2px #1a6ea0;
 	background-color: #ffffdd;
 	width: 100%;
-	height:500px;
-	position:relative;
-	float:center;
+	height:auto;
+	overflow:hidden;
+	padding-bottom:50px;
+	/* position:relative; */
+
 }
 
 /*ボタン拡大ver*/
-.submit_btn_box1 , .submit_btn_box2 , .submit_btn_box3 , .submit_btn_box4 , .submit_btn_box5 , .submit_btn_box6{
+.submit_btn_box1{
 	width : 500px;
 	height : 100px;
-	display : block;
-	float:left;
+	display : inline-block;
 	/*フェードイン*/
 	animation: fadeIn 5s ease 0s 1 normal;
 	-webkit-animation: fadeIn 5s ease 0s 1 normal;
+	margin:50px 8.5% 0px 8.5%;
+	text-align:center;
 }
-.submit_btn_box1{
-	position:absolute;
-	top:  50px;
-	left: 200px;
-}
-.submit_btn_box2{
-	position:absolute;
-	top: 50px;
-	left: 870px;
-}
-.submit_btn_box3{
-	position:absolute;
-	top: 200px;
-	left: 200px;
-}
-.submit_btn_box4{
-	position:absolute;
-	top: 200px;
-	left: 870px;
-}
-.submit_btn_box5{
-	position:absolute;
-	top: 350px;
-	left: 200px;
-}
-.submit_btn_box6{
-	position:absolute;
-	top: 350px;
-	left: 870px;
-}
+
 .submit_btn2{
 	padding : 0.5em 1em;
 	text-decoration: none;

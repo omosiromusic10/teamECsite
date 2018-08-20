@@ -27,7 +27,7 @@
     </div>
 </div>
 
-<div class="submit_btn_box2">
+<div class="submit_btn_box1">
     <div id=".contents-btn-set">
     <s:form action="AdminEditAction">
         <s:submit value="商品更新・編集画面" class="submit_btn2"/>
@@ -35,7 +35,7 @@
     </div>
 </div>
 
-<div class="submit_btn_box3">
+<div class="submit_btn_box1">
     <div id=".contents-btn-set">
     <s:form action="AdminDeleteAction">
         <s:submit value="商品削除画面" class="submit_btn2"/>
@@ -43,7 +43,7 @@
     </div>
 </div>
 
-<div class="submit_btn_box4">
+<div class="submit_btn_box1">
     <div id=".contents-btn-set">
     <s:form action="AdminProductSelectAction">
         <s:submit value="商品一覧画面" class="submit_btn2"/>
@@ -51,7 +51,7 @@
     </div>
 </div>
 
-<div class="submit_btn_box5">
+<div class="submit_btn_box1">
     <div id=".contents-btn-set">
     <s:form action="AdminPurchaseSelectAction">
         <s:submit value="購入履歴一覧画面" class="submit_btn2"/>
@@ -59,7 +59,7 @@
     </div>
 </div>
 
-<div class="submit_btn_box6">
+<div class="submit_btn_box1">
     <div id=".contents-btn-set">
     <s:form action="AdminAllSelectAction">
         <s:submit value="データ確認画面" class="submit_btn2"/>
