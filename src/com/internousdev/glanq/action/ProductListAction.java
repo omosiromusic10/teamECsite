@@ -21,10 +21,9 @@ public class ProductListAction extends ActionSupport implements SessionAware {
 	private Pagination pagination = new Pagination();
 	private List<MCategoryDTO> mCategoryDtoList = new ArrayList<MCategoryDTO>();
 
-//	private List<ProductInfoDTO> productInfoDTOList = new ArrayList<ProductInfoDTO>();
 	private String categoryId;
 	private String keywords;
-	private String pageNo = "1";
+	private String pageNo = "1"; // 念のため。
 
 	public String execute() throws SQLException{
 		String result = ERROR;
@@ -32,7 +31,7 @@ public class ProductListAction extends ActionSupport implements SessionAware {
 		// すべての商品情報を取得。
 		ProductInfoDAO productInfoDAO = new ProductInfoDAO();
 		List<ProductInfoDTO> productInfoListAll = productInfoDAO.getProductInfoList();
-		session.put("productInfoListAll", productInfoListAll);	// 予備
+		session.put("productInfoListAll", productInfoListAll);	// 予備（未使用）
 
 		// ページ情報を取得。上で得た商品情報productInfoListAllを利用。1ページあたりの表示数9に設定。
 		int pageSize = 9;
@@ -61,10 +60,7 @@ public class ProductListAction extends ActionSupport implements SessionAware {
 			session.put("logined", 0);
 		}
 
-//		productInfoDTOList = paginationDTO.getCurrentProductInfoPage();	// 予備。セッションで処理させるなら不要
-
 		result = SUCCESS;
-
 
 		return result;
 	}
@@ -73,7 +69,6 @@ public class ProductListAction extends ActionSupport implements SessionAware {
 	public Map<String, Object> getSession() {
 		return session;
 	}
-
 
 	@Override
 	public void setSession(Map<String, Object> session) {
@@ -87,14 +82,6 @@ public class ProductListAction extends ActionSupport implements SessionAware {
 	public void setmCategoryDtoList(List<MCategoryDTO> mCategoryDtoList) {
 		this.mCategoryDtoList = mCategoryDtoList;
 	}
-
-//	public List<ProductInfoDTO> getProductInfoDTOList() {
-//		return productInfoDTOList;
-//	}
-//
-//	public void setProductInfoDTOList(List<ProductInfoDTO> productInfoDTOList) {
-//		this.productInfoDTOList = productInfoDTOList;
-//	}
 
 	public String getCategoryId() {
 		return categoryId;
@@ -119,6 +106,4 @@ public class ProductListAction extends ActionSupport implements SessionAware {
 	public void setPageNo(String pageNo) {
 		this.pageNo = pageNo;
 	}
-
-
 }

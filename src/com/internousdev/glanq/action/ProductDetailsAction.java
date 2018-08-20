@@ -20,8 +20,6 @@ public class ProductDetailsAction extends ActionSupport implements SessionAware 
 	private int productId;
 
 	private List<MCategoryDTO> mCategoryDtoList = new ArrayList<MCategoryDTO>();
-	private List<ProductInfoDTO> productInfoDtoList = new ArrayList<ProductInfoDTO>();
-
 	private String keywords;
 
 	public String execute() throws SQLException {
@@ -104,14 +102,6 @@ public class ProductDetailsAction extends ActionSupport implements SessionAware 
 
 	public void setmCategoryDtoList(List<MCategoryDTO> mCategoryDtoList) {
 		this.mCategoryDtoList = mCategoryDtoList;
-	}
-
-	public List<ProductInfoDTO> getProductInfoDtoList() {
-		return productInfoDtoList;
-	}
-
-	public void setProductInfoDtoList(List<ProductInfoDTO> productInfoDtoList) {
-		this.productInfoDtoList = productInfoDtoList;
 	}
 
 	public String getKeywords() {
