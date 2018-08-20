@@ -22,8 +22,8 @@
 	<img class = "kusa" src= "images/kusa.svg">
 </div>
 <p>決済が完了しました。
-<br>
-3秒後にホーム画面に戻ります。</p>
+
+
 </div>
 </div>
 
