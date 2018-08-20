@@ -9,7 +9,7 @@
 <meta http-equiv="refresh" content="3;URL='GoAdminAction'"/>
 <link rel="stylesheet" href="./css/style.css">
 <!-- 3秒後に管理者ホーム画面に戻るよう指示。 -->
-<title>商品登録官僚</title>
+<title>商品登録完了</title>
 </head>
 <body>
 <jsp:include page="header.jsp" />
@@ -23,7 +23,7 @@
 </div>
 <p>
 商品情報の登録が完了しました。<br>
-3秒後に管理ホームに戻ります。
+
 </p>
 </div>
 
