@@ -45,6 +45,20 @@
     </div>
     </div>
 </s:if>
+<s:if test="!#session.releaseCompanyErrorMessageList.isEmpty()">
+    <div class="error">
+    <div class="error-message">
+        <s:iterator value="#session.releaseCompanyErrorMessageList"><s:property /><br></s:iterator>
+    </div>
+    </div>
+</s:if>
+<s:if test="!#session.releaseDateErrorMessageList.isEmpty()">
+    <div class="error">
+    <div class="error-message">
+        <s:iterator value="#session.releaseDateErrorMessageList"><s:property /><br></s:iterator>
+    </div>
+    </div>
+</s:if>
 <!-- 画像が入ってない場合でもエラーが出るように -->
 <s:if test="!#session.userImageFileNameErrorMessageList.isEmpty()">
     <div class="error">

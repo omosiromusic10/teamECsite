@@ -54,6 +54,7 @@ public class AdminEditDetailsAction extends ActionSupport implements SessionAwar
 					// !!!!発売会社、発売日を直す必要あり!!!
 		session.remove("releaseCompanyErrorMessageList");
 		session.remove("releaseDateErrorMessageList");
+		session.remove("userImageFileNameErrorMessageList");
 
 		//セッションに格納（商品情報）
 		session.put("productName",productInfoDTO.getProductName());
@@ -66,6 +67,7 @@ public class AdminEditDetailsAction extends ActionSupport implements SessionAwar
 		session.put("releaseCompany",productInfoDTO.getReleaseCompany());
 		session.put("releaseDate",productInfoDTO.getReleaseDate());
 		session.put("productId",productInfoDTO.getProductId());
+		session.put("userImageFileName", userImageFileName);
 		//キーが存在するかの確認（商品情報）
 		if(!session.containsKey("ProductInfoDtoList")){
 			ProductInfoDAO productInfoDao = new ProductInfoDAO();

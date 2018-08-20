@@ -43,6 +43,7 @@ public class AdminRegistAction extends ActionSupport implements SessionAware{
 		session.remove("imageFileNameErrorMessageList");
 		session.remove("releaseCompanyErrorMessageList");
 		session.remove("releaseDateErrorMessageList");
+		session.remove("userImageFileNameErrorMessageList");
 
 		session.put("productName",productName);
 		session.put("productNameKana", productNameKana);
@@ -52,6 +53,7 @@ public class AdminRegistAction extends ActionSupport implements SessionAware{
 		session.put("imageFileName", imageFileName);
 		session.put("releaseCompany", releaseCompany);
 		session.put("relaseDate", releaseDate);
+		session.put("userImageFileName", userImageFileName);
 
 
 		if(!session.containsKey("mCategoryList")){
