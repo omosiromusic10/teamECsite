@@ -7,9 +7,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" href="./css/style.css">
-<link rel="stylesheet" href="./css/createUser.css">
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <title>パスワード再設定</title>
 </head>
 <body>
@@ -19,8 +17,7 @@
 
 <div class="lock">
 
-	<!-- テーブルで表示予定
-	だったんですけどね・・・ -->
+	<!-- テーブルで表示 -->
 
 
 
@@ -83,60 +80,32 @@
 						</div>
 					</s:if>
 
-	<section>
-    <s:form action="ResetPasswordConfirmAction" cssClass="form">
+	<s:form action="ResetPasswordConfirmAction">
+	<table class="vertical-list-table">
+		<tr>
+			<th scope="row"><s:label value="ログインID"/></th>
+			<td><s:textfield name="loginId" placeholder="ログインID" class="txt" /></td>
+		</tr>
+		<tr>
+			<th scope="row"><s:label value="現在のパスワード"/></th>
+			<td><s:password name="password" placeholder="現在のパスワード" class="txt" /></td>
+		</tr>
 
-	      <div class="field name-box">
-	      		<label class="defaultLabel">ログインID</label>
-	      		<s:if test="#session.savedLoginId==true">
-	      		<s:textfield name="loginId" value="%{#session.saveId}" label="ログインID" class="txt"/>
-	      		<label class="accordion">半角英数字 1文字以上8文字以下</label>
-		        <span class="nice">Nice!</span>
-	      		</s:if>
-	      		<s:else>
-		        <s:textfield name="loginId"  label="ログインID" placeholder="ログインID" class="txt" />
-        		<label class="accordion">半角英数字 1文字以上8文字以下</label>
-		        <span class="nice">Nice!</span>
-		        </s:else>
-	      </div>
-
-	      <div class="field name-box">
-	      		<label class="defaultLabel">パスワード</label>
-		        <s:password name="password"  label="パスワード" placeholder="パスワード" class="txt" />
-        		<label class="accordion">半角英数字 1文字以上16文字以下</label>
-		        <span class="nice">Nice!</span>
-	      </div>
-
-	      <div class="field name-box">
-	      		<label class="defaultLabel-mini">新しい<br>パスワード</label>
-		        <s:password name="newPassword"  label="新しいパスワード" placeholder="新しいパスワード" class="txt" />
-        		<label class="accordion">半角英数字 1文字以上16文字以下</label>
-		        <span class="nice">Nice!</span>
-	      </div>
-
-	      <div class="field name-box">
-	      		<label class="defaultLabel-mini">新しい<br>パスワード(確認用)</label>
-		        <s:password name="reConfirmationPassword"  label="新しいパスワード(確認用)" placeholder="新しいパスワード(確認用)" class="txt" />
-        		<label class="accordion">半角英数字 1文字以上16文字以下</label>
-		        <span class="nice">Nice!</span>
-	      </div>
-
-	      <br><br><br>
-
-					<div class="submit_btn_box">
-						<div id=".contents-btn-set">
-							<s:submit value="登録" class="submit_btn" />
-						</div>
-					</div>
-
-			</s:form>
-
-			</section>
+		<tr>
+			<th scope="row"><s:label value="新しいパスワード"/></th>
+			<td><s:password name="newPassword" placeholder="新しいパスワード" class="txt" /></td>
+		<tr>
+			<th scope="row"><s:label value="（再確認用）"/></th>
+			<td><s:password name="reConfirmationPassword" placeholder="新しいパスワード（再確認用）" class="txt" /></td>
+		</tr>
+		</table>
+<s:submit value="パスワード再設定" class="submit_btn" />
+</s:form>
 
 </div>
 
 </div>
 <jsp:include page="footer.jsp"/>
-	<script type="text/javascript" src="./js/form.js"></script>
+
 </body>
 </html>

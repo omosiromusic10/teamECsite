@@ -96,7 +96,6 @@ public class CreateUserConfirmAction extends ActionSupport implements SessionAwa
 			session.put("emailErrorMessageList", emailErrorMessageList);
 			session.put("loginIdErrorMessageList", loginIdErrorMessageList);
 			session.put("passwordErrorMessageList", passwordErrorMessageList);
-			session.put("check", 1);
 			result = ERROR;
 			/**
 			 * エラーメッセージに格納された要素がひとつでも存在する場合は
