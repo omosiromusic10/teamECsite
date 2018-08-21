@@ -37,7 +37,7 @@
 				<!-- エラーメッセージがあるときは表示をする
 				 メッセージそのものはsessionから取得 -->
 			<s:if test="#session.checkListErrorMessageList != null">
-							<div class="error">
+							<div class="error_c">
 					<div class="error-message">
 						<s:iterator value="#session.checkListErrorMessageList">
 							<s:property />
@@ -117,7 +117,7 @@
 
 			<!-- カートの中身がなかった場合 -->
 			<s:else>
-			<div class="info">
+			<div class="info_c">
 			カートに情報はありません
 			</div>
 			</s:else>
