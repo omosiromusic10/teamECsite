@@ -14,8 +14,8 @@
 <jsp:include page="header.jsp"/>
 
 <div id="contents">
-<h1>パスワード再設定画面</h1>
-<div class="lock">
+
+	<h1>パスワード再設定画面</h1>
 
 	<!-- テーブルで表示 -->
 
@@ -50,7 +50,6 @@
 						</div>
 						</div>
 					</s:if>
-
 
 
 					<s:if test="!#session.newPasswordErrorMessageList.isEmpty()">
@@ -110,7 +109,6 @@
 
 </div>
 
-</div>
 <jsp:include page="footer.jsp"/>
 
 </body>
