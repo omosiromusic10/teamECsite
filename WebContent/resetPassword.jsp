@@ -12,9 +12,9 @@
 </head>
 <body>
 <jsp:include page="header.jsp"/>
-<h1>パスワード再設定画面</h1>
-<div id="contents">
 
+<div id="contents">
+<h1>パスワード再設定画面</h1>
 <div class="lock">
 
 	<!-- テーブルで表示 -->
@@ -99,6 +99,7 @@
 			<td><s:password name="reConfirmationPassword" placeholder="新しいパスワード（再確認用）" class="txt" /></td>
 		</tr>
 		</table>
+
 	<div class="submit_btn_box">
 		<div id=".contents-btn-set">
 			<s:submit value="パスワード再設定" class="submit_btn" />
