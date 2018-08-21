@@ -85,7 +85,7 @@ public class CreateUserAction extends ActionSupport implements SessionAware{
 		 * MALE=男性、FEMALE＝女性がJSPでの選択肢になる
 		 */
 
-		session.put("loginId", loginId);
+		session.put("createLoginId", loginId);
 		session.put("password", password);
 		session.put("email", email);
 

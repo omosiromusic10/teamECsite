@@ -111,7 +111,7 @@ public class CreateUserConfirmAction extends ActionSupport implements SessionAwa
 		session.put("firstNameKana", firstNameKana);
 		session.put("sex", sex);
 		session.put("email", email);
-		session.put("loginId", loginId);
+		session.put("createLoginId", loginId);
 
 
 
