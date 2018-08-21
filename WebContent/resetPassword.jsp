@@ -52,7 +52,6 @@
 					</s:if>
 
 
-
 					<s:if test="!#session.newPasswordErrorMessageList.isEmpty()">
 						<div class="error">
 						<div class="error-message">
