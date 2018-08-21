@@ -69,7 +69,7 @@ public class SearchItemAction extends ActionSupport implements SessionAware {
 //	"mCategoryDaoList"にmCategoryDTOListの値を格納
 		MCategoryDAO mCategoryDao=new MCategoryDAO();
 		mCategoryDtoList=mCategoryDao.getMCategoryList();
-		session.put("mCategoryDaoList", mCategoryDtoList);
+		session.put("mCategoryDtoList", mCategoryDtoList);
 	}
 
 //	"productInfoDtoList"が"null"でない場合で次のif文へと移行し
