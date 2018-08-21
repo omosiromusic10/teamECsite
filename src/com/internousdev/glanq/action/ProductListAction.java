@@ -28,6 +28,13 @@ public class ProductListAction extends ActionSupport implements SessionAware {
 	public String execute() throws SQLException{
 		String result = ERROR;
 
+		// 管理者ログイン状態の対策
+		if(session.containsKey("status")){
+			if((session.get("status")).equals("1")){
+				session.clear();
+			}
+		}
+
 		// すべての商品情報を取得。
 		ProductInfoDAO productInfoDAO = new ProductInfoDAO();
 		List<ProductInfoDTO> productInfoListAll = productInfoDAO.getProductInfoList();

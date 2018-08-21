@@ -24,6 +24,14 @@ public class ProductDetailsAction extends ActionSupport implements SessionAware 
 
 	public String execute() throws SQLException {
 		String result = ERROR;
+
+		// 管理者ログイン状態の対策
+		if(session.containsKey("status")){
+			if((session.get("status")).equals("1")){
+				session.clear();
+			}
+		}
+
 		// 選ばれた商品の商品情報を取得。productId が必要。
 		ProductInfoDAO pDAO1 = new ProductInfoDAO();
 		ProductInfoDTO productInfoDTO = new ProductInfoDTO();
