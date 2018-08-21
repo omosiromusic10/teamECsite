@@ -66,7 +66,7 @@ function goResetPasswordAction() {
 					<!-- セッションのsavedLoginIdにtrueが格納されていたら(ログインID保存にチェックが入っていたら)、 -->
 					<s:if test = "#session.savedLoginId==true">
 					<!-- ログインIDのテキストフィールドにセッションからloginIdを取得し表示させる -->
-					<td><s:textfield name = "loginId" class = "txt" placeholder = "ログインID" value = "%{#session.loginId}" autocomplete = "off" /></td>
+					<td><s:textfield name = "loginId" class = "txt" placeholder = "ログインID" value = "%{#session.saveId}" autocomplete = "off" /></td>
 					</s:if>
 					<s:else>
 					<td><s:textfield name = "loginId" class = "txt" placeholder = "ログインID" autocomplete = "off" /></td>
@@ -75,6 +75,8 @@ function goResetPasswordAction() {
 				<tr>
 					<th scope = "row"><s:label value = "パスワード" /></th>
 					<td><s:password name = "password" class = "txt" placeholder = "パスワード" autocomplete = "off" /></td>
+					<!-- Chromeでオートコンプリート無効化するためのダミー -->
+					<s:password type="password" name="dummypass" style="top: -100px; left: -100px; position: fixed;" />
 				</tr>
 			</table>
 
