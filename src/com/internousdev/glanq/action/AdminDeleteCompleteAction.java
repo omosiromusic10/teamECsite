@@ -50,7 +50,7 @@ public class AdminDeleteCompleteAction extends ActionSupport implements SessionA
 		}
 		//session内のcheckListErrorMessageListにcheckListErrorMessageListを格納
 		if(count <= 0){
-			checkListErrorMessageList.add("チェックされていません。");
+			checkListErrorMessageList.add("既に削除されています。");
 			session.put("checkListErrorMessageList", checkListErrorMessageList);
 			return ERROR;
 		}else{
