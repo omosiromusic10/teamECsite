@@ -87,7 +87,7 @@
 					</s:if>
 
 					<s:hidden name="email" value="%{email}" />
-					<s:hidden name="loginId" value="%{loginId}" />
+					<s:hidden name="loginId" value="%{createLoginId}" />
 					<s:hidden name="password" value="%{password}" />
 
 				</s:form>
