@@ -7,6 +7,7 @@
 <!-- デバッグしたい時にはコメント外してください。 -->
 <!-- <constant name="struts.devMode" value="true" /> -->
 <constant name="struts.devMode" value="true" />
+<constant name="struts.multipart.maxSize" value="-1" />
 <package name="com.internousdev.glanq.action" extends="struts-default">
 
 
