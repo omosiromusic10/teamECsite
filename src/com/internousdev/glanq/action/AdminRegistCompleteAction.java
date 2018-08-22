@@ -8,42 +8,43 @@ import org.apache.struts2.interceptor.SessionAware;
 import com.internousdev.glanq.dao.ProductInfoDAO;
 import com.opensymphony.xwork2.ActionSupport;
 
-public class AdminRegistCompleteAction extends ActionSupport implements SessionAware{
+public class AdminRegistCompleteAction extends ActionSupport implements SessionAware {
 
-	private int productId;//ここは正直何でも良いがかぶりだけは良くない　現状0になっている。
+	private int productId;// ここは正直何でも良いがかぶりだけは良くない 現状0になっている。
 	private String productName;
 	private String productNameKana;
 	private String productDescription;
-	private int categoryId;//同じくここも設定されていない。
+	private int categoryId;// 同じくここも設定されていない。
 	private int price;
 	private String releaseCompany;
 	private String releaseDate;
 	private int Status;
 	private String imageFileName;
-	private String imageFilePath;//何も無い。
+	private String imageFilePath;// 何も無い。
 	private Map<String, Object> session;
 
-	public String execute() throws SQLException{
-		String result = ERROR;
+	public String execute() throws SQLException {
+		// ステータスが１の時だけAdmin.jspを表示させる。
+		String result = "errorhome";
+		String token = String.valueOf(session.get("token"));
+		if (token != "admin") {
+			return result;
+		}
+
+		result = ERROR;
 
 		ProductInfoDAO ProductInfoDao = new ProductInfoDAO();
 
 		int productId = ProductInfoDao.getMaxProductId() + 1;
 
-		int count = ProductInfoDao.createProduct(productId,
-			session.get("productName").toString(),
-			session.get("productNameKana").toString(),
-			session.get("productDescription").toString(),
-			Integer.parseInt(session.get("categoryId").toString()),
-			Integer.parseInt(session.get("price").toString()),
-			session.get("releaseCompany").toString(),
-			session.get("releaseDate").toString(),
-			Integer.parseInt(session.get("Status").toString()),
-			session.get("image_file_path").toString(),
-		    session.get("image_file_name").toString());
+		int count = ProductInfoDao.createProduct(productId, session.get("productName").toString(),
+				session.get("productNameKana").toString(), session.get("productDescription").toString(),
+				Integer.parseInt(session.get("categoryId").toString()),
+				Integer.parseInt(session.get("price").toString()), session.get("releaseCompany").toString(),
+				session.get("releaseDate").toString(), Integer.parseInt(session.get("Status").toString()),
+				session.get("image_file_path").toString(), session.get("image_file_name").toString());
 
-
-		if (count > 0){
+		if (count > 0) {
 			session.remove("prouctName");
 			session.remove("productNameKana");
 			session.remove("productDescription");
@@ -61,77 +62,100 @@ public class AdminRegistCompleteAction extends ActionSupport implements SessionA
 		return result;
 	}
 
-	public int getProductId(){
+	public int getProductId() {
 		return productId;
 	}
-	public void setProductId(int productId){
+
+	public void setProductId(int productId) {
 		this.productId = productId;
 	}
-	public String getProductName(){
+
+	public String getProductName() {
 		return productName;
 	}
-	public void setProductName(String productName){
+
+	public void setProductName(String productName) {
 		this.productName = productName;
 	}
-	public String getProductNameKana(){
+
+	public String getProductNameKana() {
 		return productNameKana;
 	}
-	public void setProductNameKana(String productNameKana){
+
+	public void setProductNameKana(String productNameKana) {
 		this.productNameKana = productNameKana;
 	}
-	public String getProductDescription(){
+
+	public String getProductDescription() {
 		return productDescription;
 	}
-	public void setProductDescription(String productDescription){
+
+	public void setProductDescription(String productDescription) {
 		this.productDescription = productDescription;
 	}
-	public int getPrice(){
+
+	public int getPrice() {
 		return price;
 	}
-	public void setPrice(int price){
+
+	public void setPrice(int price) {
 		this.price = price;
 	}
-	public String getReleaseCompany(){
+
+	public String getReleaseCompany() {
 		return releaseCompany;
 	}
-	public void setReleaseCompany(String releaseCompany){
+
+	public void setReleaseCompany(String releaseCompany) {
 		this.releaseCompany = releaseCompany;
 	}
-	public String getReleaseDate(){
+
+	public String getReleaseDate() {
 		return releaseDate;
 	}
-	public void setReleaseDate(String releaseDate){
+
+	public void setReleaseDate(String releaseDate) {
 		this.releaseDate = releaseDate;
 	}
-	public String getImageFileName(){
+
+	public String getImageFileName() {
 		return imageFileName;
 	}
-	public void setImageFileName(String imageFileName){
+
+	public void setImageFileName(String imageFileName) {
 		this.imageFileName = imageFileName;
 	}
-	public String getImageFilePath(){
+
+	public String getImageFilePath() {
 		return imageFilePath;
 	}
-	public void setImageFilePath(String imageFilePath){
+
+	public void setImageFilePath(String imageFilePath) {
 		this.imageFilePath = imageFilePath;
 	}
-	public Map<String,Object> getSession(){
+
+	public Map<String, Object> getSession() {
 		return session;
 	}
-	public void setSession(Map<String, Object>session){
+
+	public void setSession(Map<String, Object> session) {
 		this.session = session;
 	}
-	public int getCategoryId(){
+
+	public int getCategoryId() {
 		return categoryId;
 	}
-	public void setCategoryId(int categoryId){
+
+	public void setCategoryId(int categoryId) {
 		this.categoryId = categoryId;
 	}
-	public int getStatus(){
+
+	public int getStatus() {
 		return Status;
 	}
-	public void setStatus(int Status){
-		this.Status= Status;
+
+	public void setStatus(int Status) {
+		this.Status = Status;
 	}
 
 }

@@ -29,42 +29,49 @@ public class AdminDeleteCompleteAction extends ActionSupport implements SessionA
 	private List<ProductInfoDTO> productInfoDtoList = new ArrayList<ProductInfoDTO>();
 	private Map<String, Object> session;
 
-	public String execute() throws SQLException{
-		String result = ERROR;
-		ProductInfoDAO productInfoDAO = new ProductInfoDAO();    //インスタンス化
+	public String execute() throws SQLException {
+		// ステータスが１の時だけAdmin.jspを表示させる。
+		String result = "errorhome";
+		String token = String.valueOf(session.get("token"));
+		if (token != "admin") {
+			return result;
+		}
+
+		result = ERROR;
+		ProductInfoDAO productInfoDAO = new ProductInfoDAO(); // インスタンス化
 		CartInfoDAO cartInfoDAO = new CartInfoDAO();
 		int count = 0;
-		//List型のStringにArrayListで生成したインスタンスを格納
+		// List型のStringにArrayListで生成したインスタンスを格納
 		List<String> checkListErrorMessageList = new ArrayList<String>();
-		//session内のcheckListErrorMessageListにcheckListErrorMessageListを格納
-		if(checkList==null){
+		// session内のcheckListErrorMessageListにcheckListErrorMessageListを格納
+		if (checkList == null) {
 			checkListErrorMessageList.add("チェックされていません。");
-			session.put("checkListErrorMessageList",checkListErrorMessageList);
+			session.put("checkListErrorMessageList", checkListErrorMessageList);
 			return ERROR;
 		}
-		//拡張for文
-		for(String id:checkList){
+		// 拡張for文
+		for (String id : checkList) {
 			System.out.println(id);
 			count += productInfoDAO.delete(id); // 商品情報を消す
-			count += cartInfoDAO.delete(id);  // カート情報を消す
+			count += cartInfoDAO.delete(id); // カート情報を消す
 		}
-		//session内のcheckListErrorMessageListにcheckListErrorMessageListを格納
-		if(count <= 0){
+		// session内のcheckListErrorMessageListにcheckListErrorMessageListを格納
+		if (count <= 0) {
 			checkListErrorMessageList.add("既に削除されています。");
 			session.put("checkListErrorMessageList", checkListErrorMessageList);
 			return ERROR;
-		}else{
-			//List型のProductInfoDTOにArrayListで生成したインスタンスを格納
+		} else {
+			// List型のProductInfoDTOにArrayListで生成したインスタンスを格納
 			List<ProductInfoDTO> productInfoDtoList = new ArrayList<ProductInfoDTO>();
 			productInfoDtoList = productInfoDAO.getProductInfoList();
 			Iterator<ProductInfoDTO> iterator = productInfoDtoList.iterator();
-			if(!(iterator.hasNext())){    //次のデータがある場合にtrue
-				productInfoDtoList =null;
+			if (!(iterator.hasNext())) { // 次のデータがある場合にtrue
+				productInfoDtoList = null;
 			}
 			session.put("productInfoDtoList", productInfoDtoList);
 
 			result = SUCCESS;
-	}
+		}
 		return result;
 	}
 

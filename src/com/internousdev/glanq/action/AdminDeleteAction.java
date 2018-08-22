@@ -29,47 +29,54 @@ public class AdminDeleteAction extends ActionSupport implements SessionAware {
 	private List<ProductInfoDTO> productInfoDtoList = new ArrayList<ProductInfoDTO>();
 	private Map<String, Object> session;
 
-	public String execute() throws SQLException{
-	String result = ERROR;
-
-	session.remove("checkListErrorMessageList");
-
-	ProductInfoDAO productInfoDao = new ProductInfoDAO();
-	productInfoDtoList = productInfoDao.getProductInfoList();
-
-	//session内にmCategoryListが無いか確認
-	if(!session.containsKey("mCategoryList")){
-		MCategoryDAO mCategoryDao = new MCategoryDAO();
-		mCategoryDtoList = mCategoryDao.getMCategoryList();
-		session.put("mCategoryDtoList", mCategoryDtoList);
-	}
-
-	if(!(productInfoDtoList==null)){
-		Pagination pagination = new Pagination();
-		PaginationDTO paginationDTO = new PaginationDTO();
-		if(pageNo == 0){    //pageNoが0の場合1ページ目
-			paginationDTO = pagination.initialize(productInfoDtoList, 9);
-		}else{    //そうでない場合、任意のページ
-			paginationDTO=pagination.getPage(productInfoDtoList,9, pageNo);
+	public String execute() throws SQLException {
+		// ステータスが１の時だけAdmin.jspを表示させる。
+		String result = "errorhome";
+		String token = String.valueOf(session.get("token"));
+		if (token != "admin") {
+			return result;
 		}
-		session.put("productInfoDtoList", paginationDTO.getCurrentProductInfoPage());  //ページ情報の取得
-		session.put("totalPageSize", paginationDTO.getTotalPageSize());
-		session.put("currentPageNo", paginationDTO.getCurrentPageNo());
-		session.put("totalRecordSize", paginationDTO.getTotalRecordSize());
-		session.put("startRecordNo", paginationDTO.getStartRecordNo());
-		session.put("endRecordNo", paginationDTO.getEndRecordNo());
-		session.put("previousPage", paginationDTO.isHasPreviousPage());
-		session.put("previousPageNo", paginationDTO.getPreviousPageNo());
-		session.put("nextPage", paginationDTO.isHasNextPage());
-		session.put("nextPageNo", paginationDTO.getNextPageNo());
-		session.put("pageNumberList", paginationDTO.getPageNumberList());
-		session.put("productInfoDtoList", paginationDTO.getCurrentProductInfoPage());
 
-		}else{    //そうでない場合、productInfoDAOにnull格納
+		result = ERROR;
+
+		session.remove("checkListErrorMessageList");
+
+		ProductInfoDAO productInfoDao = new ProductInfoDAO();
+		productInfoDtoList = productInfoDao.getProductInfoList();
+
+		// session内にmCategoryListが無いか確認
+		if (!session.containsKey("mCategoryList")) {
+			MCategoryDAO mCategoryDao = new MCategoryDAO();
+			mCategoryDtoList = mCategoryDao.getMCategoryList();
+			session.put("mCategoryDtoList", mCategoryDtoList);
+		}
+
+		if (!(productInfoDtoList == null)) {
+			Pagination pagination = new Pagination();
+			PaginationDTO paginationDTO = new PaginationDTO();
+			if (pageNo == 0) { // pageNoが0の場合1ページ目
+				paginationDTO = pagination.initialize(productInfoDtoList, 9);
+			} else { // そうでない場合、任意のページ
+				paginationDTO = pagination.getPage(productInfoDtoList, 9, pageNo);
+			}
+			session.put("productInfoDtoList", paginationDTO.getCurrentProductInfoPage()); // ページ情報の取得
+			session.put("totalPageSize", paginationDTO.getTotalPageSize());
+			session.put("currentPageNo", paginationDTO.getCurrentPageNo());
+			session.put("totalRecordSize", paginationDTO.getTotalRecordSize());
+			session.put("startRecordNo", paginationDTO.getStartRecordNo());
+			session.put("endRecordNo", paginationDTO.getEndRecordNo());
+			session.put("previousPage", paginationDTO.isHasPreviousPage());
+			session.put("previousPageNo", paginationDTO.getPreviousPageNo());
+			session.put("nextPage", paginationDTO.isHasNextPage());
+			session.put("nextPageNo", paginationDTO.getNextPageNo());
+			session.put("pageNumberList", paginationDTO.getPageNumberList());
+			session.put("productInfoDtoList", paginationDTO.getCurrentProductInfoPage());
+
+		} else { // そうでない場合、productInfoDAOにnull格納
 			session.put("productInfoDtoList", null);
 		}
-    result = SUCCESS;
-    return result;
+		result = SUCCESS;
+		return result;
 	}
 
 	public String getProductName() {

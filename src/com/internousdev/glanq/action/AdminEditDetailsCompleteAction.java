@@ -24,24 +24,27 @@ public class AdminEditDetailsCompleteAction extends ActionSupport implements Ses
 	private Map<String, Object> session;
 
 	public String execute() throws SQLException {
-		String result = ERROR;
+		// ステータスが１の時だけAdmin.jspを表示させる。
+		String result = "errorhome";
+		String token = String.valueOf(session.get("token"));
+		if (token != "admin") {
+			return result;
+		}
+
+		result = ERROR;
 
 		ProductInfoDAO productInfoDAO = new ProductInfoDAO();
 
-		//セッションに格納された商品情報をupdateProductInfoメソッドで実行する
+		// セッションに格納された商品情報をupdateProductInfoメソッドで実行する
 		int count = productInfoDAO.updateProductInfo(Integer.parseInt(session.get("productId").toString()),
-				session.get("productName").toString(),
-				session.get("productNameKana").toString(),
-				session.get("productDescription").toString(),
-				Integer.parseInt(session.get("categoryId").toString()),
-				Integer.parseInt(session.get("price").toString()),
-				session.get("releaseCompany").toString(),
-				session.get("releaseDate").toString(),
-				session.get("image_file_path").toString(),
+				session.get("productName").toString(), session.get("productNameKana").toString(),
+				session.get("productDescription").toString(), Integer.parseInt(session.get("categoryId").toString()),
+				Integer.parseInt(session.get("price").toString()), session.get("releaseCompany").toString(),
+				session.get("releaseDate").toString(), session.get("image_file_path").toString(),
 				session.get("image_file_name").toString());
 
-		//実行が全部成功したら、セッションに格納されたデータをはずす
-		if(count > 0) {
+		// 実行が全部成功したら、セッションに格納されたデータをはずす
+		if (count > 0) {
 			session.remove("productName");
 			session.remove("puroductNameKana");
 			session.remove("productDescription");
@@ -53,13 +56,12 @@ public class AdminEditDetailsCompleteAction extends ActionSupport implements Ses
 			session.remove("image_file_path");
 			session.remove("image_file_name");
 			session.remove("image_flg");
-			//コンソールに表示させて確認する
+			// コンソールに表示させて確認する
 			System.out.println("商品の追加を行いました");
 			result = SUCCESS;
 		}
 		return result;
 	}
-
 
 	public int getProductId() {
 		return productId;

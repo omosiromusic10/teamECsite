@@ -21,6 +21,15 @@ public class AdminPurchaseSelectAction extends ActionSupport implements SessionA
 
 	public String execute() throws SQLException{
 
+		// ステータスが１の時だけAdmin.jspを表示させる。
+		String result = "errorhome";
+		String token = String.valueOf(session.get("token"));
+		if (token != "admin"){
+			return result;
+		}
+
+		result = ERROR;
+
 		//ここでもPurchaseHistoryのDAOから情報を取ってList情報をjspで表示させる為に用いている処理。
 		PurchaseHistoryInfoDAO purchaseHistoryInfoDao = new PurchaseHistoryInfoDAO();
 		purchaseHistoryInfoDtoList = purchaseHistoryInfoDao.getPurchaseHistoryAllList();
@@ -32,9 +41,10 @@ public class AdminPurchaseSelectAction extends ActionSupport implements SessionA
 			MCategoryDAO mCategoryDao = new MCategoryDAO();
 			mCategoryDtoList = mCategoryDao.getMCategoryList();
 			session.put("mCategoryDtoList", mCategoryDtoList);
+			result = SUCCESS;
 		}
 
-		return SUCCESS;
+		return result;
 	}
 	//以下ゲッタセッター
 	public String getCategoryId() {

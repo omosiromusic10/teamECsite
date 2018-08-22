@@ -15,7 +15,7 @@ import com.internousdev.glanq.dto.ProductInfoDTO;
 import com.internousdev.glanq.util.Pagination;
 import com.opensymphony.xwork2.ActionSupport;
 
-public class AdminProductSelectAction extends ActionSupport implements SessionAware{
+public class AdminProductSelectAction extends ActionSupport implements SessionAware {
 	private String productName;
 	private String productNameKana;
 	private String imageFilePath;
@@ -29,26 +29,33 @@ public class AdminProductSelectAction extends ActionSupport implements SessionAw
 	private Map<String, Object> session;
 
 	public String execute() throws SQLException {
-		String result = ERROR;
+		// ステータスが１の時だけAdmin.jspを表示させる。
+		String result = "errorhome";
+		String token = String.valueOf(session.get("token"));
+		if (token != "admin") {
+			return result;
+		}
+
+		result = ERROR;
 
 		// ここはProductInfoのInfoListから借りてくるだけ。
-		//後はゲッターセッターをして処理を終了
+		// 後はゲッターセッターをして処理を終了
 		ProductInfoDAO productInfoDao = new ProductInfoDAO();
-		productInfoDtoList  = productInfoDao.getProductInfoList();
+		productInfoDtoList = productInfoDao.getProductInfoList();
 
-		//ここでは検索機能にバグがおきないようにする為の処置
-		if(!session.containsKey("mCategoryList")){
+		// ここでは検索機能にバグがおきないようにする為の処置
+		if (!session.containsKey("mCategoryList")) {
 			MCategoryDAO mCategoryDao = new MCategoryDAO();
 			mCategoryDtoList = mCategoryDao.getMCategoryList();
 			session.put("mCategoryDtoList", mCategoryDtoList);
 		}
 
-		if(!(productInfoDtoList==null)){
+		if (!(productInfoDtoList == null)) {
 			Pagination pagination = new Pagination();
 			PaginationDTO paginationDTO = new PaginationDTO();
-			if(pageNo == 0){
+			if (pageNo == 0) {
 				paginationDTO = pagination.initialize(productInfoDtoList, 9);
-			}else{
+			} else {
 				paginationDTO = pagination.getPage(productInfoDtoList, 9, pageNo);
 			}
 
@@ -62,14 +69,15 @@ public class AdminProductSelectAction extends ActionSupport implements SessionAw
 			session.put("previousPageNo", paginationDTO.getPreviousPageNo());
 			session.put("nextPage", paginationDTO.isHasNextPage());
 			session.put("nextPageNo", paginationDTO.getNextPageNo());
-		    }else{
-			    session.put("productInfoDtoList", null);
-		    }
+		} else {
+			session.put("productInfoDtoList", null);
+		}
 
 		result = SUCCESS;
 		return result;
 	}
-//以下ゲッタセッター
+
+	// 以下ゲッタセッター
 	public String getProductName() {
 		return productName;
 	}
@@ -149,13 +157,13 @@ public class AdminProductSelectAction extends ActionSupport implements SessionAw
 	public void setSession(Map<String, Object> session) {
 		this.session = session;
 	}
+
 	public int getPageNo() {
 		return pageNo;
 	}
+
 	public void setPageNo(int pageNo) {
 		this.pageNo = pageNo;
 	}
-
-
 
 }

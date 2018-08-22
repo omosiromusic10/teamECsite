@@ -31,7 +31,7 @@ public class AdminAllSelectAction extends ActionSupport implements SessionAware 
 		// ステータスが１の時だけAdmin.jspを表示させる。
 		String result = "errorhome";
 		String token = String.valueOf(session.get("token"));
-		if (token != "test"){
+		if (token != "admin") {
 			return result;
 		}
 

@@ -51,7 +51,14 @@ public class AdminEditDetailsConfirmAction extends ActionSupport implements Sess
 
 
 	public String execute(){
-		String result = ERROR;
+		// ステータスが１の時だけAdmin.jspを表示させる。
+		String result = "errorhome";
+		String token = String.valueOf(session.get("token"));
+		if (token != "admin") {
+			return result;
+		}
+
+		result = ERROR;
 		//InputChekerをインスタンス化して正規表現かを検証
 		InputChecker inputChecker = new InputChecker();
 

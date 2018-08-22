@@ -15,7 +15,7 @@ import com.internousdev.glanq.dto.MCategoryDTO;
 import com.internousdev.glanq.util.InputChecker;
 import com.opensymphony.xwork2.ActionSupport;
 
-public class AdminRegistConfirmAction extends ActionSupport implements SessionAware{
+public class AdminRegistConfirmAction extends ActionSupport implements SessionAware {
 
 	private String productName;
 	private String productNameKana;
@@ -30,21 +30,28 @@ public class AdminRegistConfirmAction extends ActionSupport implements SessionAw
 	private String userImageContentType;
 	private String userImageFileName;
 
-	private List<String>productNameErrorMessageList = new ArrayList<String>();
-	private List<String>productNameKanaErrorMessageList = new ArrayList<String>();
-	private List<String>productDescriptionErrorMessageList  = new ArrayList<String>();
-	private List<String>priceErrorMessageList = new ArrayList<String>();
-	private List<String>releaseCompanyErrorMessageList = new ArrayList<String>();
-	private List<String>releaseDateErrorMessageList = new ArrayList<String>();
+	private List<String> productNameErrorMessageList = new ArrayList<String>();
+	private List<String> productNameKanaErrorMessageList = new ArrayList<String>();
+	private List<String> productDescriptionErrorMessageList = new ArrayList<String>();
+	private List<String> priceErrorMessageList = new ArrayList<String>();
+	private List<String> releaseCompanyErrorMessageList = new ArrayList<String>();
+	private List<String> releaseDateErrorMessageList = new ArrayList<String>();
 
-	private List<String>userImageFileNameErrorMessageList = new ArrayList<String>();
+	private List<String> userImageFileNameErrorMessageList = new ArrayList<String>();
 
 	private int categoryId;
 	private List<String> categoryIdList = new ArrayList<String>();
 	private Map<String, Object> session;
 
-	public String execute(){
-		String result = ERROR;
+	public String execute() {
+		// ステータスが１の時だけAdmin.jspを表示させる。
+		String result = "errorhome";
+		String token = String.valueOf(session.get("token"));
+		if (token != "admin") {
+			return result;
+		}
+
+		result = ERROR;
 		InputChecker inputChecker = new InputChecker();
 
 		session.put("productName", productName);
@@ -59,85 +66,79 @@ public class AdminRegistConfirmAction extends ActionSupport implements SessionAw
 		session.put("userImageFileName", userImageFileName);
 		session.put("Status", 0);
 
-		//ファイルアップロードの処理
+		// ファイルアップロードの処理
 
-		/*画像ファイルの場合で.jpeg、.bmp、.png画像のみで通り、それ以外にはエラー表示で
+		/*
+		 * 画像ファイルの場合で.jpeg、.bmp、.png画像のみで通り、それ以外にはエラー表示で
 		 * 「画像ファイルは.jpeg、.bmp、.png画像を入れてください。」と表示させる。
 		 * 何も入れてない場合は「画像ファイルを挿入してください。」と表示させる。
-		*/
+		 */
 
-
-
-		if(!(userImage == null)){
-			long fileMaxSize = 3145728;//3MB
+		if (!(userImage == null)) {
+			long fileMaxSize = 3145728;// 3MB
 			String filePath = ServletActionContext.getServletContext().getRealPath("/").concat("images");
 			System.out.println("Image Location:" + filePath);
 			File fileToCreate = new File(filePath, userImageFileName);
 
-			//この中にif分を挿入し、画像のみのファイルを
-			if(!(isImageFile(userImageContentType))){
-				    userImageFileNameErrorMessageList.add("画像ファイルが異なります。gif、jpeg、png、bmpのみ挿入出来ます。");
-				    result = ERROR;
-			  }
-			if(userImage.length()>fileMaxSize){
+			// この中にif分を挿入し、画像のみのファイルを
+			if (!(isImageFile(userImageContentType))) {
+				userImageFileNameErrorMessageList.add("画像ファイルが異なります。gif、jpeg、png、bmpのみ挿入出来ます。");
+				result = ERROR;
+			}
+			if (userImage.length() > fileMaxSize) {
 				userImageFileNameErrorMessageList.add("3MBより大きい画像ファイルは挿入出来ません。");
 				result = ERROR;
 			}
 
-		try{
-			  FileUtils.copyFile(userImage , fileToCreate);
+			try {
+				FileUtils.copyFile(userImage, fileToCreate);
 				session.put("image_file_name", userImageFileName);
 				session.put("image_file_path", "./images");
-				session.put("image_flg" , userImageFileName);
+				session.put("image_flg", userImageFileName);
 				System.out.println(session.get("image_file_name"));
 				System.out.println(session.get("image_file_path"));
 
-		  }catch(IOException e){
-			  e.printStackTrace();
-		  }
-		}else{
-			userImageFileName="";
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		} else {
+			userImageFileName = "";
 			userImageFileNameErrorMessageList.add("画像ファイルを挿入してください。");
 			result = ERROR;
-	  }
+		}
 
-
-        //ここでmCategoryDtoListを使用してcategoryIdを表示された名前で取ってくる。
+		// ここでmCategoryDtoListを使用してcategoryIdを表示された名前で取ってくる。
 		MCategoryDAO mCategoryDAO = new MCategoryDAO();
 		MCategoryDTO mCategoryDTO = mCategoryDAO.getMCategory(categoryId);
-		//ユーザーID, status をセッションに格納
-		//putされたcategoryIdをメソッド内でセレクトし、categoryNameをsession内に保存する。
+		// ユーザーID, status をセッションに格納
+		// putされたcategoryIdをメソッド内でセレクトし、categoryNameをsession内に保存する。
 		session.put("categoryName", mCategoryDTO.getCategoryName());
 
+		productNameErrorMessageList = inputChecker.docheck("商品名", productName, 1, 32, true, true, true, true, true,
+				true, true);
+		productNameKanaErrorMessageList = inputChecker.docheck("商品名ふりがな", productNameKana, 1, 32, false, false, true,
+				false, false, false, false);
+		productDescriptionErrorMessageList = inputChecker.docheck("商品名詳細", productDescription, 1, 320, true, true, true,
+				true, true, true, true);
+		priceErrorMessageList = inputChecker.docheck("価格", price, 1, 8, false, false, false, true, false, false, false);
+		releaseCompanyErrorMessageList = inputChecker.docheck("発売会社名", releaseCompany, 1, 16, true, true, true, true,
+				true, true, true);
+		releaseDateErrorMessageList = inputChecker.docheck("発売年月日", releaseDate, 1, 16, false, true, false, true, true,
+				false, false);
 
-
-
-		productNameErrorMessageList = inputChecker.docheck("商品名", productName, 1, 32, true, true, true, true, true, true, true);
-		productNameKanaErrorMessageList = inputChecker.docheck("商品名ふりがな", productNameKana, 1, 32, false, false, true, false, false, false, false);
-		productDescriptionErrorMessageList = inputChecker.docheck("商品名詳細", productDescription, 1, 320, true, true, true, true, true, true, true);
-		priceErrorMessageList  = inputChecker.docheck("価格", price, 1, 8, false, false, false, true, false, false, false);
-		releaseCompanyErrorMessageList  = inputChecker.docheck("発売会社名", releaseCompany, 1, 16, true, true, true, true, true, true, true);
-		releaseDateErrorMessageList  = inputChecker.docheck("発売年月日", releaseDate, 1, 16, false, true, false, true, true, false, false);
-
-
-
-
-		if(productNameErrorMessageList.size()==0
-		&& productNameKanaErrorMessageList.size()==0
-		&& productDescriptionErrorMessageList.size()==0
-		&& priceErrorMessageList.size()==0
-		&& releaseCompanyErrorMessageList.size()==0
-		&& releaseDateErrorMessageList.size()==0
-		&& userImageFileNameErrorMessageList.size()==0 ){
+		if (productNameErrorMessageList.size() == 0 && productNameKanaErrorMessageList.size() == 0
+				&& productDescriptionErrorMessageList.size() == 0 && priceErrorMessageList.size() == 0
+				&& releaseCompanyErrorMessageList.size() == 0 && releaseDateErrorMessageList.size() == 0
+				&& userImageFileNameErrorMessageList.size() == 0) {
 			result = SUCCESS;
-		}else{
+		} else {
 			session.put("productNameErrorMessageList", productNameErrorMessageList);
 			session.put("productNameKanaErrorMessageList", productNameKanaErrorMessageList);
 			session.put("productDescriptionErrorMessageList", productDescriptionErrorMessageList);
 			session.put("priceErrorMessageList", priceErrorMessageList);
 			session.put("releaseCompanyErrorMessageList", releaseCompanyErrorMessageList);
 			session.put("releaseDateErrorMessageList", releaseDateErrorMessageList);
-			session.put("userImageFileNameErrorMessageList" ,userImageFileNameErrorMessageList);
+			session.put("userImageFileNameErrorMessageList", userImageFileNameErrorMessageList);
 			result = ERROR;
 		}
 
@@ -146,103 +147,130 @@ public class AdminRegistConfirmAction extends ActionSupport implements SessionAw
 
 	private boolean isImageFile(String extension) {
 
-		return (extension.equals("image/gif")
-				|| extension.equals("image/jpeg")
-				|| extension.equals("image/png")
+		return (extension.equals("image/gif") || extension.equals("image/jpeg") || extension.equals("image/png")
 				|| extension.equals("image/bmp"));
 	}
-	public int getCategoryId(){
+
+	public int getCategoryId() {
 		return categoryId;
 	}
-	public void setCategoryId(int categoryId){
+
+	public void setCategoryId(int categoryId) {
 		this.categoryId = categoryId;
 	}
-	public String getProductName(){
+
+	public String getProductName() {
 		return productName;
 	}
-	public void setProductName(String productName){
+
+	public void setProductName(String productName) {
 		this.productName = productName;
 	}
-	public String getProductNameKana(){
+
+	public String getProductNameKana() {
 		return productNameKana;
 	}
-	public void setProductNameKana(String productNameKana){
+
+	public void setProductNameKana(String productNameKana) {
 		this.productNameKana = productNameKana;
 	}
-	public String getProductDescription(){
+
+	public String getProductDescription() {
 		return productDescription;
 	}
-	public void setProductDescription(String productDescription){
+
+	public void setProductDescription(String productDescription) {
 		this.productDescription = productDescription;
 	}
-	public String getPrice(){
+
+	public String getPrice() {
 		return price;
 	}
-	public void setPrice(String price){
+
+	public void setPrice(String price) {
 		this.price = price;
 	}
-	public String getImageFilePath(){
+
+	public String getImageFilePath() {
 		return imageFilePath;
 	}
-	public void setImageFilePath(String imageFilePath){
+
+	public void setImageFilePath(String imageFilePath) {
 		this.imageFilePath = imageFilePath;
 	}
-	public String getImageFileName(){
+
+	public String getImageFileName() {
 		return imageFileName;
 	}
-	public void setImageFileName(String imageFileName){
+
+	public void setImageFileName(String imageFileName) {
 		this.imageFileName = imageFileName;
 	}
-	public String getReleaseCompany(){
+
+	public String getReleaseCompany() {
 		return releaseCompany;
 	}
-	public void setReleaseCompany(String releaseCompany){
+
+	public void setReleaseCompany(String releaseCompany) {
 		this.releaseCompany = releaseCompany;
 	}
-	public String getReleaseDate(){
+
+	public String getReleaseDate() {
 		return releaseDate;
 	}
-	public void setReleaseDate(String releaseDate){
+
+	public void setReleaseDate(String releaseDate) {
 		this.releaseDate = releaseDate;
 	}
 
-
-	public List<String> getProductNameErrorMessageList(){
+	public List<String> getProductNameErrorMessageList() {
 		return productNameErrorMessageList;
 	}
-	public void setProductNameErrorMessageList(List<String> productNameErrorMessageList){
+
+	public void setProductNameErrorMessageList(List<String> productNameErrorMessageList) {
 		this.productNameErrorMessageList = productNameErrorMessageList;
 	}
-	public List<String> getProductNameKanaErrorMessageList(){
+
+	public List<String> getProductNameKanaErrorMessageList() {
 		return productNameKanaErrorMessageList;
 	}
-	public void setProductNameKanaErrorMessageList(List<String> productNameKanaErrorMessageList){
+
+	public void setProductNameKanaErrorMessageList(List<String> productNameKanaErrorMessageList) {
 		this.productNameKanaErrorMessageList = productNameKanaErrorMessageList;
 	}
-	public List<String> getProductDescriptionErrorMessageList(){
+
+	public List<String> getProductDescriptionErrorMessageList() {
 		return productDescriptionErrorMessageList;
 	}
-	public void setProductDescriptionErrorMessageList(List<String> productDescriptionErrorMessageList){
+
+	public void setProductDescriptionErrorMessageList(List<String> productDescriptionErrorMessageList) {
 		this.productDescriptionErrorMessageList = productDescriptionErrorMessageList;
 	}
-	public List<String> getPriceErrorMessageList(){
+
+	public List<String> getPriceErrorMessageList() {
 		return priceErrorMessageList;
 	}
-	public void setPriceErrorMessageList(List<String> priceErrorMessageList){
+
+	public void setPriceErrorMessageList(List<String> priceErrorMessageList) {
 		this.priceErrorMessageList = priceErrorMessageList;
 	}
-	public List<String> getReleaseCompanyErrorMessageList(){
+
+	public List<String> getReleaseCompanyErrorMessageList() {
 		return releaseCompanyErrorMessageList;
 	}
-	public void setReleaseCompanyErrorMessageList(List<String> releaseCompanyErrorMessageList){
+
+	public void setReleaseCompanyErrorMessageList(List<String> releaseCompanyErrorMessageList) {
 		this.releaseCompanyErrorMessageList = releaseCompanyErrorMessageList;
 	}
-	public List<String> getReleaseDateErrorMessageList(){
+
+	public List<String> getReleaseDateErrorMessageList() {
 		return releaseDateErrorMessageList;
 	}
-	public void setReleaseDateErrorMessageList(List<String> releaseDateErrorMessageList){
+
+	public void setReleaseDateErrorMessageList(List<String> releaseDateErrorMessageList) {
 		this.releaseDateErrorMessageList = releaseDateErrorMessageList;
 	}
+
 	public Map<String, Object> getSession() {
 		return session;
 	}
@@ -252,36 +280,44 @@ public class AdminRegistConfirmAction extends ActionSupport implements SessionAw
 		this.session = session;
 	}
 
-	public File getUserImage(){
+	public File getUserImage() {
 		return userImage;
 	}
-	public void setUserImage(File userImage){
+
+	public void setUserImage(File userImage) {
 		this.userImage = userImage;
 	}
-	public String getUserImageFileName(){
+
+	public String getUserImageFileName() {
 		return userImageFileName;
 	}
-	public void setUserImageFileName(String userImageFileName){
+
+	public void setUserImageFileName(String userImageFileName) {
 		this.userImageFileName = userImageFileName;
 	}
+
 	public List<String> getCategoryIdList() {
 		return categoryIdList;
 	}
+
 	public void setCategoryIdList(List<String> categoryIdList) {
 		this.categoryIdList = categoryIdList;
 	}
+
 	public List<String> getUserImageFileNameErrorMessageList() {
 		return userImageFileNameErrorMessageList;
 	}
+
 	public void setUserImageFileNameErrorMessageList(List<String> userImageFileNameErrorMessageList) {
 		this.userImageFileNameErrorMessageList = userImageFileNameErrorMessageList;
 	}
+
 	public String getUserImageContentType() {
 		return userImageContentType;
 	}
+
 	public void setUserImageContentType(String userImageContentType) {
 		this.userImageContentType = userImageContentType;
 	}
-
 
 }
