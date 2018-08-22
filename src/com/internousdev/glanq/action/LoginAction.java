@@ -125,7 +125,7 @@ public class LoginAction extends ActionSupport implements SessionAware {
 					}
 
 				}
-				//try が走らなかったら、結果はSUCCESS(ホーム画面へ)
+				// ログイン成功 ＆ 途中のreturnで拾われていなければ、結果はSUCCESS(ホーム画面へ)
 				result = SUCCESS;
 			}
 
