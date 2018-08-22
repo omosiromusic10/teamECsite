@@ -77,6 +77,7 @@
 			<table id="buy">
 				<tr>
 					<th><s:select name="productCount" list="%{#session.productCountList}"/>個</th>
+					<s:token/>
 					<td><s:submit value="カートに追加" class="submit_btn"/></td>
 				</tr>
 			</table>

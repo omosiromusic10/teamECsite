@@ -29,6 +29,7 @@ public class AddCartAction extends ActionSupport implements SessionAware{
 	private Date releaseDate;
 	private String releaseCompany;
 	private String productDescription;
+	private String dontNever;
 
 //	private String categoryId;
 
@@ -38,7 +39,6 @@ public class AddCartAction extends ActionSupport implements SessionAware{
 		String result = ERROR;
 		String userId = null;
 		String tempUserId = null;
-
 
 		//本登録のIdも仮登録のIdも存在しない場合
 		if(!(session.containsKey("loginId")) && !(session.containsKey("tempUserId"))){
@@ -78,6 +78,9 @@ public class AddCartAction extends ActionSupport implements SessionAware{
 		if(!(iterator.hasNext())){
 			cartInfoDtoList = null;
 		}
+
+		//重複させないように０にする。
+		session.remove("dontNever",dontNever);
 
 		session.put("cartInfoDtoList", cartInfoDtoList);
 
@@ -191,6 +194,14 @@ public class AddCartAction extends ActionSupport implements SessionAware{
 
 	public void setSession(Map<String,Object> session){
 		this.session = session;
+	}
+
+	public String getDontNever() {
+		return dontNever;
+	}
+
+	public void setDontNever(String dontNever) {
+		this.dontNever = dontNever;
 	}
 
 }
