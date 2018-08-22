@@ -44,6 +44,7 @@ public class AdminRegistAction extends ActionSupport implements SessionAware{
 		session.remove("releaseCompanyErrorMessageList");
 		session.remove("releaseDateErrorMessageList");
 		session.remove("userImageFileNameErrorMessageList");
+		session.remove("releaseDate");
 
 		session.put("productName",productName);
 		session.put("productNameKana", productNameKana);

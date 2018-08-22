@@ -29,7 +29,7 @@ public class AdminEditDetailsConfirmAction extends ActionSupport implements Sess
 	private int productId;
 
 	private File userImage;
-	private String userImagePathContentType;
+	private String userImageContentType;
 	private String userImageFileName;
 
     //リストのインスタンス化
@@ -75,6 +75,12 @@ public class AdminEditDetailsConfirmAction extends ActionSupport implements Sess
         	String filePath = ServletActionContext.getServletContext().getRealPath("/").concat("images");
         	System.out.println("Image Location:" + filePath);
         	File fileToCreate = new File(filePath, userImageFileName);
+
+        	//この中にif分を挿入し、画像のみのファイルを指定してあげる。
+        	if(!(userImage(userImageContentType))){
+        		userImageFileNameErrorMessageList.add("画像ファイルが異なります。gif、jpqg、png、bmpのみ挿入出来ます。");
+        		result = ERROR;
+        	}
         try{
         	FileUtils.copyFile(userImage, fileToCreate);
         	session.put("image_file_name", userImageFileName);
@@ -87,6 +93,7 @@ public class AdminEditDetailsConfirmAction extends ActionSupport implements Sess
         }
         }else{
         	userImageFileName="";
+        	userImageFileNameErrorMessageList.add("画像ファイルを挿入してください。");
         	result = ERROR;
         }
       //ここでmCategoryDtoListを使用してcategoryIdを表示された名前で取ってくる。
@@ -103,7 +110,6 @@ public class AdminEditDetailsConfirmAction extends ActionSupport implements Sess
 	priceErrorMessageList = inputChecker.docheck("価格", price, 1, 8, false, false, false, true, false, false, false);
 	releaseCompanyErrorMessageList = inputChecker.docheck("発売会社名", releaseCompany, 1, 16, true, true, true, true, false, true, false);
 	releaseDateErrorMessageList = inputChecker.docheck("発売年月日", releaseDate, 1, 16, false, true, false, true, true, false, false);
-	userImageFileNameErrorMessageList =inputChecker.docheck("画像ファイル", userImageFileName, 1, 32, true, true, true, true, true, true, true);
 
 	//もし全てのリストのサイズが0の場合成功  =エラーなし→成功
 	if(productNameErrorMessageList.size()==0
@@ -129,6 +135,14 @@ public class AdminEditDetailsConfirmAction extends ActionSupport implements Sess
 
 	return result;
 
+	}
+
+	private boolean userImage(String extension) {
+
+		return (extension.equals("image/gif")
+			   || extension.equals("image/jpeg")
+			   || extension.equals("image/png")
+			   || extension.equals("image/bmp"));
 	}
 
 
@@ -210,14 +224,6 @@ public class AdminEditDetailsConfirmAction extends ActionSupport implements Sess
 
 	public void setUserImage(File userImage) {
 		this.userImage = userImage;
-	}
-
-	public String getUserImagePathContentType() {
-		return userImagePathContentType;
-	}
-
-	public void setUserImagePathContentType(String userImagePathContentType) {
-		this.userImagePathContentType = userImagePathContentType;
 	}
 
 	public String getUserImageFileName() {
@@ -305,6 +311,16 @@ public class AdminEditDetailsConfirmAction extends ActionSupport implements Sess
 
 	public void setUserImageFileNameErrorMessageList(List<String> userImageFileNameErrorMessageList) {
 		this.userImageFileNameErrorMessageList = userImageFileNameErrorMessageList;
+	}
+
+
+	public String getUserImageContentType() {
+		return userImageContentType;
+	}
+
+
+	public void setUserImageContentType(String userImageContentType) {
+		this.userImageContentType = userImageContentType;
 	}
 
 }
