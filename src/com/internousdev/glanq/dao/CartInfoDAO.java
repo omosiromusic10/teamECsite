@@ -179,17 +179,25 @@ public class CartInfoDAO {
 		return totalPrice;
 	}
 
+
 	/*4.カート中身を削除(項目毎)*/
 	public int delete(String Id){
 		DBConnector dbc = new DBConnector();
 		Connection con = dbc.getConnection();
 		int count = 0;
 
+		 /* jspからきたidを元に
+		 * user_idとproduct_idの一致するテーブルを生成
+		 *一致したレコードのIDを抽出し、全て削除
+		 */
 
+		//user_idとprodunt_idを両方格納するための変数
 		ResultSet result = null;
-		String sql_getWhereId = "select user_id, product_id from cart_info where id = ?";
+
+		//最初にidに紐づくuser_idとproduct_idを取り出し、その値を戻す(チェックされた一件分)
+		String sqlGetAboutId = "select user_id, product_id from cart_info where id = ?";
 		try{
-			PreparedStatement ps = con.prepareStatement(sql_getWhereId);
+			PreparedStatement ps = con.prepareStatement(sqlGetAboutId);
 			ps.setString(1,Id);
 			result = ps.executeQuery();
 		} catch(SQLException e){
@@ -198,9 +206,10 @@ public class CartInfoDAO {
 
 		String user_id = "";
 		int product_id = 0;
+
+		//初期化した変数に取得したuser_idとproduct_idをセット
 		try {
 			while (result.next()){
-
 					user_id = result.getString("user_id");
 					product_id = result.getInt("product_id");
 			}
@@ -208,13 +217,18 @@ public class CartInfoDAO {
 			e.printStackTrace();
 		}
 
-		System.out.println("user_id" + user_id);
-		System.out.println("product_id" + product_id);
+		//値を取得できているか確認
+		System.out.println("user_id：" + user_id);
+		System.out.println("product_id：" + product_id);
 
+		//同一のuser_idとproduct_idのidを格納用の変数
 		ResultSet result2 = null;
-		String sql_getId = "select id from cart_info where user_id=? and  product_id=?";
+
+		//同一のuser_idとproduct_idのレコードを全て取り出す
+		String sqlSameId = "select id from cart_info where user_id=? and  product_id=?";
+
 		try{
-			PreparedStatement ps = con.prepareStatement(sql_getId);
+			PreparedStatement ps = con.prepareStatement(sqlSameId);
 			ps.setString(1,user_id);
 			ps.setInt(2, product_id);
 			result2 = ps.executeQuery();
@@ -222,7 +236,11 @@ public class CartInfoDAO {
 			e.printStackTrace();
 		}
 
-		/* ここのループの中で削除処理をする */
+		/*
+		 *上記SQL文で取得した、user_idとproduct_idの
+		 *一致するレコード全てを削除するためにresult2の値が空にになるまで
+		 *next()で回す
+		 */
 		try {
 			while (result2.next()){
 				String deleteId = result2.getString("id");
@@ -246,13 +264,6 @@ public class CartInfoDAO {
 		}catch(SQLException e){
 			e.printStackTrace();
 		}
-
-
-		/*
-		 *cart_info内のid(primary keyがついてる)を削除
-		 *削除するとそのレコード毎に消える
-		 */
-
 		//更新件数を返す
 		return count;
 	}
