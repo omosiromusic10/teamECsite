@@ -19,7 +19,7 @@ import com.opensymphony.xwork2.ActionSupport;
 
 public class AdminAllSelectAction extends ActionSupport implements SessionAware {
 	private Map<String, Object> session;
-	private int status;
+
 
 	private List<MCategoryDTO> mCategoryAllDtoList = new ArrayList<MCategoryDTO>();
 	private List<UserInfoDTO> userInfoAllDtoList = new ArrayList<UserInfoDTO>();
@@ -29,11 +29,9 @@ public class AdminAllSelectAction extends ActionSupport implements SessionAware 
 	public String execute() {
 
 		// ステータスが１の時だけAdmin.jspを表示させる。
-		session.get("status");
 		String result = "errorhome";
-		int check = 0;
-		check = new Integer(session.get("status").toString());
-		if (check != 1) {
+		String token = String.valueOf(session.get("token"));
+		if (token != "test"){
 			return result;
 		}
 
@@ -104,14 +102,6 @@ public class AdminAllSelectAction extends ActionSupport implements SessionAware 
 
 	public void setCartInfoAllDtoList(List<CartInfoDTO> cartInfoAllDtoList) {
 		CartInfoAllDtoList = cartInfoAllDtoList;
-	}
-
-	public int getStatus() {
-		return status;
-	}
-
-	public void setStatus(int status) {
-		this.status = status;
 	}
 
 }
