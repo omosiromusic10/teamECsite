@@ -271,7 +271,7 @@ $(function(){
 
 <!-- 	gifファイルの埋め込み -->
 <div id="gif">
-<iframe src="https://publish.animatron.io/d43a755ba247605c570ef086?w=1200&h=675&a=1&r=1&c=0" width="1200" height="675" frameborder="0"></iframe>
+<iframe src="https://publish.animatron.io/4ab47b5b5272616eb6ab368f?w=1066&h=600&a=1&r=1&c=0" width="1066" height="600" frameborder="0"></iframe>
 </div>
 
 <div class="main">
