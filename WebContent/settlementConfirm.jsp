@@ -71,11 +71,15 @@ history.forward();
                </tbody>
                </table>
 
+<!-- 宛先情報のリストが空なら決済ボタンを消すようにしてみました
+根本の解決にはなっていないのであれですが。。。 -->
+		 <s:if test="!#session.destinationInfoDtoList.isEmpty()">
          <div class="submit_btn_box">
                  <div id=".contents-btn-set">
                           <s:submit value="決済" class="submit_btn" />
                  </div>
          </div>
+         </s:if>
 
        </s:form>
 
