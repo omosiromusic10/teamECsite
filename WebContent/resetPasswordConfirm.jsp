@@ -27,7 +27,7 @@
 		<td><s:property value="#session.concealedPassword"/></td>
 	</tr>
 	</table>
-	<div class="submit-btn-box">
+	<div class="submit_btn_box">
 	<s:submit value="再設定" class="submit_btn" />
 	</div>
 </s:form>
