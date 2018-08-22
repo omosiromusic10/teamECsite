@@ -86,6 +86,8 @@ public class LoginAction extends ActionSupport implements SessionAware {
 				//statusに1が入っていたら、管理者画面へ
 				if(sta.equals("1")) {
 					result = "admin";
+					String token = "test";
+					session.put("token", token);
 					session.put("logined", 1);
 					return result;
 				}
