@@ -23,6 +23,8 @@ public class LocationChoiceAction extends ActionSupport implements SessionAware{
 	public String execute(){
 		/*画面遷移のみ*/
 		String result = ERROR;
+		String token = String.valueOf(session.get("token"));
+		if (token == "test"){
 
 		try {
 			destinationInfoDtoList = destinationInfoDAO.getDestinationInfo("admin");
@@ -36,6 +38,7 @@ public class LocationChoiceAction extends ActionSupport implements SessionAware{
 		}
 
 		result = SUCCESS;
+		}
 
 		return result;
 	}

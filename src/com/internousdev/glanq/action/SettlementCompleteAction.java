@@ -23,6 +23,8 @@ public class SettlementCompleteAction extends ActionSupport implements SessionAw
 	public String execute() {
 		String result = ERROR;
 
+		session.remove("token");
+
 		@SuppressWarnings("unchecked")//警告の抑制（警告を無視させる）
 		ArrayList<PurchaseHistoryInfoDTO> purchaseHistoryInfoDtoList = (ArrayList<PurchaseHistoryInfoDTO>)session.get("purchaseHistoryInfoDtoList");
 

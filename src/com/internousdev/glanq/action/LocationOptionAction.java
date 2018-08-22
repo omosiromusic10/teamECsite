@@ -96,6 +96,10 @@ public class LocationOptionAction extends ActionSupport implements SessionAware{
 			purchaseHistoryInfoDtoList.add(purchaseHistoryInfoDTO);
 		}
 		session.put("purchaseHistoryInfoDtoList", purchaseHistoryInfoDtoList);
+		/* LocationChoiceActionで確認するTokenを発行する */
+		String token = "test";
+		session.put("token", token);
+
 
 		if(!session.containsKey("loginId")) {
 			result = ERROR;
