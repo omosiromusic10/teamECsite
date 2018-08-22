@@ -156,7 +156,7 @@ public class ProductInfoDAO {
 		}
 		// カテゴリ検索。キーワードが空だった場合はANDではなくWHEREでつなぐ。
 		if(iFlg){
-			sql += (") WHERE category_id = " + categoryId);
+			sql += (" WHERE category_id = " + categoryId);
 		}else{
 			sql += (") AND category_id = " + categoryId);
 		}
