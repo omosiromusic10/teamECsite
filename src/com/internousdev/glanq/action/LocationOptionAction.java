@@ -105,6 +105,9 @@ public class LocationOptionAction extends ActionSupport implements SessionAware{
 
 		if(!session.containsKey("loginId")) {
 			// loginIdが確認されない場合はログイン画面へと誘導する。
+			session.remove("loginIdErrorMessageList");
+			session.remove("passwordErrorMessageList");
+			session.remove("loginErrorMessageList");
 			result = ERROR;
 			// （追加）ここから遷移したことを知らせるためのパラメータgoLocationFlgを設定。
 			setGoLocationFlg("true");
