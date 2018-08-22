@@ -1,6 +1,5 @@
 package com.internousdev.glanq.action;
 
-
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
@@ -18,75 +17,101 @@ import com.internousdev.glanq.dto.MCategoryDTO;
 import com.internousdev.glanq.dto.UserInfoDTO;
 import com.opensymphony.xwork2.ActionSupport;
 
-
-public class AdminAllSelectAction extends ActionSupport implements SessionAware{
+public class AdminAllSelectAction extends ActionSupport implements SessionAware {
 	private Map<String, Object> session;
+	private int status;
 
 	private List<MCategoryDTO> mCategoryAllDtoList = new ArrayList<MCategoryDTO>();
 	private List<UserInfoDTO> userInfoAllDtoList = new ArrayList<UserInfoDTO>();
 	private List<DestinationInfoDTO> DestinationInfoAllDtoList = new ArrayList<DestinationInfoDTO>();
 	private List<CartInfoDTO> CartInfoAllDtoList = new ArrayList<CartInfoDTO>();
 
+	public String execute() {
 
-	public String execute(){
-		String result = ERROR;
-		try{
+		// ステータスが１の時だけAdmin.jspを表示させる。
+		session.get("status");
+		String result = "errorhome";
+		int check = 0;
+		check = new Integer(session.get("status").toString());
+		if (check != 1) {
+			return result;
+		}
 
-		    MCategoryDAO mCategoryDao = new MCategoryDAO();
-		    mCategoryAllDtoList =mCategoryDao.getMCategoryList();
-	    	session.put("mCategoryAllDtoList",mCategoryAllDtoList);
+		result = ERROR;
 
-	    	UserInfoDAO UserInfoDao = new UserInfoDAO();
-	    	userInfoAllDtoList =UserInfoDao.getUserInfoAllList();
-	    	session.put("UserInfoAllDtoList", userInfoAllDtoList);
+		try {
 
-	    	DestinationInfoDAO DestinationInfoDao = new DestinationInfoDAO();
-	    	DestinationInfoAllDtoList =DestinationInfoDao.getDestinationInfoAllList();
-	    	session.put("DestinationInfoAllDtoList", DestinationInfoAllDtoList);
+			MCategoryDAO mCategoryDao = new MCategoryDAO();
+			mCategoryAllDtoList = mCategoryDao.getMCategoryList();
+			session.put("mCategoryAllDtoList", mCategoryAllDtoList);
 
-	    	CartInfoDAO CartInfoDao = new CartInfoDAO();
-	    	CartInfoAllDtoList = CartInfoDao.getCartInfoAllDtoList();
-	    	session.put("CartInfoAllDtoList", CartInfoAllDtoList);
+			UserInfoDAO UserInfoDao = new UserInfoDAO();
+			userInfoAllDtoList = UserInfoDao.getUserInfoAllList();
+			session.put("UserInfoAllDtoList", userInfoAllDtoList);
 
-    		result = SUCCESS;
+			DestinationInfoDAO DestinationInfoDao = new DestinationInfoDAO();
+			DestinationInfoAllDtoList = DestinationInfoDao.getDestinationInfoAllList();
+			session.put("DestinationInfoAllDtoList", DestinationInfoAllDtoList);
 
-		} catch(SQLException e){
+			CartInfoDAO CartInfoDao = new CartInfoDAO();
+			CartInfoAllDtoList = CartInfoDao.getCartInfoAllDtoList();
+			session.put("CartInfoAllDtoList", CartInfoAllDtoList);
+
+			result = SUCCESS;
+
+		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 
 		return result;
 	}
 
-	public Map<String,Object> getSession(){
+	public Map<String, Object> getSession() {
 		return session;
 	}
-	public void setSession(Map<String,Object> session){
+
+	public void setSession(Map<String, Object> session) {
 		this.session = session;
 	}
+
 	public List<MCategoryDTO> getmCategoryAllDtoList() {
 		return mCategoryAllDtoList;
 	}
+
 	public void setmCategoryAllDtoList(List<MCategoryDTO> mCategoryAllDtoList) {
 		this.mCategoryAllDtoList = mCategoryAllDtoList;
 	}
+
 	public List<UserInfoDTO> getUserInfoAllDtoList() {
 		return userInfoAllDtoList;
 	}
+
 	public void setUserInfoAllDtoList(List<UserInfoDTO> userInfoAllDtoList) {
 		this.userInfoAllDtoList = userInfoAllDtoList;
 	}
+
 	public List<DestinationInfoDTO> getDestinationInfoAllDtoList() {
 		return DestinationInfoAllDtoList;
 	}
+
 	public void setDestinationInfoAllDtoList(List<DestinationInfoDTO> destinationInfoAllDtoList) {
 		DestinationInfoAllDtoList = destinationInfoAllDtoList;
 	}
+
 	public List<CartInfoDTO> getCartInfoAllDtoList() {
 		return CartInfoAllDtoList;
 	}
+
 	public void setCartInfoAllDtoList(List<CartInfoDTO> cartInfoAllDtoList) {
 		CartInfoAllDtoList = cartInfoAllDtoList;
 	}
 
+	public int getStatus() {
+		return status;
+	}
+
+	public void setStatus(int status) {
+		this.status = status;
+	}
 
 }
