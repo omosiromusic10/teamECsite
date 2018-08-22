@@ -33,6 +33,8 @@ public class LocationOptionAction extends ActionSupport implements SessionAware{
 	private String subtotal;
 	private Map<String, Object> session;
 
+	private String GoLocationFlg;
+
 	public String execute(){
 		/* 画面遷移のみだと思ったら全然そんなことは無かった
 		 *
@@ -102,7 +104,10 @@ public class LocationOptionAction extends ActionSupport implements SessionAware{
 
 
 		if(!session.containsKey("loginId")) {
+			// loginIdが確認されない場合はログイン画面へと誘導する。
 			result = ERROR;
+			// （追加）ここから遷移したことを知らせるためのパラメータgoLocationFlgを設定。
+			setGoLocationFlg("true");
 		}else {
 			result = SUCCESS;
 		}
@@ -214,6 +219,14 @@ public class LocationOptionAction extends ActionSupport implements SessionAware{
 
 	public void setSession(Map<String, Object> session) {
 		this.session = session;
+	}
+
+	public String getGoLocationFlg() {
+		return GoLocationFlg;
+	}
+
+	public void setGoLocationFlg(String goLocationFlg) {
+		GoLocationFlg = goLocationFlg;
 	}
 
 

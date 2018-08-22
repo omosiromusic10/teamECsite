@@ -32,6 +32,8 @@ public class LoginAction extends ActionSupport implements SessionAware {
 
 	private Map<String, Object> session;
 
+	private String goLocationFlg;
+
 
 	public String execute() {
 
@@ -111,14 +113,20 @@ public class LoginAction extends ActionSupport implements SessionAware {
 					} catch(SQLException e) {
 						e.printStackTrace();
 					}
-					//try が走れば、場所の確認画面へ
-					result = "locationOption";
 
+					// （追加）LocationOptionAction から来ているかどうかの判定を行う。
+					if(!(goLocationFlg==null)){
+						if(goLocationFlg.equals("true")){
+							session.put("logined", 1);
+							// 確認されたら、ログイン状態に変更した上でlocationOption画面へと進ませる。
+							result = "locationOption";
+							return result;
+						}
+					}
 
-				} else {
-					//try が走らなかったら、結果はSUCCESS(ホーム画面へ)
-					result = SUCCESS;
 				}
+				//try が走らなかったら、結果はSUCCESS(ホーム画面へ)
+				result = SUCCESS;
 			}
 
 
@@ -202,5 +210,12 @@ public class LoginAction extends ActionSupport implements SessionAware {
 		this.session = session;
 	}
 
+	public String getGoLocationFlg() {
+		return goLocationFlg;
+	}
+
+	public void setGoLocationFlg(String goLocationFlg) {
+		this.goLocationFlg = goLocationFlg;
+	}
 
 }

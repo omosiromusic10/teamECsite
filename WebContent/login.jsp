@@ -93,6 +93,8 @@ function goResetPasswordAction() {
 			</div>
 
 			<div class = "submit_btn_box_l">
+				<!-- （追加）locationOptionへ進ませるためのパラメータを仕込む。 -->
+				<s:hidden name="goLocationFlg" value="%{goLocationFlg}"/>
 				<s:submit value = "ログイン" class = "submit_btn" onclick = "goLoginAction();" />
 			</div>
 		</s:form>
