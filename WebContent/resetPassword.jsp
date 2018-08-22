@@ -17,8 +17,6 @@
 
 	<h1>パスワード再設定画面</h1>
 
-	<!-- テーブルで表示 -->
-
 
 
 					<s:if test="!#session.loginIdErrorMessageList.isEmpty()">
