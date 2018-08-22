@@ -113,7 +113,7 @@ public class AdminEditDetailsConfirmAction extends ActionSupport implements Sess
 	productNameKanaErrorMessageList = inputChecker.docheck("商品ふりがな",productNameKana,1,32,false,false,true,false,false,false,false);
 	productDescriptionErrorMessageList = inputChecker.docheck("商品名詳細",productDescription,1,320,true,true,true,true,true,true,true);
 	priceErrorMessageList = inputChecker.docheck("価格", price, 1, 8, false, false, false, true, false, false, false);
-	releaseCompanyErrorMessageList = inputChecker.docheck("発売会社名", releaseCompany, 1, 16, true, true, true, true, false, true, false);
+	releaseCompanyErrorMessageList = inputChecker.docheck("発売会社名", releaseCompany, 1, 16, true, true, true, true, true, true, true);
 	releaseDateErrorMessageList = inputChecker.docheck("発売年月日", releaseDate, 1, 16, false, true, false, true, true, false, false);
 
 	//もし全てのリストのサイズが0の場合成功  =エラーなし→成功
