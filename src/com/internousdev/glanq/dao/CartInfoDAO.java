@@ -185,24 +185,74 @@ public class CartInfoDAO {
 		Connection con = dbc.getConnection();
 		int count = 0;
 
-		/*
-		 *cart_info内のid(primary keyがついてる)を削除
-		 *削除するとそのレコード毎に消える
-		 */
-		String sql = "DELETE FROM cart_info WHERE id = ?";
 
+		ResultSet result = null;
+		String sql_getWhereId = "select user_id, product_id from cart_info where id = ?";
 		try{
-			PreparedStatement ps = con.prepareStatement(sql);
+			PreparedStatement ps = con.prepareStatement(sql_getWhereId);
 			ps.setString(1,Id);
-			count = ps.executeUpdate();
-		}catch(SQLException e){
+			result = ps.executeQuery();
+		} catch(SQLException e){
 			e.printStackTrace();
 		}
+
+		String user_id = "";
+		int product_id = 0;
+		try {
+			while (result.next()){
+
+					user_id = result.getString("user_id");
+					product_id = result.getInt("product_id");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		System.out.println("user_id" + user_id);
+		System.out.println("product_id" + product_id);
+
+		ResultSet result2 = null;
+		String sql_getId = "select id from cart_info where user_id=? and  product_id=?";
+		try{
+			PreparedStatement ps = con.prepareStatement(sql_getId);
+			ps.setString(1,user_id);
+			ps.setInt(2, product_id);
+			result2 = ps.executeQuery();
+		} catch (SQLException e){
+			e.printStackTrace();
+		}
+
+		/* ここのループの中で削除処理をする */
+		try {
+			while (result2.next()){
+				String deleteId = result2.getString("id");
+				String sql = "DELETE FROM cart_info WHERE id = ?";
+
+				try{
+					PreparedStatement ps = con.prepareStatement(sql);
+					ps.setString(1,deleteId);
+					count = ps.executeUpdate();
+				}catch(SQLException e){
+					e.printStackTrace();
+				}
+
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
 		try{
 			con.close();
 		}catch(SQLException e){
 			e.printStackTrace();
 		}
+
+
+		/*
+		 *cart_info内のid(primary keyがついてる)を削除
+		 *削除するとそのレコード毎に消える
+		 */
+
 		//更新件数を返す
 		return count;
 	}
