@@ -34,7 +34,7 @@ public class SettlementCompleteAction extends ActionSupport implements SessionAw
 			purchaseHistoryInfoDtoList.get(i).setDestinationId(id);
 			/* destinationInfoDtoList.get(0).getId() */
 		}
-
+		if(session.containsKey("cartInfoDtoList")){
 		PurchaseHistoryInfoDAO purchaseHistoryInfoDAO = new PurchaseHistoryInfoDAO();//購入履歴にデータを渡す
 		int count = 0;
 		for(int i=0;/*初期値*/ i<purchaseHistoryInfoDtoList.size();/*条件式*/ i++/*増減式*/) {
@@ -62,6 +62,7 @@ public class SettlementCompleteAction extends ActionSupport implements SessionAw
 				session.put("totalPrice", totalPrice);
 				result = SUCCESS;
 			}
+		}
 		}
 		return result;
 	}
