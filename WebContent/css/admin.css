@@ -25,7 +25,6 @@
 	height:auto;
 	overflow:hidden;
 	padding-bottom:50px;
-	/* position:relative; */
 	text-align:center;
 
 }
@@ -39,7 +38,6 @@
 	animation: fadeIn 5s ease 0s 1 normal;
 	-webkit-animation: fadeIn 5s ease 0s 1 normal;
     margin:50px 100px 0px 100px;
-	text-align:center;
 }
 
 .submit_btn2{
@@ -47,8 +45,7 @@
 	text-decoration: none;
 	width: 100%;
 	height: 100%;
-	font-size : 50px;
-	text-align : center;
+	font-size : 45px;
 	/*âÊñ ëÄçÏ*/
 	background-color: #C5E99B;
     border: 2px solid black;

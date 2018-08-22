@@ -27,7 +27,7 @@ public class AdminRegistConfirmAction extends ActionSupport implements SessionAw
 	private String releaseDate;
 
 	private File userImage;
-	private String userImagePathContentType;
+	private String userImageContentType;
 	private String userImageFileName;
 
 	private List<String>productNameErrorMessageList = new ArrayList<String>();
@@ -38,7 +38,6 @@ public class AdminRegistConfirmAction extends ActionSupport implements SessionAw
 	private List<String>releaseDateErrorMessageList = new ArrayList<String>();
 
 	private List<String>userImageFileNameErrorMessageList = new ArrayList<String>();
-
 
 	private int categoryId;
 	private List<String> categoryIdList = new ArrayList<String>();
@@ -61,24 +60,41 @@ public class AdminRegistConfirmAction extends ActionSupport implements SessionAw
 		session.put("Status", 0);
 
 		//ファイルアップロードの処理
+
+		/*画像ファイルの場合で.jpeg、.bmp、.png画像のみで通り、それ以外にはエラー表示で
+		 * 「画像ファイルは.jpeg、.bmp、.png画像を入れてください。」と表示させる。
+		 * 何も入れてない場合は「画像ファイルを挿入してください。」と表示させる。
+		*/
+
+
 		if(!(userImage == null)){
-		String filePath = ServletActionContext.getServletContext().getRealPath("/").concat("images");
-		System.out.println("Image Location:" + filePath);
-		File fileToCreate = new File(filePath, userImageFileName);
-	try{
-		  FileUtils.copyFile(userImage , fileToCreate);
-			session.put("image_file_name", userImageFileName);
-			session.put("image_file_path", "./images");
-			session.put("image_flg" , userImageFileName);
-			System.out.println(session.get("image_file_name"));
-			System.out.println(session.get("image_file_path"));
-	  }catch(IOException e){
-		  e.printStackTrace();
-	  }
-	  }else{
+			String filePath = ServletActionContext.getServletContext().getRealPath("/").concat("images");
+			System.out.println("Image Location:" + filePath);
+			File fileToCreate = new File(filePath, userImageFileName);
+
+			//この中にif分を挿入し、画像のみのファイルを
+			if(!(userImage(userImageContentType))){
+				    userImageFileNameErrorMessageList.add("画像ファイルが異なります。gif、jpeg、png、bmpのみ挿入出来ます。");
+				    result = ERROR;
+			  }
+
+		try{
+			  FileUtils.copyFile(userImage , fileToCreate);
+				session.put("image_file_name", userImageFileName);
+				session.put("image_file_path", "./images");
+				session.put("image_flg" , userImageFileName);
+				System.out.println(session.get("image_file_name"));
+				System.out.println(session.get("image_file_path"));
+
+		  }catch(IOException e){
+			  e.printStackTrace();
+		  }
+		}else{
 			userImageFileName="";
+			userImageFileNameErrorMessageList.add("画像ファイルを挿入してください。");
 			result = ERROR;
 	  }
+
 
         //ここでmCategoryDtoListを使用してcategoryIdを表示された名前で取ってくる。
 		MCategoryDAO mCategoryDAO = new MCategoryDAO();
@@ -96,7 +112,9 @@ public class AdminRegistConfirmAction extends ActionSupport implements SessionAw
 		priceErrorMessageList  = inputChecker.docheck("価格", price, 1, 8, false, false, false, true, false, false, false);
 		releaseCompanyErrorMessageList  = inputChecker.docheck("発売会社名", releaseCompany, 1, 16, true, true, true, true, false, true, false);
 		releaseDateErrorMessageList  = inputChecker.docheck("発売年月日", releaseDate, 1, 16, false, true, false, true, true, false, false);
-		userImageFileNameErrorMessageList = inputChecker.docheck("画像ファイル", userImageFileName, 1, 32, true, true, true, true, true, true, true);
+
+
+
 
 		if(productNameErrorMessageList.size()==0
 		&& productNameKanaErrorMessageList.size()==0
@@ -118,6 +136,14 @@ public class AdminRegistConfirmAction extends ActionSupport implements SessionAw
 		}
 
 		return result;
+	}
+
+	private boolean userImage(String extension) {
+
+		return (extension.equals("image/gif")
+				|| extension.equals("image/jpeg")
+				|| extension.equals("image/png")
+				|| extension.equals("image/bmp"));
 	}
 	public int getCategoryId(){
 		return categoryId;
@@ -226,12 +252,6 @@ public class AdminRegistConfirmAction extends ActionSupport implements SessionAw
 	public void setUserImage(File userImage){
 		this.userImage = userImage;
 	}
-	public String getUserImagePathContentType(){
-		return userImagePathContentType;
-	}
-	public void setUserImagePathContentType(String userImagePathContentType){
-		this.userImagePathContentType = userImagePathContentType;
-	}
 	public String getUserImageFileName(){
 		return userImageFileName;
 	}
@@ -249,6 +269,12 @@ public class AdminRegistConfirmAction extends ActionSupport implements SessionAw
 	}
 	public void setUserImageFileNameErrorMessageList(List<String> userImageFileNameErrorMessageList) {
 		this.userImageFileNameErrorMessageList = userImageFileNameErrorMessageList;
+	}
+	public String getUserImageContentType() {
+		return userImageContentType;
+	}
+	public void setUserImageContentType(String userImageContentType) {
+		this.userImageContentType = userImageContentType;
 	}
 
 

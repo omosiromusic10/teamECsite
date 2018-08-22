@@ -124,7 +124,7 @@ font-family: 'Hiragino Kaku Gothic Pro','ヒラギノ角ゴ Pro W3','メイリ�
 }
 .txt-keywords:focus {
 	border: 1px solid #000000;
-	color : #c0c0c0;
+	color : #000000;
 	outline: 0;
 }
 .header_search_btn { /*検索ボタン*/
