@@ -22,7 +22,7 @@ public class ProductListAction extends ActionSupport implements SessionAware {
 	private List<MCategoryDTO> mCategoryDtoList = new ArrayList<MCategoryDTO>();
 
 	private String categoryId;
-	private String keywords;
+//	private String keywords;
 	private String pageNo = "1"; // 念のため。
 
 	public String execute() throws SQLException{
@@ -98,13 +98,13 @@ public class ProductListAction extends ActionSupport implements SessionAware {
 		this.categoryId = categoryId;
 	}
 
-	public String getKeywords() {
-		return keywords;
-	}
-
-	public void setKeywords(String keywords) {
-		this.keywords = keywords;
-	}
+//	public String getKeywords() {
+//		return keywords;
+//	}
+//
+//	public void setKeywords(String keywords) {
+//		this.keywords = keywords;
+//	}
 
 	public String getPageNo() {
 		return pageNo;
