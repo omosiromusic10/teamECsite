@@ -147,7 +147,7 @@ public class ProductInfoDAO {
 			// キーワードにスペースが複数続けて入力されkeywordListが生成されている場合を考慮。
 			if(!(keyword.trim()).equals("")){
 				if(iFlg){
-					sql += " WHERE (product_name like '%" + keyword.trim() + "%' or product_name_kana like '%" + keyword.trim() + "%')";
+					sql += " WHERE ((product_name like '%" + keyword.trim() + "%' or product_name_kana like '%" + keyword.trim() + "%')";
 					iFlg = false;
 				}else{
 					sql += " OR (product_name like '%" + keyword.trim() + "%' or product_name_kana like '%" + keyword.trim() + "%')";
@@ -156,9 +156,9 @@ public class ProductInfoDAO {
 		}
 		// カテゴリ検索。キーワードが空だった場合はANDではなくWHEREでつなぐ。
 		if(iFlg){
-			sql += (" WHERE category_id = " + categoryId);
+			sql += (") WHERE category_id = " + categoryId);
 		}else{
-			sql += (" AND category_id = " + categoryId);
+			sql += (") AND category_id = " + categoryId);
 		}
 		try{
 			PreparedStatement ps = con.prepareStatement(sql);
