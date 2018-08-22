@@ -19,7 +19,7 @@
        <h1>削除画面</h1>
 
 <s:if test="#session.checkListErrorMessageList != null">
-    <div class="error">
+    <div class="error_c">
     <div class="error-message">
         <s:iterator value="#session.checkListErrorMessageList"><s:property /><br></s:iterator>
     </div>

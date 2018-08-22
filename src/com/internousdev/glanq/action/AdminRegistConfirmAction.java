@@ -67,16 +67,22 @@ public class AdminRegistConfirmAction extends ActionSupport implements SessionAw
 		*/
 
 
+
 		if(!(userImage == null)){
+			long fileMaxSize = 3145728;//3MB
 			String filePath = ServletActionContext.getServletContext().getRealPath("/").concat("images");
 			System.out.println("Image Location:" + filePath);
 			File fileToCreate = new File(filePath, userImageFileName);
 
 			//この中にif分を挿入し、画像のみのファイルを
-			if(!(userImage(userImageContentType))){
+			if(!(isImageFile(userImageContentType))){
 				    userImageFileNameErrorMessageList.add("画像ファイルが異なります。gif、jpeg、png、bmpのみ挿入出来ます。");
 				    result = ERROR;
 			  }
+			if(userImage.length()>fileMaxSize){
+				userImageFileNameErrorMessageList.add("3MBより大きい画像ファイルは挿入出来ません。");
+				result = ERROR;
+			}
 
 		try{
 			  FileUtils.copyFile(userImage , fileToCreate);
@@ -138,7 +144,7 @@ public class AdminRegistConfirmAction extends ActionSupport implements SessionAw
 		return result;
 	}
 
-	private boolean userImage(String extension) {
+	private boolean isImageFile(String extension) {
 
 		return (extension.equals("image/gif")
 				|| extension.equals("image/jpeg")

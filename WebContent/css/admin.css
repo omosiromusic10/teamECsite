@@ -98,6 +98,7 @@
 }
 .pager2{
     width:100%;
+    padding-top:50px;
 	text-align:center;
 	color:blue;
 	position:relative;
@@ -111,5 +112,21 @@
 .area{
 	width:50%;
 	height:60px;
+	font-size:24px;
+	border: 0.5px solid #999;
 }
+.error_c{
+width:99%;
+margin:0 auto;
+font-size : 1.1em;
+font-weight:600;
+color: #0080ff;
+background-color: #caf9fd;
+  text-shadow: 1px 1px 0 #ffffff,
+               -1px 1px 0 #ffffff,
+               1px -1px 0 #ffffff,
+               -1px -1px 0 #ffffff;
+animation: fadeIn 5s ease 0s 1 normal;
+-webkit-animation: fadeIn 5s ease 0s 1 normal;
 
+}
