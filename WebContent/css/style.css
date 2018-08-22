@@ -71,13 +71,13 @@ font-family: 'Hiragino Kaku Gothic Pro','ヒラギノ角ゴ Pro W3','メイリ�
     position: fixed;
     right: 0;
     top: 0;
-    transition: all 0.1s linear 0s; /*0.3s は変化するのにかかる時間*/
+    transition: all 0.1s linear 0s;
     width: 100%;
     z-index: -1;
     pointer-events: none;
 }
 #header-menu:hover {
-    transform: translate(-300px); /*メニュー横幅①と合わせる*/
+    transform: translate(-300px);
 }
 #header-menu:hover + #menu-background {
     opacity: 0.5;
@@ -88,15 +88,21 @@ font-family: 'Hiragino Kaku Gothic Pro','ヒラギノ角ゴ Pro W3','メイリ�
 /*メニューコンテンツ*/
 
 .cs-div { /*カテゴリ選択*/
-	height : 25px;
-	border: 1px solid #ccc;
-	border-radius: 3px;
-	overflow: hidden;
-	background: #fafafa no-repeat;
-	width: 95%;
+  background: #e6e6ff;
+  border: 2px solid #0000a0;
+  border-radius: 5px;
+  color: #0C2245;
+  height: 25px;
+  line-height: 30px;
+  text-align: left;
+  text-indent: 5px;
+  vertical-align: middle;
+  width: 95%;
+  overflow: hidden;
+  margin-top:10px;
 }
 .cs-div select {
-	margin: 0;
+	margin-top:10px;
 	padding: 5px 8px;
 	height : 25px;
 	width: 95%;
@@ -113,53 +119,35 @@ font-family: 'Hiragino Kaku Gothic Pro','ヒラギノ角ゴ Pro W3','メイリ�
 .cs-div select:focus {
 	outline: none;
 }
-.txt-keywords { /*キーワード検索*/
-	width :60% ;
-	height : 20px;
-	padding-left : 5%;
-	box-shadow: 0 0 7px #000000;
-    border: 1px solid #c0c0c0;
-    border-radius: 100px;
-    margin-top:10px; /*幅*/
+
+.txt-keywords {
+height: 30px;
+margin-top:10px;
+width:50%;
+border-radius:10px;
+border-right:none;
+border:solid 3px #eaeaea;
+outline: 0;
+color:#000;
 }
-.txt-keywords:focus {
-	border: 1px solid #000000;
-	color : #000000;
-	outline: 0;
-}
-.header_search_btn { /*検索ボタン*/
-	width:25%;
-	 display:inline-block;
-  -webkit-appearance: none;
-  background: transparent;
-  border-color: currentcolor;
-  border-style: solid;
-  border-width: 1px;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
-  color: inherit;
-  cursor: pointer;
-  font: inherit;
-  line-height: normal;
-  margin-top:10px;
-  padding:2px;
-  position: relative;
-  text-align: center;
-  text-decoration: none;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  white-space: normal;
-  border:none;
+.header_search_btn{
+padding: 0;
+width: 30%;
+height: 30px;
+border-radius:10px;
+background:#eaeaea;
+color:#000000;
+font-weight:bold;
+font-size:16px;
+outline: 0;
+border-right:none;
+border:solid 3px #eaeaea;
 }
 .header_search_btn:hover{
-    background: #fff;
-    color: #1da1f2;
+background:#7fbfff;
+color:#000000;
 }
-.header_search_btn:active{
-	background: #ffff80;
-}
+
 .header_btn {
   -webkit-appearance: none;
   background: transparent;
@@ -208,6 +196,7 @@ font-family: 'Hiragino Kaku Gothic Pro','ヒラギノ角ゴ Pro W3','メイリ�
 	 background-image:linear-gradient(120deg, #d4fc79 0%, #96e6a1 100%);
     filter:alpha(opacity=50);
     -moz-opacity: 0.5;
+    opacity:0.7;
 }
 
  /*エラーメッセージ*/

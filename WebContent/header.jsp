@@ -83,7 +83,7 @@ function goAdminAction(){
                                                <li><s:submit value="商品削除画面" class="header_btn" onclick="goAdminDeleteAction();"/></li>
                                                <li><s:submit value="商品一覧画面" class="header_btn" onclick="goAdminProductSelectAction();"/></li>
                                                <li><s:submit value="購入履歴画面" class="header_btn" onclick="goAdminPurchaseSelectAction();"/></li>
-                                               <li><s:submit value="データ一覧画面" class="header_btn" onclick="goAdminAllSelectAction();"/></li>
+                                               <li><s:submit value="データ確認画面" class="header_btn" onclick="goAdminAllSelectAction();"/></li>
                                        </s:if>
                                        <s:if test='#session.containsKey("mCategoryDtoList") && #session.status!=1'>
                                                <li><s:select name="categoryId" list="#session.mCategoryDtoList" listValue="categoryName" listKey="categoryId" class="cs-div" id="categoryId"/></li>
