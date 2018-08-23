@@ -22,6 +22,11 @@ public class ProductDetailsAction extends ActionSupport implements SessionAware 
 	private List<MCategoryDTO> mCategoryDtoList = new ArrayList<MCategoryDTO>();
 	private String keywords;
 
+	private String s_categoryId;
+	private List<ProductInfoDTO> relatedProductList = new ArrayList<ProductInfoDTO>();
+	private String relate_noneFlg = "false";
+
+
 	public String execute() throws SQLException {
 		String result = ERROR;
 
@@ -61,13 +66,13 @@ public class ProductDetailsAction extends ActionSupport implements SessionAware 
 
 			// その他、使用したい情報。
 			session.put("categoryId", productInfoDTO.getCategoryId());
-			String categoryId = session.get("categoryId").toString();
+			s_categoryId = session.get("categoryId").toString();
 
 		// 関連商品のリスト relatedProductList を取得。カテゴリIDと商品IDが必要。表示数に関連する数値 0, 3 を記述。
 		// 今は、同カテゴリの商品のリストをランダムに並び替えた上で【先頭3行】を取得する設定。
 		ProductInfoDAO pDAO2 = new ProductInfoDAO();
-		int iCategoryId = Integer.parseInt(categoryId);
-		List<ProductInfoDTO> relatedProductList = pDAO2.getProductInfoListByCategoryId(iCategoryId, productId, 0, 3);
+		int iCategoryId = Integer.parseInt(s_categoryId);
+		relatedProductList = pDAO2.getProductInfoListByCategoryId(iCategoryId, productId, 0, 3);
 		session.put("relatedProductList", relatedProductList);
 
 		// セッション mCategoryDtoList はヘッダーにて用いているので、無い場合は必要。mCategoryList??
@@ -78,11 +83,15 @@ public class ProductDetailsAction extends ActionSupport implements SessionAware 
 		}
 
 		// セッションlogined はヘッダーにて用いているので、無い場合は非ログイン状態として0を入れる。
-		if(!session.containsKey("logined")) {
+		if(!session.containsKey("productName")) {
 			session.put("logined", 0);
 		}
 
-		if(!(relatedProductList.isEmpty())){
+		if(relatedProductList.isEmpty()){
+			setRelate_noneFlg("true");
+		}
+
+		if(!(s_categoryId==null)){
 			result = SUCCESS;
 		}
 		return result;
@@ -120,6 +129,12 @@ public class ProductDetailsAction extends ActionSupport implements SessionAware 
 		this.keywords = keywords;
 	}
 
+	public String getRelate_noneFlg() {
+		return relate_noneFlg;
+	}
 
+	public void setRelate_noneFlg(String relate_noneFlg) {
+		this.relate_noneFlg = relate_noneFlg;
+	}
 
 }

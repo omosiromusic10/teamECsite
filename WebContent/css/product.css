@@ -306,8 +306,18 @@ table#buy select{
 	border-radius: 5px;
 	background-color: #ffccbb;
 	text-align: center;
+	vertical-align: middle;
 }
 
+#relate_none{
+	display: inline-block;
+	border: 2px solid #e48881;
+	border-radius: 5px;
+    box-shadow:2px 2px #1a6ea0;
+	background-color: #ffccbb;
+	margin-top: 80px;
+	padding: 10px;
+}
 #related_product_list #product_box{
 	display: inline-block;
 	border: 2px solid #ddbb55;

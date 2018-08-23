@@ -89,6 +89,14 @@
 	</div>
 	<br><br>
 	<!-- ～関連商品を表示～ -->
+	<s:if test="relate_noneFlg=='true'">
+		<div id="relate_none">
+			<div>
+				同カテゴリの関連商品はありません。
+			</div>
+		</div>
+	</s:if>
+	<s:else>
 	<div id="relate_logo">
 		<a id="logo">関連商品</a>
 	</div>
@@ -111,6 +119,7 @@
 			</div>
 		</s:iterator>
 	</div>
+	</s:else>
 
 	</div>
 <br>
