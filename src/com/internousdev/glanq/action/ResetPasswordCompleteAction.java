@@ -7,27 +7,31 @@ import org.apache.struts2.interceptor.SessionAware;
 import com.internousdev.glanq.dao.UserInfoDAO;
 import com.opensymphony.xwork2.ActionSupport;
 
-public class ResetPasswordCompleteAction extends ActionSupport implements SessionAware{
+public class ResetPasswordCompleteAction extends ActionSupport implements SessionAware {
 	private String loginId;
 	private String password;
 	private String categoryId;
-	private Map<String,Object>session;
+	private Map<String, Object> session;
 
-	public String execute(){
+	public String execute() {
 		String result = ERROR;
+		String token = String.valueOf(session.get("token"));
+		if (token == "admin") {
+			return result;
+		}
 		UserInfoDAO userInfoDAO = new UserInfoDAO();
 
-		//sessionに格納されている新しいパスワードをresetPassword機能に渡す
-		int count = userInfoDAO.resetPassword(String.valueOf(session.get("loginId")),String.valueOf(session.get("newPassword")));
-		if(count > 0){
+		// sessionに格納されている新しいパスワードをresetPassword機能に渡す
+		int count = userInfoDAO.resetPassword(String.valueOf(session.get("loginId")),
+				String.valueOf(session.get("newPassword")));
+		if (count > 0) {
 			session.remove("loginId");
 			result = SUCCESS;
-		}else{
+		} else {
 			result = ERROR;
 		}
 		return result;
 	}
-
 
 	public String getLoginId() {
 		return loginId;

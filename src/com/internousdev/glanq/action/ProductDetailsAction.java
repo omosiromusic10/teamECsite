@@ -26,15 +26,13 @@ public class ProductDetailsAction extends ActionSupport implements SessionAware 
 	private List<ProductInfoDTO> relatedProductList = new ArrayList<ProductInfoDTO>();
 	private String relate_noneFlg = "false";
 
-
 	public String execute() throws SQLException {
 		String result = ERROR;
 
 		// 管理者ログイン状態の対策
-		if(session.containsKey("status")){
-			if((session.get("status")).equals("1")){
-				session.clear();
-			}
+		String token = String.valueOf(session.get("token"));
+		if (token == "admin") {
+			return result;
 		}
 
 		// 選ばれた商品の商品情報を取得。productId が必要。
@@ -45,28 +43,28 @@ public class ProductDetailsAction extends ActionSupport implements SessionAware 
 
 		session.put("productId", productInfoDTO.getProductId());
 
-			// 商品名
-			session.put("productName", productInfoDTO.getProductName());
-			// 商品名かな
-			session.put("productNameKana", productInfoDTO.getProductNameKana());
-			// 値段
-			session.put("price", productInfoDTO.getPrice());
-			// 購入個数用のリスト
-			List<Integer> productCountList = new ArrayList<Integer>(Arrays.asList(1,2,3,4,5));
-			session.put("productCountList", productCountList);
-			// 発売会社
-			session.put("releaseCompany", productInfoDTO.getReleaseCompany());
-			// 発売年月
-			session.put("releaseDate", productInfoDTO.getReleaseDate());
-			// 商品詳細
-			session.put("productDescription", productInfoDTO.getProductDescription());
-			// 商品画像用の情報
-			session.put("imageFilePath", productInfoDTO.getImageFilePath());
-			session.put("imageFileName", productInfoDTO.getImageFileName());
+		// 商品名
+		session.put("productName", productInfoDTO.getProductName());
+		// 商品名かな
+		session.put("productNameKana", productInfoDTO.getProductNameKana());
+		// 値段
+		session.put("price", productInfoDTO.getPrice());
+		// 購入個数用のリスト
+		List<Integer> productCountList = new ArrayList<Integer>(Arrays.asList(1, 2, 3, 4, 5));
+		session.put("productCountList", productCountList);
+		// 発売会社
+		session.put("releaseCompany", productInfoDTO.getReleaseCompany());
+		// 発売年月
+		session.put("releaseDate", productInfoDTO.getReleaseDate());
+		// 商品詳細
+		session.put("productDescription", productInfoDTO.getProductDescription());
+		// 商品画像用の情報
+		session.put("imageFilePath", productInfoDTO.getImageFilePath());
+		session.put("imageFileName", productInfoDTO.getImageFileName());
 
-			// その他、使用したい情報。
-			session.put("categoryId", productInfoDTO.getCategoryId());
-			s_categoryId = session.get("categoryId").toString();
+		// その他、使用したい情報。
+		session.put("categoryId", productInfoDTO.getCategoryId());
+		s_categoryId = session.get("categoryId").toString();
 
 		// 関連商品のリスト relatedProductList を取得。カテゴリIDと商品IDが必要。表示数に関連する数値 0, 3 を記述。
 		// 今は、同カテゴリの商品のリストをランダムに並び替えた上で【先頭3行】を取得する設定。
@@ -76,22 +74,22 @@ public class ProductDetailsAction extends ActionSupport implements SessionAware 
 		session.put("relatedProductList", relatedProductList);
 
 		// セッション mCategoryDtoList はヘッダーにて用いているので、無い場合は必要。mCategoryList??
-		if(!session.containsKey("mCategoryDtoList")) {
+		if (!session.containsKey("mCategoryDtoList")) {
 			MCategoryDAO mCategoryDao = new MCategoryDAO();
 			mCategoryDtoList = mCategoryDao.getMCategoryList();
 			session.put("mCategoryDtoList", mCategoryDtoList);
 		}
 
 		// セッションlogined はヘッダーにて用いているので、無い場合は非ログイン状態として0を入れる。
-		if(!session.containsKey("productName")) {
+		if (!session.containsKey("productName")) {
 			session.put("logined", 0);
 		}
 
-		if(relatedProductList.isEmpty()){
+		if (relatedProductList.isEmpty()) {
 			setRelate_noneFlg("true");
 		}
 
-		if(!(s_categoryId==null)){
+		if (!(s_categoryId == null)) {
 			result = SUCCESS;
 		}
 		return result;
@@ -109,6 +107,7 @@ public class ProductDetailsAction extends ActionSupport implements SessionAware 
 	public int getProductId() {
 		return productId;
 	}
+
 	public void setProductId(int productId) {
 		this.productId = productId;
 	}

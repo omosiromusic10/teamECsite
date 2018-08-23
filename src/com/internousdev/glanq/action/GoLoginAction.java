@@ -10,17 +10,24 @@ public class GoLoginAction extends ActionSupport implements SessionAware {
 	private Map<String, Object> session;
 
 	public String execute() {
-		//他ページに飛んだあともエラーメッセージが残らないように、
-		//セッションからはずす
+		// 他ページに飛んだあともエラーメッセージが残らないように、
+		// セッションからはずす
+
+		String result = ERROR;
+		String token = String.valueOf(session.get("token"));
+		if (token == "admin") {
+			return result;
+		}
 		session.remove("loginIdErrorMessageList");
 		session.remove("passwordErrorMessageList");
 		session.remove("loginErrorMessageList");
 
-		return SUCCESS;
+		result = SUCCESS;
+
+		return result;
 	}
 
-
-	public Map<String,Object> getSession() {
+	public Map<String, Object> getSession() {
 		return session;
 	}
 

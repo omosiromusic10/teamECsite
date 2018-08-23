@@ -11,7 +11,7 @@ import com.internousdev.glanq.dao.DestinationInfoDAO;
 import com.internousdev.glanq.dto.DestinationInfoDTO;
 import com.opensymphony.xwork2.ActionSupport;
 
-public class LocationChoiceConfirmAction extends ActionSupport implements SessionAware{
+public class LocationChoiceConfirmAction extends ActionSupport implements SessionAware {
 
 	private String categoryId;
 	private Map<String, Object> session;
@@ -24,16 +24,20 @@ public class LocationChoiceConfirmAction extends ActionSupport implements Sessio
 	private String telNumber;
 	private String userAddress;
 
-	public String execute(){
+	public String execute() {
 
 		String result = ERROR;
+		String token = String.valueOf(session.get("token"));
+		if (token == "admin") {
+			return result;
+		}
 
 		DestinationInfoDAO destinationInfoDAO = new DestinationInfoDAO();
 		List<DestinationInfoDTO> destinationInfoDtoList = new ArrayList<>();
 		try {
 			destinationInfoDtoList = destinationInfoDAO.getDestinationInfoFromId(parkId);
 			Iterator<DestinationInfoDTO> iterator = destinationInfoDtoList.iterator();
-			if(!(iterator.hasNext())) {
+			if (!(iterator.hasNext())) {
 				destinationInfoDtoList = null;
 			}
 			session.put("parkId", parkId);
@@ -41,7 +45,7 @@ public class LocationChoiceConfirmAction extends ActionSupport implements Sessio
 			session.put("destinationInfoDtoList", destinationInfoDtoList);
 			result = SUCCESS;
 
-		}catch(Exception e){
+		} catch (Exception e) {
 			e.printStackTrace();
 			result = ERROR;
 		}
@@ -128,8 +132,5 @@ public class LocationChoiceConfirmAction extends ActionSupport implements Sessio
 	public void setUserAddress(String userAddress) {
 		this.userAddress = userAddress;
 	}
-
-
-
 
 }

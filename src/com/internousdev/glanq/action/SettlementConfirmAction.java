@@ -13,8 +13,7 @@ import com.internousdev.glanq.dao.DestinationInfoDAO;
 import com.internousdev.glanq.dto.DestinationInfoDTO;
 import com.opensymphony.xwork2.ActionSupport;
 
-public class SettlementConfirmAction extends ActionSupport implements SessionAware{
-
+public class SettlementConfirmAction extends ActionSupport implements SessionAware {
 
 	private String categoryId;
 	private Collection<String> checkList;
@@ -29,16 +28,21 @@ public class SettlementConfirmAction extends ActionSupport implements SessionAwa
 	private String productCount;
 	private String subtotal;
 	private Map<String, Object> session;
+
 	public String execute() {
 		String result = ERROR;
+		String token = String.valueOf(session.get("token"));
+		if (token == "admin") {
+			return result;
+		}
 
-		if(session.containsKey("loginId")) {
+		if (session.containsKey("loginId")) {
 			DestinationInfoDAO destinationInfoDAO = new DestinationInfoDAO();
 			List<DestinationInfoDTO> destinationInfoDtoList = new ArrayList<>();
 			try {
 				destinationInfoDtoList = destinationInfoDAO.getDestinationInfo(String.valueOf(session.get("loginId")));
 				Iterator<DestinationInfoDTO> iterator = destinationInfoDtoList.iterator();
-				if(!(iterator.hasNext())) {
+				if (!(iterator.hasNext())) {
 					destinationInfoDtoList = null;
 				}
 				session.put("destinationInfoDtoList", destinationInfoDtoList);
@@ -46,9 +50,9 @@ public class SettlementConfirmAction extends ActionSupport implements SessionAwa
 				e.printStackTrace();
 			}
 		}
-		if(!session.containsKey("loginId")) {
+		if (!session.containsKey("loginId")) {
 			result = ERROR;
-		}else {
+		} else {
 			result = SUCCESS;
 		}
 		return result;
@@ -81,6 +85,7 @@ public class SettlementConfirmAction extends ActionSupport implements SessionAwa
 	public Map<String, Object> getSession() {
 		return session;
 	}
+
 	public void setSession(Map<String, Object> session) {
 		this.session = session;
 	}

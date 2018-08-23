@@ -12,7 +12,7 @@ import com.internousdev.glanq.dao.DestinationInfoDAO;
 import com.internousdev.glanq.dto.DestinationInfoDTO;
 import com.opensymphony.xwork2.ActionSupport;
 
-public class LocationChoiceAction extends ActionSupport implements SessionAware{
+public class LocationChoiceAction extends ActionSupport implements SessionAware {
 
 	private String categoryId;
 	private Map<String, Object> session;
@@ -20,24 +20,28 @@ public class LocationChoiceAction extends ActionSupport implements SessionAware{
 	DestinationInfoDAO destinationInfoDAO = new DestinationInfoDAO();
 	List<DestinationInfoDTO> destinationInfoDtoList = new ArrayList<>();
 
-	public String execute(){
-		/*画面遷移のみ*/
+	public String execute() {
+		/* 画面遷移のみ */
 		String result = ERROR;
 		String token = String.valueOf(session.get("token"));
-		if (token == "test"){
-
-		try {
-			destinationInfoDtoList = destinationInfoDAO.getDestinationInfo("admin");
-			Iterator<DestinationInfoDTO> iterator = destinationInfoDtoList.iterator();
-			if(!(iterator.hasNext())) {
-				destinationInfoDtoList = null;
-			}
-			session.put("destinationInfoDtoList", destinationInfoDtoList);
-		} catch (SQLException e) {
-			e.printStackTrace();
+		if (token == "admin") {
+			return result;
 		}
+		String lToken = String.valueOf(session.get("locationToken"));
+		if (lToken == "test") {
 
-		result = SUCCESS;
+			try {
+				destinationInfoDtoList = destinationInfoDAO.getDestinationInfo("admin");
+				Iterator<DestinationInfoDTO> iterator = destinationInfoDtoList.iterator();
+				if (!(iterator.hasNext())) {
+					destinationInfoDtoList = null;
+				}
+				session.put("destinationInfoDtoList", destinationInfoDtoList);
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+
+			result = SUCCESS;
 		}
 
 		return result;

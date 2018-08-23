@@ -13,74 +13,78 @@ import com.internousdev.glanq.dto.CartInfoDTO;
 import com.internousdev.glanq.dto.PurchaseHistoryInfoDTO;
 import com.opensymphony.xwork2.ActionSupport;
 
-public class SettlementCompleteAction extends ActionSupport implements SessionAware{
+public class SettlementCompleteAction extends ActionSupport implements SessionAware {
 
-	/*private String id;*/
+	/* private String id; */
 	private int id;
 	private String categoryId;
 	private Map<String, Object> session;
 
 	public String execute() {
 		String result = ERROR;
-		//SettlementTokenがあるかどうかしらべる
-		String token = String.valueOf(session.get("settlementToken"));
+		String token = String.valueOf(session.get("token"));
+		if (token == "admin") {
+			return result;
+		}
+		// SettlementTokenがあるかどうかしらべる
+		String sToken = String.valueOf(session.get("settlementToken"));
 		session.remove("settlementToken");
-		if (token != "canSettlement"){
+		if (sToken != "canSettlement") {
 			return result;
 		}
 
-		session.remove("token");
+		session.remove("settlementToken");
 
-		@SuppressWarnings("unchecked")//警告の抑制（警告を無視させる）
-		ArrayList<PurchaseHistoryInfoDTO> purchaseHistoryInfoDtoList = (ArrayList<PurchaseHistoryInfoDTO>)session.get("purchaseHistoryInfoDtoList");
+		@SuppressWarnings("unchecked") // 警告の抑制（警告を無視させる）
+		ArrayList<PurchaseHistoryInfoDTO> purchaseHistoryInfoDtoList = (ArrayList<PurchaseHistoryInfoDTO>) session
+				.get("purchaseHistoryInfoDtoList");
 
-		/*@SuppressWarnings("unchecked")//警告の抑制（警告を無視させる）*/
-		/* ArrayList<DestinationInfoDTO> destinationInfoDtoList = (ArrayList<DestinationInfoDTO>)session.get("destinationInfoDtoList");*/
-		for(int i=0;/*初期値*/ i<purchaseHistoryInfoDtoList.size();/*条件式*/ i++/*増減式*/) {
+		/* @SuppressWarnings("unchecked")//警告の抑制（警告を無視させる） */
+		/*
+		 * ArrayList<DestinationInfoDTO> destinationInfoDtoList =
+		 * (ArrayList<DestinationInfoDTO>)session.get("destinationInfoDtoList");
+		 */
+		for (int i = 0; /* 初期値 */ i < purchaseHistoryInfoDtoList.size(); /* 条件式 */ i++/* 増減式 */) {
 			purchaseHistoryInfoDtoList.get(i).setDestinationId(id);
 			/* destinationInfoDtoList.get(0).getId() */
 		}
-		if(session.containsKey("cartInfoDtoList")){
-		PurchaseHistoryInfoDAO purchaseHistoryInfoDAO = new PurchaseHistoryInfoDAO();//購入履歴にデータを渡す
-		int count = 0;
-		for(int i=0;/*初期値*/ i<purchaseHistoryInfoDtoList.size();/*条件式*/ i++/*増減式*/) {
-			count += purchaseHistoryInfoDAO.regist(
-					String.valueOf(session.get("loginId")),
-					purchaseHistoryInfoDtoList.get(i).getProductId(),
-					purchaseHistoryInfoDtoList.get(i).getProductCount(),
-					purchaseHistoryInfoDtoList.get(i).getDestinationId(),
-					purchaseHistoryInfoDtoList.get(i).getSubtotal()
-					);
-		}
-		if(count > 0) {
-			CartInfoDAO cartInfoDAO = new CartInfoDAO(); //カート内のデータを消す
-			count = cartInfoDAO.deleteAll(String.valueOf(session.get("loginId")));
-			if(count > 0) {
-				List<CartInfoDTO> cartInfoDtoList = new ArrayList<CartInfoDTO>();
-				cartInfoDtoList = cartInfoDAO.getCartInfoDtoList(String.valueOf(session.get("loginId")));
-				Iterator<CartInfoDTO> iterator = cartInfoDtoList.iterator();
-				if(!(iterator.hasNext())) {
-					cartInfoDtoList = null;
-				}
-				session.put("cartInfoDtoList", cartInfoDtoList);
-
-				int totalPrice = Integer.parseInt(String.valueOf(cartInfoDAO.getTotalPrice(String.valueOf(session.get("loginId")))));
-				session.put("totalPrice", totalPrice);
-				result = SUCCESS;
+		if (session.containsKey("cartInfoDtoList")) {
+			PurchaseHistoryInfoDAO purchaseHistoryInfoDAO = new PurchaseHistoryInfoDAO();// 購入履歴にデータを渡す
+			int count = 0;
+			for (int i = 0; /* 初期値 */ i < purchaseHistoryInfoDtoList.size(); /* 条件式 */ i++/* 増減式 */) {
+				count += purchaseHistoryInfoDAO.regist(String.valueOf(session.get("loginId")),
+						purchaseHistoryInfoDtoList.get(i).getProductId(),
+						purchaseHistoryInfoDtoList.get(i).getProductCount(),
+						purchaseHistoryInfoDtoList.get(i).getDestinationId(),
+						purchaseHistoryInfoDtoList.get(i).getSubtotal());
 			}
-		}
+			if (count > 0) {
+				CartInfoDAO cartInfoDAO = new CartInfoDAO(); // カート内のデータを消す
+				count = cartInfoDAO.deleteAll(String.valueOf(session.get("loginId")));
+				if (count > 0) {
+					List<CartInfoDTO> cartInfoDtoList = new ArrayList<CartInfoDTO>();
+					cartInfoDtoList = cartInfoDAO.getCartInfoDtoList(String.valueOf(session.get("loginId")));
+					Iterator<CartInfoDTO> iterator = cartInfoDtoList.iterator();
+					if (!(iterator.hasNext())) {
+						cartInfoDtoList = null;
+					}
+					session.put("cartInfoDtoList", cartInfoDtoList);
+
+					int totalPrice = Integer.parseInt(
+							String.valueOf(cartInfoDAO.getTotalPrice(String.valueOf(session.get("loginId")))));
+					session.put("totalPrice", totalPrice);
+					result = SUCCESS;
+				}
+			}
 		}
 		return result;
 	}
-/*
-	public String getId() {
-		return id;
-	}
 
-	public void setId(String id) {
-		this.id = id;
-	}
-*/
+	/*
+	 * public String getId() { return id; }
+	 *
+	 * public void setId(String id) { this.id = id; }
+	 */
 	public String getCategoryId() {
 		return categoryId;
 	}
@@ -96,12 +100,13 @@ public class SettlementCompleteAction extends ActionSupport implements SessionAw
 	public void setSession(Map<String, Object> session) {
 		this.session = session;
 	}
+
 	public int getId() {
 		return id;
 	}
+
 	public void setId(int id) {
 		this.id = id;
 	}
-
 
 }

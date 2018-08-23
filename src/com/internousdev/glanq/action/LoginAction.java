@@ -34,57 +34,58 @@ public class LoginAction extends ActionSupport implements SessionAware {
 
 	private String goLocationFlg;
 
-
 	public String execute() {
 
 		String result = ERROR;
 
-			//セッションに格納したメッセージをはずす
-			session.remove("loginIdErrorMessageList");
-			session.remove("passwordErrorMessageList");
-			session.remove("loginErrorMessageList");
+		// セッションに格納したメッセージをはずす
+		session.remove("loginIdErrorMessageList");
+		session.remove("passwordErrorMessageList");
+		session.remove("loginErrorMessageList");
 
-		//「ログインID保存」のチェックボックスに使う
-		//trueの場合sessionに格納
-		if(savedLoginId==true) {
+		// 「ログインID保存」のチェックボックスに使う
+		// trueの場合sessionに格納
+		if (savedLoginId == true) {
 			session.put("savedLoginId", true);
 			session.put("saveId", loginId);
 
-		//それ以外はsessionからはずす
+			// それ以外はsessionからはずす
 		} else {
 			session.put("savedLoginId", false);
 			session.remove("saveId", loginId);
 		}
 
-		//正規表現検証(質問の内容,値,最小文字数,最大文字数,半角数字,漢字,ひらがな,半角数字,半角記号,カタカナ,全角記号)
+		// 正規表現検証(質問の内容,値,最小文字数,最大文字数,半角数字,漢字,ひらがな,半角数字,半角記号,カタカナ,全角記号)
 		InputChecker inputChecker = new InputChecker();
-		loginIdErrorMessageList = inputChecker.docheck("ログインID", loginId, 1, 8, true, false, false, true, false, false, false);
-		passwordErrorMessageList = inputChecker.docheck("パスワード", password, 1, 16, true, false, false, true, false, false, false);
+		loginIdErrorMessageList = inputChecker.docheck("ログインID", loginId, 1, 8, true, false, false, true, false, false,
+				false);
+		passwordErrorMessageList = inputChecker.docheck("パスワード", password, 1, 16, true, false, false, true, false,
+				false, false);
 
-		//ヘッダーのカテゴリーがおかしくならないようにするため必要
-		if(!session.containsKey("mCategoryList")) {
+		// ヘッダーのカテゴリーがおかしくならないようにするため必要
+		if (!session.containsKey("mCategoryList")) {
 			MCategoryDAO mCategoryDAO = new MCategoryDAO();
 			mCategoryDtoList = mCategoryDAO.getMCategoryList();
 			session.put("mCategoryDtoList", mCategoryDtoList);
 		}
 
 		UserInfoDAO userInfoDAO = new UserInfoDAO();
-		//ユーザーが存在していて、
-		if(userInfoDAO.isExistsUserInfo(loginId, password)) {
+		// ユーザーが存在していて、
+		if (userInfoDAO.isExistsUserInfo(loginId, password)) {
 
-			//ログインが成功していたら、
-			if(userInfoDAO.login(loginId, password) > 0) {
+			// ログインが成功していたら、
+			if (userInfoDAO.login(loginId, password) > 0) {
 
-				//ユーザー情報を取得し、
+				// ユーザー情報を取得し、
 				UserInfoDTO userInfoDTO = userInfoDAO.getUserInfo(loginId, password);
-				//ユーザーID, status をセッションに格納
+				// ユーザーID, status をセッションに格納
 				session.put("loginId", userInfoDTO.getUserId());
 				session.put("status", userInfoDTO.getStatus());
 				int count = 0;
 
 				String sta = String.valueOf(session.get("status"));
-				//statusに1が入っていたら、管理者画面へ
-				if(sta.equals("1")) {
+				// statusに1が入っていたら、管理者画面へ
+				if (sta.equals("1")) {
 					result = "admin";
 					String token = "admin";
 					session.put("token", token);
@@ -95,30 +96,30 @@ public class LoginAction extends ActionSupport implements SessionAware {
 				CartInfoDAO cartInfoDAO = new CartInfoDAO();
 
 				count = cartInfoDAO.linkToLoginId(String.valueOf(session.get("tempUserId")), loginId);
-				//仮IDが発行されていたら、
-				if(count > 0) {
+				// 仮IDが発行されていたら、
+				if (count > 0) {
 					DestinationInfoDAO destinationInfoDAO = new DestinationInfoDAO();
 
 					try {
 						List<DestinationInfoDTO> destinationInfoDtoList = new ArrayList<DestinationInfoDTO>();
-						//宛先情報を取得し、Listに格納
+						// 宛先情報を取得し、Listに格納
 						destinationInfoDtoList = destinationInfoDAO.getDestinationInfo(loginId);
 						Iterator<DestinationInfoDTO> iterator = destinationInfoDtoList.iterator();
-						//Listに格納した要素を順番に処理をし、要素がなくなったら、
-						if(!(iterator.hasNext())) {
-							//Listにnullを入れる(。)
+						// Listに格納した要素を順番に処理をし、要素がなくなったら、
+						if (!(iterator.hasNext())) {
+							// Listにnullを入れる(。)
 							destinationInfoDtoList = null;
 						}
-						//セッションにListを格納
+						// セッションにListを格納
 						session.put("destinationInfoDtoList", destinationInfoDtoList);
 
-					} catch(SQLException e) {
+					} catch (SQLException e) {
 						e.printStackTrace();
 					}
 
 					// （追加）LocationOptionAction から来ているかどうかの判定を行う。
-					if(!(goLocationFlg==null)){
-						if(goLocationFlg.equals("true")){
+					if (!(goLocationFlg == null)) {
+						if (goLocationFlg.equals("true")) {
 							session.put("logined", 1);
 							// 確認されたら、ログイン状態に変更した上でlocationOption画面へと進ませる。
 							result = "locationOption";
@@ -131,29 +132,26 @@ public class LoginAction extends ActionSupport implements SessionAware {
 				result = SUCCESS;
 			}
 
+			// セッションにログインフラグを格納
+			session.put("logined", 1);
 
-				//セッションにログインフラグを格納
-				session.put("logined", 1);
-
-		//ユーザーが存在しない場合、エラーメッセージを格納
-		}else{
+			// ユーザーが存在しない場合、エラーメッセージを格納
+		} else {
 			loginErrorMessageList.add("入力されたパスワードが異なります。");
 		}
 
-		//ログインIDとパスワード両方にエラーメッセージが入った場合、
-		//エラーメッセージを格納、ログインフラグを降ろす
-		if(loginIdErrorMessageList.size()!=0
-				|| passwordErrorMessageList.size()!=0
-				|| loginErrorMessageList.size()!=0) {
-					session.put("loginIdErrorMessageList", loginIdErrorMessageList);
-					session.put("passwordErrorMessageList", passwordErrorMessageList);
-					session.put("loginErrorMessageList",loginErrorMessageList);
-					session.put("logined", 0);
+		// ログインIDとパスワード両方にエラーメッセージが入った場合、
+		// エラーメッセージを格納、ログインフラグを降ろす
+		if (loginIdErrorMessageList.size() != 0 || passwordErrorMessageList.size() != 0
+				|| loginErrorMessageList.size() != 0) {
+			session.put("loginIdErrorMessageList", loginIdErrorMessageList);
+			session.put("passwordErrorMessageList", passwordErrorMessageList);
+			session.put("loginErrorMessageList", loginErrorMessageList);
+			session.put("logined", 0);
 		}
 
 		return result;
 	}
-
 
 	public String getCategoryId() {
 		return categoryId;
@@ -198,7 +196,6 @@ public class LoginAction extends ActionSupport implements SessionAware {
 	public List<String> getPasswordErrorMessageList() {
 		return passwordErrorMessageList;
 	}
-
 
 	public void setPasswordErrorMessageList(List<String> passwordErrorMessageList) {
 		this.passwordErrorMessageList = passwordErrorMessageList;
