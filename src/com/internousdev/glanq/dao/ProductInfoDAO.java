@@ -142,15 +142,27 @@ public class ProductInfoDAO {
 		Connection con = db.getConnection();
 		String sql = "SELECT * from product_info";
 		boolean iFlg = true;
-		// 拡張for文。キーワード検索でキーワードが1つか複数かにより、sql文が分岐するため記述。
+		// 拡張for文。キーワードが1つか複数かにより、sql文が分岐するため記述。
 		for(String keyword : keywordsList){
 			// キーワードにスペースが複数続けて入力されkeywordListが生成されている場合を考慮。
-			if(!(keyword.trim()).equals("")){
+			String trim_keyword = keyword.trim();
+			if(!trim_keyword.equals("")){
+				// キーワードを1文字ずつ配列化してstrArrayとする。
+				String[] strArray = new String[trim_keyword.length()];
+				for (int i = 0; i < trim_keyword.length(); i++) {
+					strArray[i] = String.valueOf(trim_keyword.charAt(i));
+				}
+				// エスケープ処理のため、1文字ごとに?を挟み、keywordを組み直す。
+				String e_keyword = "";
+				for(String word : strArray){
+					e_keyword += ("?" + word);
+				}
+				// 組み直したキーワードe_keywordを用いて検索。escape '?'でエスケープ処理。
 				if(iFlg){
-					sql += " WHERE ((product_name like '%" + keyword.trim() + "%' or product_name_kana like '%" + keyword.trim() + "%')";
+					sql += " WHERE ((product_name like '%" + e_keyword + "%' escape '?' or product_name_kana like '%" + e_keyword + "%' escape '?') ";
 					iFlg = false;
 				}else{
-					sql += " OR (product_name like '%" + keyword.trim() + "%' or product_name_kana like '%" + keyword.trim() + "%')";
+					sql += "OR (product_name like '%" + e_keyword + "%' escape '?' or product_name_kana like '%" + e_keyword + "%' escape '?')";
 				}
 			}
 		}
@@ -200,12 +212,24 @@ public class ProductInfoDAO {
 		// 拡張for文。キーワードが1つか複数かにより、sql文が分岐するため記述。
 		for(String keyword : keywordsList){
 			// キーワードにスペースが複数続けて入力されkeywordListが生成されている場合を考慮。
-			if(!(keyword.trim()).equals("")){
+			String trim_keyword = keyword.trim();
+			if(!trim_keyword.equals("")){
+				// キーワードを1文字ずつ配列化してstrArrayとする。
+				String[] strArray = new String[trim_keyword.length()];
+				for (int i = 0; i < trim_keyword.length(); i++) {
+					strArray[i] = String.valueOf(trim_keyword.charAt(i));
+				}
+				// エスケープ処理のため、1文字ごとに?を挟み、keywordを組み直す。
+				String e_keyword = "";
+				for(String word : strArray){
+					e_keyword += ("?" + word);
+				}
+				// 組み直したキーワードe_keywordを用いて検索。escape '?'でエスケープ処理。
 				if(iFlg){
-					sql += " WHERE (product_name like '%" + keyword.trim() + "%' or product_name_kana like '%" + keyword.trim() + "%') ";
+					sql += " WHERE (product_name like '%" + e_keyword + "%' escape '?' or product_name_kana like '%" + e_keyword + "%' escape '?') ";
 					iFlg = false;
 				}else{
-					sql += "OR (product_name like '%" + keyword.trim() + "%' or product_name_kana like '%" + keyword.trim() + "%')";
+					sql += "OR (product_name like '%" + e_keyword + "%' escape '?' or product_name_kana like '%" + e_keyword + "%' escape '?')";
 				}
 			}
 		}
