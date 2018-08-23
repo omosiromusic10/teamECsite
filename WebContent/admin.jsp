@@ -8,7 +8,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" href="./css/style.css">
 <link rel="stylesheet" href="./css/admin.css">
-<title>管理者画面</title>
+<title>管理者ホーム画面</title>
 </head>
 <body>
  <jsp:include page="header.jsp"/>
