@@ -66,7 +66,7 @@ public class AdminRegistAction extends ActionSupport implements SessionAware {
 		if (!session.containsKey("mCategoryList")) {
 			// ここではsessionの mCategoryListが存在しない場合？に起きる。
 			MCategoryDAO mCategoryDao = new MCategoryDAO();
-			mCategoryDtoList = mCategoryDao.getMCategoryList();
+			mCategoryDtoList = mCategoryDao.getMCategoryList2();
 			// ここで恐らく、mCategoryDAO内にあるMCategoryListを「DtoList」として代入している
 			session.put("mCategoryDtoList", mCategoryDtoList);
 			// そして最後にsessionにmCategoryDtoListを記述させている。 ただ、何故DtoListとしてしたのか。
