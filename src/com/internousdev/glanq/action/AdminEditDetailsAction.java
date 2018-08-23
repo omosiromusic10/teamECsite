@@ -86,7 +86,7 @@ public class AdminEditDetailsAction extends ActionSupport implements SessionAwar
 		// キーが存在するかの確認（カテゴリー）
 		if (!session.containsKey("mCategoryList")) {
 			MCategoryDAO mCategoryDao = new MCategoryDAO();
-			mCategoryDtoList = mCategoryDao.getMCategoryList();
+			mCategoryDtoList = mCategoryDao.getMCategoryList2();
 			session.put("mCategoryDtoList", mCategoryDtoList);
 		}
 		System.out.println(session.get("mCategoryDtoList").toString());
