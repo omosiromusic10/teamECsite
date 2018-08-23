@@ -2,7 +2,9 @@ package com.internousdev.glanq.action;
 
 import java.io.File;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -24,7 +26,7 @@ public class AdminRegistConfirmAction extends ActionSupport implements SessionAw
 	private String imageFileName;
 	private String imageFilePath;
 	private String releaseCompany;
-	private String releaseDate;
+	private Date releaseDate;
 
 	private File userImage;
 	private String userImageContentType;
@@ -54,6 +56,9 @@ public class AdminRegistConfirmAction extends ActionSupport implements SessionAw
 		result = ERROR;
 		InputChecker inputChecker = new InputChecker();
 
+		String releaseDate_str = new SimpleDateFormat("yyyy/MM/dd/HH:mm:ss").format(releaseDate);
+
+
 		session.put("productName", productName);
 		session.put("productNameKana", productNameKana);
 		session.put("productDescription", productDescription);
@@ -61,7 +66,7 @@ public class AdminRegistConfirmAction extends ActionSupport implements SessionAw
 		session.put("imageFileName", imageFileName);
 		session.put("imageFilePath", imageFilePath);
 		session.put("releaseCompany", releaseCompany);
-		session.put("releaseDate", releaseDate);
+		session.put("releaseDate", releaseDate_str);
 		session.put("categoryId", categoryId);
 		session.put("userImageFileName", userImageFileName);
 		session.put("Status", 0);
@@ -117,18 +122,18 @@ public class AdminRegistConfirmAction extends ActionSupport implements SessionAw
 		productNameErrorMessageList = inputChecker.docheck("商品名", productName, 1, 32, true, true, true, true, true,
 				true, true);
 		productNameKanaErrorMessageList = inputChecker.docheck("商品名ふりがな", productNameKana, 1, 32, false, false, true,
-				false, false, false, false);
+				false, false, false, true);
 		productDescriptionErrorMessageList = inputChecker.docheck("商品名詳細", productDescription, 1, 320, true, true, true,
 				true, true, true, true);
 		priceErrorMessageList = inputChecker.docheck2("価格", price, 1, 8, false, false, false, true, false, false, false);
 		releaseCompanyErrorMessageList = inputChecker.docheck("発売会社名", releaseCompany, 1, 16, true, true, true, true,
 				true, true, true);
-		releaseDateErrorMessageList = inputChecker.docheck("発売年月日", releaseDate, 1, 16, false, true, false, true, true,
-				false, false);
+
+
 
 		if (productNameErrorMessageList.size() == 0 && productNameKanaErrorMessageList.size() == 0
 				&& productDescriptionErrorMessageList.size() == 0 && priceErrorMessageList.size() == 0
-				&& releaseCompanyErrorMessageList.size() == 0 && releaseDateErrorMessageList.size() == 0
+				&& releaseCompanyErrorMessageList.size() == 0
 				&& userImageFileNameErrorMessageList.size() == 0) {
 			result = SUCCESS;
 		} else {
@@ -137,7 +142,6 @@ public class AdminRegistConfirmAction extends ActionSupport implements SessionAw
 			session.put("productDescriptionErrorMessageList", productDescriptionErrorMessageList);
 			session.put("priceErrorMessageList", priceErrorMessageList);
 			session.put("releaseCompanyErrorMessageList", releaseCompanyErrorMessageList);
-			session.put("releaseDateErrorMessageList", releaseDateErrorMessageList);
 			session.put("userImageFileNameErrorMessageList", userImageFileNameErrorMessageList);
 			result = ERROR;
 		}
@@ -213,14 +217,6 @@ public class AdminRegistConfirmAction extends ActionSupport implements SessionAw
 
 	public void setReleaseCompany(String releaseCompany) {
 		this.releaseCompany = releaseCompany;
-	}
-
-	public String getReleaseDate() {
-		return releaseDate;
-	}
-
-	public void setReleaseDate(String releaseDate) {
-		this.releaseDate = releaseDate;
 	}
 
 	public List<String> getProductNameErrorMessageList() {
@@ -314,6 +310,14 @@ public class AdminRegistConfirmAction extends ActionSupport implements SessionAw
 
 	public String getUserImageContentType() {
 		return userImageContentType;
+	}
+
+	public Date getReleaseDate() {
+		return releaseDate;
+	}
+
+	public void setReleaseDate(Date releaseDate) {
+		this.releaseDate = releaseDate;
 	}
 
 	public void setUserImageContentType(String userImageContentType) {
