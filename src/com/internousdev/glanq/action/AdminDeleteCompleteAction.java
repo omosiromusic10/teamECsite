@@ -50,10 +50,10 @@ public class AdminDeleteCompleteAction extends ActionSupport implements SessionA
 			return ERROR;
 		}
 		// 拡張for文
-		for (String id : checkList) {
-			System.out.println(id);
-			count += productInfoDAO.delete(id); // 商品情報を消す
-			count += cartInfoDAO.delete(id); // カート情報を消す
+		for (String productId : checkList) {
+			System.out.println(productId);
+			count += productInfoDAO.delete(productId); // 商品情報を消す
+			count += cartInfoDAO.deleteProduct(productId); // カート情報を消す
 		}
 		// session内のcheckListErrorMessageListにcheckListErrorMessageListを格納
 		if (count <= 0) {
