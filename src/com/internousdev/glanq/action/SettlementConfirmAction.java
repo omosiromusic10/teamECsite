@@ -50,6 +50,8 @@ public class SettlementConfirmAction extends ActionSupport implements SessionAwa
 			result = ERROR;
 		}else {
 			result = SUCCESS;
+			String settlementToken = "canSettlement";
+			session.put("settlementToken", settlementToken);
 		}
 		return result;
 	}

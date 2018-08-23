@@ -22,6 +22,12 @@ public class SettlementCompleteAction extends ActionSupport implements SessionAw
 
 	public String execute() {
 		String result = ERROR;
+		//SettlementTokenがあるかどうかしらべる
+		String token = String.valueOf(session.get("settlementToken"));
+		session.remove("settlementToken");
+		if (token != "canSettlement"){
+			return result;
+		}
 
 		session.remove("token");
 
