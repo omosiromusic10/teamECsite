@@ -87,8 +87,8 @@
 					</s:if>
 
 					<s:hidden name="email" value="%{email}" />
-					<s:hidden name="loginId" value="%{loginId}" />
-					<s:hidden name="password" value="%{password}" />
+					<s:hidden name="loginId" value="%{loginId}" autocomplete = "off"/>
+					<s:hidden name="password" value="%{password}" autocomplete = "off"/>
 
 				</s:form>
 			</div>
