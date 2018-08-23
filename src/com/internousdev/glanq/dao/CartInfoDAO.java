@@ -268,28 +268,6 @@ public class CartInfoDAO {
 		return count;
 	}
 
-	//管理者画面で商品を削除する用のメソッド
-	public int deleteProduct(String productId) {
-		DBConnector dbConnector = new DBConnector();
-		Connection connection = dbConnector.getConnection();
-		int count = 0;
-		String sql = "delete from cart_info where product_id=?";
-
-		try {
-			PreparedStatement preparedStatement = connection.prepareStatement(sql);
-			preparedStatement.setString(1, productId);
-			count = preparedStatement.executeUpdate();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		try {
-			connection.close();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		return count;
-	}
-
 	/*5.カートの中身を削除(全項目)*/
 	public int deleteAll(String userId){
 		DBConnector dbc = new DBConnector();
@@ -396,6 +374,28 @@ public class CartInfoDAO {
 			e.printStackTrace();
 		}
 		return CartInfoDtoList;
+	}
+
+	/* AdminDeleteCompleteで商品を削除する用 */
+	public int deleteProduct(String productId) {
+		DBConnector dbConnector = new DBConnector();
+		Connection connection = dbConnector.getConnection();
+		int count = 0;
+		String sql = "delete from cart_info where product_id=?";
+
+		try {
+			PreparedStatement preparedStatement = connection.prepareStatement(sql);
+			preparedStatement.setString(1, productId);
+			count = preparedStatement.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		try {
+			connection.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return count;
 	}
 
 }
