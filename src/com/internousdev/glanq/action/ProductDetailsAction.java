@@ -81,7 +81,7 @@ public class ProductDetailsAction extends ActionSupport implements SessionAware 
 		}
 
 		// セッションlogined はヘッダーにて用いているので、無い場合は非ログイン状態として0を入れる。
-		if (!session.containsKey("productName")) {
+		if (!session.containsKey("logined")) {
 			session.put("logined", 0);
 		}
 
