@@ -27,6 +27,18 @@
 </head>
 <body>
 
+    <s:if test="#session.token != null">
+         <h1>見せられないよ！</h1>
+    <script type="text/javascript">
+         var sessionTimeout = function() {
+    	location.href = "HomeAction"
+    }
+    setTimeout(sessionTimeout,0)
+    </script>
+    </s:if>
+    <s:else>
+
+
 	<!-- ヘッダーとの関連付け -->
 	<jsp:include page="header.jsp"/>
 
@@ -124,6 +136,7 @@
 
 
 			</div>
+			</s:else>
 
 			<!-- フッターとの関連付け -->
 				<s:include value="footer.jsp"/>
