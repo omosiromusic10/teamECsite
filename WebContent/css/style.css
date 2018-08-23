@@ -1,6 +1,5 @@
 @CHARSET "UTF-8";
 
-
 /*ヘッダー*/
 #header {
 	position : fixed;
@@ -200,12 +199,25 @@ color:#000000;
 }
 
  /*エラーメッセージ*/
+
+.error_wrapper{
+	width:100vw;
+	height:100vh;
+	background:#eeeeee;
+	font-family: 'Hiragino Kaku Gothic Pro','ヒラギノ角ゴ Pro W3','メイリオ',Meiryo,'ＭＳ Ｐゴシック',sans-serif;
+}
+
+.error_title{
+	text-align:center;
+	font-size:50px;
+	font-weight:800;
+	padding-top:100px;
+}
+
 .error_message{
 	text-align:center;
-	font-size:30px;
-	font-weight:900;
-	color:red;
-	padding-top:100px;
+	font-size:15px;
+	padding-top:10px;
 }
 
 /* complete画面 */
