@@ -1,10 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="s" uri="/struts-tags" %>
+<%@ taglib prefix="sx" uri="/struts-dojo-tags" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
+  <sx:head/>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta http-equiv="Content-Script-Type" content="text/javascript" >
 <link rel="stylesheet" href="./css/style.css">
@@ -98,7 +100,8 @@
 </tr>
 <tr>
     <th scope="row">発売年月日</th>
-    <td><s:textfield name="releaseDate" value="%{#session.releaseDate}" label="発売年月日" placeholder="発売年月日" class="txt"/></td>
+      <!--  <td><s:textfield name="releaseDate" value="%{#session.releaseDate}" label="発売年月日" placeholder="発売年月日" class="txt"/></td>-->
+      <td><sx:datetimepicker name="releaseDate" value="%{#session.releaseDate}" displayFormat="yyyy-MM-dd"/></td>
 </tr>
 <tr>
     <th scope="row">画像ファイル</th>
