@@ -122,14 +122,11 @@ public class LoginAction extends ActionSupport implements SessionAware {
 						if (goLocationFlg.equals("true")) {
 							session.put("logined", 1);
 							// 確認されたら、ログイン状態に変更した上でlocationOption画面へと進ませる。
-							/*result = "locationOption";*/
-
-							//カート情報取得のため一度カートに進ませてみました。
-							result ="cart";
-							//strutsも変更しています。
+							result = "locationOption";
 
 							return result;
 						}
+
 					}
 
 				}

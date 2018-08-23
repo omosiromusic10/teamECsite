@@ -32,9 +32,10 @@
 </action>
  <action name="LoginAction" class="com.internousdev.glanq.action.LoginAction" method="execute">
            <result name="success">home.jsp</result>
-           <!-- <result name="locationOption">locationOption.jsp</result> -->
+           <result name="locationOption">locationOption.jsp</result>
+
            <!-- 一時的に変更してます。 -->
-           <result name="cart">cart.jsp</result>
+          <!--  <result name="cart">cart.jsp</result> -->
            <!--  -->
 
            <result name="error">login.jsp</result>
