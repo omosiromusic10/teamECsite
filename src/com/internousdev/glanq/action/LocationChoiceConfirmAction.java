@@ -39,8 +39,6 @@ public class LocationChoiceConfirmAction extends ActionSupport implements Sessio
 			session.put("parkId", parkId);
 			session.put("firstName", firstName);
 			session.put("destinationInfoDtoList", destinationInfoDtoList);
-			String settlementToken = "canSettlement";
-			session.put("settlementToken", settlementToken);
 			result = SUCCESS;
 
 		}catch(Exception e){

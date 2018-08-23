@@ -113,6 +113,8 @@ public class LocationOptionAction extends ActionSupport implements SessionAware{
 			setGoLocationFlg("true");
 		}else {
 			result = SUCCESS;
+			String settlementToken = "canSettlement";
+			session.put("settlementToken", settlementToken);
 		}
 
 		return result;
