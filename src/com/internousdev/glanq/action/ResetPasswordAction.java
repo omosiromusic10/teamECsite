@@ -6,15 +6,20 @@ import org.apache.struts2.interceptor.SessionAware;
 
 import com.opensymphony.xwork2.ActionSupport;
 
-public class ResetPasswordAction extends ActionSupport implements SessionAware{
+public class ResetPasswordAction extends ActionSupport implements SessionAware {
 	private String categoryId;
-	private Map<String,Object>session;
+	private Map<String, Object> session;
 	private String loginId;
 	private boolean savedLoginId;
 
-	public String execute(){
+	public String execute() {
+		String result = ERROR;
+		String token = String.valueOf(session.get("token"));
+		if (token == "admin") {
+			return result;
+		}
 
-		//sessionに格納されている対象の要素を削除
+		// sessionに格納されている対象の要素を削除
 		session.remove("loginErrorMessageList");
 		session.remove("passwordErrorMessageList");
 		session.remove("passwordIncorrectErrorMessageList");
@@ -22,14 +27,13 @@ public class ResetPasswordAction extends ActionSupport implements SessionAware{
 		session.remove("reConfirmationNewPasswordErrorMessageList");
 		session.remove("newPasswordIncorrectErrorMessageList");
 
-		//「ログイン保存」チェックボックス対応の為変更
-		if(savedLoginId==true){
+		// 「ログイン保存」チェックボックス対応の為変更
+		if (savedLoginId == true) {
 			session.put("savedLoginId", true);
 			session.put("saveId", loginId);
 		}
 
-		//天国か地獄か。。。
-		String result = ERROR;
+		// 天国か地獄か。。。
 		result = SUCCESS;
 		return result;
 	}
@@ -65,7 +69,5 @@ public class ResetPasswordAction extends ActionSupport implements SessionAware{
 	public void setLoginId(String loginId) {
 		this.loginId = loginId;
 	}
-
-
 
 }

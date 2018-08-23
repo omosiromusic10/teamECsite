@@ -17,7 +17,7 @@ import com.internousdev.glanq.dto.PurchaseHistoryInfoDTO;
 import com.internousdev.glanq.util.CommonUtility;
 import com.opensymphony.xwork2.ActionSupport;
 
-public class LocationOptionAction extends ActionSupport implements SessionAware{
+public class LocationOptionAction extends ActionSupport implements SessionAware {
 
 	private String categoryId;
 	private Collection<String> checkList;
@@ -35,25 +35,30 @@ public class LocationOptionAction extends ActionSupport implements SessionAware{
 
 	private String GoLocationFlg;
 
-	public String execute(){
-		/* 画面遷移のみだと思ったら全然そんなことは無かった
+	public String execute() {
+		/*
+		 * 画面遷移のみだと思ったら全然そんなことは無かった
 		 *
-		 *  Cartから送られてきた商品情報をpurchaseHistoryInfoDtoListに格納してsessionにputする処理を書く
+		 * Cartから送られてきた商品情報をpurchaseHistoryInfoDtoListに格納してsessionにputする処理を書く
 		 *
-		 *  これはもともとSettlementConfirmActionでやるはずだった処理
-		 *  今回はCart.jspの決済ボタンの遷移先がSettlementConfirmActionでは無くこのアクションなので、
-		 *  こっちでやってあげないと購入履歴が正しく保存されない...はず
+		 * これはもともとSettlementConfirmActionでやるはずだった処理
+		 * 今回はCart.jspの決済ボタンの遷移先がSettlementConfirmActionでは無くこのアクションなので、
+		 * こっちでやってあげないと購入履歴が正しく保存されない...はず
 		 *
 		 */
 		String result = ERROR;
+		String token = String.valueOf(session.get("token"));
+		if (token == "admin") {
+			return result;
+		}
 
-		if(session.containsKey("loginId")) {
+		if (session.containsKey("loginId")) {
 			DestinationInfoDAO destinationInfoDAO = new DestinationInfoDAO();
 			List<DestinationInfoDTO> destinationInfoDtoList = new ArrayList<>();
 			try {
 				destinationInfoDtoList = destinationInfoDAO.getDestinationInfo(String.valueOf(session.get("loginId")));
 				Iterator<DestinationInfoDTO> iterator = destinationInfoDtoList.iterator();
-				if(!(iterator.hasNext())) {
+				if (!(iterator.hasNext())) {
 					destinationInfoDtoList = null;
 				}
 				session.put("destinationInfoDtoList", destinationInfoDtoList);
@@ -76,7 +81,7 @@ public class LocationOptionAction extends ActionSupport implements SessionAware{
 		String[] productCountList = commonUtility.parseArrayList(productCount);
 		String[] subtotalList = commonUtility.parseArrayList(subtotal);
 
-		for(int i=0;i<productIdList.length;i++) {
+		for (int i = 0; i < productIdList.length; i++) {
 			PurchaseHistoryInfoDTO purchaseHistoryInfoDTO = new PurchaseHistoryInfoDTO();
 			purchaseHistoryInfoDTO.setUserId(String.valueOf(session.get("loginId")));
 			purchaseHistoryInfoDTO.setProductId(Integer.parseInt(String.valueOf(productIdList[i])));
@@ -99,11 +104,10 @@ public class LocationOptionAction extends ActionSupport implements SessionAware{
 		}
 		session.put("purchaseHistoryInfoDtoList", purchaseHistoryInfoDtoList);
 		/* LocationChoiceActionで確認するTokenを発行する */
-		String token = "test";
-		session.put("token", token);
+		String lToken = "test";
+		session.put("locationToken", lToken);
 
-
-		if(!session.containsKey("loginId")) {
+		if (!session.containsKey("loginId")) {
 			// loginIdが確認されない場合はログイン画面へと誘導する。
 			session.remove("loginIdErrorMessageList");
 			session.remove("passwordErrorMessageList");
@@ -111,7 +115,7 @@ public class LocationOptionAction extends ActionSupport implements SessionAware{
 			result = ERROR;
 			// （追加）ここから遷移したことを知らせるためのパラメータgoLocationFlgを設定。
 			setGoLocationFlg("true");
-		}else {
+		} else {
 			result = SUCCESS;
 			String settlementToken = "canSettlement";
 			session.put("settlementToken", settlementToken);
@@ -233,6 +237,5 @@ public class LocationOptionAction extends ActionSupport implements SessionAware{
 	public void setGoLocationFlg(String goLocationFlg) {
 		GoLocationFlg = goLocationFlg;
 	}
-
 
 }
