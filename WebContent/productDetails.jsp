@@ -106,7 +106,7 @@
 					</a>
 					</div>
 					</li>
-					<li><s:property value="productName" /></li>
+					<li id="i_info"><s:property value="productName" /></li>
 				</ul>
 			</div>
 		</s:iterator>

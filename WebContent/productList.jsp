@@ -63,9 +63,9 @@
  					</a>
  					</div>
 					</li>
-					<li><s:property value="productName" /></li>
-					<li><s:property value="productNameKana" /></li>
-					<li><s:property value="price" /><span>円</span></li>
+					<li id="i_info"><s:property value="productName" /></li>
+					<li id="i_info"><s:property value="productNameKana" /></li>
+					<li id="i_info"><s:property value="price" /><span>円</span></li>
 				</ul>
 			</div>
 			</div>
