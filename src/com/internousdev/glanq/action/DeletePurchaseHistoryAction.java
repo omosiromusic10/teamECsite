@@ -11,7 +11,7 @@ import com.internousdev.glanq.dao.PurchaseHistoryInfoDAO;
 import com.internousdev.glanq.dto.PurchaseHistoryInfoDTO;
 import com.opensymphony.xwork2.ActionSupport;
 
-public class DeletePurchaseHistoryAction extends ActionSupport implements SessionAware{
+public class DeletePurchaseHistoryAction extends ActionSupport implements SessionAware {
 
 	private String categoryId;
 	private String sex;
@@ -19,13 +19,17 @@ public class DeletePurchaseHistoryAction extends ActionSupport implements Sessio
 	private static final String MALE = "男性";
 	private static final String FEMALE = "女性";
 	private String defaultSexValue = MALE;
-	private Map<String,Object> session;
+	private Map<String, Object> session;
 
-	//executeメソッドの実行
-	public String execute(){
+	// executeメソッドの実行
+	public String execute() {
 
 		/* エラー処理 */
 		String result = ERROR;
+		String token = String.valueOf(session.get("token"));
+		if (token == "admin") {
+			return result;
+		}
 
 		/* purchaseHistoryInfoDAOのインスタンス化 */
 		PurchaseHistoryInfoDAO purchaseHistoryInfoDAO = new PurchaseHistoryInfoDAO();
@@ -34,21 +38,28 @@ public class DeletePurchaseHistoryAction extends ActionSupport implements Sessio
 		int count = purchaseHistoryInfoDAO.deleteAll(String.valueOf(session.get("loginId")));
 
 		/* countが0より大きいとき */
-		if(count > 0){
+		if (count > 0) {
 
-			/* purchaseHistoryInfoDtoListインスタンス化 purchaseHistoryInfoDAOの中のPurchaseHistoryListからsessionのloginIdをString型に変更して所得 */
-			List<PurchaseHistoryInfoDTO> purchaseHistoryInfoDtoList = purchaseHistoryInfoDAO.getPurchaseHistoryList(String.valueOf(session.get("loginId")));
+			/*
+			 * purchaseHistoryInfoDtoListインスタンス化
+			 * purchaseHistoryInfoDAOの中のPurchaseHistoryListからsessionのloginIdをString型に変更して所得
+			 */
+			List<PurchaseHistoryInfoDTO> purchaseHistoryInfoDtoList = purchaseHistoryInfoDAO
+					.getPurchaseHistoryList(String.valueOf(session.get("loginId")));
 
-			/*iteratorインスタンス化 */
+			/* iteratorインスタンス化 */
 			Iterator<PurchaseHistoryInfoDTO> iterator = purchaseHistoryInfoDtoList.iterator();
 
 			/* iteratorに次の要素？がなければ */
-			if(!(iterator.hasNext())){
+			if (!(iterator.hasNext())) {
 
 				/* purchaseHistoryInfoDtoListにnullを返す */
 				purchaseHistoryInfoDtoList = null;
 			}
-			/* session(purchaseHistoryInfoDtoList[key]にpurchaseHistoryInfoDtoList[value]を追加) */
+			/*
+			 * session(purchaseHistoryInfoDtoList[key]
+			 * にpurchaseHistoryInfoDtoList[value]を追加)
+			 */
 			session.put("purchaseHistoryInfoDtoList", purchaseHistoryInfoDtoList);
 
 			/* sexListにMALE,FEMALEを追加 */
@@ -56,15 +67,14 @@ public class DeletePurchaseHistoryAction extends ActionSupport implements Sessio
 			sexList.add(FEMALE);
 
 			/* if文がtureならresultにsuccess返す */
-			result=SUCCESS;
+			result = SUCCESS;
 		}
 		/* resultを返す */
 		return result;
 	}
 	//
 
-
-	//geter setter
+	// geter setter
 	public List<String> getSexList() {
 		return sexList;
 	}
@@ -97,7 +107,6 @@ public class DeletePurchaseHistoryAction extends ActionSupport implements Sessio
 		this.sex = sex;
 	}
 
-
 	public Map<String, Object> getSession() {
 		return session;
 	}
@@ -105,6 +114,5 @@ public class DeletePurchaseHistoryAction extends ActionSupport implements Sessio
 	public void setSession(Map<String, Object> session) {
 		this.session = session;
 	}
-
 
 }

@@ -13,22 +13,20 @@ import com.internousdev.glanq.dto.CartInfoDTO;
 import com.internousdev.glanq.dto.MCategoryDTO;
 import com.opensymphony.xwork2.ActionSupport;
 
-
 public class DeleteCartAction extends ActionSupport implements SessionAware {
-
 
 	private Collection<String> checkList;
 	private String categoryId;
 	private String productId;
 
-	//性別関連
+	// 性別関連
 	private String sex;
 	private List<String> sexList = new ArrayList<String>();
 	private static final String MALE = "男性";
 	private static final String FEMALE = "女性";
 	private String defaultSexValue = MALE;
 
-	//カート内の商品の情報
+	// カート内の商品の情報
 	private String productName;
 	private String productNameKana;
 	private String imageFilePath;
@@ -40,10 +38,14 @@ public class DeleteCartAction extends ActionSupport implements SessionAware {
 	private String subtotal;
 	private List<MCategoryDTO> mCategoryDtoList = new ArrayList<MCategoryDTO>();
 
-	private Map<String ,Object> session;
+	private Map<String, Object> session;
 
-	public String execute(){
+	public String execute() {
 		String result = ERROR;
+		String token = String.valueOf(session.get("token"));
+		if (token == "admin") {
+			return result;
+		}
 		CartInfoDAO ciDAO = new CartInfoDAO();
 		int count = 0;
 
@@ -52,7 +54,7 @@ public class DeleteCartAction extends ActionSupport implements SessionAware {
 		/*
 		 * checkListに値が存在しない場合(削除用のラジオボタンが選択されていない時)
 		 */
-		if(checkList == null){
+		if (checkList == null) {
 			checkListErrorMessageList.add("チェックされていません");
 			session.put("checkListErrorMessageList", checkListErrorMessageList);
 			session.remove("checkList");
@@ -63,43 +65,42 @@ public class DeleteCartAction extends ActionSupport implements SessionAware {
 		 * チェックボックスの値とidが一致している時、そのidと同じレコードの値を削除する
 		 * その後削除件数をdeleteのメソッドは戻すのでcountの変数に格納
 		 */
-		for(String id:checkList){
+		for (String id : checkList) {
 			System.out.println(id);
 			count += ciDAO.delete(id);
 		}
 
-		//削除件数が戻ってこない場合にもエラーメッセージ
-		if(count <= 0){
+		// 削除件数が戻ってこない場合にもエラーメッセージ
+		if (count <= 0) {
 			checkListErrorMessageList.add("チェックされていません");
 			session.put("checkListErrorMessageList", checkListErrorMessageList);
 			return ERROR;
-		}else{
+		} else {
 
-			//エラーメッセージの重複表示対策
-			String userId =null;
+			// エラーメッセージの重複表示対策
+			String userId = null;
 			List<CartInfoDTO> cartInfoDtoList = new ArrayList<CartInfoDTO>();
 
-			//userIdにsessionに現行入っているidの情報を格納
-			if(session.containsKey("loginId")){
+			// userIdにsessionに現行入っているidの情報を格納
+			if (session.containsKey("loginId")) {
 				userId = String.valueOf(session.get("loginId"));
-			}else if(session.containsKey("tempUserId")){
+			} else if (session.containsKey("tempUserId")) {
 				userId = String.valueOf(session.get("tempUserId"));
 			}
 
-			//カートに関連する情報を全てciDTOListに格納
+			// カートに関連する情報を全てciDTOListに格納
 			cartInfoDtoList = ciDAO.getCartInfoDtoList(userId);
 			Iterator<CartInfoDTO> iterator = cartInfoDtoList.iterator();
 
-			//値が途切れたらnullを格納
-			if(!(iterator.hasNext())){
+			// 値が途切れたらnullを格納
+			if (!(iterator.hasNext())) {
 				cartInfoDtoList = null;
 			}
 
 			session.put("cartInfoDtoList", cartInfoDtoList);
 
 			/*
-			 * 合計金額をgetTotalPriceメソッドで取得
-			 * データ型をint→String→intの変換
+			 * 合計金額をgetTotalPriceメソッドで取得 データ型をint→String→intの変換
 			 */
 			int totalPrice = Integer.parseInt(String.valueOf(ciDAO.getTotalPrice(userId)));
 			session.put("totalPrice", totalPrice);
@@ -161,7 +162,6 @@ public class DeleteCartAction extends ActionSupport implements SessionAware {
 		this.productId = productId;
 	}
 
-
 	public String getCategoryId() {
 		return categoryId;
 	}
@@ -173,6 +173,7 @@ public class DeleteCartAction extends ActionSupport implements SessionAware {
 	public Map<String, Object> getSession() {
 		return session;
 	}
+
 	public void setSession(Map<String, Object> session) {
 		this.session = session;
 	}
