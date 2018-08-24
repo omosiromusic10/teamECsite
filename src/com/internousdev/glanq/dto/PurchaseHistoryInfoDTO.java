@@ -24,7 +24,6 @@ public class PurchaseHistoryInfoDTO {
 	private String imageFilePath;
 	private String releaseCompany;
 
-
 	private Date releaseDate;
 
 	/* 宛先情報 */
@@ -38,7 +37,6 @@ public class PurchaseHistoryInfoDTO {
 
 	/* その他 */
 	private int subtotal;
-
 
 	public int getId() {
 		return id;
@@ -231,6 +229,5 @@ public class PurchaseHistoryInfoDTO {
 	public void setSubtotal(int subtotal) {
 		this.subtotal = subtotal;
 	}
-
 
 }

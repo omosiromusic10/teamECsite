@@ -5,12 +5,10 @@ import java.util.Date;
 public class CartInfoDTO {
 
 	/*
-	 * カートの画面に必要なデータは以下
-	 * 商品情報のテーブルの情報
-	 * カートのテーブルの情報
+	 * カートの画面に必要なデータは以下 商品情報のテーブルの情報 カートのテーブルの情報
 	 */
 
-	/*カートの情報*/
+	/* カートの情報 */
 	private int id;
 	private String userId;
 	private String tempUserId;
@@ -20,7 +18,7 @@ public class CartInfoDTO {
 	private Date registDate;
 	private Date updateDate;
 
-	/*商品情報の情報*/
+	/* 商品情報の情報 */
 	private String productName;
 	private String productNameKana;
 	private String productDescription;
@@ -32,28 +30,28 @@ public class CartInfoDTO {
 	private String status;
 	private int subtotal;
 
-	/*value stack用のフィールド変数のゲッターセッター*/
-	public int getId(){
+	/* value stack用のフィールド変数のゲッターセッター */
+	public int getId() {
 		return id;
 	}
 
-	public void setId(int id){
+	public void setId(int id) {
 		this.id = id;
 	}
 
-	public String getUserId(){
+	public String getUserId() {
 		return userId;
 	}
 
-	public void setUserId(String userId){
+	public void setUserId(String userId) {
 		this.userId = userId;
 	}
 
-	public String getTempUserId(){
+	public String getTempUserId() {
 		return tempUserId;
 	}
 
-	public void setTempUserId(String tempUserId){
+	public void setTempUserId(String tempUserId) {
 		this.tempUserId = tempUserId;
 	}
 
@@ -145,7 +143,6 @@ public class CartInfoDTO {
 		this.imageFileName = imageFileName;
 	}
 
-
 	public String getReleaseCompany() {
 		return releaseCompany;
 	}
@@ -177,7 +174,5 @@ public class CartInfoDTO {
 	public void setReleaseDate(Date releaseDate) {
 		this.releaseDate = releaseDate;
 	}
-
-
 
 }
