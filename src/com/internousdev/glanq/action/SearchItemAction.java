@@ -27,11 +27,13 @@ public class SearchItemAction extends ActionSupport implements SessionAware {
 	private Map<String, Object> session;
 
 	public String execute() throws SQLException {
-		String result = ERROR;
+		String result = "admin";
 		String token = String.valueOf(session.get("token"));
 		if (token == "admin") {
 			return result;
 		}
+
+		result = ERROR;
 		InputChecker inputChecker = new InputChecker();
 
 		// 検索ワードが"null"の時、空文字を挿入
