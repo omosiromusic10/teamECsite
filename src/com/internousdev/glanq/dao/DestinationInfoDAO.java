@@ -14,7 +14,7 @@ import com.internousdev.glanq.util.DBConnector;
 public class DestinationInfoDAO {
 
 	public int insert(String userId, String familyName, String firstName, String familyNameKana, String firstNameKana,
-		String email, String telNumber, String userAddress) {
+			String email, String telNumber, String userAddress) {
 		DBConnector dbConnector = new DBConnector();
 		Connection connection = dbConnector.getConnection();
 		int count = 0;
@@ -42,9 +42,7 @@ public class DestinationInfoDAO {
 		return count;
 	}
 
-
-
-	public List<DestinationInfoDTO> getDestinationInfo(String loginId) throws SQLException{
+	public List<DestinationInfoDTO> getDestinationInfo(String loginId) throws SQLException {
 		DBConnector dbConnector = new DBConnector();
 		Connection connection = dbConnector.getConnection();
 		List<DestinationInfoDTO> destinationInfoDtoList = new ArrayList<DestinationInfoDTO>();
@@ -57,7 +55,7 @@ public class DestinationInfoDAO {
 			ps.setString(1, loginId);
 			ResultSet rs = ps.executeQuery();
 
-			while(rs.next()) {
+			while (rs.next()) {
 				DestinationInfoDTO destinationInfoDTO = new DestinationInfoDTO();
 				destinationInfoDTO.setId(rs.getInt("id"));
 				destinationInfoDTO.setFamilyName(rs.getString("family_name"));
@@ -69,9 +67,9 @@ public class DestinationInfoDAO {
 				destinationInfoDTO.setTelNumber(rs.getString("tel_number"));
 				destinationInfoDtoList.add(destinationInfoDTO);
 			}
-		}catch(SQLException e) {
+		} catch (SQLException e) {
 			e.printStackTrace();
-		}finally {
+		} finally {
 			connection.close();
 		}
 		return destinationInfoDtoList;
@@ -80,7 +78,7 @@ public class DestinationInfoDAO {
 	/* LocationChoiceCompleteActionで使う用 */
 	/* Destination_infoテーブルからBBQ場のIdを使ってDestinationInfoDTOListを作成する */
 
-	public List<DestinationInfoDTO> getDestinationInfoFromId(int id) throws SQLException{
+	public List<DestinationInfoDTO> getDestinationInfoFromId(int id) throws SQLException {
 		DBConnector dbConnector = new DBConnector();
 		Connection connection = dbConnector.getConnection();
 		List<DestinationInfoDTO> destinationInfoDtoList = new ArrayList<DestinationInfoDTO>();
@@ -93,7 +91,7 @@ public class DestinationInfoDAO {
 			ps.setInt(1, id);
 			ResultSet rs = ps.executeQuery();
 
-			while(rs.next()) {
+			while (rs.next()) {
 				DestinationInfoDTO destinationInfoDTO = new DestinationInfoDTO();
 				destinationInfoDTO.setId(id);
 				destinationInfoDTO.setFamilyName(rs.getString("family_name"));
@@ -105,9 +103,9 @@ public class DestinationInfoDAO {
 				destinationInfoDTO.setTelNumber(rs.getString("tel_number"));
 				destinationInfoDtoList.add(destinationInfoDTO);
 			}
-		}catch(SQLException e) {
+		} catch (SQLException e) {
 			e.printStackTrace();
-		}finally {
+		} finally {
 			connection.close();
 		}
 		return destinationInfoDtoList;
@@ -115,7 +113,7 @@ public class DestinationInfoDAO {
 
 	/* AdminAllSelectActionで使う用 */
 	/* Destination_infoテーブルから全てのデータを抜き出してDestinationInfoDTOListを作成する */
-	public List<DestinationInfoDTO> getDestinationInfoAllList() throws SQLException{
+	public List<DestinationInfoDTO> getDestinationInfoAllList() throws SQLException {
 		DBConnector dbConnector = new DBConnector();
 		Connection connection = dbConnector.getConnection();
 		List<DestinationInfoDTO> destinationInfoDtoList = new ArrayList<DestinationInfoDTO>();
@@ -127,7 +125,7 @@ public class DestinationInfoDAO {
 			PreparedStatement ps = connection.prepareStatement(sql);
 			ResultSet rs = ps.executeQuery();
 
-			while(rs.next()) {
+			while (rs.next()) {
 				DestinationInfoDTO destinationInfoDTO = new DestinationInfoDTO();
 				destinationInfoDTO.setId(rs.getInt("id"));
 				destinationInfoDTO.setUserId(rs.getString("user_id"));
@@ -143,9 +141,9 @@ public class DestinationInfoDAO {
 
 				destinationInfoDtoList.add(destinationInfoDTO);
 			}
-		}catch(SQLException e) {
+		} catch (SQLException e) {
 			e.printStackTrace();
-		}finally {
+		} finally {
 			connection.close();
 		}
 		return destinationInfoDtoList;
