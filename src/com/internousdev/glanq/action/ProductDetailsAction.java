@@ -27,14 +27,25 @@ public class ProductDetailsAction extends ActionSupport implements SessionAware 
 	private String relate_noneFlg = "false";
 
 	public String execute() throws SQLException {
-		String result = "admin";
+		String result = ERROR;
 
-		// 管理者ログイン状態の対策
+		// 管理者ログイン状態の対策。管理者ならエラーページに。
 		String token = String.valueOf(session.get("token"));
 		if (token == "admin") {
+			result = "admin";
 			return result;
 		}
-		result = ERROR;
+
+		// セッション mCategoryDtoList はヘッダーにて用いているので、無い場合は必要。mCategoryList??
+		if (!session.containsKey("mCategoryDtoList")) {
+			MCategoryDAO mCategoryDao = new MCategoryDAO();
+			mCategoryDtoList = mCategoryDao.getMCategoryList();
+			session.put("mCategoryDtoList", mCategoryDtoList);
+		}
+		// セッションlogined はヘッダーにて用いているので、無い場合は非ログイン状態として0を入れる。
+		if (!session.containsKey("logined")) {
+			session.put("logined", 0);
+		}
 
 		ProductInfoDAO pDAO1 = new ProductInfoDAO();
 		// product_idが存在するかを調べる 存在しない場合は一覧に戻す
@@ -42,13 +53,10 @@ public class ProductDetailsAction extends ActionSupport implements SessionAware 
 			return result;
 		}
 
-
 		// 選ばれた商品の商品情報を取得。productId が必要。
-
 		ProductInfoDTO productInfoDTO = new ProductInfoDTO();
 		productInfoDTO = pDAO1.getProductInfo(productId);
 		session.put("productInfoDTO", productInfoDTO);
-
 		session.put("productId", productInfoDTO.getProductId());
 
 		// 商品名
@@ -74,6 +82,11 @@ public class ProductDetailsAction extends ActionSupport implements SessionAware 
 		session.put("categoryId", productInfoDTO.getCategoryId());
 		s_categoryId = session.get("categoryId").toString();
 
+		// 正常に値を取得できていそうか確認。
+		if (!(s_categoryId.equals("0"))) {
+			result = SUCCESS;
+		}
+
 		// 関連商品のリスト relatedProductList を取得。カテゴリIDと商品IDが必要。表示数に関連する数値 0, 3 を記述。
 		// 今は、同カテゴリの商品のリストをランダムに並び替えた上で【先頭3行】を取得する設定。
 		ProductInfoDAO pDAO2 = new ProductInfoDAO();
@@ -81,24 +94,9 @@ public class ProductDetailsAction extends ActionSupport implements SessionAware 
 		relatedProductList = pDAO2.getProductInfoListByCategoryId(iCategoryId, productId, 0, 3);
 		session.put("relatedProductList", relatedProductList);
 
-		// セッション mCategoryDtoList はヘッダーにて用いているので、無い場合は必要。mCategoryList??
-		if (!session.containsKey("mCategoryDtoList")) {
-			MCategoryDAO mCategoryDao = new MCategoryDAO();
-			mCategoryDtoList = mCategoryDao.getMCategoryList();
-			session.put("mCategoryDtoList", mCategoryDtoList);
-		}
-
-		// セッションlogined はヘッダーにて用いているので、無い場合は非ログイン状態として0を入れる。
-		if (!session.containsKey("logined")) {
-			session.put("logined", 0);
-		}
-
+		// 関連商品があるかどうか確認。
 		if (relatedProductList.isEmpty()) {
 			setRelate_noneFlg("true");
-		}
-
-		if (!(s_categoryId.equals("0"))) {
-			result = SUCCESS;
 		}
 		return result;
 	}
