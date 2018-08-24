@@ -324,6 +324,31 @@ public class ProductInfoDAO {
 		return count;
 	}
 
+    //商品追加時にbooleanでチェックし、trueかfalseで返す文
+    //これで同じ商品名がtrueで入っていた場合にエラー分を表示させるようにする
+    public boolean checkProductInfo( String productName) throws SQLException{
+    	DBConnector db = new DBConnector();
+    	Connection con = db.getConnection();
+
+    	String sql = "select id from product_info where product_name = ?";
+    	boolean Result = false;
+		try{
+    		PreparedStatement ps = con.prepareStatement(sql);
+    		ps.setString(1, productName);
+    		ResultSet rs = ps.executeQuery();
+    		Result= rs.next();
+
+
+
+    	}catch(SQLException e){
+    		e.printStackTrace();
+    	}finally{
+    		con.close();
+    	}
+    	return Result;
+
+    }
+
     //管理者変更・編集機能時に使われるメソッド
     //AdminEditDetailsCompleteAction で使用。
     public int updateProductInfo(int productid, String productName, String productNameKana, String productDescription,

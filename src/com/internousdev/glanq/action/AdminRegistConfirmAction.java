@@ -2,6 +2,7 @@ package com.internousdev.glanq.action;
 
 import java.io.File;
 import java.io.IOException;
+import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -13,6 +14,7 @@ import org.apache.struts2.ServletActionContext;
 import org.apache.struts2.interceptor.SessionAware;
 
 import com.internousdev.glanq.dao.MCategoryDAO;
+import com.internousdev.glanq.dao.ProductInfoDAO;
 import com.internousdev.glanq.dto.MCategoryDTO;
 import com.internousdev.glanq.util.InputChecker;
 import com.opensymphony.xwork2.ActionSupport;
@@ -45,7 +47,7 @@ public class AdminRegistConfirmAction extends ActionSupport implements SessionAw
 	private List<String> categoryIdList = new ArrayList<String>();
 	private Map<String, Object> session;
 
-	public String execute() {
+	public String execute() throws SQLException {
 		// ステータスが１の時だけAdmin.jspを表示させる。
 		String result = "errorhome";
 		String token = String.valueOf(session.get("token"));
@@ -128,6 +130,13 @@ public class AdminRegistConfirmAction extends ActionSupport implements SessionAw
 		priceErrorMessageList = inputChecker.docheck2("価格", price, 1, 8, false, false, false, true, false, false, false);
 		releaseCompanyErrorMessageList = inputChecker.docheck("発売会社名", releaseCompany, 1, 16, true, true, true, true,
 				true, true, true);
+
+		ProductInfoDAO productInfoDao = new ProductInfoDAO();
+
+		//boolean型の場合はこのチェック文自体でtrueかfalseになるので==true等はいらない。
+	    if(productInfoDao.checkProductInfo(productName)){
+	    	productNameErrorMessageList.add("同じ商品名で登録出来ません。");
+	    }
 
 
 

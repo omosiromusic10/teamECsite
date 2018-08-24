@@ -2,7 +2,9 @@ package com.internousdev.glanq.action;
 
 import java.io.File;
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -11,6 +13,7 @@ import org.apache.struts2.ServletActionContext;
 import org.apache.struts2.interceptor.SessionAware;
 
 import com.internousdev.glanq.dao.MCategoryDAO;
+import com.internousdev.glanq.dao.ProductInfoDAO;
 import com.internousdev.glanq.dto.MCategoryDTO;
 import com.internousdev.glanq.util.InputChecker;
 import com.opensymphony.xwork2.ActionSupport;
@@ -25,7 +28,7 @@ public class AdminEditDetailsConfirmAction extends ActionSupport implements Sess
 	private String imageFileName;
 	private String imageFilePath;
 	private String releaseCompany;
-	private String releaseDate;
+	private Date releaseDate;
 	private int productId;
 
 	private File userImage;
@@ -50,7 +53,7 @@ public class AdminEditDetailsConfirmAction extends ActionSupport implements Sess
 	private Map<String,Object>session;
 
 
-	public String execute(){
+	public String execute() throws SQLException{
 		// ステータスが１の時だけAdmin.jspを表示させる。
 		String result = "errorhome";
 		String token = String.valueOf(session.get("token"));
@@ -117,11 +120,17 @@ public class AdminEditDetailsConfirmAction extends ActionSupport implements Sess
 
 	//リストの中を正規表現判定
 	productNameErrorMessageList = inputChecker.docheck("商品名",productName,1,32,true,true,true,true,true,true,true);
-	productNameKanaErrorMessageList = inputChecker.docheck("商品ふりがな",productNameKana,1,32,false,false,true,false,false,false,false);
+	productNameKanaErrorMessageList = inputChecker.docheck("商品ふりがな",productNameKana,1,32,false,false,true,false,false,false,true);
 	productDescriptionErrorMessageList = inputChecker.docheck("商品名詳細",productDescription,1,320,true,true,true,true,true,true,true);
 	priceErrorMessageList = inputChecker.docheck2("価格", price, 1, 8, false, false, false, true, false, false, false);
 	releaseCompanyErrorMessageList = inputChecker.docheck("発売会社名", releaseCompany, 1, 16, true, true, true, true, true, true, true);
-	releaseDateErrorMessageList = inputChecker.docheck("発売年月日", releaseDate, 1, 16, false, true, false, true, true, false, false);
+
+	ProductInfoDAO productInfoDao = new ProductInfoDAO();
+
+	//boolean型の場合はこのチェック文自体でtrueかfalseになるので==true等はいらない。
+    if(productInfoDao.checkProductInfo(productName)){
+    	productNameErrorMessageList.add("同じ商品名で登録出来ません。");
+    }
 
 	//もし全てのリストのサイズが0の場合成功  =エラーなし→成功
 	if(productNameErrorMessageList.size()==0
@@ -129,7 +138,6 @@ public class AdminEditDetailsConfirmAction extends ActionSupport implements Sess
 			&& productDescriptionErrorMessageList.size()==0
 			&& priceErrorMessageList.size()==0
 			&& releaseCompanyErrorMessageList.size()==0
-			&& releaseDateErrorMessageList.size()==0
 			&& userImageFileNameErrorMessageList.size()==0 ){
 		result = SUCCESS;
 
@@ -140,7 +148,6 @@ public class AdminEditDetailsConfirmAction extends ActionSupport implements Sess
 		session.put("productDescriptionErrorMessageList",productDescriptionErrorMessageList);
 		session.put("priceErrorMessageList",priceErrorMessageList);
 		session.put("releaseCompanyErrorMessageList",releaseCompanyErrorMessageList);
-		session.put("releaseDateErrorMessageList",releaseDateErrorMessageList);
 		session.put("userImageFileNameErrorMessageList" ,userImageFileNameErrorMessageList);
 		result = ERROR;
 	}
@@ -220,14 +227,6 @@ public class AdminEditDetailsConfirmAction extends ActionSupport implements Sess
 
 	public void setReleaseCompany(String releaseCompany) {
 		this.releaseCompany = releaseCompany;
-	}
-
-	public String getReleaseDate() {
-		return releaseDate;
-	}
-
-	public void setReleaseDate(String releaseDate) {
-		this.releaseDate = releaseDate;
 	}
 
 	public File getUserImage() {
@@ -333,6 +332,10 @@ public class AdminEditDetailsConfirmAction extends ActionSupport implements Sess
 
 	public void setUserImageContentType(String userImageContentType) {
 		this.userImageContentType = userImageContentType;
+	}
+
+	public void setReleaseDate(Date releaseDate) {
+		this.releaseDate = releaseDate;
 	}
 
 }
