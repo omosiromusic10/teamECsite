@@ -59,7 +59,14 @@ public class AdminRegistConfirmAction extends ActionSupport implements SessionAw
 		InputChecker inputChecker = new InputChecker();
 
 		//ここでDate型のreleaseDateをString型に変換している。
+
+
+	    if(releaseDate == null){
+	    	releaseDateErrorMessageList.add("発売年月日を入力してください。yyyy-mm-ddで入力します。");
+	    }else{
 		String releaseDate_str = new SimpleDateFormat("yyyy/MM/dd/HH:mm:ss").format(releaseDate);
+		session.put("releaseDate", releaseDate_str);
+	    }
 
 
 		session.put("productName", productName);
@@ -69,7 +76,6 @@ public class AdminRegistConfirmAction extends ActionSupport implements SessionAw
 		session.put("imageFileName", imageFileName);
 		session.put("imageFilePath", imageFilePath);
 		session.put("releaseCompany", releaseCompany);
-		session.put("releaseDate", releaseDate_str);
 		session.put("categoryId", categoryId);
 		session.put("userImageFileName", userImageFileName);
 		session.put("Status", 0);
@@ -139,12 +145,11 @@ public class AdminRegistConfirmAction extends ActionSupport implements SessionAw
 	    	productNameErrorMessageList.add("同じ商品名で登録出来ません。");
 	    }
 
-
-
 		if (productNameErrorMessageList.size() == 0 && productNameKanaErrorMessageList.size() == 0
 				&& productDescriptionErrorMessageList.size() == 0 && priceErrorMessageList.size() == 0
 				&& releaseCompanyErrorMessageList.size() == 0
-				&& userImageFileNameErrorMessageList.size() == 0) {
+				&& userImageFileNameErrorMessageList.size() == 0
+				&& releaseDateErrorMessageList.size() == 0) {
 			result = SUCCESS;
 		} else {
 			session.put("productNameErrorMessageList", productNameErrorMessageList);
@@ -152,6 +157,7 @@ public class AdminRegistConfirmAction extends ActionSupport implements SessionAw
 			session.put("productDescriptionErrorMessageList", productDescriptionErrorMessageList);
 			session.put("priceErrorMessageList", priceErrorMessageList);
 			session.put("releaseCompanyErrorMessageList", releaseCompanyErrorMessageList);
+			session.put("releaseDateErrorMessageList",releaseDateErrorMessageList);
 			session.put("userImageFileNameErrorMessageList", userImageFileNameErrorMessageList);
 			result = ERROR;
 		}

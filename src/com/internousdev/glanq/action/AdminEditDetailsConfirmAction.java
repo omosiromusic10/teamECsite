@@ -66,9 +66,15 @@ public class AdminEditDetailsConfirmAction extends ActionSupport implements Sess
 		//InputChekerをインスタンス化して正規表現かを検証
 		InputChecker inputChecker = new InputChecker();
 
-		//ここでDate型のreleaseDateをString型に変換している。
-				String releaseDate_str = new SimpleDateFormat("yyyy/MM/dd/HH:mm:ss").format(releaseDate);
-
+		//ReleaseDateに値が入っていない場合
+	    if(releaseDate == null){
+	    	//エラー表示を出す。
+	    	releaseDateErrorMessageList.add("発売年月日を入力してください。yyyy-mm-ddで入力します。");
+	    }else{
+	    	//違う場合はここでDate型をString型に出力している。
+		String releaseDate_str = new SimpleDateFormat("yyyy/MM/dd/HH:mm:ss").format(releaseDate);
+		session.put("releaseDate", releaseDate_str);
+	    }
 
 		//前の画面からとってきた値をセッターゲッターに入れてセッションの中に入れる
 		session.put("productName",productName);
@@ -78,7 +84,6 @@ public class AdminEditDetailsConfirmAction extends ActionSupport implements Sess
 		session.put("imageFileName",imageFileName);
 		session.put("imageFilePath","./images");
 		session.put("releaseCompany",releaseCompany);
-		session.put("releaseDate",releaseDate_str);
 		session.put("categoryId",categoryId);
 		session.put("Status", 0);
         session.put("productId", productId);
