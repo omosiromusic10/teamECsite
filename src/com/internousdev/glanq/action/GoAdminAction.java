@@ -15,6 +15,13 @@ public class GoAdminAction extends ActionSupport implements SessionAware {
 	private List<MCategoryDTO> mCategoryDtoList = new ArrayList<MCategoryDTO>();
 	private Map<String, Object> session;
 	public String execute(){
+
+		// ステータスが１の時だけアクションを動かす。
+		String result = "errorhome";
+		String token = String.valueOf(session.get("token"));
+		if (token != "admin") {
+			return result;
+		}
 		//検索機能でバグが表示しないようにsessionにmCategoryListの情報を入れている。
 		if(!session.containsKey("mCategoryList")){
 			MCategoryDAO mCategoryDao = new MCategoryDAO();

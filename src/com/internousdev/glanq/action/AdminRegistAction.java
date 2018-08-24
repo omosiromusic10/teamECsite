@@ -33,7 +33,7 @@ public class AdminRegistAction extends ActionSupport implements SessionAware {
 	private int categoryId;
 
 	public String execute() {
-		// ステータスが１の時だけAdmin.jspを表示させる。
+		// ステータスが１の時だけアクションを動かす。
 		String result = "errorhome";
 		String token = String.valueOf(session.get("token"));
 		if (token != "admin") {
