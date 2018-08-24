@@ -30,6 +30,7 @@ public class AdminRegistConfirmAction extends ActionSupport implements SessionAw
 	private String releaseCompany;
 	private Date releaseDate;
 
+
 	private File userImage;
 	private String userImageContentType;
 	private String userImageFileName;
@@ -60,10 +61,12 @@ public class AdminRegistConfirmAction extends ActionSupport implements SessionAw
 
 		//ここでDate型のreleaseDateをString型に変換している。
 
-
+        //リリースデータに値が入っていない時
 	    if(releaseDate == null){
+	    	//エラーリストのaddを追加する。
 	    	releaseDateErrorMessageList.add("発売年月日を入力してください。yyyy-mm-ddで入力します。");
 	    }else{
+	    	//値が入っていればDate型をString型にする。
 		String releaseDate_str = new SimpleDateFormat("yyyy/MM/dd/HH:mm:ss").format(releaseDate);
 		session.put("releaseDate", releaseDate_str);
 	    }
@@ -143,6 +146,9 @@ public class AdminRegistConfirmAction extends ActionSupport implements SessionAw
 		//boolean型の場合はこのチェック文自体でtrueかfalseになるので==true等はいらない。
 	    if(productInfoDao.checkProductInfo(productName)){
 	    	productNameErrorMessageList.add("同じ商品名で登録出来ません。");
+	    }
+	    if(productInfoDao.checkProductInfo2(productNameKana)){
+	    	productNameKanaErrorMessageList.add("同じ商品名のふりがなで登録は出来ません。");
 	    }
 
 		if (productNameErrorMessageList.size() == 0 && productNameKanaErrorMessageList.size() == 0

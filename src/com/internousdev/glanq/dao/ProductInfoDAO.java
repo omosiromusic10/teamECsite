@@ -349,6 +349,29 @@ public class ProductInfoDAO {
 
     }
 
+    public boolean checkProductInfo2( String productNameKana) throws SQLException{
+    	DBConnector db = new DBConnector();
+    	Connection con = db.getConnection();
+
+    	String sql = "select id from product_info where product_name_kana = ?";
+    	boolean Result = false;
+		try{
+    		PreparedStatement ps = con.prepareStatement(sql);
+    		ps.setString(1, productNameKana);
+    		ResultSet rs = ps.executeQuery();
+    		Result= rs.next();
+
+
+
+    	}catch(SQLException e){
+    		e.printStackTrace();
+    	}finally{
+    		con.close();
+    	}
+    	return Result;
+
+    }
+
     //管理者変更・編集機能時に使われるメソッド
     //AdminEditDetailsCompleteAction で使用。
     public int updateProductInfo(int productid, String productName, String productNameKana, String productDescription,

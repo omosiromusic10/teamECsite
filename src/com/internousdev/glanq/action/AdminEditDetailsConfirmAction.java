@@ -82,7 +82,7 @@ public class AdminEditDetailsConfirmAction extends ActionSupport implements Sess
 		session.put("productDescription", productDescription);
 		session.put("price",price);
 		session.put("imageFileName",imageFileName);
-		session.put("imageFilePath","./images");
+		session.put("imageFilePath",imageFilePath);
 		session.put("releaseCompany",releaseCompany);
 		session.put("categoryId",categoryId);
 		session.put("Status", 0);
@@ -99,7 +99,7 @@ public class AdminEditDetailsConfirmAction extends ActionSupport implements Sess
 
         	//この中にif分を挿入し、画像のみのファイルを指定してあげる。
         	if(!(userImage(userImageContentType))){
-        		userImageFileNameErrorMessageList.add("画像ファイルが異なります。gif、jpqg、png、bmpのみ挿入出来ます。");
+        		userImageFileNameErrorMessageList.add("画像ファイルが異なります。gif、jpeg、png、bmpのみ挿入出来ます。");
         		result = ERROR;
         	}
         	if(userImage.length()>fileMaxSize){
@@ -138,8 +138,12 @@ public class AdminEditDetailsConfirmAction extends ActionSupport implements Sess
 	ProductInfoDAO productInfoDao = new ProductInfoDAO();
 
 	//boolean型の場合はこのチェック文自体でtrueかfalseになるので==true等はいらない。
+	//詳しくはProductInfoDAOの中身を参照。
     if(productInfoDao.checkProductInfo(productName)){
     	productNameErrorMessageList.add("同じ商品名で登録出来ません。");
+    }
+    if(productInfoDao.checkProductInfo2(productNameKana)){
+    	productNameKanaErrorMessageList.add("同じ商品名のふりがなで登録は出来ません。");
     }
 
 	//もし全てのリストのサイズが0の場合成功  =エラーなし→成功
@@ -148,7 +152,8 @@ public class AdminEditDetailsConfirmAction extends ActionSupport implements Sess
 			&& productDescriptionErrorMessageList.size()==0
 			&& priceErrorMessageList.size()==0
 			&& releaseCompanyErrorMessageList.size()==0
-			&& userImageFileNameErrorMessageList.size()==0 ){
+			&& userImageFileNameErrorMessageList.size()==0
+			&& releaseDateErrorMessageList.size()==0 ){
 		result = SUCCESS;
 
 		//そうでなければエラーのListをセッションに入れる
@@ -158,6 +163,7 @@ public class AdminEditDetailsConfirmAction extends ActionSupport implements Sess
 		session.put("productDescriptionErrorMessageList",productDescriptionErrorMessageList);
 		session.put("priceErrorMessageList",priceErrorMessageList);
 		session.put("releaseCompanyErrorMessageList",releaseCompanyErrorMessageList);
+		session.put("releaseDateErrorMessageList",releaseDateErrorMessageList);
 		session.put("userImageFileNameErrorMessageList" ,userImageFileNameErrorMessageList);
 		result = ERROR;
 	}
