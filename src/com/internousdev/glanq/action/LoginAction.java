@@ -130,6 +130,11 @@ public class LoginAction extends ActionSupport implements SessionAware {
 							session.put("settlementToken", settlementToken);
 
 							session.put("logined", 1);
+							//前回ログイン時、カートに商品を残していた場合は更新されたカート画面に戻す。
+							if(!session.containsKey("cartInfoDAO")){
+								result = "cart";
+								return result;
+						                 }
 							// 確認されたら、ログイン状態に変更した上でlocationOption画面へと進ませる。
 							result = "locationOption";
 
