@@ -162,7 +162,7 @@ public class ProductInfoDAO {
 					sql += " WHERE ((product_name like '%" + e_keyword + "%' escape '?' or product_name_kana like '%" + e_keyword + "%' escape '?') ";
 					iFlg = false;
 				}else{
-					sql += "OR (product_name like '%" + e_keyword + "%' escape '?' or product_name_kana like '%" + e_keyword + "%' escape '?')";
+					sql += " OR (product_name like '%" + e_keyword + "%' escape '?' or product_name_kana like '%" + e_keyword + "%' escape '?')";
 				}
 			}
 		}
@@ -229,7 +229,7 @@ public class ProductInfoDAO {
 					sql += " WHERE (product_name like '%" + e_keyword + "%' escape '?' or product_name_kana like '%" + e_keyword + "%' escape '?') ";
 					iFlg = false;
 				}else{
-					sql += "OR (product_name like '%" + e_keyword + "%' escape '?' or product_name_kana like '%" + e_keyword + "%' escape '?')";
+					sql += " OR (product_name like '%" + e_keyword + "%' escape '?' or product_name_kana like '%" + e_keyword + "%' escape '?')";
 				}
 			}
 		}
