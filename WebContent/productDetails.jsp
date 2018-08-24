@@ -71,7 +71,7 @@
 				</tr>
 				<tr>
 					<th scope="row">商品詳細情報</th>
-					<td height="52"><s:property value="#session.productDescription"/></td>
+					<td height="52"><div id="description"><s:property value="#session.productDescription"/></div></td>
 				</tr>
 			</table>
 			<table id="buy">

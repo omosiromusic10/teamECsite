@@ -220,7 +220,10 @@ table#item_info td{
 	padding: 4px;
 	background: white;
 }
-
+div#description{
+	max-height: 60px;
+	overflow-y: scroll;
+}
 table#buy{
 	display: inline-block;
 	width: 400px;
@@ -346,10 +349,12 @@ table#buy select{
 	list-style: none;
 	padding: 5px;
 	margin-bottom: -5px;
+	font-size: 14px;
 }
 #related_product_list ul li#i_info {
+	display: inline-block;
 	padding: 5px;
-	width: 190px;
+	width: 210px;
 	height: 1em;
 	overflow:hidden;
 }
