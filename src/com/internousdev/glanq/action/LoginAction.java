@@ -120,6 +120,10 @@ public class LoginAction extends ActionSupport implements SessionAware {
 					// （追加）LocationOptionAction から来ているかどうかの判定を行う。
 					if (!(goLocationFlg == null)) {
 						if (goLocationFlg.equals("true")) {
+
+							String settlementToken = "canSettlement";
+							session.put("settlementToken", settlementToken);
+
 							session.put("logined", 1);
 							// 確認されたら、ログイン状態に変更した上でlocationOption画面へと進ませる。
 							result = "locationOption";
