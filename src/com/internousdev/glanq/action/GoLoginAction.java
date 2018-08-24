@@ -18,6 +18,7 @@ public class GoLoginAction extends ActionSupport implements SessionAware {
 		if (token == "admin") {
 			return result;
 		}
+
 		session.remove("loginIdErrorMessageList");
 		session.remove("passwordErrorMessageList");
 		session.remove("loginErrorMessageList");

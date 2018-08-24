@@ -76,7 +76,7 @@
 </action>
 <action name="SearchItemAction" class="com.internousdev.glanq.action.SearchItemAction" method="execute">
            <result name="success">productList.jsp</result>
-           <result name="error">productList.jsp</result>
+           <result name="error">home.jsp</result>
 </action>
 
 
