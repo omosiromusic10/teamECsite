@@ -89,7 +89,7 @@ public class ProductDetailsAction extends ActionSupport implements SessionAware 
 			setRelate_noneFlg("true");
 		}
 
-		if (!(s_categoryId == null)) {
+		if (!(s_categoryId.equals("0"))) {
 			result = SUCCESS;
 		}
 		return result;
@@ -134,6 +134,14 @@ public class ProductDetailsAction extends ActionSupport implements SessionAware 
 
 	public void setRelate_noneFlg(String relate_noneFlg) {
 		this.relate_noneFlg = relate_noneFlg;
+	}
+
+	public String getS_categoryId() {
+		return s_categoryId;
+	}
+
+	public void setS_categoryId(String s_categoryId) {
+		this.s_categoryId = s_categoryId;
 	}
 
 }
