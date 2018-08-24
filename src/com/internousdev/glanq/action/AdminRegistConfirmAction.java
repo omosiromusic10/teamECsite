@@ -58,6 +58,7 @@ public class AdminRegistConfirmAction extends ActionSupport implements SessionAw
 		result = ERROR;
 		InputChecker inputChecker = new InputChecker();
 
+		//ここでDate型のreleaseDateをString型に変換している。
 		String releaseDate_str = new SimpleDateFormat("yyyy/MM/dd/HH:mm:ss").format(releaseDate);
 
 

@@ -3,6 +3,7 @@ package com.internousdev.glanq.action;
 import java.io.File;
 import java.io.IOException;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -65,6 +66,10 @@ public class AdminEditDetailsConfirmAction extends ActionSupport implements Sess
 		//InputChekerをインスタンス化して正規表現かを検証
 		InputChecker inputChecker = new InputChecker();
 
+		//ここでDate型のreleaseDateをString型に変換している。
+				String releaseDate_str = new SimpleDateFormat("yyyy/MM/dd/HH:mm:ss").format(releaseDate);
+
+
 		//前の画面からとってきた値をセッターゲッターに入れてセッションの中に入れる
 		session.put("productName",productName);
 		session.put("productNameKana",productNameKana);
@@ -73,7 +78,7 @@ public class AdminEditDetailsConfirmAction extends ActionSupport implements Sess
 		session.put("imageFileName",imageFileName);
 		session.put("imageFilePath","./images");
 		session.put("releaseCompany",releaseCompany);
-		session.put("releaseDate",releaseDate);
+		session.put("releaseDate",releaseDate_str);
 		session.put("categoryId",categoryId);
 		session.put("Status", 0);
         session.put("productId", productId);
