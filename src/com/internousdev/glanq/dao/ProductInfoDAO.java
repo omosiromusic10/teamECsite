@@ -372,6 +372,56 @@ public class ProductInfoDAO {
 
     }
 
+    public boolean checkProductInfo3(int productId ,String productNameKana) throws SQLException{
+    	DBConnector db = new DBConnector();
+    	Connection con = db.getConnection();
+        //こちらはProduct idが同じ物でない場合。そしてProductName_kanaで選択する
+    	String sql = "select id from product_info where  product_id != ? and product_name = ?";
+    	boolean Result = false;
+		try{
+    		PreparedStatement ps = con.prepareStatement(sql);
+    		ps.setInt(1, productId);
+    		ps.setString(2, productNameKana);
+    		ResultSet rs = ps.executeQuery();
+    		Result= rs.next();
+
+
+
+    	}catch(SQLException e){
+    		e.printStackTrace();
+    	}finally{
+    		con.close();
+    	}
+    	return Result;
+
+    }
+
+    public boolean checkProductInfo4(int productId , String productNameKana) throws SQLException{
+    	DBConnector db = new DBConnector();
+    	Connection con = db.getConnection();
+        //こちらはProduct idが同じ物でない場合。そしてProductName_kanaで選択する
+    	String sql = "select id from product_info where  product_id != ? and product_name_kana = ?";
+    	boolean Result = false;
+		try{
+    		PreparedStatement ps = con.prepareStatement(sql);
+    		ps.setInt(1, productId);
+    		ps.setString(2, productNameKana);
+    		ResultSet rs = ps.executeQuery();
+    		Result= rs.next();
+
+
+
+    	}catch(SQLException e){
+    		e.printStackTrace();
+    	}finally{
+    		con.close();
+    	}
+    	return Result;
+
+    }
+
+
+
     //管理者変更・編集機能時に使われるメソッド
     //AdminEditDetailsCompleteAction で使用。
     public int updateProductInfo(int productid, String productName, String productNameKana, String productDescription,

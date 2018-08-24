@@ -139,11 +139,11 @@ public class AdminEditDetailsConfirmAction extends ActionSupport implements Sess
 
 	//boolean型の場合はこのチェック文自体でtrueかfalseになるので==true等はいらない。
 	//詳しくはProductInfoDAOの中身を参照。
-    if(productInfoDao.checkProductInfo(productName)){
-    	productNameErrorMessageList.add("同じ商品名で登録出来ません。");
+    if(productInfoDao.checkProductInfo3(productId ,productName)){
+    	productNameErrorMessageList.add("選択していない商品名での更新は出来ません。");
     }
-    if(productInfoDao.checkProductInfo2(productNameKana)){
-    	productNameKanaErrorMessageList.add("同じ商品名のふりがなで登録は出来ません。");
+    if(productInfoDao.checkProductInfo4(productId ,productNameKana)){
+    	productNameKanaErrorMessageList.add("選択していない商品名のふりがなでは更新は出来ません。");
     }
 
 	//もし全てのリストのサイズが0の場合成功  =エラーなし→成功
@@ -352,6 +352,10 @@ public class AdminEditDetailsConfirmAction extends ActionSupport implements Sess
 
 	public void setReleaseDate(Date releaseDate) {
 		this.releaseDate = releaseDate;
+	}
+
+	public Date getReleaseDate() {
+		return releaseDate;
 	}
 
 }
