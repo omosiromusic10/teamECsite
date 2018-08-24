@@ -84,8 +84,8 @@
 	</tr>
 
 	<tr>
-		<th scope="row">商品名詳細</th>
-			<td><s:textarea name="productDescription" value="%{#session.productDescription}" label="商品名詳細" placeholder="商品名詳細" class="area"/></td>
+		<th scope="row">商品詳細</th>
+			<td><s:textarea name="productDescription" value="%{#session.productDescription}" label="商品詳細" placeholder="商品詳細" class="area"/></td>
 	</tr>
 
 	<tr>

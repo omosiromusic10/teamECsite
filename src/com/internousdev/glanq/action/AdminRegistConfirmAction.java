@@ -135,7 +135,7 @@ public class AdminRegistConfirmAction extends ActionSupport implements SessionAw
 				true, true);
 		productNameKanaErrorMessageList = inputChecker.docheck("商品名ふりがな", productNameKana, 1, 32, false, false, true,
 				false, false, false, true);
-		productDescriptionErrorMessageList = inputChecker.docheck("商品名詳細", productDescription, 1, 200, true, true, true,
+		productDescriptionErrorMessageList = inputChecker.docheck("商品詳細", productDescription, 1, 200, true, true, true,
 				true, true, true, true);
 		priceErrorMessageList = inputChecker.docheck2("価格", price, 1, 8, false, false, false, true, false, false, false);
 		releaseCompanyErrorMessageList = inputChecker.docheck("発売会社名", releaseCompany, 1, 16, true, true, true, true,
