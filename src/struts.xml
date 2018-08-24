@@ -67,6 +67,8 @@
 <action name="ProductDetailsAction" class="com.internousdev.glanq.action.ProductDetailsAction" method="execute">
            <result name="success">productDetails.jsp</result>
            <result name="error">productList.jsp</result>
+           <result name="admin">error.html</result>
+
 </action>
 
 

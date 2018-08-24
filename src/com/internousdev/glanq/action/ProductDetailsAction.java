@@ -27,16 +27,24 @@ public class ProductDetailsAction extends ActionSupport implements SessionAware 
 	private String relate_noneFlg = "false";
 
 	public String execute() throws SQLException {
-		String result = ERROR;
+		String result = "admin";
 
 		// 管理者ログイン状態の対策
 		String token = String.valueOf(session.get("token"));
 		if (token == "admin") {
 			return result;
 		}
+		result = ERROR;
+
+		ProductInfoDAO pDAO1 = new ProductInfoDAO();
+		// product_idが存在するかを調べる 存在しない場合は一覧に戻す
+		if (!(pDAO1.checkExist(productId))){
+			return result;
+		}
+
 
 		// 選ばれた商品の商品情報を取得。productId が必要。
-		ProductInfoDAO pDAO1 = new ProductInfoDAO();
+
 		ProductInfoDTO productInfoDTO = new ProductInfoDTO();
 		productInfoDTO = pDAO1.getProductInfo(productId);
 		session.put("productInfoDTO", productInfoDTO);
@@ -134,14 +142,6 @@ public class ProductDetailsAction extends ActionSupport implements SessionAware 
 
 	public void setRelate_noneFlg(String relate_noneFlg) {
 		this.relate_noneFlg = relate_noneFlg;
-	}
-
-	public String getS_categoryId() {
-		return s_categoryId;
-	}
-
-	public void setS_categoryId(String s_categoryId) {
-		this.s_categoryId = s_categoryId;
 	}
 
 }

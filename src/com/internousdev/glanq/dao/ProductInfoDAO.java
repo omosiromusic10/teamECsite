@@ -492,4 +492,26 @@ public class ProductInfoDAO {
 		return count;
 	}
 
+	// product_idを使用してその商品が存在しているかをBooleanで返すメソッド
+	public boolean checkExist(int product_id) throws SQLException{
+		boolean result = false;
+		DBConnector dbConnector = new DBConnector();
+		Connection connection = dbConnector.getConnection();
+		String sql = "select * from product_info where product_id = ?";
+
+		try{
+			PreparedStatement preparedStatement = connection.prepareStatement(sql);
+			preparedStatement.setInt(1, product_id);
+			ResultSet rs = preparedStatement.executeQuery();
+    		result= rs.next();
+
+		} catch(SQLException e){
+			e.printStackTrace();
+		} finally {
+			connection.close();
+		}
+
+		return result;
+	}
+
 }
