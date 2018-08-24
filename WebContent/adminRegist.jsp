@@ -6,7 +6,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <sx:head/>
+  <sx:head cache="false" />
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta http-equiv="Content-Script-Type" content="text/javascript" >
 <link rel="stylesheet" href="./css/style.css">

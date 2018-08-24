@@ -99,7 +99,7 @@ public class AdminEditDetailsConfirmAction extends ActionSupport implements Sess
 
         	//この中にif分を挿入し、画像のみのファイルを指定してあげる。
         	if(!(userImage(userImageContentType))){
-        		userImageFileNameErrorMessageList.add("画像ファイルが異なります。gif、jpeg、png、bmpのみ挿入出来ます。");
+        		userImageFileNameErrorMessageList.add("画像ファイルが異なります。jpegのみ挿入出来ます。");
         		result = ERROR;
         	}
         	if(userImage.length()>fileMaxSize){
@@ -131,7 +131,7 @@ public class AdminEditDetailsConfirmAction extends ActionSupport implements Sess
 	//リストの中を正規表現判定
 	productNameErrorMessageList = inputChecker.docheck("商品名",productName,1,32,true,true,true,true,true,true,true);
 	productNameKanaErrorMessageList = inputChecker.docheck("商品ふりがな",productNameKana,1,32,false,false,true,false,false,false,true);
-	productDescriptionErrorMessageList = inputChecker.docheck("商品名詳細",productDescription,1,320,true,true,true,true,true,true,true);
+	productDescriptionErrorMessageList = inputChecker.docheck("商品名詳細",productDescription,1,200,true,true,true,true,true,true,true);
 	priceErrorMessageList = inputChecker.docheck2("価格", price, 1, 8, false, false, false, true, false, false, false);
 	releaseCompanyErrorMessageList = inputChecker.docheck("発売会社名", releaseCompany, 1, 16, true, true, true, true, true, true, true);
 
@@ -174,10 +174,7 @@ public class AdminEditDetailsConfirmAction extends ActionSupport implements Sess
 
 	private boolean userImage(String extension) {
 
-		return (extension.equals("image/gif")
-			   || extension.equals("image/jpeg")
-			   || extension.equals("image/png")
-			   || extension.equals("image/bmp"));
+		return (extension.equals("image/jpeg"));
 	}
 
 

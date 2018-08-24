@@ -5,7 +5,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <sx:head/>
+    <sx:head cache="false" />
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" href="./css/style.css">
 <link rel="stylesheet" href="./css/admin.css">
