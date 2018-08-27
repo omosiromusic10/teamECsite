@@ -117,8 +117,8 @@ function goAdminAction(){
             </s:form>
         </ul>
 	</nav>
-    <div id="menu-background"></div>
-    </div>
+         <div id="menu-background"></div>
+         </div>
 </header>
 </body>
 </html>
