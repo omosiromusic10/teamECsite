@@ -96,6 +96,7 @@ public class AdminEditDetailsConfirmAction extends ActionSupport implements Sess
         	String filePath = ServletActionContext.getServletContext().getRealPath("/").concat("images");
         	System.out.println("Image Location:" + filePath);
         	File fileToCreate = new File(filePath, userImageFileName);
+        	userImageFileNameErrorMessageList = inputChecker.docheck3("画像ファイル", userImageFileName, 1, 50, true, true, true, true, true, true, true);
 
         	//この中にif分を挿入し、画像のみのファイルを指定してあげる。
         	if(!(userImage(userImageContentType))){
@@ -134,6 +135,7 @@ public class AdminEditDetailsConfirmAction extends ActionSupport implements Sess
 	productDescriptionErrorMessageList = inputChecker.docheck("商品詳細",productDescription,1,200,true,true,true,true,true,true,true);
 	priceErrorMessageList = inputChecker.docheck2("価格", price, 1, 8, false, false, false, true, false, false, false);
 	releaseCompanyErrorMessageList = inputChecker.docheck("発売会社名", releaseCompany, 1, 16, true, true, true, true, true, true, true);
+
 
 	ProductInfoDAO productInfoDao = new ProductInfoDAO();
 

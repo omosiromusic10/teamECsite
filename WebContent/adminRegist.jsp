@@ -100,8 +100,8 @@
 </tr>
 <tr>
     <th scope="row">発売年月日</th>
-      <!--  <td><s:textfield name="releaseDate" value="%{#session.releaseDate}" label="発売年月日" placeholder="発売年月日" class="txt"/></td>-->
-      <td><sx:datetimepicker name="releaseDate" value="%{#session.releaseDate}" displayFormat="yyyy-MM-dd"  /><span class="Description">【XXXX-XX-XXのフォーマットで入力してください。】</span></td>
+    <!--<s:textfield name="releaseDate" value="%{#session.releaseDate}" label="発売年月日" placeholder="発売年月日" class="txt"/></td> -->
+   <td><sx:datetimepicker name="releaseDate" value="%{#session.releaseDate}" displayFormat="yyyy-MM-dd"  /><span class="Description">【XXXX-XX-XXのフォーマットで入力してください。】</span></td>
 </tr>
 <tr>
     <th scope="row">画像ファイル</th>
