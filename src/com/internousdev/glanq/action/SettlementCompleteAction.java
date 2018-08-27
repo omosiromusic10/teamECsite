@@ -28,12 +28,13 @@ public class SettlementCompleteAction extends ActionSupport implements SessionAw
 		}
 		// SettlementTokenがあるかどうかしらべる
 		String sToken = String.valueOf(session.get("settlementToken"));
-		session.remove("settlementToken");
 		if (sToken != "canSettlement") {
 			return result;
 		}
-
-		session.remove("settlementToken");
+		// 商品情報がきちんと入力されているかどうか調べる
+		if (id == 0){
+			return result;
+		}
 
 		@SuppressWarnings("unchecked") // 警告の抑制（警告を無視させる）
 		ArrayList<PurchaseHistoryInfoDTO> purchaseHistoryInfoDtoList = (ArrayList<PurchaseHistoryInfoDTO>) session
@@ -74,6 +75,7 @@ public class SettlementCompleteAction extends ActionSupport implements SessionAw
 							String.valueOf(cartInfoDAO.getTotalPrice(String.valueOf(session.get("loginId")))));
 					session.put("totalPrice", totalPrice);
 					result = SUCCESS;
+					session.remove("settlementToken");
 				}
 			}
 		}
