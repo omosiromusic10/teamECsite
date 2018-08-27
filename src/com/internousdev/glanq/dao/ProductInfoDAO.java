@@ -455,15 +455,15 @@ public class ProductInfoDAO {
 	}
 
 	// 管理者機能商品削除時に使われるメソッド
-	public int delete(String id) {
+	public int delete(String productId) {
 		DBConnector dbConnector = new DBConnector();
 		Connection connection = dbConnector.getConnection();
 		int count = 0;
-		String sql = "delete from product_info where id=?";
+		String sql = "delete from product_info where product_id=?";
 
 		try {
 			PreparedStatement preparedStatement = connection.prepareStatement(sql);
-			preparedStatement.setString(1, id);
+			preparedStatement.setString(1, productId);
 
 			count = preparedStatement.executeUpdate();
 		} catch (SQLException e) {

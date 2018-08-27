@@ -107,6 +107,7 @@ public class AdminRegistConfirmAction extends ActionSupport implements SessionAw
 				result = ERROR;
 			}
 
+
 			try {
 				FileUtils.copyFile(userImage, fileToCreate);
 				session.put("image_file_name", userImageFileName);
@@ -140,6 +141,7 @@ public class AdminRegistConfirmAction extends ActionSupport implements SessionAw
 		priceErrorMessageList = inputChecker.docheck2("価格", price, 1, 8, false, false, false, true, false, false, false);
 		releaseCompanyErrorMessageList = inputChecker.docheck("発売会社名", releaseCompany, 1, 16, true, true, true, true,
 				true, true, true);
+		userImageFileNameErrorMessageList = inputChecker.docheck3("画像ファイル", userImageFileName, 1, 50, true, true, true, true, true, true, true);
 
 		ProductInfoDAO productInfoDao = new ProductInfoDAO();
 
