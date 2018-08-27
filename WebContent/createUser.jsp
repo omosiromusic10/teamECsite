@@ -136,8 +136,6 @@
 					<tr>
 						<th scope="row">ログインID</th>
 						<td><s:textfield name="loginId" value="%{#session.createLoginId}" label="ログインID" placeholder="ログインID" class="txt" /></td>
-							<!-- Chromeでオートコンプリート無効化するためのダミー -->
-							<s:textfield type="loginId" name="dummypass" style="top: -100px; left: -100px; position: fixed;" />
 					</tr>
 
 					<tr>
@@ -148,6 +146,7 @@
 					</tr>
 
 				</table>
+
 				<div class="submit_btn_box">
 					<div id=".contents-btn-set">
 						<s:submit value="登録" class="submit_btn" />
