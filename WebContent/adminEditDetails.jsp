@@ -65,6 +65,13 @@
     </div>
     </div>
 </s:if>
+
+
+<script>
+document.getElementsByName("releaseDate").value = "1970/01/01";
+document.getElementsByname("dojo.releaseDate").value = "1970/01/01";
+</script>
+
 <s:form action="AdminEditDetailsConfirmAction" method="post" enctype="multipart/form-data">
 
 <table class="vertical-list-table">
@@ -110,6 +117,9 @@
 	<s:hidden name="productId" value="%{productId}"/>
 
 </table>
+
+
+
 <div class="submit_btn_box">
 <div id=".contents-btn-set">
 	<s:submit value="更新確認画面へ" class="submit_btn"/>
