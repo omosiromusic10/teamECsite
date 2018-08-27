@@ -261,4 +261,32 @@ public class PurchaseHistoryInfoDAO {
 		}
 		return count;
 	}
+
+
+	// 特定の商品IDを持つ購入履歴を全て削除
+	public int deleteBasedonPid(int product_id){
+		DBConnector dbConnector = new DBConnector();
+		Connection connection = dbConnector.getConnection();
+
+		/* purchase_history_infoのproduct_idに該当するデータがあれば削除 */
+		String sql = "delete from purchase_history_info where user_id=?";
+		int count = 0;
+
+		try {
+			PreparedStatement preparedStatement = connection.prepareStatement(sql);
+			preparedStatement.setInt(1, product_id);
+
+			/* count = 更新回数 */
+			count = preparedStatement.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		try {
+			connection.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return count;
+	}
 }
