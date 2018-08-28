@@ -73,7 +73,7 @@
 
   </div>
 </s:iterator>
-
+<div id="piston"></div>
 </div>
 <!-- フッターをインクルード -->
 <jsp:include page="footer.jsp" />

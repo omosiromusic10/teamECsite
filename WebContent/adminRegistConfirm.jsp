@@ -70,10 +70,10 @@
 <s:hidden name="releaseDate" value="%{releaseDate}"/>
 
 </s:form>
+<div id="piston"></div>
 </div>
 
-<br>
-<br>
+
 
 
     <s:include value="footer.jsp"/>

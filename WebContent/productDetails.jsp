@@ -124,7 +124,7 @@
 	</s:else>
 
 	</div>
-<br>
+<div id="piston"></div>
 </div>
 
 	<s:include value="footer.jsp" />
