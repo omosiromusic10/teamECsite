@@ -29,6 +29,13 @@
 
 }
 
+div#description{
+	max-width: 800px;
+	max-height: 300px;
+	word-wrap: break-word;
+	overflow-y: scroll;
+}
+
 /*ƒ{ƒ^ƒ“Šg‘åver*/
 .submit_btn_box1{
 	width : 500px;
