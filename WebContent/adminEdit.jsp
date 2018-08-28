@@ -56,6 +56,7 @@
 </div>
 <div id="piston"></div>
 </div>
+
 		<s:include value="footer.jsp"/>
 
 </body>

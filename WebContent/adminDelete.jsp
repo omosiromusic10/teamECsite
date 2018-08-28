@@ -88,8 +88,9 @@
         <s:param name='categoryId' value='%{categoryId}'/></s:url> ">   <s:property value="%{#pageNo.count}"/></a>
     </s:else>
 </s:iterator>
-<div id="piston"></div>
 </div>
+<div id="piston"></div>
+
 
 <s:include value="footer.jsp"/>
 </body>
