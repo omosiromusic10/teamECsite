@@ -97,12 +97,11 @@
 	vertical-align: center;
 }
 .pager2{
+	clear:both;
     width:100%;
-    padding-top:50px;
 	text-align:center;
 	color:blue;
-	position:relative;
-	bottom:50px;
+	padding-top:10px;
 }
 
 .txt{
