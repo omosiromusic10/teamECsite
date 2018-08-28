@@ -372,7 +372,7 @@ public class ProductInfoDAO {
 
 	}
 
-	public boolean checkProductInfo3(int productId, String productNameKana) throws SQLException {
+	public boolean checkProductInfo3(int productId, String productName) throws SQLException {
 		DBConnector db = new DBConnector();
 		Connection con = db.getConnection();
 		// こちらはProduct idが同じ物でない場合。そしてProductName_kanaで選択する
@@ -381,7 +381,7 @@ public class ProductInfoDAO {
 		try {
 			PreparedStatement ps = con.prepareStatement(sql);
 			ps.setInt(1, productId);
-			ps.setString(2, productNameKana);
+			ps.setString(2, productName);
 			ResultSet rs = ps.executeQuery();
 			Result = rs.next();
 
