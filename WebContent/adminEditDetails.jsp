@@ -107,7 +107,7 @@ document.getElementsByname("dojo.releaseDate").value = "1970/01/01";
 
 	<tr>
 		<th scope="row">発売年月日</th>
-			<td><sx:datetimepicker name="releaseDate" value="%{#session.releaseDate}" displayFormat="yyyy-MM-dd"/><span class="Description">【XXXX-XX-XXのフォーマットで入力してください。】</span></td>
+			<td><sx:datetimepicker name="releaseDate" displayFormat="yyyy/MM/dd"/><span class="Description">【XXXX/XX/XXのフォーマットで入力してください。】</span></td>
 	</tr>
 
 	<tr>
