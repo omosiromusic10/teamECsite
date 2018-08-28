@@ -69,7 +69,7 @@ public class AdminEditDetailsConfirmAction extends ActionSupport implements Sess
 		//ReleaseDateに値が入っていない場合
 	    if(releaseDate == null){
 	    	//エラー表示を出す。
-	    	releaseDateErrorMessageList.add("発売年月日を入力してください。yyyy-mm-ddで入力します。");
+	    	releaseDateErrorMessageList.add("発売年月日を入力してください。yyyy/mm/ddで入力します。");
 	    }else{
 	    	//違う場合はここでDate型をString型に出力している。
 		String releaseDate_str = new SimpleDateFormat("yyyy/MM/dd/HH:mm:ss").format(releaseDate);

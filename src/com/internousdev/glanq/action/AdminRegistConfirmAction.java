@@ -64,7 +64,7 @@ public class AdminRegistConfirmAction extends ActionSupport implements SessionAw
         //リリースデータに値が入っていない時
 	    if(releaseDate == null){
 	    	//エラーリストのaddを追加する。
-	    	releaseDateErrorMessageList.add("発売年月日を入力してください。yyyy-mm-ddで入力します。");
+	    	releaseDateErrorMessageList.add("発売年月日を入力してください。yyyy/mm/ddで入力します。");
 	    }else{
 	    	//値が入っていればDate型をString型にする。
 		String releaseDate_str = new SimpleDateFormat("yyyy/MM/dd/HH:mm:ss").format(releaseDate);
