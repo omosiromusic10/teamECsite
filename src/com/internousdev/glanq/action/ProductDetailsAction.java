@@ -36,7 +36,7 @@ public class ProductDetailsAction extends ActionSupport implements SessionAware 
 			return result;
 		}
 
-		// セッション mCategoryDtoList はヘッダーにて用いているので、無い場合は必要。mCategoryList??
+		// セッション mCategoryDtoList はヘッダーにて用いているので、無い場合は必要。
 		if (!session.containsKey("mCategoryDtoList")) {
 			MCategoryDAO mCategoryDao = new MCategoryDAO();
 			mCategoryDtoList = mCategoryDao.getMCategoryList();
@@ -48,8 +48,9 @@ public class ProductDetailsAction extends ActionSupport implements SessionAware 
 		}
 
 		ProductInfoDAO pDAO1 = new ProductInfoDAO();
-		// product_idが存在するかを調べる 存在しない場合は一覧に戻す
+		// product_idが存在するかを調べる 存在しない場合はエラーページに飛ばす。（表記統一のため、result="admin"）
 		if (!(pDAO1.checkExist(productId))){
+			result = "admin";
 			return result;
 		}
 
@@ -82,7 +83,7 @@ public class ProductDetailsAction extends ActionSupport implements SessionAware 
 		session.put("categoryId", productInfoDTO.getCategoryId());
 		s_categoryId = session.get("categoryId").toString();
 
-		// 正常に値を取得できていそうか確認。
+		// 正常に値を取得できていそうか確認。カテゴリIDに0は存在しない。
 		if (!(s_categoryId.equals("0"))) {
 			result = SUCCESS;
 		}

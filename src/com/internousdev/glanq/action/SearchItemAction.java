@@ -30,6 +30,7 @@ public class SearchItemAction extends ActionSupport implements SessionAware {
 		String result = "admin";
 		String token = String.valueOf(session.get("token"));
 		if (token == "admin") {
+			result = "admin";
 			return result;
 		}
 

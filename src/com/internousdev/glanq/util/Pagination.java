@@ -6,7 +6,6 @@ import java.util.List;
 import com.internousdev.glanq.dto.PaginationDTO;
 import com.internousdev.glanq.dto.ProductInfoDTO;
 
-// [!]動作未確認
 public class Pagination {
 
 	// getPage は、[[ 任意のページ番号における、商品一覧のページ情報
@@ -23,11 +22,11 @@ public class Pagination {
 		int d = (a + b - 1) / b;
 		paginationDTO.setTotalPageSize(d); // 全ページ数3
 		paginationDTO.setCurrentPageNo(pageNo); // 表示するページ番号2
-		paginationDTO.setTotalRecordSize(productList.size()); // 商品情報数20 [?]怪しめ
+		paginationDTO.setTotalRecordSize(productList.size()); // 商品情報数20
 		paginationDTO.setStartRecordNo((pageSize * (pageNo - 1)) + 1); // 10番目の商品から表示
 		paginationDTO.setEndRecordNo(paginationDTO.getStartRecordNo() + pageSize - 1); // 18番目の商品まで表示
 
-		// ページ下部に表示する数字のリストを準備。
+		// ページャーとしてページ下部に表示する数字のリストを準備。
 		List<Integer> nList = new ArrayList<Integer>();
 		for (int i = 1; i <= paginationDTO.getTotalPageSize(); i++) {
 			int pageN = i;
@@ -123,4 +122,3 @@ public class Pagination {
 	// initialize おわり。
 
 }
-// Pagination おわり。

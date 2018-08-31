@@ -25,6 +25,7 @@ public class CartAction extends ActionSupport implements SessionAware{
 		String result = ERROR;
 		String token = String.valueOf(session.get("token"));
 		if (token == "admin") {
+			result = "admin";
 			return result;
 		}
 
@@ -62,7 +63,7 @@ public class CartAction extends ActionSupport implements SessionAware{
 		session.put("totalPrice", totalPrice);
 		result = SUCCESS;
 
-
+		//ヘッダーの検索窓用にカテゴリIDをチェック
 		if(!(session.containsKey("mCategoryList"))){
 			MCategoryDAO mCategoryDao =new MCategoryDAO();
 			mcDTOList = mCategoryDao.getMCategoryList();

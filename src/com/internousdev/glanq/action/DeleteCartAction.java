@@ -44,6 +44,7 @@ public class DeleteCartAction extends ActionSupport implements SessionAware {
 		String result = ERROR;
 		String token = String.valueOf(session.get("token"));
 		if (token == "admin") {
+			result = "admin";
 			return result;
 		}
 		CartInfoDAO ciDAO = new CartInfoDAO();
@@ -72,7 +73,7 @@ public class DeleteCartAction extends ActionSupport implements SessionAware {
 
 		// 削除件数が戻ってこない場合にもエラーメッセージ
 		if (count <= 0) {
-			checkListErrorMessageList.add("チェックされていません");
+			checkListErrorMessageList.add("削除できませんでした");
 			session.put("checkListErrorMessageList", checkListErrorMessageList);
 			return ERROR;
 		} else {

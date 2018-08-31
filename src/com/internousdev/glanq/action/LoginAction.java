@@ -37,9 +37,10 @@ public class LoginAction extends ActionSupport implements SessionAware {
 	public String execute() {
 
 		String result = ERROR;
-		//テストダヨー！
+		//tokenにadminが入っていたら、admin画面へ
 		String token = String.valueOf(session.get("token"));
 		if (token == "admin") {
+			result = "admin";
 			return result;
 		}
 
@@ -122,7 +123,7 @@ public class LoginAction extends ActionSupport implements SessionAware {
 						e.printStackTrace();
 					}
 
-					// （追加）LocationOptionAction から来ているかどうかの判定を行う。
+					//LocationOptionAction から来ているかどうかの判定を行う。
 					if (!(goLocationFlg == null)) {
 						if (goLocationFlg.equals("true")) {
 

@@ -180,13 +180,6 @@ public class AddCartAction extends ActionSupport implements SessionAware{
 	public void setProductDescription(String productDescription) {
 		this.productDescription = productDescription;
 	}
-//	public String getCategoryId() {
-//		return categoryId;
-//	}
-//
-//	public void setCategoryId(String categoryId) {
-//		this.categoryId = categoryId;
-//	}
 
 	public Map<String ,Object> getSession(){
 		return session;

@@ -19,6 +19,11 @@ public class HomeAction extends ActionSupport implements SessionAware {
 	public String execute() {
 
 		String result = ERROR;
+		String token = String.valueOf(session.get("token"));
+		if (token == "admin") {
+			result = "admin";
+			return result;
+		}
 
 		// "session"内にログインIDと仮ログインIDが無いことを確認
 		if (!(session.containsKey("loginId")) && !(session.containsKey("tempUserId"))) {

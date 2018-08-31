@@ -25,6 +25,7 @@ public class LocationChoiceAction extends ActionSupport implements SessionAware 
 		String result = ERROR;
 		String token = String.valueOf(session.get("token"));
 		if (token == "admin") {
+			result = "admin";
 			return result;
 		}
 		String lToken = String.valueOf(session.get("locationToken"));

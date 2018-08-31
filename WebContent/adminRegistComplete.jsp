@@ -28,8 +28,9 @@
 <div id="piston"></div>
 </div>
 
+</div>
+
 <s:include value="footer.jsp" />
 
-</div>
 </body>
 </html>

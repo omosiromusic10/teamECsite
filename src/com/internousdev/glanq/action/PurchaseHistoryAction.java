@@ -26,6 +26,7 @@ public class PurchaseHistoryAction extends ActionSupport implements SessionAware
 		String result = ERROR;
 		String token = String.valueOf(session.get("token"));
 		if (token == "admin") {
+			result = "admin";
 			return result;
 		}
 

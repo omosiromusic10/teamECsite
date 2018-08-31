@@ -40,6 +40,7 @@ public class CreateDestinationConfirmAction extends ActionSupport implements Ses
 		String result = ERROR;
 		String token = String.valueOf(session.get("token"));
 		if (token == "admin") {
+			result = "admin";
 			return result;
 		}
 
